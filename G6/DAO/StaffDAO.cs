@@ -5,42 +5,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Data;
 using Model;
 
 namespace DAO
 {
-    public class StaffDAO
+    public class StaffDAO : Base
     {
-        private SqlConnection dbConnection;
-        public StaffDAO()
+        public List<Staff> Db_Get_All_Staff()
         {
-            string connString = ConfigurationManager
-                                    .ConnectionStrings["DBConnectionString"]
-                                    .ConnectionString;
-            dbConnection = new SqlConnection(connString);
+            string query = "";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters))
         }
-        public List<Staff> GetAll()
+
+        private List<Staff> ReadTables(DataTable dataTable)
         {
-            dbConnection.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * FROM Staff", dbConnection);
-            SqlDataReader reader = cmd.ExecuteReader();
             List<Staff> staff = new List<Staff>();
-            while (reader.Read())
+
+            foreach (DataRow dr in dataTable.Rows)
             {
-                Staff members = ReadStaff(reader);
-                staff.Add(members);
+                Staff member = new Staff()
+                {
+                    Staff_ID = (int)dr["Staff_ID"],
+                    Name = (string)dr["Name"],
+                    Phone_Number = (int)dr["Phone_Number"]
+                };
+                staff.Add(member);
             }
             return staff;
-        }
-        private Staff ReadStaff(SqlDataReader reader)
-        {
-            // retrieve data from all fields
-            int staffID = (int)reader["Satff_ID"];
-            string name = (string)reader["Name"];
-            int phoneNumber = (int)reader["phone_Number"];
-
-            // return to Staff object
-            return new Staff(staffID, name, phoneNumber);
         }
     }
 }
