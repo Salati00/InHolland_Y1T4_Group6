@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    class kichenOrdersDAO
+    class kichenOrdersDAO : Base
     {
+
+
+
     }
 }

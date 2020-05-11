@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarOrdersDAO.cs" />
     <Compile Include="Base.cs" />
+    <Compile Include="kichenOrdersDAO.cs" />
     <Compile Include="StaffDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
