@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Data;
@@ -13,21 +12,20 @@ namespace DAO
     public abstract class Base
     {
         private SqlDataAdapter adapter;
-        protected SqlConnection conn;
+        private SqlConnection conn;
         public Base()
         {
-         
-
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapeau06"].ConnectionString);
-            adapter = new SqlDataAdapter();
-
+            // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'SOMEREN DATABASE' IN YOUR APP.CONFIG!!
+            /*
+                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
+                adapter = new SqlDataAdapter();
+             */
         }
 
         protected SqlConnection OpenConnection()
         {
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapeau06"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
             adapter = new SqlDataAdapter();
-
             if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
             {
                 conn.Open();
