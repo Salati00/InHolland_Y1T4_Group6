@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DAO
 {
-    class BarOrdersDAO
+    class BarOrdersDAO : Base
     {
+
+
+
+
     }
 }
