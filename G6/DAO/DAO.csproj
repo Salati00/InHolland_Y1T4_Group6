@@ -45,6 +45,7 @@
     <Compile Include="BarOrdersDAO.cs" />
     <Compile Include="Base.cs" />
     <Compile Include="kichenOrdersDAO.cs" />
+    <Compile Include="OrderingDAO.cs" />
     <Compile Include="StaffDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

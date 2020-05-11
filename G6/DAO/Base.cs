@@ -15,16 +15,13 @@ namespace DAO
         private SqlConnection conn;
         public Base()
         {
-            // DO NOT FORGET TO INSERT YOUR CONNECTION STRING NAMED 'SOMEREN DATABASE' IN YOUR APP.CONFIG!!
-            /*
-                conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
-                adapter = new SqlDataAdapter();
-             */
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapeau06"].ConnectionString);
+            adapter = new SqlDataAdapter();
         }
 
         protected SqlConnection OpenConnection()
         {
-            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["SomerenDatabase"].ConnectionString);
+            conn = new SqlConnection(ConfigurationManager.ConnectionStrings["dbchapeau06"].ConnectionString);
             adapter = new SqlDataAdapter();
             if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
             {
