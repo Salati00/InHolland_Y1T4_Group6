@@ -9,14 +9,14 @@ namespace Model
     public class Order
     {
         //order items
-        public int Order_Item_Id { get; set; }
-        public DateTime Time { get; set; }
+    //    public int Order_Item_Id { get; set; }
+        public DateTime dateTime { get; set; }
         public int Quantity { get; set; }
         public string Comment { get; set; }
 
         //menu items
         public string ItemName { get; set; }
-        public string ItemType { get; set; }
+        public int ItemType { get; set; }
 
         //state
         public string state { get; set; }
