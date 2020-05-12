@@ -10,7 +10,7 @@ using System.Data;
 
 namespace DAO
 {
-    class kichenBarDAO : Base
+     public class kichenBarDAO : Base
     {
 
         public List<Order> Db_Get_Orders()
