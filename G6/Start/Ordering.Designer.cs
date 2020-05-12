@@ -235,6 +235,7 @@
             this.Controls.Add(this.Dgv_OrdrMenu);
             this.Name = "Ordering";
             this.Text = "Ordering";
+            this.Load += new System.EventHandler(this.Ordering_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrdrMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrderList)).EndInit();
             this.panel1.ResumeLayout(false);

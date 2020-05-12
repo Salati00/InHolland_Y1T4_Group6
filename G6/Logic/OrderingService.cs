@@ -7,7 +7,7 @@ using DAO;
 
 namespace Logic
 {
-    class OrderingService
+    public class OrderingService
     {
         OrderingDAO DB = new OrderingDAO();
 
