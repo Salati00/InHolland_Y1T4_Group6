@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Logic;
+using Model;
 
 namespace Start
 {
@@ -24,7 +25,7 @@ namespace Start
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
         {
             string Category = ((Button)sender).Text;
-            List<string> Menu = new List<string>();
+            List<StringValueWrapper> Menu = new List<StringValueWrapper>();
 
             switch (Category)
             {
@@ -37,7 +38,7 @@ namespace Start
             Dgv_OrdrMenu.AutoGenerateColumns = false;
             DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
             dgvc.HeaderText = "Name";
-            dgvc.DataPropertyName = "Name";
+            dgvc.DataPropertyName = "Value";
             DataGridViewButtonColumn dgvbt = new DataGridViewButtonColumn();
             dgvbt.Text = "ADD";// works also when bound
             dgvbt.UseColumnTextForButtonValue = true;

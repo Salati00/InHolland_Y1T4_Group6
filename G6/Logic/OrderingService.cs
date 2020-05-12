@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAO;
+using Model;
 
 namespace Logic
 {
@@ -25,12 +26,12 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-        public List<string> GetMenuItems(string TypeName)
+        public List<StringValueWrapper> GetMenuItems(string TypeName)
         {
-            List<string> Names = new List<string>();
+            List<StringValueWrapper> Names = new List<StringValueWrapper>();
             try
             {
-                DB.Db_Get_Item_Names(TypeName);
+                Names = DB.Db_Get_Item_Names(TypeName);
                 return Names;
             }
             catch (Exception ex)
