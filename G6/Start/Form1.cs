@@ -22,5 +22,25 @@ namespace Start
             Ordering frm = new Ordering();
             frm.ShowDialog();
         }
+
+
+        private void Kitchen_Click(object sender, EventArgs e)
+        {
+            KitchenBar kitchenBar = new KitchenBar("kitchen");
+            kitchenBar.Show();
+        }
+
+        private void Bar_Click(object sender, EventArgs e)
+        {
+            KitchenBar kitchenBar = new KitchenBar("bar");
+            kitchenBar.Show();
+        }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

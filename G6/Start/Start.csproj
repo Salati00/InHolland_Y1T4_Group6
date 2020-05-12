@@ -54,23 +54,17 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Bar.Designer.cs">
-      <DependentUpon>Bar.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Kitchen.cs">
+    <Compile Include="KitchenBar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Kitchen.Designer.cs">
-      <DependentUpon>Kitchen.cs</DependentUpon>
+    <Compile Include="KitchenBar.Designer.cs">
+      <DependentUpon>KitchenBar.cs</DependentUpon>
     </Compile>
     <Compile Include="Ordering.cs">
       <SubType>Form</SubType>
@@ -89,8 +83,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Kitchen.resx">
-      <DependentUpon>Kitchen.cs</DependentUpon>
+    <EmbeddedResource Include="KitchenBar.resx">
+      <DependentUpon>KitchenBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ordering.resx">
       <DependentUpon>Ordering.cs</DependentUpon>
