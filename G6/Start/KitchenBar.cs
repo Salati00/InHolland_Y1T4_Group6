@@ -24,7 +24,7 @@ namespace Start
             InitializeComponent();
             //  buttons = new List<Button>();
             service = new KitchenBarService();
-            List<Order> orders = service.GetOrders();
+            List<OrderItem> orders = service.GetOrders();
 
 
             for (int i = 0; i < 4; i++)

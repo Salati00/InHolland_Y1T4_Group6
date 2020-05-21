@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Order
+    public class OrderItem
     {
         //order items
     //    public int Order_Item_Id { get; set; }
