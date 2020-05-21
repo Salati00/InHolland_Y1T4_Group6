@@ -46,6 +46,7 @@
             this.Controls.Add(this.PanelOrders);
             this.Name = "KitchenBar";
             this.Text = "Kitchen";
+            this.Load += new System.EventHandler(this.KitchenBar_Load);
             this.ResumeLayout(false);
 
         }

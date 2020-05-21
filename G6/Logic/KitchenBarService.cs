@@ -14,11 +14,11 @@ namespace Logic
 
         kichenBarDAO kitchenBar_db = new kichenBarDAO();
 
-        public List<Order> GetOrders()
+        public List<OrderItem> GetOrders()
         {
             try
             {
-                List<Order> orders = kitchenBar_db.Db_Get_Orders();
+                List<OrderItem> orders = kitchenBar_db.Db_Get_Orders();
                 return orders;
 
             }

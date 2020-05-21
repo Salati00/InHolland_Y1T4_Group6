@@ -51,6 +51,11 @@ namespace Start
         }
 
 
+        public void NotifyWaiter()
+        {
+
+        }
+
         public void OrderText(Button b)
         {
             RichTextBox box = new RichTextBox();
@@ -62,8 +67,9 @@ namespace Start
             
         }
 
-
-
-
+        private void KitchenBar_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

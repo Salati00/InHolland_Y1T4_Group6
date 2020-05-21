@@ -13,7 +13,7 @@ namespace DAO
      public class kichenBarDAO : Base
     {
 
-        public List<Order> Db_Get_Orders()
+        public List<OrderItem> Db_Get_Orders()
         {
             string query = "select m.Menu_Item_ID ,o.[Time], oi.[DateTime], Quantity, Notes, m.[Name] as m, Item_Type_ID,s.[Name]as s" +
                 "from Orders as o" +
@@ -23,13 +23,13 @@ namespace DAO
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<Order> ReadTables(DataTable dataTable)
+        private List<OrderItem> ReadTables(DataTable dataTable)
         {
-            List<Order> orders = new List<Order>();
+            List<OrderItem> orders = new List<OrderItem>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order()
+                OrderItem order = new OrderItem()
                 {
                     //     Order_Item_Id = (int)dr["Menu_Item_ID"],
                     dateTime = (DateTime)dr["DateTime"],
