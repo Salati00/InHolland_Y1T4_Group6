@@ -11,11 +11,6 @@ namespace DAO
 {
     public class OrderingDAO : Base
     {
-        public OrderingDAO() : base()
-        {
-
-        }
-
         public List<Menu_Items> Db_Get_Item_Names()
         {
             string query = "SELECT Name from [Menu_Items]";
@@ -39,13 +34,14 @@ namespace DAO
             {
                 Menu_Items elem = new Menu_Items()
                 {
-                    Staff_ID = (int)dr["Staff_ID"],
-                    Name = (string)dr["Name"],
-                    Phone_Number = (int)dr["Phone_Number"]
+                    Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
+                    Name = dr["Name"].ToString(),
+                    Types = (Item_Types)Convert.ToInt32(dr["Item_Type_ID"]),
+                    Descriptions = dr["Description"].ToString()
                 };
                 Items.Add(elem);
             }
-            return Orders;
+            return Items;
         }
 
 

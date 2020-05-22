@@ -11,6 +11,5 @@ namespace Model
         Starter,
         Main,
         Special
-
     }
 }

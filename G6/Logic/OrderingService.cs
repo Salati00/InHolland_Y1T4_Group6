@@ -26,12 +26,17 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-        public List<string> GetMenuItems(string TypeName)
+        public List<StringValueWrapper> GetMenuItemNames(string TypeName)
         {
             List<StringValueWrapper> Names = new List<StringValueWrapper>();
+            List<Menu_Items> Menu = new List<Menu_Items>();
             try
             {
-                Names = DB.Db_Get_Item_Names(TypeName);
+                Menu = DB.Db_Get_MenuItems(TypeName);
+                foreach (var item in Menu)
+                {
+                    Names.Add(new StringValueWrapper(item.Name));
+                }
                 return Names;
             }
             catch (Exception ex)
