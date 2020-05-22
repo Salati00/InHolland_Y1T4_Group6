@@ -16,28 +16,34 @@ namespace DAO
 
         }
 
-        public List<StringValueWrapper> Db_Get_Item_Names()
+        public List<Menu_Items> Db_Get_Item_Names()
         {
             string query = "SELECT Name from [Menu_Items]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadNames(ExecuteSelectQuery(query, sqlParameters));
+            return ReadItems(ExecuteSelectQuery(query, sqlParameters));
         }
-        public List<StringValueWrapper> Db_Get_Item_Names(string TypeName)
+        public List<Menu_Items> Db_Get_MenuItems(string TypeName)
         {
-            string query = "SELECT Name from [Menu_Items] WHERE Item_Type_ID in (Select Item_Type_ID FROM Item_Types where Name like @nome)";
+            string query = "SELECT * from [Menu_Items] WHERE Item_Type_ID in (Select Item_Type_ID FROM Item_Types where Name like @nome)";
             //string query = "SELECT * from [Menu_Items]";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@nome", TypeName);
-            return ReadNames(ExecuteSelectQuery(query, sqlParameters));
+            return ReadItems(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        private List<StringValueWrapper> ReadNames(DataTable dataTable)
+        private List<Menu_Items> ReadItems(DataTable dataTable)
         {
-            List<StringValueWrapper> Orders = new List<StringValueWrapper>();
+            List<Menu_Items> Items = new List<Menu_Items>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Orders.Add(new StringValueWrapper(dr["Name"].ToString()));
+                Menu_Items elem = new Menu_Items()
+                {
+                    Staff_ID = (int)dr["Staff_ID"],
+                    Name = (string)dr["Name"],
+                    Phone_Number = (int)dr["Phone_Number"]
+                };
+                Items.Add(elem);
             }
             return Orders;
         }

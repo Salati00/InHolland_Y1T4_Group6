@@ -26,7 +26,7 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
-        public List<StringValueWrapper> GetMenuItems(string TypeName)
+        public List<string> GetMenuItems(string TypeName)
         {
             List<StringValueWrapper> Names = new List<StringValueWrapper>();
             try

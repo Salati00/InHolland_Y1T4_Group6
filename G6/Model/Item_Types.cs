@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Item_Types
+    public enum Item_Types
     {
-        public int Item_Types_ID { get; set; }
-        public string Name { get; set; }
+        Starter,
+        Main,
+        Special
+
     }
 }
