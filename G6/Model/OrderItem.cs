@@ -16,7 +16,7 @@ namespace Model
 
         //menu items
         public string ItemName { get; set; }
-        public int ItemType { get; set; }
+        public Item_Types ItemType { get; set; }
 
         //state
         public string state { get; set; }
