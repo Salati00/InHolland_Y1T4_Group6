@@ -19,7 +19,7 @@ namespace Model
         public Item_Types ItemType { get; set; }
 
         //state
-        public string state { get; set; }
+        public Orders_Status status { get; set; }
 
 
     }

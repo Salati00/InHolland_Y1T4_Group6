@@ -11,6 +11,5 @@ namespace Model
         public int Menu_Item_ID { get; set; }
         public string Name { get; set; }
         public string Descriptions { get; set; }
-        public Item_Types Types { get; set; }
     }
 }
