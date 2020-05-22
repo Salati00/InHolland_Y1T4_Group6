@@ -16,6 +16,7 @@ namespace Model
 
         //menu items
         public Menu_Items Item { get; set; }
+        public Item_Types Item_Types { get; set; }
 
         //state
         public Orders_Status status { get; set; }
