@@ -15,8 +15,7 @@ namespace Model
         public string Comment { get; set; }
 
         //menu items
-        public string ItemName { get; set; }
-        public Item_Types ItemType { get; set; }
+        public Menu_Items Item { get; set; }
 
         //state
         public Orders_Status status { get; set; }
