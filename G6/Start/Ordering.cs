@@ -25,7 +25,7 @@ namespace Start
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
         {
             string Category = ((Button)sender).Text;
-            List<StringValueWrapper> Menu = new List<StringValueWrapper>();
+            List<Menu_Items> Menu = new List<Menu_Items>();
 
             switch (Category)
             {
@@ -67,6 +67,13 @@ namespace Start
         private void Ordering_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+        private void Btn_Send_Click(object sender, EventArgs e)
+        {
+            ord.SendOrder(new Orders(), new List<Menu_Items>(), (((Button)sender).Name == "Btn_Send") ? false : true);
+            throw new NotImplementedException();
         }
     }
 }

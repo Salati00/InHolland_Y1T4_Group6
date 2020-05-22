@@ -44,6 +44,9 @@ namespace DAO
             return Items;
         }
 
-
+        public void Db_Send_Order(Orders Order, List<Menu_Items> Items, bool Close = false)
+        {
+            throw new NotImplementedException("if close then close order, otherwise send the order to order items");
+        }
     }
 }

@@ -12,13 +12,13 @@ namespace Logic
     {
         OrderingDAO DB = new OrderingDAO();
 
-        public List<string> GetMenuItems()
+        public List<Menu_Items> GetMenuItems(string TypeName)
         {
-            List<string> Names = new List<string>();
+            List<Menu_Items> Menu = new List<Menu_Items>();
             try
             {
-                DB.Db_Get_Item_Names();
-                return Names;
+                Menu = DB.Db_Get_MenuItems(TypeName);
+                return Menu;
             }
             catch (Exception ex)
             {
@@ -43,6 +43,19 @@ namespace Logic
             {
                 // lost connection to database
                 throw new Exception(ex.Message);
+            }
+        }
+
+        public Tuple<bool,string> SendOrder(Orders Order, List<Menu_Items> Items, bool Close = false)
+        {
+            try
+            {
+                DB.Db_Send_Order(Order, Items, Close);
+                return new Tuple<bool, string>(true, "");
+            }
+            catch(Exception ex)
+            {                
+                return new Tuple<bool,string>(false,ex.Message);
             }
         }
     }

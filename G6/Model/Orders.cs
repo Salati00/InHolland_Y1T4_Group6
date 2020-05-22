@@ -8,10 +8,8 @@ namespace Model
 {
     public class Orders
     {
-        public int Order_ID { get; set; }
         public Staff Staff_ID { get; set; }
         public Tables Table_ID { get; set; }
         public DateTime Time { get; set; }
-        public Orders_Status Status { get; set; }
     }
 }
