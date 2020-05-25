@@ -15,10 +15,10 @@ namespace DAO
 
         public List<OrderItem> Db_Get_Orders()
         {
-            string query = "select m.Menu_Item_ID ,o.[Time], oi.[DateTime], Quantity, Notes, m.[Name] as m, Item_Type_ID,s.[Name]as s" +
-                "from Orders as o" +
-                "join Order_Items as oi on oi.Order_ID = o.Order_ID" +
-                "join Order_States as s on s.State_ID = oi.State_ID" +
+            string query = "select m.Menu_Item_ID ,o.[Time], oi.[DateTime], Quantity, Notes, m.[Name] as m, Item_Type_ID,s.[Name]as s " +
+                "from Orders as o " +
+                "join Order_Items as oi on oi.Order_ID = o.Order_ID " +
+                "join Order_States as s on s.State_ID = oi.State_ID " +
                 "join Menu_Items as m on m.Menu_Item_ID = oi.Menu_Item_ID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
