@@ -17,30 +17,16 @@ namespace Start
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Ordering frm = new Ordering();
-            frm.ShowDialog();
-        }
-
-
-        private void Kitchen_Click(object sender, EventArgs e)
-        {
-            KitchenBar kitchenBar = new KitchenBar("kitchen");
-            kitchenBar.Show();
-        }
-
-        private void Bar_Click(object sender, EventArgs e)
-        {
-            KitchenBar kitchenBar = new KitchenBar("bar");
-            kitchenBar.Show();
-        }
-
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_signin_Click(object sender, EventArgs e)
+        {
+            Overview overview = new Overview();
+            overview.ShowDialog();
+            login
         }
     }
 }

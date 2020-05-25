@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.table = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.Label();
-            this.name = new System.Windows.Forms.Label();
-            this.date = new System.Windows.Forms.Label();
             this.t1 = new System.Windows.Forms.Button();
             this.t8 = new System.Windows.Forms.Button();
             this.t9 = new System.Windows.Forms.Button();
@@ -49,38 +46,11 @@
             // 
             this.table.AutoSize = true;
             this.table.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table.Location = new System.Drawing.Point(262, 59);
+            this.table.Location = new System.Drawing.Point(244, 38);
             this.table.Name = "table";
             this.table.Size = new System.Drawing.Size(167, 16);
             this.table.TabIndex = 0;
             this.table.Text = "TABLE MANAGEMENT";
-            // 
-            // id
-            // 
-            this.id.AutoSize = true;
-            this.id.Location = new System.Drawing.Point(82, 24);
-            this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(21, 13);
-            this.id.TabIndex = 1;
-            this.id.Text = "ID:";
-            // 
-            // name
-            // 
-            this.name.AutoSize = true;
-            this.name.Location = new System.Drawing.Point(322, 24);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(38, 13);
-            this.name.TabIndex = 2;
-            this.name.Text = "NAME";
-            // 
-            // date
-            // 
-            this.date.AutoSize = true;
-            this.date.Location = new System.Drawing.Point(536, 24);
-            this.date.Name = "date";
-            this.date.Size = new System.Drawing.Size(39, 13);
-            this.date.TabIndex = 3;
-            this.date.Text = "DATE:";
             // 
             // t1
             // 
@@ -197,9 +167,6 @@
             this.Controls.Add(this.t9);
             this.Controls.Add(this.t8);
             this.Controls.Add(this.t1);
-            this.Controls.Add(this.date);
-            this.Controls.Add(this.name);
-            this.Controls.Add(this.id);
             this.Controls.Add(this.table);
             this.Name = "TableView";
             this.Text = "TableView";
@@ -211,9 +178,6 @@
         #endregion
 
         private System.Windows.Forms.Label table;
-        private System.Windows.Forms.Label id;
-        private System.Windows.Forms.Label name;
-        private System.Windows.Forms.Label date;
         private System.Windows.Forms.Button t1;
         private System.Windows.Forms.Button t8;
         private System.Windows.Forms.Button t9;
