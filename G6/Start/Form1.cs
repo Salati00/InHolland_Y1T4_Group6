@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Start
 {
-    public partial class Form1 : Form
+    public partial class login_form : Form
     {
-        public Form1()
+        public login_form()
         {
             InitializeComponent();
         }
@@ -24,9 +24,9 @@ namespace Start
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            Overview overview = new Overview();
-            overview.ShowDialog();
-            login
+            // showing OVERVIEW form
+            Overview ovw = new Overview();
+            ovw.ShowDialog();
         }
     }
 }

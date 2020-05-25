@@ -35,10 +35,15 @@ namespace Start
             kitchenBar.Show();
         }
 
-        private void btn_signout_Click(object sender, EventArgs e)
+        public void btn_signout_Click(object sender, EventArgs e)
         {
-            Form1 login = new Form1();
-            login.ShowDialog();
+            // showing LOGIN form
+            login_form login = new login_form();
+            login.Visible = false;
+            login_form.ActiveForm.Show();
+            
+            // hiding OVERVIEW form
+            Overview.ActiveForm.Hide();
         }
     }
 }

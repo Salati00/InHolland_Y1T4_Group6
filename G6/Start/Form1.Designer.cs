@@ -1,6 +1,6 @@
 ﻿namespace Start
 {
-    partial class Form1
+    partial class login_form
     {
         /// <summary>
         /// Required designer variable.
@@ -163,7 +163,7 @@
             this.btn_forgotpass.Text = "FORGOT PASSWORD?";
             this.btn_forgotpass.UseVisualStyleBackColor = false;
             // 
-            // Form1
+            // login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -178,7 +178,7 @@
             this.Controls.Add(this.signin);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.chapeau);
-            this.Name = "Form1";
+            this.Name = "login_form";
             this.Text = "PlaceHolderMenu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
