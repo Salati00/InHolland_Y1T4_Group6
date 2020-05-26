@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Orders_Status
+    public enum Order_Status
     {
-        Pending, 
+        Pending,
         Ready,
         Served
     }

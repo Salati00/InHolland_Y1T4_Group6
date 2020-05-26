@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Orders
+    public class Order
     {
         public Staff Staff_ID { get; set; }
-        public Tables Table_ID { get; set; }
+        public Table Table_ID { get; set; }
         public DateTime Time { get; set; }
     }
 }

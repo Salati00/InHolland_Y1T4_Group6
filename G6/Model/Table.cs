@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Tables
+    public class Table
     {
         public int Table_ID { get; set; }
         public int Table_Number { get; set; }
         public int Capacity { get; set; }
-        public Tables_Status Status { get; set; }
+        public Table_Status Status { get; set; }
     }
 }

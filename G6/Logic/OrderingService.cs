@@ -12,9 +12,9 @@ namespace Logic
     {
         OrderingDAO DB = new OrderingDAO();
 
-        public List<Menu_Items> GetMenuItems(string TypeName)
+        public List<Menu_Item> GetMenuItems(string TypeName)
         {
-            List<Menu_Items> Menu = new List<Menu_Items>();
+            List<Menu_Item> Menu = new List<Menu_Item>();
             try
             {
                 Menu = DB.Db_Get_MenuItems(TypeName);
@@ -29,7 +29,7 @@ namespace Logic
         public List<StringValueWrapper> GetMenuItemNames(string TypeName)
         {
             List<StringValueWrapper> Names = new List<StringValueWrapper>();
-            List<Menu_Items> Menu = new List<Menu_Items>();
+            List<Menu_Item> Menu = new List<Menu_Item>();
             try
             {
                 Menu = DB.Db_Get_MenuItems(TypeName);
@@ -46,7 +46,7 @@ namespace Logic
             }
         }
 
-        public Tuple<bool,string> SendOrder(Orders Order, List<Menu_Items> Items, bool Close = false)
+        public Tuple<bool,string> SendOrder(Order Order, List<Menu_Item> Items, bool Close = false)
         {
             try
             {

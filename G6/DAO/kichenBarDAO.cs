@@ -35,9 +35,9 @@ namespace DAO
                     dateTime = (DateTime)dr["DateTime"],
                     Quantity = (int)dr["Quantity"],
                     Comment = (string)dr["Notes"],
-                    Item = (Menu_Items)dr["m"],
+                    Item = (Menu_Item)dr["m"],
                     Item_Types = (Item_Types)dr["Item_Type_ID"],
-                    Status = (Orders_Status)dr["s"]
+                    Status = (Order_Status)dr["s"]
 
                 };
                 orders.Add(order);

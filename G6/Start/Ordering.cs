@@ -25,7 +25,7 @@ namespace Start
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
         {
             string Category = ((Button)sender).Text;
-            List<Menu_Items> Menu = new List<Menu_Items>();
+            List<Menu_Item> Menu = new List<Menu_Item>();
 
             switch (Category)
             {
@@ -73,7 +73,7 @@ namespace Start
         private void Btn_Send_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ord.SendOrder(new Orders(), new List<Menu_Items>(), (((Button)sender).Name == "Btn_Send") ? false : true);
+            ord.SendOrder(new Order(), new List<Menu_Item>(), (((Button)sender).Name == "Btn_Send") ? false : true);
             Overview ov = new Overview();
             ov.ShowDialog();
             this.Close();

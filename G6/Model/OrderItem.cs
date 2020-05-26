@@ -15,11 +15,11 @@ namespace Model
         public string Comment { get; set; }
 
         //menu items
-        public Menu_Items Item { get; set; }
+        public Menu_Item Item { get; set; }
         public Item_Types Item_Types { get; set; }
 
         //state
-        public Orders_Status Status { get; set; }
+        public Order_Status Status { get; set; }
 
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum Tables_Status
+    public enum Table_Status
     {
         Available,
         Reserved,
