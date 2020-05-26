@@ -25,6 +25,8 @@ namespace Start
             //  buttons = new List<Button>();
             service = new KitchenBarService();
             List<OrderItem> orders = service.GetOrders();
+            timee.Text = DateTime.Now.ToString("h:mm:ss tt");
+            recallpanel.Hide();
 
 
             for (int i = 0; i < 4; i++)
@@ -60,16 +62,37 @@ namespace Start
         {
             RichTextBox box = new RichTextBox();
             box.Location = b.Location;
-            box.BackColor = System.Drawing.Color.Red;
-            box.Text="ref";
-            b.Text += "gaafrs";
-
             
+            box.BackColor = System.Drawing.Color.Red;
+            box.Text="order 012    vnldgnreinf";
+            //b.Text += "gaafrs";
+            box.Select(0, 7);
+            box.SelectionFont = new Font(box.Font, FontStyle.Bold);
+
+
+
         }
 
         private void KitchenBar_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void recall_Click(object sender, EventArgs e)
+        {
+            recallpanel.Show();
+        }
+
+        private void back_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Start.Overview.ActiveForm.Activate();
+
+        }
+
+        private void recalled_Click(object sender, EventArgs e)
+        {
+            recallpanel.Hide();
         }
     }
 }
