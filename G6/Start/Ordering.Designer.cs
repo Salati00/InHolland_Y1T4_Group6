@@ -247,6 +247,7 @@
             this.Controls.Add(this.Dgv_OrderList);
             this.Controls.Add(this.Dgv_OrdrMenu);
             this.Name = "Ordering";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ordering";
             this.Load += new System.EventHandler(this.Ordering_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrdrMenu)).EndInit();

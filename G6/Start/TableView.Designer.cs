@@ -56,16 +56,16 @@
             // 
             this.t1.Location = new System.Drawing.Point(70, 99);
             this.t1.Name = "t1";
-            this.t1.Size = new System.Drawing.Size(33, 82);
+            this.t1.Size = new System.Drawing.Size(43, 91);
             this.t1.TabIndex = 4;
             this.t1.Text = "1";
             this.t1.UseVisualStyleBackColor = true;
             // 
             // t8
             // 
-            this.t8.Location = new System.Drawing.Point(363, 209);
+            this.t8.Location = new System.Drawing.Point(355, 221);
             this.t8.Name = "t8";
-            this.t8.Size = new System.Drawing.Size(33, 82);
+            this.t8.Size = new System.Drawing.Size(41, 91);
             this.t8.TabIndex = 5;
             this.t8.Text = "8";
             this.t8.UseVisualStyleBackColor = true;
@@ -74,79 +74,79 @@
             // 
             this.t9.Location = new System.Drawing.Point(471, 99);
             this.t9.Name = "t9";
-            this.t9.Size = new System.Drawing.Size(104, 32);
+            this.t9.Size = new System.Drawing.Size(104, 38);
             this.t9.TabIndex = 6;
             this.t9.Text = "9";
             this.t9.UseVisualStyleBackColor = true;
             // 
             // t4
             // 
-            this.t4.Location = new System.Drawing.Point(363, 99);
+            this.t4.Location = new System.Drawing.Point(355, 99);
             this.t4.Name = "t4";
-            this.t4.Size = new System.Drawing.Size(33, 82);
+            this.t4.Size = new System.Drawing.Size(41, 91);
             this.t4.TabIndex = 8;
             this.t4.Text = "4";
             this.t4.UseVisualStyleBackColor = true;
             // 
             // t7
             // 
-            this.t7.Location = new System.Drawing.Point(265, 209);
+            this.t7.Location = new System.Drawing.Point(258, 221);
             this.t7.Name = "t7";
-            this.t7.Size = new System.Drawing.Size(33, 82);
+            this.t7.Size = new System.Drawing.Size(41, 91);
             this.t7.TabIndex = 9;
             this.t7.Text = "7";
             this.t7.UseVisualStyleBackColor = true;
             // 
             // t3
             // 
-            this.t3.Location = new System.Drawing.Point(265, 99);
+            this.t3.Location = new System.Drawing.Point(258, 99);
             this.t3.Name = "t3";
-            this.t3.Size = new System.Drawing.Size(33, 82);
+            this.t3.Size = new System.Drawing.Size(41, 91);
             this.t3.TabIndex = 10;
             this.t3.Text = "3";
             this.t3.UseVisualStyleBackColor = true;
             // 
             // t6
             // 
-            this.t6.Location = new System.Drawing.Point(165, 209);
+            this.t6.Location = new System.Drawing.Point(167, 221);
             this.t6.Name = "t6";
-            this.t6.Size = new System.Drawing.Size(33, 82);
+            this.t6.Size = new System.Drawing.Size(41, 91);
             this.t6.TabIndex = 11;
             this.t6.Text = "6";
             this.t6.UseVisualStyleBackColor = true;
             // 
             // t2
             // 
-            this.t2.Location = new System.Drawing.Point(165, 99);
+            this.t2.Location = new System.Drawing.Point(167, 99);
             this.t2.Name = "t2";
-            this.t2.Size = new System.Drawing.Size(33, 82);
+            this.t2.Size = new System.Drawing.Size(41, 91);
             this.t2.TabIndex = 12;
             this.t2.Text = "2";
             this.t2.UseVisualStyleBackColor = true;
             // 
             // t5
             // 
-            this.t5.Location = new System.Drawing.Point(70, 209);
+            this.t5.Location = new System.Drawing.Point(70, 221);
             this.t5.Name = "t5";
-            this.t5.Size = new System.Drawing.Size(33, 82);
+            this.t5.Size = new System.Drawing.Size(43, 91);
             this.t5.TabIndex = 13;
             this.t5.Text = "5";
             this.t5.UseVisualStyleBackColor = true;
             // 
             // t10
             // 
-            this.t10.Location = new System.Drawing.Point(471, 149);
+            this.t10.Location = new System.Drawing.Point(471, 155);
             this.t10.Name = "t10";
-            this.t10.Size = new System.Drawing.Size(104, 32);
+            this.t10.Size = new System.Drawing.Size(104, 35);
             this.t10.TabIndex = 14;
             this.t10.Text = "10";
             this.t10.UseVisualStyleBackColor = true;
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(471, 259);
+            this.btn_back.Location = new System.Drawing.Point(471, 273);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(104, 32);
+            this.btn_back.Size = new System.Drawing.Size(104, 39);
             this.btn_back.TabIndex = 15;
             this.btn_back.Text = "BACK";
             this.btn_back.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 352);
+            this.ClientSize = new System.Drawing.Size(712, 352);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.t10);
             this.Controls.Add(this.t5);
