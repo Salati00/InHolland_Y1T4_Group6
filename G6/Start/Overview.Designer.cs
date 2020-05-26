@@ -56,6 +56,7 @@
             this.btn_tables.TabIndex = 1;
             this.btn_tables.Text = "TABLES";
             this.btn_tables.UseVisualStyleBackColor = true;
+            this.btn_tables.Click += new System.EventHandler(this.btn_tables_Click);
             // 
             // btn_bar
             // 
@@ -124,6 +125,7 @@
             this.Controls.Add(this.btn_tables);
             this.Controls.Add(this.label1);
             this.Name = "Overview";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overview";
             this.ResumeLayout(false);
             this.PerformLayout();

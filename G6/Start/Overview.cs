@@ -19,8 +19,10 @@ namespace Start
 
         private void btn_orders_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Ordering frm = new Ordering();
             frm.ShowDialog();
+            this.Close();
         }
 
         private void btn_kitchen_Click(object sender, EventArgs e)
@@ -32,18 +34,33 @@ namespace Start
         private void btn_bar_Click(object sender, EventArgs e)
         {
             KitchenBar kitchenBar = new KitchenBar("bar");
-            kitchenBar.Show();
+            kitchenBar.ShowDialog();
         }
 
         public void btn_signout_Click(object sender, EventArgs e)
         {
+            // hiding OVERVIEW form
+            this.Hide();
+
             // showing LOGIN form
             login_form login = new login_form();
-            login.Visible = false;
-            login_form.ActiveForm.Show();
-            
-            // hiding OVERVIEW form
-            Overview.ActiveForm.Hide();
+            login.ShowDialog();
+
+            // closing OVERVIEW form
+            this.Close();
+        }
+
+        private void btn_tables_Click(object sender, EventArgs e)
+        {
+            // hides OVERVIEW form
+            this.Hide();
+
+            // display TABLEVIEW form
+            TableView table = new TableView();
+            table.ShowDialog();
+
+            // closes OVERVIEW form
+            this.Close();
         }
     }
 }

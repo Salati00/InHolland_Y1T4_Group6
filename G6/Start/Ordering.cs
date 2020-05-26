@@ -72,8 +72,11 @@ namespace Start
 
         private void Btn_Send_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ord.SendOrder(new Orders(), new List<Menu_Items>(), (((Button)sender).Name == "Btn_Send") ? false : true);
-            throw new NotImplementedException();
+            Overview ov = new Overview();
+            ov.ShowDialog();
+            this.Close();
         }
     }
 }

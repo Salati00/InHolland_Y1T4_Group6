@@ -24,9 +24,20 @@ namespace Start
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
+            //hiding LOGIN form
+            this.Hide();
+
             // showing OVERVIEW form
             Overview ovw = new Overview();
             ovw.ShowDialog();
+
+            // closing LOGIN form
+            this.Close();
+        }
+
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

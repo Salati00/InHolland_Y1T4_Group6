@@ -38,6 +38,7 @@
             this.password = new System.Windows.Forms.TextBox();
             this.btn_signin = new System.Windows.Forms.Button();
             this.btn_forgotpass = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chapeau
@@ -163,11 +164,23 @@
             this.btn_forgotpass.Text = "FORGOT PASSWORD?";
             this.btn_forgotpass.UseVisualStyleBackColor = false;
             // 
+            // btn_exit
+            // 
+            this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_exit.Location = new System.Drawing.Point(678, 379);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(127, 39);
+            this.btn_exit.TabIndex = 10;
+            this.btn_exit.Text = "EXIT";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            // 
             // login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 439);
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_forgotpass);
             this.Controls.Add(this.btn_signin);
             this.Controls.Add(this.password);
@@ -179,6 +192,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.chapeau);
             this.Name = "login_form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlaceHolderMenu";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -198,6 +212,7 @@
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Button btn_signin;
         private System.Windows.Forms.Button btn_forgotpass;
+        private System.Windows.Forms.Button btn_exit;
     }
 }
 

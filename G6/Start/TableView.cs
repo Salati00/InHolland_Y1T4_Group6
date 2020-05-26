@@ -16,5 +16,18 @@ namespace Start
         {
             InitializeComponent();
         }
+
+        private void btn_back_Click(object sender, EventArgs e)
+        {
+            // hides TABLEVIEW form
+            this.Hide();
+
+            // display OVERVIEW form
+            Overview ov = new Overview();
+            ov.ShowDialog();
+
+            // closes TABLEVIEW form
+            this.Close();
+        }
     }
 }

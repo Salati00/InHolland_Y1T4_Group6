@@ -150,6 +150,7 @@
             this.btn_back.TabIndex = 15;
             this.btn_back.Text = "BACK";
             this.btn_back.UseVisualStyleBackColor = true;
+            this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
             // TableView
             // 
@@ -169,6 +170,7 @@
             this.Controls.Add(this.t1);
             this.Controls.Add(this.table);
             this.Name = "TableView";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableView";
             this.ResumeLayout(false);
             this.PerformLayout();
