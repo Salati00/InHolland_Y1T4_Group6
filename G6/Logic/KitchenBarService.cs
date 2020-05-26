@@ -32,7 +32,7 @@ namespace Logic
         public void RemoveOrder( object order)
         {
 
-            kitchenBar_db.Db_Remove_Orders(order);
+            //kitchenBar_db.Db_Remove_Orders(order);
 
         }
 

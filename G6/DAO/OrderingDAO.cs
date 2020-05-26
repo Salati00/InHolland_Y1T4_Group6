@@ -17,6 +17,7 @@ namespace DAO
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadItems(ExecuteSelectQuery(query, sqlParameters));
         }
+
         public List<Menu_Item> Db_Get_MenuItems(string TypeName)
         {
             string query = "SELECT * from [Menu_Items] WHERE Item_Type_ID in (Select Item_Type_ID FROM Item_Types where Name like @nome)";

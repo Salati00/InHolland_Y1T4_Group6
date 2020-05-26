@@ -19,7 +19,7 @@ namespace Start
       //  List<Button> buttons;
         KitchenBarService service;
 
-        public KitchenBar(string type)
+        public KitchenBar(string type)//receive staff instead of type
         {
             InitializeComponent();
             //  buttons = new List<Button>();

@@ -12,5 +12,7 @@ namespace Model
         public string Name { get; set; }
         public string Descriptions { get; set; }
         public Item_Types Types { get; set; }
+
+        //ADD PRICES
     }
 }
