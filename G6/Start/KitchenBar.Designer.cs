@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PanelOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.recalled = new System.Windows.Forms.Button();
             this.recallpanel = new System.Windows.Forms.Panel();
             this.recall = new System.Windows.Forms.Button();
             this.back = new System.Windows.Forms.Button();
             this.timee = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.recallpanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +93,10 @@
             this.timee.TabIndex = 4;
             this.timee.Text = "time";
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            // 
             // KitchenBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -118,5 +124,6 @@
         private System.Windows.Forms.Button recall;
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.Label timee;
+        private System.Windows.Forms.Timer timer1;
     }
 }

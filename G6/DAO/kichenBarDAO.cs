@@ -44,5 +44,13 @@ namespace DAO
             }
             return orders;
         }
+
+
+
+        void Db_Remove_Orders(object order)
+        {
+
+
+        }
     }
 }
