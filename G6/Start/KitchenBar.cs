@@ -19,7 +19,7 @@ namespace Start
       //  List<Button> buttons;
         KitchenBarService service;
 
-        public KitchenBar(string type)//receive staff instead of type
+        public KitchenBar(Staff_Types type)//receive staff instead of type
         {
             InitializeComponent();
             //  buttons = new List<Button>();
@@ -32,7 +32,7 @@ namespace Start
             for (int i = 0; i < 4; i++)
         //      foreach(Order order in orders)
             {
-                Button button = new Button();
+                ListBox button = new ListBox();
                 button.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 button.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); ;
                 PanelOrders.Controls.Add(button);
@@ -43,9 +43,10 @@ namespace Start
         }
 
 
+
         public void ClickOrder(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
+            ListBox button = (ListBox)sender;
 
             PanelOrders.Controls.Remove(button);
         //    buttons.Remove(button);
@@ -58,18 +59,17 @@ namespace Start
 
         }
 
-        public void OrderText(Button b)
+        public void OrderText(ListBox b)
         {
-            RichTextBox box = new RichTextBox();
-            box.Location = b.Location;
-            
-            box.BackColor = System.Drawing.Color.Red;
-            box.Text="order 012    vnldgnreinf";
-            //b.Text += "gaafrs";
-            box.Select(0, 7);
-            box.SelectionFont = new Font(box.Font, FontStyle.Bold);
+          //  RichTextBox box = richTextorder;
+            b.Items.Add("");
+            b.Items.Add("mom");
+            b.Items.Add("dad");
 
-
+            b.Items[0] = System.Drawing.Color.Green;
+            //   box.Text += $"\n order";
+            //   box.Text += $"\n order";
+            //   box.Show();
 
         }
 
@@ -86,13 +86,20 @@ namespace Start
         private void back_Click(object sender, EventArgs e)
         {
             this.Close();
-            Start.Overview.ActiveForm.Activate();
+            Overview.ActiveForm.Activate();
 
         }
 
         private void recalled_Click(object sender, EventArgs e)
         {
             recallpanel.Hide();
+        }
+
+        
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

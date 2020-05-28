@@ -11,5 +11,7 @@ namespace Model
         public Staff Staff_ID { get; set; }
         public Table Table_ID { get; set; }
         public DateTime Time { get; set; }
+
+        public List<OrderItem> orders { get; set; }
     }
 }

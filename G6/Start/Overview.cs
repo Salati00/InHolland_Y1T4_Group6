@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,14 +28,21 @@ namespace Start
 
         private void btn_kitchen_Click(object sender, EventArgs e)
         {
-            KitchenBar kitchenBar = new KitchenBar("kitchen");
-            kitchenBar.Show();
+            this.Hide();
+            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Chef);
+            kitchenBar.ShowDialog();
+            this.Close();
+
         }
 
         private void btn_bar_Click(object sender, EventArgs e)
         {
-            KitchenBar kitchenBar = new KitchenBar("bar");
+            this.Hide();
+            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Bartender);
             kitchenBar.ShowDialog();
+            this.Close();
+
+
         }
 
         public void btn_signout_Click(object sender, EventArgs e)

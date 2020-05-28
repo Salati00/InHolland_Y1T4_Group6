@@ -32,6 +32,7 @@
             this.PanelOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.recalled = new System.Windows.Forms.Button();
             this.recallpanel = new System.Windows.Forms.Panel();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.recall = new System.Windows.Forms.Button();
             this.back = new System.Windows.Forms.Button();
             this.timee = new System.Windows.Forms.Label();
@@ -58,11 +59,26 @@
             // 
             // recallpanel
             // 
+            this.recallpanel.Controls.Add(this.listBox1);
             this.recallpanel.Controls.Add(this.recalled);
             this.recallpanel.Location = new System.Drawing.Point(213, 122);
             this.recallpanel.Name = "recallpanel";
             this.recallpanel.Size = new System.Drawing.Size(335, 176);
             this.recallpanel.TabIndex = 1;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 20;
+            this.listBox1.Items.AddRange(new object[] {
+            " cmd,ackl\\",
+            "scdslmcdms",
+            "dscdsmc"});
+            this.listBox1.Location = new System.Drawing.Point(8, 8);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(298, 144);
+            this.listBox1.TabIndex = 1;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // recall
             // 
@@ -125,5 +141,6 @@
         private System.Windows.Forms.Button back;
         private System.Windows.Forms.Label timee;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }

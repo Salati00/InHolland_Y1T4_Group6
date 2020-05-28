@@ -47,7 +47,7 @@ namespace DAO
 
 
 
-        void Db_Remove_Orders(object order)
+        void Db_Ready_Orders(object order)
         {
 
 
