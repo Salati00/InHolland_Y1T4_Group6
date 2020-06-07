@@ -18,6 +18,10 @@ namespace Start
         {
             InitializeComponent();
             this.role = role;
+            //if (role == Staff_Types.Manager)
+            //{
+            //    id.Text = new Staff().Staff_ID.ToString() 
+            //}
         }
  
         private void btn_back_Click(object sender, EventArgs e)
