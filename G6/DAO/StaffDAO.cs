@@ -30,6 +30,7 @@ namespace DAO
                     Staff_ID = (int)dr["Staff_ID"],
                     Name = (string)dr["Name"],
                     Phone_Number = (int)dr["Phone_Number"]
+                    //Roles = [Staff_Types]
                 };
                 staff.Add(member);
             }

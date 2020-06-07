@@ -55,9 +55,10 @@
             // 
             this.PanelOrders.BackColor = System.Drawing.Color.Transparent;
             this.PanelOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelOrders.Location = new System.Drawing.Point(32, 12);
+            this.PanelOrders.Location = new System.Drawing.Point(21, 8);
+            this.PanelOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.PanelOrders.Name = "PanelOrders";
-            this.PanelOrders.Size = new System.Drawing.Size(1958, 936);
+            this.PanelOrders.Size = new System.Drawing.Size(1305, 608);
             this.PanelOrders.TabIndex = 0;
             this.PanelOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelOrders_Paint);
             // 
@@ -68,9 +69,10 @@
             this.recallpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.recallpanel.Controls.Add(this.listViewrecall);
             this.recallpanel.ForeColor = System.Drawing.Color.White;
-            this.recallpanel.Location = new System.Drawing.Point(484, 229);
+            this.recallpanel.Location = new System.Drawing.Point(323, 149);
+            this.recallpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.recallpanel.Name = "recallpanel";
-            this.recallpanel.Size = new System.Drawing.Size(926, 462);
+            this.recallpanel.Size = new System.Drawing.Size(619, 302);
             this.recallpanel.TabIndex = 1;
             // 
             // listViewrecall
@@ -88,9 +90,10 @@
             listViewItem8,
             listViewItem9,
             listViewItem10});
-            this.listViewrecall.Location = new System.Drawing.Point(-2, -2);
+            this.listViewrecall.Location = new System.Drawing.Point(-1, -1);
+            this.listViewrecall.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.listViewrecall.Name = "listViewrecall";
-            this.listViewrecall.Size = new System.Drawing.Size(921, 457);
+            this.listViewrecall.Size = new System.Drawing.Size(615, 298);
             this.listViewrecall.TabIndex = 0;
             this.listViewrecall.UseCompatibleStateImageBehavior = false;
             this.listViewrecall.View = System.Windows.Forms.View.Details;
@@ -106,9 +109,10 @@
             // 
             this.timee.AutoSize = true;
             this.timee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timee.Location = new System.Drawing.Point(1684, 942);
+            this.timee.Location = new System.Drawing.Point(1123, 612);
+            this.timee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.timee.Name = "timee";
-            this.timee.Size = new System.Drawing.Size(81, 37);
+            this.timee.Size = new System.Drawing.Size(58, 26);
             this.timee.TabIndex = 7;
             this.timee.Text = "time";
             // 
@@ -118,9 +122,10 @@
             this.Home.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Home.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Home.Location = new System.Drawing.Point(32, 926);
+            this.Home.Location = new System.Drawing.Point(21, 602);
+            this.Home.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Home.Name = "Home";
-            this.Home.Size = new System.Drawing.Size(186, 69);
+            this.Home.Size = new System.Drawing.Size(124, 45);
             this.Home.TabIndex = 6;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = false;
@@ -134,9 +139,10 @@
             this.recall.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.recall.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recall.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.recall.Location = new System.Drawing.Point(859, 926);
+            this.recall.Location = new System.Drawing.Point(573, 602);
+            this.recall.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.recall.Name = "recall";
-            this.recall.Size = new System.Drawing.Size(186, 69);
+            this.recall.Size = new System.Drawing.Size(124, 45);
             this.recall.TabIndex = 5;
             this.recall.Text = "Recall";
             this.recall.UseVisualStyleBackColor = false;
@@ -144,15 +150,16 @@
             // 
             // KitchenBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1912, 1024);
+            this.ClientSize = new System.Drawing.Size(1275, 666);
             this.Controls.Add(this.recall);
             this.Controls.Add(this.recallpanel);
             this.Controls.Add(this.Home);
             this.Controls.Add(this.timee);
             this.Controls.Add(this.PanelOrders);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "KitchenBar";
             this.Text = "Kitchen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

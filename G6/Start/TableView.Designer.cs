@@ -41,7 +41,7 @@
             this.t10 = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -165,20 +165,20 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "ID:";
             // 
-            // label2
+            // id
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(73, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "label2";
+            this.id.AutoSize = true;
+            this.id.Location = new System.Drawing.Point(73, 27);
+            this.id.Name = "id";
+            this.id.Size = new System.Drawing.Size(35, 13);
+            this.id.TabIndex = 17;
+            this.id.Text = "label2";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(389, 25);
+            this.label3.Location = new System.Drawing.Point(406, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 18;
@@ -191,7 +191,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(575, 296);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.id);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.t10);
@@ -228,7 +228,7 @@
         private System.Windows.Forms.Button t10;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label id;
         private System.Windows.Forms.Label label3;
     }
 }

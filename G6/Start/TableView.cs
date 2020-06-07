@@ -7,25 +7,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Model;
 
 namespace Start
 {
     public partial class TableView : Form
     {
-        public TableView()
+        Staff_Types role;
+        public TableView(Staff_Types role)
         {
             InitializeComponent();
+            this.role = role;
         }
-
+ 
         private void btn_back_Click(object sender, EventArgs e)
         {
             // hides TABLEVIEW form
             this.Hide();
-
-            // display OVERVIEW form
-            Overview ov = new Overview();
-            ov.ShowDialog();
-
+            if (role == Staff_Types.Manager)
+            {
+                new Overview(role).ShowDialog();
+            }
+            else
+            {
+                // display OVERVIEW form
+                new login_form().ShowDialog();
+            }
             // closes TABLEVIEW form
             this.Close();
         }

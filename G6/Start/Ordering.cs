@@ -74,7 +74,7 @@ namespace Start
         {
             this.Hide();
             ord.SendOrder(new Order(), new List<Menu_Item>(), (((Button)sender).Name == "Btn_Send") ? false : true);
-            Overview ov = new Overview();
+            Overview ov = new Overview(Staff_Types.Waiter);
             ov.ShowDialog();
             this.Close();
         }

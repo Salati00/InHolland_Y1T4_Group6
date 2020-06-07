@@ -8,10 +8,10 @@ namespace Model
 {
     public enum Staff_Types
     {
-        Manager,
-        Waiter,
-        Bartender,
-        Chef,
-        Empty
+        Manager = 1,
+        Waiter = 2,
+        Chef = 3,
+        Bartender = 4,
+        Empty = 5
     }
 }

@@ -134,6 +134,7 @@
             this.password.Location = new System.Drawing.Point(293, 199);
             this.password.Multiline = true;
             this.password.Name = "password";
+            this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(284, 25);
             this.password.TabIndex = 7;
             // 
