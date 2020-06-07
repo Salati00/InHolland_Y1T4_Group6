@@ -19,19 +19,22 @@ namespace Start
 
         Staff_Types type;
         KitchenBarService service;
+        ListView lastServed;
 
         public KitchenBar(Staff_Types type)//receive staff instead of type
         {
             InitializeComponent();
 
             this.type = type;
+            
             service = new KitchenBarService();
-            List<OrderItem> orders = service.GetOrders();
+            FillInfo();
         }
          
 
         void FillInfo()
         {
+            List<OrderItem> orders = service.GetOrders();
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
             recallpanel.Hide();
 
@@ -47,7 +50,7 @@ namespace Start
                 button.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); ;
                 PanelOrders.Controls.Add(button);
                 
-                OrderText(button);
+                OrderStyle(button);
                 button.Click += new EventHandler(this.ClickOrder);
             }
 
@@ -56,7 +59,9 @@ namespace Start
 
         public void ClickOrder(object sender, EventArgs e)
         {
-            ListView button = (ListView)sender;            
+            ListView button = (ListView)sender;
+            
+            EqualListView(button, ref lastServed);
             PanelOrders.Controls.Remove(button);
         
 
@@ -68,19 +73,13 @@ namespace Start
              
         }
 
-        public void OrderText(ListView b)
+        public void OrderStyle(ListView b)
         {
-
-
-
 
             b.Columns.Add("order 090", b.Width - (b.Width/4));
             b.Columns.Add("08:40", -2, System.Windows.Forms.HorizontalAlignment.Center);
 
-            //b.Columns.Add("haha", -2, HorizontalAlignment.Right);
-
-
-            // Place a check mark next to the item.
+            //b.Columns.Add("haha", -2, HorizontalAlignment.Right);   // Place a check mark next to the item.
 
 
             for (int i = 0; i < 8; i++)
@@ -95,46 +94,43 @@ namespace Start
                 }
             }
 
-
-
-            // Set the view to show details.
             b.View = View.Details;
-            // Allow the user to edit item text.
-            //     b.LabelEdit = true;
-            // Allow the user to rearrange columns.
-            //   b.AllowColumnReorder = true;
-            // Display check boxes.
-
-            // Select the item and subitems when selection is made.
             b.FullRowSelect = true;
-            // Display grid lines.
-            //  b.GridLines = true;
-            // Sort the items in the list in ascending order.
-            //      b.Sorting = SortOrder.Ascending;
-
+            
+            // Allow the user to edit item text.    //     b.LabelEdit = true;     // Allow the user to rearrange columns.     //   b.AllowColumnReorder = true;  // Display check boxes.
+           
+            // Sort the items in the list in ascending order.            //      b.Sorting = SortOrder.Ascending;
 
             b.Items[7].UseItemStyleForSubItems = false;
             b.Items[7].SubItems[1].ForeColor = System.Drawing.Color.White;
             b.Items[7].SubItems[1].BackColor = System.Drawing.Color.Black;
-            
-           
-           
-            
+                
         }
 
        
 
         private void recall_Click_1(object sender, EventArgs e)
         {
-            if (recallpanel.Visible)
-                recallpanel.Hide();
-            else
-                recallpanel.Show();
+            if (true)//listViewrecall.Columns.Count >0)
+            {
+                if (recallpanel.Visible)
+                    recallpanel.Hide();
+                else
+                    recallpanel.Show();
+
+                lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
+                EqualListView(lastServed, ref listViewrecall);
+                OrderStyle(listViewrecall);
+
+            }
+
+
         }
 
         private void listViewrecall_SelectedIndexChanged(object sender, EventArgs e)
         {
              recallpanel.Hide();
+
         }
 
         private void Home_Click(object sender, EventArgs e)
@@ -143,7 +139,18 @@ namespace Start
             Overview.ActiveForm.Activate();
         }
 
+        private void EqualListView(ListView filledList,ref ListView emptyList)
+        {
+            //emptyList.Columns.Add(filledList.Columns[0].Text);
+            //emptyList.Columns.Add(filledList.Columns[1].Text);
 
+            for (int item = 0; item < filledList.Items.Count; item++)
+            {
+                emptyList.Items.Add(filledList.Items[item].Text);
+            }
+
+
+        }
 
 
 
