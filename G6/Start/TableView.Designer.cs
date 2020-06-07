@@ -40,123 +40,159 @@
             this.t5 = new System.Windows.Forms.Button();
             this.t10 = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // table
             // 
             this.table.AutoSize = true;
-            this.table.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table.Location = new System.Drawing.Point(244, 38);
+            this.table.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.table.Location = new System.Drawing.Point(245, 54);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(167, 16);
+            this.table.Size = new System.Drawing.Size(77, 20);
             this.table.TabIndex = 0;
-            this.table.Text = "TABLE MANAGEMENT";
+            this.table.Text = "TABLES";
             // 
             // t1
             // 
-            this.t1.Location = new System.Drawing.Point(70, 99);
+            this.t1.Location = new System.Drawing.Point(43, 96);
             this.t1.Name = "t1";
-            this.t1.Size = new System.Drawing.Size(43, 91);
+            this.t1.Size = new System.Drawing.Size(50, 50);
             this.t1.TabIndex = 4;
             this.t1.Text = "1";
             this.t1.UseVisualStyleBackColor = true;
             // 
             // t8
             // 
-            this.t8.Location = new System.Drawing.Point(355, 221);
+            this.t8.Location = new System.Drawing.Point(364, 185);
             this.t8.Name = "t8";
-            this.t8.Size = new System.Drawing.Size(41, 91);
+            this.t8.Size = new System.Drawing.Size(50, 50);
             this.t8.TabIndex = 5;
             this.t8.Text = "8";
             this.t8.UseVisualStyleBackColor = true;
             // 
             // t9
             // 
-            this.t9.Location = new System.Drawing.Point(471, 99);
+            this.t9.Location = new System.Drawing.Point(466, 96);
             this.t9.Name = "t9";
-            this.t9.Size = new System.Drawing.Size(104, 38);
+            this.t9.Size = new System.Drawing.Size(50, 50);
             this.t9.TabIndex = 6;
             this.t9.Text = "9";
             this.t9.UseVisualStyleBackColor = true;
             // 
             // t4
             // 
-            this.t4.Location = new System.Drawing.Point(355, 99);
+            this.t4.Location = new System.Drawing.Point(152, 185);
             this.t4.Name = "t4";
-            this.t4.Size = new System.Drawing.Size(41, 91);
+            this.t4.Size = new System.Drawing.Size(50, 50);
             this.t4.TabIndex = 8;
             this.t4.Text = "4";
             this.t4.UseVisualStyleBackColor = true;
             // 
             // t7
             // 
-            this.t7.Location = new System.Drawing.Point(258, 221);
+            this.t7.Location = new System.Drawing.Point(364, 96);
             this.t7.Name = "t7";
-            this.t7.Size = new System.Drawing.Size(41, 91);
+            this.t7.Size = new System.Drawing.Size(50, 50);
             this.t7.TabIndex = 9;
             this.t7.Text = "7";
             this.t7.UseVisualStyleBackColor = true;
             // 
             // t3
             // 
-            this.t3.Location = new System.Drawing.Point(258, 99);
+            this.t3.Location = new System.Drawing.Point(152, 96);
             this.t3.Name = "t3";
-            this.t3.Size = new System.Drawing.Size(41, 91);
+            this.t3.Size = new System.Drawing.Size(50, 50);
             this.t3.TabIndex = 10;
             this.t3.Text = "3";
             this.t3.UseVisualStyleBackColor = true;
             // 
             // t6
             // 
-            this.t6.Location = new System.Drawing.Point(167, 221);
+            this.t6.Location = new System.Drawing.Point(258, 185);
             this.t6.Name = "t6";
-            this.t6.Size = new System.Drawing.Size(41, 91);
+            this.t6.Size = new System.Drawing.Size(50, 50);
             this.t6.TabIndex = 11;
             this.t6.Text = "6";
             this.t6.UseVisualStyleBackColor = true;
             // 
             // t2
             // 
-            this.t2.Location = new System.Drawing.Point(167, 99);
+            this.t2.Location = new System.Drawing.Point(43, 185);
             this.t2.Name = "t2";
-            this.t2.Size = new System.Drawing.Size(41, 91);
+            this.t2.Size = new System.Drawing.Size(50, 50);
             this.t2.TabIndex = 12;
             this.t2.Text = "2";
             this.t2.UseVisualStyleBackColor = true;
             // 
             // t5
             // 
-            this.t5.Location = new System.Drawing.Point(70, 221);
+            this.t5.Location = new System.Drawing.Point(258, 96);
             this.t5.Name = "t5";
-            this.t5.Size = new System.Drawing.Size(43, 91);
+            this.t5.Size = new System.Drawing.Size(50, 50);
             this.t5.TabIndex = 13;
             this.t5.Text = "5";
             this.t5.UseVisualStyleBackColor = true;
             // 
             // t10
             // 
-            this.t10.Location = new System.Drawing.Point(471, 155);
+            this.t10.Location = new System.Drawing.Point(466, 185);
             this.t10.Name = "t10";
-            this.t10.Size = new System.Drawing.Size(104, 35);
+            this.t10.Size = new System.Drawing.Size(50, 50);
             this.t10.TabIndex = 14;
             this.t10.Text = "10";
             this.t10.UseVisualStyleBackColor = true;
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(471, 273);
+            this.btn_back.Location = new System.Drawing.Point(466, 250);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(104, 39);
+            this.btn_back.Size = new System.Drawing.Size(97, 34);
             this.btn_back.TabIndex = 15;
             this.btn_back.Text = "BACK";
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(40, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(24, 16);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "ID:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(73, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(389, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 16);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "DATE:";
+            // 
             // TableView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 352);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(575, 296);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.t10);
             this.Controls.Add(this.t5);
@@ -191,5 +227,8 @@
         private System.Windows.Forms.Button t5;
         private System.Windows.Forms.Button t10;
         private System.Windows.Forms.Button btn_back;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

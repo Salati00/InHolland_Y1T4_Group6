@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Start
 {
@@ -24,15 +25,23 @@ namespace Start
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            //hiding LOGIN form
-            this.Hide();
+            SqlConnection con = new SqlConnection(@"Data Source=den1.mssql8.gear.host;Initial Catalog=dbchapeau06;Persist Security Info=True;User ID=dbchapeau06;Password=Xc113m-Ed78?");
+            SqlDataAdapter sda = new SqlDataAdapter("SELECT COUNT(*) FROM Login_Details WHERE ID_Hash = '"+username.Text+"' AND Password_Hash = '"+password.Text+"'", con);
 
-            // showing OVERVIEW form
-            Overview ovw = new Overview();
-            ovw.ShowDialog();
+            DataTable db = new DataTable();
+            sda.Fill(db);
+            if (db.Rows[0][0].ToString() == "1")
+            { //hiding LOGIN form
+                this.Hide();
 
-            // closing LOGIN form
-            this.Close();
+                // showing OVERVIEW form
+                new Overview().ShowDialog();
+
+                // closing LOGIN form
+                this.Close();
+            }
+            else
+                MessageBox.Show("invalid");
         }
 
         private void btn_exit_Click(object sender, EventArgs e)

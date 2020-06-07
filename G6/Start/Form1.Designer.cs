@@ -118,7 +118,6 @@
             this.username.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.username.BackColor = System.Drawing.SystemColors.Window;
             this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.username.Enabled = false;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.Location = new System.Drawing.Point(293, 143);
             this.username.Multiline = true;
@@ -131,7 +130,6 @@
             this.password.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.password.BackColor = System.Drawing.SystemColors.Window;
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.password.Enabled = false;
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password.Location = new System.Drawing.Point(293, 199);
             this.password.Multiline = true;
@@ -146,7 +144,7 @@
             this.btn_signin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_signin.Location = new System.Drawing.Point(293, 243);
             this.btn_signin.Name = "btn_signin";
-            this.btn_signin.Size = new System.Drawing.Size(284, 57);
+            this.btn_signin.Size = new System.Drawing.Size(284, 47);
             this.btn_signin.TabIndex = 8;
             this.btn_signin.Text = "SIGN IN";
             this.btn_signin.UseVisualStyleBackColor = false;
@@ -157,7 +155,7 @@
             this.btn_forgotpass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_forgotpass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_forgotpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_forgotpass.Location = new System.Drawing.Point(438, 306);
+            this.btn_forgotpass.Location = new System.Drawing.Point(438, 296);
             this.btn_forgotpass.Name = "btn_forgotpass";
             this.btn_forgotpass.Size = new System.Drawing.Size(139, 23);
             this.btn_forgotpass.TabIndex = 9;
