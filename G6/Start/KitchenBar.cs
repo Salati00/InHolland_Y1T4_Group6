@@ -32,7 +32,8 @@ namespace Start
             FillInfo();
         }
          
-
+                                   //               149
+                                   //               paswrd149
         void FillInfo()
         {
             List<OrderItem> orders = service.GetOrders();
@@ -47,10 +48,14 @@ namespace Start
                 
                 ListView button = new ListView();
                 button.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
-                button.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); ;
-                PanelOrders.Controls.Add(button);
-                
+                button.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
+                button.Columns.Add("order 090", button.Width - (button.Width / 4));
+                button.Columns.Add("08:40", -2, System.Windows.Forms.HorizontalAlignment.Center);
+
                 OrderStyle(button);
+                PanelOrders.Controls.Add(button);
+
+                
                 button.Click += new EventHandler(this.ClickOrder);
             }
 
@@ -60,10 +65,24 @@ namespace Start
         public void ClickOrder(object sender, EventArgs e)
         {
             ListView button = (ListView)sender;
-            
-            lastServed = EqualListView(button);
-            PanelOrders.Controls.Remove(button);
-        
+
+            if (recallpanel.Visible)
+            {
+                recallpanel.Hide();
+
+                
+            }
+            else if (button.Items[7].Selected)
+            {
+                lastServed = button;
+                PanelOrders.Controls.Remove(button);
+
+                if (lastServed.Columns[0].Text[0] != 'R')
+                {
+                    lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
+                }
+
+            }
 
         }
 
@@ -76,11 +95,9 @@ namespace Start
         public void OrderStyle(ListView b)
         {
 
-            b.Columns.Add("order 090", b.Width - (b.Width/4));
-            b.Columns.Add("08:40", -2, System.Windows.Forms.HorizontalAlignment.Center);
 
-            //b.Columns.Add("haha", -2, HorizontalAlignment.Right);   // Place a check mark next to the item.
-
+            //   b.Columns.Add("haha", -2, HorizontalAlignment.Right);   
+            
 
             for (int i = 0; i < 8; i++)
             {
@@ -97,9 +114,6 @@ namespace Start
             b.View = View.Details;
             b.FullRowSelect = true;
             
-            // Allow the user to edit item text.    //     b.LabelEdit = true;     // Allow the user to rearrange columns.     //   b.AllowColumnReorder = true;  // Display check boxes.
-           
-            // Sort the items in the list in ascending order.            //      b.Sorting = SortOrder.Ascending;
 
             b.Items[7].UseItemStyleForSubItems = false;
             b.Items[7].SubItems[1].ForeColor = System.Drawing.Color.White;
@@ -118,10 +132,14 @@ namespace Start
                 else
                     recallpanel.Show();
 
-                lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
-                recallflow.Controls.Add(EqualListView(lastServed));
-                //OrderStyle(recallflow.Controls[1]);
-       
+                recallpanel.Controls.Clear();
+                recallpanel.Controls.Add(lastServed);
+                lastServed.Location = new System.Drawing.Point(1,1);
+
+    
+
+                lastServed.Click += new EventHandler(this.ClickOrder);
+
             }
 
 
@@ -139,19 +157,7 @@ namespace Start
             Overview.ActiveForm.Activate();
         }
 
-        private ListView EqualListView(ListView filledList)
-        {
-            ListView emptyList = new ListView();
-            emptyList.Columns.Add("or");
-            emptyList.Columns.Add(filledList.Columns[1].Text);
-
-            for (int item = 0; item < filledList.Items.Count; item++)
-            {
-                emptyList.Items.Add(filledList.Items[item].Text);
-            }
-            return emptyList;
-
-        }
+      
 
 
 
@@ -170,10 +176,6 @@ namespace Start
         {
             
         }
-        private void listViewrecall_MouseHover(object sender, EventArgs e)
-        {
-
-        }
         private void PanelOrders_Paint(object sender, PaintEventArgs e)
         {
 
@@ -183,5 +185,7 @@ namespace Start
         {
             
         }
+
+     
     }
 }

@@ -35,14 +35,12 @@
             this.timee = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
             this.recall = new System.Windows.Forms.Button();
-            this.recallflow = new System.Windows.Forms.FlowLayoutPanel();
-            this.recallpanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelOrders
             // 
             this.PanelOrders.BackColor = System.Drawing.Color.Transparent;
-            this.PanelOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PanelOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PanelOrders.Location = new System.Drawing.Point(32, 12);
             this.PanelOrders.Name = "PanelOrders";
             this.PanelOrders.Size = new System.Drawing.Size(1958, 935);
@@ -51,14 +49,13 @@
             // 
             // recallpanel
             // 
-            this.recallpanel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.recallpanel.BackColor = System.Drawing.Color.Maroon;
             this.recallpanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.recallpanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.recallpanel.Controls.Add(this.recallflow);
+            this.recallpanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recallpanel.ForeColor = System.Drawing.Color.White;
-            this.recallpanel.Location = new System.Drawing.Point(484, 229);
+            this.recallpanel.Location = new System.Drawing.Point(484, 230);
             this.recallpanel.Name = "recallpanel";
-            this.recallpanel.Size = new System.Drawing.Size(926, 462);
+            this.recallpanel.Size = new System.Drawing.Size(917, 441);
             this.recallpanel.TabIndex = 1;
             // 
             // timer1
@@ -106,14 +103,6 @@
             this.recall.UseVisualStyleBackColor = false;
             this.recall.Click += new System.EventHandler(this.recall_Click_1);
             // 
-            // recallflow
-            // 
-            this.recallflow.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.recallflow.Location = new System.Drawing.Point(3, 3);
-            this.recallflow.Name = "recallflow";
-            this.recallflow.Size = new System.Drawing.Size(916, 452);
-            this.recallflow.TabIndex = 0;
-            // 
             // KitchenBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -129,7 +118,6 @@
             this.Text = "Kitchen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.KitchenBar_Load);
-            this.recallpanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,6 +131,5 @@
         private System.Windows.Forms.Label timee;
         private System.Windows.Forms.Button Home;
         private System.Windows.Forms.Button recall;
-        private System.Windows.Forms.FlowLayoutPanel recallflow;
     }
 }

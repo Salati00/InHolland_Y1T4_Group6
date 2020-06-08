@@ -39,6 +39,7 @@
             this.btn_signin = new System.Windows.Forms.Button();
             this.btn_forgotpass = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chapeau
@@ -185,11 +186,22 @@
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1045, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(162, 28);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "just temporarly hehe";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1226, 675);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_forgotpass);
             this.Controls.Add(this.btn_signin);
@@ -224,6 +236,7 @@
         private System.Windows.Forms.Button btn_signin;
         private System.Windows.Forms.Button btn_forgotpass;
         private System.Windows.Forms.Button btn_exit;
+        private System.Windows.Forms.Button button1;
     }
 }
 
