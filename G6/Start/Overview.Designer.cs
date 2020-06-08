@@ -35,13 +35,14 @@
             this.btn_signout = new System.Windows.Forms.Button();
             this.btn_orders = new System.Windows.Forms.Button();
             this.btn_kitchen = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(322, 47);
+            this.label1.Location = new System.Drawing.Point(323, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 29);
             this.label1.TabIndex = 0;
@@ -50,7 +51,7 @@
             // btn_tables
             // 
             this.btn_tables.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_tables.Location = new System.Drawing.Point(43, 129);
+            this.btn_tables.Location = new System.Drawing.Point(43, 97);
             this.btn_tables.Name = "btn_tables";
             this.btn_tables.Size = new System.Drawing.Size(188, 95);
             this.btn_tables.TabIndex = 1;
@@ -61,7 +62,7 @@
             // btn_bar
             // 
             this.btn_bar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_bar.Location = new System.Drawing.Point(43, 287);
+            this.btn_bar.Location = new System.Drawing.Point(43, 253);
             this.btn_bar.Name = "btn_bar";
             this.btn_bar.Size = new System.Drawing.Size(188, 95);
             this.btn_bar.TabIndex = 4;
@@ -72,7 +73,7 @@
             // btn_settings
             // 
             this.btn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_settings.Location = new System.Drawing.Point(298, 287);
+            this.btn_settings.Location = new System.Drawing.Point(298, 253);
             this.btn_settings.Name = "btn_settings";
             this.btn_settings.Size = new System.Drawing.Size(188, 95);
             this.btn_settings.TabIndex = 5;
@@ -82,7 +83,7 @@
             // btn_signout
             // 
             this.btn_signout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_signout.Location = new System.Drawing.Point(558, 287);
+            this.btn_signout.Location = new System.Drawing.Point(558, 253);
             this.btn_signout.Name = "btn_signout";
             this.btn_signout.Size = new System.Drawing.Size(188, 95);
             this.btn_signout.TabIndex = 6;
@@ -93,7 +94,7 @@
             // btn_orders
             // 
             this.btn_orders.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_orders.Location = new System.Drawing.Point(298, 129);
+            this.btn_orders.Location = new System.Drawing.Point(298, 97);
             this.btn_orders.Name = "btn_orders";
             this.btn_orders.Size = new System.Drawing.Size(188, 95);
             this.btn_orders.TabIndex = 7;
@@ -104,7 +105,7 @@
             // btn_kitchen
             // 
             this.btn_kitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kitchen.Location = new System.Drawing.Point(558, 129);
+            this.btn_kitchen.Location = new System.Drawing.Point(558, 97);
             this.btn_kitchen.Name = "btn_kitchen";
             this.btn_kitchen.Size = new System.Drawing.Size(188, 95);
             this.btn_kitchen.TabIndex = 8;
@@ -112,11 +113,21 @@
             this.btn_kitchen.UseVisualStyleBackColor = true;
             this.btn_kitchen.Click += new System.EventHandler(this.btn_kitchen_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 378);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(214, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "* This section is accessible only by manager";
+            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 400);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_kitchen);
             this.Controls.Add(this.btn_orders);
             this.Controls.Add(this.btn_signout);
@@ -141,5 +152,6 @@
         private System.Windows.Forms.Button btn_signout;
         private System.Windows.Forms.Button btn_orders;
         private System.Windows.Forms.Button btn_kitchen;
+        private System.Windows.Forms.Label label2;
     }
 }

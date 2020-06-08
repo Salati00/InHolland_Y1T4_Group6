@@ -13,11 +13,11 @@ namespace Start
 {
     public partial class Overview : Form
     {
-        Staff_Types role;
-        public Overview(Staff_Types role)
+        Staff member;
+        public Overview(Staff member)
         {
             InitializeComponent();
-            this.role = role;
+            this.member = member;
         }
 
         private void btn_orders_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace Start
             this.Hide();
 
             // display TABLEVIEW form
-            TableView table = new TableView(role);
+            TableView table = new TableView(member);
             table.ShowDialog();
 
             // closes OVERVIEW form

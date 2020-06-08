@@ -16,7 +16,7 @@ namespace Logic
         {
             try
             {
-                List<Staff> staff = staff_db.Db_Get_All_Staff();
+                List<Staff> staff = staff_db.Db_Get_Staff_ID();
                 return staff;
             }
             catch (Exception)

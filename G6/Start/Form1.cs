@@ -8,14 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Model;
 
 namespace Start
 {
     public partial class login_form : Form
     {
+        Staff member; 
         public login_form()
         {
             InitializeComponent();
+            member = new Staff();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -34,19 +37,21 @@ namespace Start
 
             if (db.Rows[0][0].ToString() == "1")
             {
+                member.Roles = Staff_Types.Manager;
                 //hiding LOGIN form
                 this.Hide();
 
                 // showing OVERVIEW form
-                new Overview(Model.Staff_Types.Manager).ShowDialog();
+                new Overview(member).ShowDialog();
 
                 // closing LOGIN form
                 this.Close();
             }
             else if (db.Rows[0][0].ToString() == "2")
             {
+                member.Roles = Staff_Types.Waiter;
                 this.Hide();
-                new TableView(Model.Staff_Types.Waiter).ShowDialog();
+                new TableView(member).ShowDialog();
                 this.Close();
             }
             else if (db.Rows[0][0].ToString() == "3")

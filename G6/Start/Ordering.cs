@@ -15,11 +15,12 @@ namespace Start
     public partial class Ordering : Form
     {
         OrderingService ord;
-
+        Staff member;
         public Ordering()
         {
             InitializeComponent();
             ord = new OrderingService();
+            member = new Staff();
         }
 
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
@@ -74,8 +75,8 @@ namespace Start
         {
             this.Hide();
             ord.SendOrder(new Order(), new List<Menu_Item>(), (((Button)sender).Name == "Btn_Send") ? false : true);
-            Overview ov = new Overview(Staff_Types.Waiter);
-            ov.ShowDialog();
+            //Overview ov = new Overview();
+            //ov.ShowDialog();
             this.Close();
         }
     }

@@ -8,29 +8,40 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using DAO;
+using Logic;
+using System.Data.SqlClient;
 
 namespace Start
 {
     public partial class TableView : Form
     {
-        Staff_Types role;
-        public TableView(Staff_Types role)
+        Staff member;
+
+        public TableView(Staff member)
         {
             InitializeComponent();
-            this.role = role;
-            //if (role == Staff_Types.Manager)
-            //{
-            //    id.Text = new Staff().Staff_ID.ToString() 
-            //}
+            //staffsv = new StaffService();
+            //id.Text = staffsv.GetStaffMembers().ToString();
+            date.Text = DateTime.Today.ToShortDateString();
+            this.member = member;
+            if (member.Roles == Staff_Types.Manager)
+            {
+                id.Text = "manager";
+            }
+            else if (member.Roles == Staff_Types.Waiter)
+            {
+                id.Text = "waiter";
+            }
         }
  
         private void btn_back_Click(object sender, EventArgs e)
         {
             // hides TABLEVIEW form
             this.Hide();
-            if (role == Staff_Types.Manager)
+            if (member.Roles == Staff_Types.Manager)
             {
-                new Overview(role).ShowDialog();
+                new Overview(member).ShowDialog();
             }
             else
             {

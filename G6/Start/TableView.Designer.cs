@@ -43,6 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.date = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // table
@@ -147,7 +148,7 @@
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(466, 250);
+            this.btn_back.Location = new System.Drawing.Point(466, 253);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(97, 34);
             this.btn_back.TabIndex = 15;
@@ -159,18 +160,19 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(40, 25);
+            this.label1.Location = new System.Drawing.Point(12, 271);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(24, 16);
+            this.label1.Size = new System.Drawing.Size(143, 16);
             this.label1.TabIndex = 16;
-            this.label1.Text = "ID:";
+            this.label1.Text = "You are logged in as a";
             // 
             // id
             // 
             this.id.AutoSize = true;
-            this.id.Location = new System.Drawing.Point(73, 27);
+            this.id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.id.Location = new System.Drawing.Point(157, 271);
             this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(35, 13);
+            this.id.Size = new System.Drawing.Size(45, 16);
             this.id.TabIndex = 17;
             this.id.Text = "label2";
             // 
@@ -178,11 +180,20 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(406, 25);
+            this.label3.Location = new System.Drawing.Point(260, 271);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(48, 16);
             this.label3.TabIndex = 18;
             this.label3.Text = "DATE:";
+            // 
+            // date
+            // 
+            this.date.AutoSize = true;
+            this.date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.date.Location = new System.Drawing.Point(314, 271);
+            this.date.Name = "date";
+            this.date.Size = new System.Drawing.Size(0, 16);
+            this.date.TabIndex = 19;
             // 
             // TableView
             // 
@@ -190,6 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(575, 296);
+            this.Controls.Add(this.date);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.id);
             this.Controls.Add(this.label1);
@@ -230,5 +242,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label id;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label date;
     }
 }

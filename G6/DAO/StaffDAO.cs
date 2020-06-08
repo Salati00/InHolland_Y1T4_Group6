@@ -14,11 +14,16 @@ namespace DAO
     {
         public List<Staff> Db_Get_All_Staff()
         {
-            string query = "";
+            string query = "SELECT * FROM [Staff]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
-
+        public List<Staff> Db_Get_Staff_ID()
+        {
+            string query = "SELECT Staff_ID FROM [Staff]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
         private List<Staff> ReadTables(DataTable dataTable)
         {
             List<Staff> staff = new List<Staff>();
@@ -29,8 +34,8 @@ namespace DAO
                 {
                     Staff_ID = (int)dr["Staff_ID"],
                     Name = (string)dr["Name"],
-                    Phone_Number = (int)dr["Phone_Number"]
-                    //Roles = [Staff_Types]
+                    Phone_Number = (int)dr["Phone_Number"],
+                    Roles = (Staff_Types)dr["Staff_Type_ID"]
                 };
                 staff.Add(member);
             }
