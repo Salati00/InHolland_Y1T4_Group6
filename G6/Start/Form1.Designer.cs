@@ -49,12 +49,13 @@
             this.chapeau.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chapeau.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.chapeau.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.chapeau.Location = new System.Drawing.Point(70, 53);
+            this.chapeau.Location = new System.Drawing.Point(105, 82);
+            this.chapeau.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chapeau.MaxLength = 1;
             this.chapeau.Multiline = true;
             this.chapeau.Name = "chapeau";
             this.chapeau.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.chapeau.Size = new System.Drawing.Size(66, 311);
+            this.chapeau.Size = new System.Drawing.Size(97, 476);
             this.chapeau.TabIndex = 0;
             this.chapeau.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -62,10 +63,11 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Menu;
             this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(225, 53);
+            this.textBox1.Location = new System.Drawing.Point(338, 82);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(444, 311);
+            this.textBox1.Size = new System.Drawing.Size(664, 476);
             this.textBox1.TabIndex = 1;
             // 
             // signin
@@ -73,9 +75,10 @@
             this.signin.AutoSize = true;
             this.signin.BackColor = System.Drawing.SystemColors.Menu;
             this.signin.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.signin.Location = new System.Drawing.Point(375, 69);
+            this.signin.Location = new System.Drawing.Point(562, 106);
+            this.signin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.signin.Name = "signin";
-            this.signin.Size = new System.Drawing.Size(123, 31);
+            this.signin.Size = new System.Drawing.Size(179, 47);
             this.signin.TabIndex = 2;
             this.signin.Text = "SIGN IN";
             // 
@@ -84,9 +87,10 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Menu;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(288, 115);
+            this.label1.Location = new System.Drawing.Point(432, 177);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 24);
+            this.label1.Size = new System.Drawing.Size(231, 33);
             this.label1.TabIndex = 3;
             this.label1.Text = "USERNAME / ID";
             // 
@@ -95,9 +99,10 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.Menu;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(288, 171);
+            this.label2.Location = new System.Drawing.Point(432, 263);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(118, 24);
+            this.label2.Size = new System.Drawing.Size(183, 33);
             this.label2.TabIndex = 4;
             this.label2.Text = "PASSWORD";
             // 
@@ -106,9 +111,10 @@
             this.lbl_chapeau.AutoSize = true;
             this.lbl_chapeau.BackColor = System.Drawing.SystemColors.Menu;
             this.lbl_chapeau.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_chapeau.Location = new System.Drawing.Point(83, 69);
+            this.lbl_chapeau.Location = new System.Drawing.Point(124, 106);
+            this.lbl_chapeau.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_chapeau.Name = "lbl_chapeau";
-            this.lbl_chapeau.Size = new System.Drawing.Size(42, 273);
+            this.lbl_chapeau.Size = new System.Drawing.Size(65, 427);
             this.lbl_chapeau.TabIndex = 5;
             this.lbl_chapeau.Text = "C\r\nH\r\nA\r\nP\r\nE\r\nA\r\nU";
             this.lbl_chapeau.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -119,10 +125,11 @@
             this.username.BackColor = System.Drawing.SystemColors.Window;
             this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(293, 143);
+            this.username.Location = new System.Drawing.Point(440, 220);
+            this.username.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.username.Multiline = true;
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(284, 25);
+            this.username.Size = new System.Drawing.Size(425, 37);
             this.username.TabIndex = 6;
             // 
             // password
@@ -131,11 +138,12 @@
             this.password.BackColor = System.Drawing.SystemColors.Window;
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.password.Location = new System.Drawing.Point(293, 199);
+            this.password.Location = new System.Drawing.Point(440, 306);
+            this.password.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.password.Multiline = true;
             this.password.Name = "password";
             this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(284, 25);
+            this.password.Size = new System.Drawing.Size(425, 37);
             this.password.TabIndex = 7;
             // 
             // btn_signin
@@ -143,9 +151,10 @@
             this.btn_signin.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_signin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_signin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_signin.Location = new System.Drawing.Point(293, 243);
+            this.btn_signin.Location = new System.Drawing.Point(440, 374);
+            this.btn_signin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_signin.Name = "btn_signin";
-            this.btn_signin.Size = new System.Drawing.Size(284, 47);
+            this.btn_signin.Size = new System.Drawing.Size(426, 72);
             this.btn_signin.TabIndex = 8;
             this.btn_signin.Text = "SIGN IN";
             this.btn_signin.UseVisualStyleBackColor = false;
@@ -156,9 +165,10 @@
             this.btn_forgotpass.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btn_forgotpass.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_forgotpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_forgotpass.Location = new System.Drawing.Point(438, 296);
+            this.btn_forgotpass.Location = new System.Drawing.Point(657, 455);
+            this.btn_forgotpass.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_forgotpass.Name = "btn_forgotpass";
-            this.btn_forgotpass.Size = new System.Drawing.Size(139, 23);
+            this.btn_forgotpass.Size = new System.Drawing.Size(208, 35);
             this.btn_forgotpass.TabIndex = 9;
             this.btn_forgotpass.Text = "FORGOT PASSWORD?";
             this.btn_forgotpass.UseVisualStyleBackColor = false;
@@ -166,9 +176,10 @@
             // btn_exit
             // 
             this.btn_exit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_exit.Location = new System.Drawing.Point(678, 379);
+            this.btn_exit.Location = new System.Drawing.Point(1017, 583);
+            this.btn_exit.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_exit.Name = "btn_exit";
-            this.btn_exit.Size = new System.Drawing.Size(127, 39);
+            this.btn_exit.Size = new System.Drawing.Size(190, 60);
             this.btn_exit.TabIndex = 10;
             this.btn_exit.Text = "EXIT";
             this.btn_exit.UseVisualStyleBackColor = true;
@@ -176,9 +187,9 @@
             // 
             // login_form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 439);
+            this.ClientSize = new System.Drawing.Size(1226, 675);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_forgotpass);
             this.Controls.Add(this.btn_signin);
@@ -190,6 +201,7 @@
             this.Controls.Add(this.signin);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.chapeau);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "login_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlaceHolderMenu";

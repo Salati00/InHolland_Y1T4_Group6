@@ -27,6 +27,7 @@ namespace Start
 
             this.type = type;
             
+            recallpanel.Hide();
             service = new KitchenBarService();
             FillInfo();
         }
@@ -36,7 +37,6 @@ namespace Start
         {
             List<OrderItem> orders = service.GetOrders();
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
-            recallpanel.Hide();
 
             if (type == Staff_Types.Bartender)
                 this.Text = "Bar";
@@ -61,7 +61,7 @@ namespace Start
         {
             ListView button = (ListView)sender;
             
-            EqualListView(button, ref lastServed);
+            lastServed = EqualListView(button);
             PanelOrders.Controls.Remove(button);
         
 
@@ -111,7 +111,7 @@ namespace Start
 
         private void recall_Click_1(object sender, EventArgs e)
         {
-            if (true)//listViewrecall.Columns.Count >0)
+            if (lastServed!=null)
             {
                 if (recallpanel.Visible)
                     recallpanel.Hide();
@@ -119,9 +119,9 @@ namespace Start
                     recallpanel.Show();
 
                 lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
-                EqualListView(lastServed, ref listViewrecall);
-                OrderStyle(listViewrecall);
-
+                recallflow.Controls.Add(EqualListView(lastServed));
+                //OrderStyle(recallflow.Controls[1]);
+       
             }
 
 
@@ -139,16 +139,17 @@ namespace Start
             Overview.ActiveForm.Activate();
         }
 
-        private void EqualListView(ListView filledList,ref ListView emptyList)
+        private ListView EqualListView(ListView filledList)
         {
-            //emptyList.Columns.Add(filledList.Columns[0].Text);
-            //emptyList.Columns.Add(filledList.Columns[1].Text);
+            ListView emptyList = new ListView();
+            emptyList.Columns.Add("or");
+            emptyList.Columns.Add(filledList.Columns[1].Text);
 
             for (int item = 0; item < filledList.Items.Count; item++)
             {
                 emptyList.Items.Add(filledList.Items[item].Text);
             }
-
+            return emptyList;
 
         }
 
