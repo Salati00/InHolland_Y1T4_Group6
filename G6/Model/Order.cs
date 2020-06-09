@@ -13,6 +13,6 @@ namespace Model
         public Table Table_ID { get; set; }
         public DateTime Time { get; set; }
 
-        public List<OrderItem> orders { get; set; }
+        public List<OrderItem> ordersItems { get; set; }
     }
 }

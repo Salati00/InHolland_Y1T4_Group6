@@ -83,5 +83,7 @@ namespace Start
             new KitchenBar(Model.Staff_Types.Bartender).ShowDialog();
             this.Close();
         }
+
+       
     }
 }
