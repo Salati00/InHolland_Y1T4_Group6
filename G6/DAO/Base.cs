@@ -45,9 +45,8 @@ namespace DAO
                 adapter.InsertCommand = command;
                 command.ExecuteNonQuery();
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                //Print.ErrorLog(e);
                 throw;
             }
         }
@@ -65,9 +64,8 @@ namespace DAO
                 adapter.InsertCommand = command;
                 command.ExecuteNonQuery();
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                // Print.ErrorLog(e);
                 throw;
             }
             finally
@@ -95,9 +93,8 @@ namespace DAO
                 adapter.Fill(dataSet);
                 dataTable = dataSet.Tables[0];
             }
-            catch (SqlException e)
+            catch (SqlException)
             {
-                // Print.ErrorLog(e);
                 throw;
             }
             finally
@@ -105,6 +102,31 @@ namespace DAO
                 CloseConnection();
             }
             return dataTable;
+        }
+
+        /*For queries that only return ONE object*/
+        protected Object ExecuteScalarQuery(String query, params SqlParameter[] sqlParameters)
+        {
+            SqlCommand command = new SqlCommand();
+            Object Target;
+            DataSet dataSet = new DataSet();
+
+            try
+            {
+                command.Connection = OpenConnection();
+                command.CommandText = query;
+                command.Parameters.AddRange(sqlParameters);
+                Target = command.ExecuteScalar();
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return Target;
         }
     }
 }

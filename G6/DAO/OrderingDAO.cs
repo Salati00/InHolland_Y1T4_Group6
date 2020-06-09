@@ -47,7 +47,30 @@ namespace DAO
 
         public void Db_Send_Order(Order Order, List<Menu_Item> Items, bool Close = false)
         {
+            if (Close)
+            {
+
+            }
+            else
+            {
+
+            }
             throw new NotImplementedException("if close then close order, otherwise send the order to order items");
+        }
+
+        public Table Db_Get_TableFromInt(int number)
+        {
+            string query = "select * from tables "+
+                           "where Number = @Number";
+            //string query = "SELECT * from [Menu_Items]";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Number", number);
+            return (Table)ExecuteScalarQuery(query, sqlParameters);
+        }
+
+        public List<Table> Db_Get_AllTables()
+        {
+            throw new NotImplementedException("return all tables");
         }
     }
 }

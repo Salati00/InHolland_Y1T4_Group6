@@ -46,6 +46,35 @@ namespace Logic
             }
         }
 
+        public List<Table> GetAllTables()
+        {
+            List<Table> tables;
+            try
+            {
+                tables = DB.Db_Get_AllTables();
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return tables;
+        }
+        public Table GetTableFromInt(int number)
+        {
+            Table table;
+            try
+            {
+                table = DB.Db_Get_TableFromInt(number);
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return table;
+        }
+
         public Tuple<bool,string> SendOrder(Order Order, List<Menu_Item> Items, bool Close = false)
         {
             try

@@ -16,11 +16,30 @@ namespace Start
     {
         OrderingService ord;
         Staff member;
+        public Ordering(Table table)
+        {
+            InitializeComponent();
+            InitializeCombobox(table.Table_Number);
+        }
+
         public Ordering()
+        {
+            InitializeComponent();
+            InitializeCombobox();
+        }
+        private void Ordering_Load(object sender, EventArgs e)
         {
             InitializeComponent();
             ord = new OrderingService();
             member = new Staff();
+        }
+
+        //Methods
+
+        private void InitializeCombobox(int TableNumber = 0)
+        {
+
+            Cmb_TableSelection.SelectedIndex = (1 - (TableNumber));
         }
 
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
@@ -63,11 +82,6 @@ namespace Start
         private void Btn_DrinkCategory_Click(object sender, EventArgs e)
         {
             string Category = ((Button)sender).Text;
-        }
-
-        private void Ordering_Load(object sender, EventArgs e)
-        {
-
         }
 
 

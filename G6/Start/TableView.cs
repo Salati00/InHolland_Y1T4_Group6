@@ -11,12 +11,14 @@ using Model;
 using DAO;
 using Logic;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace Start
 {
     public partial class TableView : Form
     {
         Staff member;
+        OrderingService ord;
 
         public TableView(Staff member)
         {
@@ -54,7 +56,8 @@ namespace Start
 
         private void Table_Click_Handler(object sender, EventArgs e)
         {
-
+            SingleTable table = new SingleTable(ord.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)));
+            table.ShowDialog();
         }
     }
 }
