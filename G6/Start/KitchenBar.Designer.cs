@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.PanelOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.recallpanel = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timee = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
             this.recall = new System.Windows.Forms.Button();
+            this.left = new System.Windows.Forms.Button();
+            this.right = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // PanelOrders
@@ -57,11 +58,6 @@
             this.recallpanel.Name = "recallpanel";
             this.recallpanel.Size = new System.Drawing.Size(917, 441);
             this.recallpanel.TabIndex = 1;
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // timee
             // 
@@ -103,16 +99,57 @@
             this.recall.UseVisualStyleBackColor = false;
             this.recall.Click += new System.EventHandler(this.recall_Click_1);
             // 
+            // left
+            // 
+            this.left.FlatAppearance.BorderSize = 0;
+            this.left.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.left.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.left.Font = new System.Drawing.Font("Microsoft Sans Serif", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.left.Location = new System.Drawing.Point(758, 915);
+            this.left.Name = "left";
+            this.left.Size = new System.Drawing.Size(75, 69);
+            this.left.TabIndex = 8;
+            this.left.Text = "<";
+            this.left.UseVisualStyleBackColor = true;
+            this.left.Click += new System.EventHandler(this.left_Click);
+            // 
+            // right
+            // 
+            this.right.BackColor = System.Drawing.Color.White;
+            this.right.FlatAppearance.BorderSize = 0;
+            this.right.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.right.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.right.Font = new System.Drawing.Font("Microsoft Tai Le", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.right.Location = new System.Drawing.Point(1080, 913);
+            this.right.Name = "right";
+            this.right.Size = new System.Drawing.Size(75, 82);
+            this.right.TabIndex = 9;
+            this.right.Text = ">";
+            this.right.UseVisualStyleBackColor = false;
+            this.right.Click += new System.EventHandler(this.right_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(12, 907);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1888, 106);
+            this.panel1.TabIndex = 10;
+            // 
             // KitchenBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1912, 1025);
-            this.Controls.Add(this.recall);
-            this.Controls.Add(this.recallpanel);
-            this.Controls.Add(this.Home);
+            this.Controls.Add(this.left);
             this.Controls.Add(this.timee);
+            this.Controls.Add(this.right);
+            this.Controls.Add(this.recall);
+            this.Controls.Add(this.Home);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.recallpanel);
             this.Controls.Add(this.PanelOrders);
             this.Name = "KitchenBar";
             this.Text = "Kitchen";
@@ -127,9 +164,11 @@
 
         private System.Windows.Forms.FlowLayoutPanel PanelOrders;
         private System.Windows.Forms.Panel recallpanel;
-        private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label timee;
         private System.Windows.Forms.Button Home;
         private System.Windows.Forms.Button recall;
+        private System.Windows.Forms.Button left;
+        private System.Windows.Forms.Button right;
+        private System.Windows.Forms.Panel panel1;
     }
 }

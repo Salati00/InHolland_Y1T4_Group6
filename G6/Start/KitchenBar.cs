@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Media;
 
@@ -20,8 +21,9 @@ namespace Start
         Staff_Types type;
         KitchenBarService service;
         ListView lastServed;
+        int pageNumber = 1;
 
-        public KitchenBar(Staff_Types type)//receive staff instead of type
+        public KitchenBar(Staff_Types type)
         {
             InitializeComponent();
 
@@ -36,29 +38,75 @@ namespace Start
                                    //               paswrd149
         void FillInfo()
         {
-            List<OrderItem> orders = service.GetOrders();
+            
+            List<Order> orders = service.GetOrders();
+
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
             if (type == Staff_Types.Bartender)
                 this.Text = "Bar";
 
-            for (int i = 0; i < 4; i++)
-        //      foreach(Order order in orders)
+            //  for (int i = 0; i < 11; i++)
+            foreach (Order order in orders)
             {
                 
-                ListView button = new ListView();
-                button.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
-                button.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
-                button.Columns.Add("order 090", button.Width - (button.Width / 4));
-                button.Columns.Add("08:40", -2, System.Windows.Forms.HorizontalAlignment.Center);
+                ListView list = new ListView();
+                list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
+                list.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
+                list.Columns.Add($"order {order.Order_ID:D3}", list.Width - (list.Width / 4));
+                list.Columns.Add(order.Time.ToString("MM:SS"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
-                OrderStyle(button);
-                PanelOrders.Controls.Add(button);
+                OrderItems(list,order);
+                PanelOrders.Controls.Add(list);
 
                 
-                button.Click += new EventHandler(this.ClickOrder);
+                list.Click += new EventHandler(this.ClickOrder);
             }
 
+        }
+        public void OrderItems(ListView list,Order order)
+        {
+            int amount = 1;
+            List<OrderItem> repeated = new List<OrderItem>();
+
+            for (int i = 0; i < 8; i++)
+            {
+                
+                
+                if (i == 7)
+                {
+                    list.Items.Add("");
+                    list.Items[i].SubItems.Add("Remove");
+                    break;
+                }
+
+                //try
+                //{
+
+                //    if (repeated.Contains(order.ordersItems[i]))
+                //    {
+                //        list.Items[order.ordersItems.IndexOf()];
+                //        list.Items.Add($" {amount++}x   {order.ordersItems[1]}");
+                //    }
+                   
+
+                //}
+                //catch
+                //{
+
+                //}
+                list.Items[i].Font = new Font("Arial", 14);
+                
+            }
+
+            list.View = View.Details;
+            list.FullRowSelect = true;
+            
+
+            list.Items[7].UseItemStyleForSubItems = false;
+            list.Items[7].SubItems[1].ForeColor = System.Drawing.Color.White;
+            list.Items[7].SubItems[1].BackColor = System.Drawing.Color.Black;
+                
         }
 
 
@@ -86,40 +134,11 @@ namespace Start
 
         }
 
-
         public void NotifyWaiter()
         {
              
         }
 
-        public void OrderStyle(ListView b)
-        {
-
-
-            //   b.Columns.Add("haha", -2, HorizontalAlignment.Right);   
-            
-
-            for (int i = 0; i < 8; i++)
-            {
-                b.Items.Add(" 4x   not chichen and not not chicken");
-                b.Items[i].Font = new Font("Arial", 14);
-                if (i == 6)
-                {
-                    b.Items.Add("");
-                    b.Items[7].SubItems.Add("Remove");
-                    break;
-                }
-            }
-
-            b.View = View.Details;
-            b.FullRowSelect = true;
-            
-
-            b.Items[7].UseItemStyleForSubItems = false;
-            b.Items[7].SubItems[1].ForeColor = System.Drawing.Color.White;
-            b.Items[7].SubItems[1].BackColor = System.Drawing.Color.Black;
-                
-        }
 
        
 
@@ -151,25 +170,59 @@ namespace Start
 
         }
 
-        private void Home_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Overview.ActiveForm.Activate();
-        }
-
-      
-
-
-
-
-
-      
-
-       
-
-      
 
         
+
+        private void right_Click(object sender, EventArgs e)
+        {
+            int counter = 0;
+            foreach (Control order in PanelOrders.Controls)
+            {
+                if (order.Visible)
+                {
+                    counter++;
+                    order.Hide();
+                }
+                if (counter == 4)
+                {
+                    pageNumber++;
+                    break;
+                }
+            }
+        }
+
+        private void left_Click(object sender, EventArgs e)
+        {
+            int counter = 4;
+
+            if (!PanelOrders.Controls[PanelOrders.Controls.Count - 1].Visible)
+                counter = PanelOrders.Controls.Count % 4;
+            
+            for (int order = PanelOrders.Controls.Count-1; order >= 0; order--)
+            {
+
+                if (!PanelOrders.Controls[order].Visible)
+                {
+                    counter--;
+                    PanelOrders.Controls[order].Show();
+                }
+
+                if (counter == 0)
+                {
+                    pageNumber--;
+                    break;
+                }
+            }
+        }
+
+
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Overview.ActiveForm.Show();
+            this.Show();
+        }
 
 
         private void KitchenBar_Load(object sender, EventArgs e) 
@@ -181,11 +234,5 @@ namespace Start
 
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            
-        }
-
-     
     }
 }
