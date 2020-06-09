@@ -51,5 +51,10 @@ namespace Start
             // closes TABLEVIEW form
             this.Close();
         }
+
+        private void Table_Click_Handler(object sender, EventArgs e)
+        {
+
+        }
     }
 }

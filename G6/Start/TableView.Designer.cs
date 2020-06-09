@@ -64,6 +64,7 @@
             this.t1.TabIndex = 4;
             this.t1.Text = "1";
             this.t1.UseVisualStyleBackColor = true;
+            this.t1.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t8
             // 
@@ -73,6 +74,7 @@
             this.t8.TabIndex = 5;
             this.t8.Text = "8";
             this.t8.UseVisualStyleBackColor = true;
+            this.t8.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t9
             // 
@@ -82,6 +84,7 @@
             this.t9.TabIndex = 6;
             this.t9.Text = "9";
             this.t9.UseVisualStyleBackColor = true;
+            this.t9.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t4
             // 
@@ -91,6 +94,7 @@
             this.t4.TabIndex = 8;
             this.t4.Text = "4";
             this.t4.UseVisualStyleBackColor = true;
+            this.t4.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t7
             // 
@@ -100,6 +104,7 @@
             this.t7.TabIndex = 9;
             this.t7.Text = "7";
             this.t7.UseVisualStyleBackColor = true;
+            this.t7.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t3
             // 
@@ -109,6 +114,7 @@
             this.t3.TabIndex = 10;
             this.t3.Text = "3";
             this.t3.UseVisualStyleBackColor = true;
+            this.t3.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t6
             // 
@@ -118,6 +124,7 @@
             this.t6.TabIndex = 11;
             this.t6.Text = "6";
             this.t6.UseVisualStyleBackColor = true;
+            this.t6.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t2
             // 
@@ -127,6 +134,7 @@
             this.t2.TabIndex = 12;
             this.t2.Text = "2";
             this.t2.UseVisualStyleBackColor = true;
+            this.t2.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t5
             // 
@@ -136,6 +144,7 @@
             this.t5.TabIndex = 13;
             this.t5.Text = "5";
             this.t5.UseVisualStyleBackColor = true;
+            this.t5.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // t10
             // 
@@ -145,6 +154,7 @@
             this.t10.TabIndex = 14;
             this.t10.Text = "10";
             this.t10.UseVisualStyleBackColor = true;
+            this.t10.Click += new System.EventHandler(this.Table_Click_Handler);
             // 
             // btn_back
             // 
