@@ -46,6 +46,7 @@
             this.Cmb_TableSelection = new System.Windows.Forms.ComboBox();
             this.Btn_Send = new System.Windows.Forms.Button();
             this.Btn_SendClose = new System.Windows.Forms.Button();
+            this.Btn_Quit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrdrMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrderList)).BeginInit();
             this.panel1.SuspendLayout();
@@ -229,7 +230,7 @@
             // 
             // Btn_SendClose
             // 
-            this.Btn_SendClose.Location = new System.Drawing.Point(662, 491);
+            this.Btn_SendClose.Location = new System.Drawing.Point(662, 458);
             this.Btn_SendClose.Name = "Btn_SendClose";
             this.Btn_SendClose.Size = new System.Drawing.Size(312, 27);
             this.Btn_SendClose.TabIndex = 7;
@@ -237,9 +238,20 @@
             this.Btn_SendClose.UseVisualStyleBackColor = true;
             this.Btn_SendClose.Click += new System.EventHandler(this.Btn_Send_Click);
             // 
+            // Btn_Quit
+            // 
+            this.Btn_Quit.Location = new System.Drawing.Point(662, 498);
+            this.Btn_Quit.Name = "Btn_Quit";
+            this.Btn_Quit.Size = new System.Drawing.Size(312, 27);
+            this.Btn_Quit.TabIndex = 8;
+            this.Btn_Quit.Text = "Close";
+            this.Btn_Quit.UseVisualStyleBackColor = true;
+            this.Btn_Quit.Click += new System.EventHandler(this.Btn_Quit_Click);
+            // 
             // Ordering
             // 
             this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.Btn_Quit);
             this.Controls.Add(this.Btn_SendClose);
             this.Controls.Add(this.Btn_Send);
             this.Controls.Add(this.Cmb_TableSelection);
@@ -281,5 +293,6 @@
         private System.Windows.Forms.ComboBox Cmb_TableSelection;
         private System.Windows.Forms.Button Btn_Send;
         private System.Windows.Forms.Button Btn_SendClose;
+        private System.Windows.Forms.Button Btn_Quit;
     }
 }

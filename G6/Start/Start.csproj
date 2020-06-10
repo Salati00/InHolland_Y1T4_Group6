@@ -80,6 +80,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RowElement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RowElement.Designer.cs">
+      <DependentUpon>RowElement.cs</DependentUpon>
+    </Compile>
     <Compile Include="SingleTable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RowElement.resx">
+      <DependentUpon>RowElement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SingleTable.resx">
       <DependentUpon>SingleTable.cs</DependentUpon>
     </EmbeddedResource>

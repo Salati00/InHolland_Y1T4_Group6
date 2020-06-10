@@ -19,27 +19,42 @@ namespace Start
         public Ordering(Table table)
         {
             InitializeComponent();
+            Initialize();
             InitializeCombobox(table.Table_Number);
         }
 
         public Ordering()
         {
             InitializeComponent();
+            Initialize();
             InitializeCombobox();
+        }
+
+        private void Initialize()
+        {
+            ord = new OrderingService();
+            member = new Staff();
         }
         private void Ordering_Load(object sender, EventArgs e)
         {
             InitializeComponent();
-            ord = new OrderingService();
-            member = new Staff();
         }
 
         //Methods
 
         private void InitializeCombobox(int TableNumber = 0)
         {
+            List<Table> tables = ord.GetAllTables();
+            Dictionary<int, string> Wrapper = new Dictionary<int, string>();
+            foreach (var item in tables)
+            {
+                 Wrapper.Add(item.Table_ID, $"Table number: {item.Table_Number}");
+            }
+            Cmb_TableSelection.DataSource = new BindingSource(Wrapper, null);
+            Cmb_TableSelection.DisplayMember = "Value";
+            Cmb_TableSelection.ValueMember = "Key";
 
-            Cmb_TableSelection.SelectedIndex = (1 - (TableNumber));
+            Cmb_TableSelection.SelectedIndex = TableNumber == 0?TableNumber:TableNumber-1;
         }
 
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
@@ -91,6 +106,11 @@ namespace Start
             ord.SendOrder(new Order(), new List<Menu_Item>(), (((Button)sender).Name == "Btn_Send") ? false : true);
             //Overview ov = new Overview();
             //ov.ShowDialog();
+            this.Close();
+        }
+
+        private void Btn_Quit_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
