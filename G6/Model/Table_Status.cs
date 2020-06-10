@@ -8,8 +8,8 @@ namespace Model
 {
     public enum Table_Status
     {
-        Available,
-        Reserved,
-        Occupied
+        Available = 0,
+        Reserved = 1,
+        Occupied = 2
     }
 }

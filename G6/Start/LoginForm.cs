@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using Model;
+using Logic;
 
 namespace Start
 {
     public partial class login_form : Form
     {
+        StaffService service;
         Staff member; 
+
         public login_form()
         {
             InitializeComponent();
             member = new Staff();
+            service = new StaffService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -28,48 +32,27 @@ namespace Start
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source=den1.mssql8.gear.host;Initial Catalog=dbchapeau06;Persist Security Info=True;User ID=dbchapeau06;Password=Xc113m-Ed78?");
-            string query = "SELECT * FROM Login_Details WHERE ID_Hash = '"+username.Text+"' AND Password_Hash = '"+password.Text+"'";
-            SqlDataAdapter sda = new SqlDataAdapter(query, con);
-
-            DataTable db = new DataTable();
-            sda.Fill(db);
-
-            if (db.Rows[0][0].ToString() == "1")
+            bool validUsername = int.TryParse(username.Text, out int id);
+            string psswrd = password.Text;
+            if (this.username.Text == null | this.password.Text == null)
             {
-                member.Roles = Staff_Types.Manager;
-                //hiding LOGIN form
+                MessageBox.Show("Please provide username and password!");
+            }
+            if (validUsername)
+            {
+                member = service.GetLoginDetails(id, psswrd);
+                //if (member.Role == Staff_Types.Manager)
+                //{
                 this.Hide();
-
-                // showing OVERVIEW form
                 new Overview(member).ShowDialog();
-
-                // closing LOGIN form
                 this.Close();
-            }
-            else if (db.Rows[0][0].ToString() == "2")
-            {
-                member.Roles = Staff_Types.Waiter;
-                this.Hide();
-                new TableView(member).ShowDialog();
-                this.Close();
-            }
-            else if (db.Rows[0][0].ToString() == "3")
-            {
-                this.Hide();
-                new KitchenBar(Model.Staff_Types.Chef).ShowDialog();
-                this.Close();
-            }
-            else if (db.Rows[0][0].ToString() == "4")
-            {
-                this.Hide();
-                new KitchenBar(Model.Staff_Types.Bartender).ShowDialog();
-                this.Close();
+                //}
             }
             else
             {
-                MessageBox.Show("Invalid ID or password");
+                MessageBox.Show("invalid username or password!");
             }
+
         }
 
         private void btn_exit_Click(object sender, EventArgs e)

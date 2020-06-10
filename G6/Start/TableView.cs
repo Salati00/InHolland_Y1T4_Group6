@@ -28,11 +28,11 @@ namespace Start
             //id.Text = staffsv.GetStaffMembers().ToString();
             date.Text = DateTime.Today.ToShortDateString();
             this.member = member;
-            if (member.Roles == Staff_Types.Manager)
+            if (member.Role == Staff_Types.Manager)
             {
                 id.Text = "manager";
             }
-            else if (member.Roles == Staff_Types.Waiter)
+            else if (member.Role == Staff_Types.Waiter)
             {
                 id.Text = "waiter";
             }
@@ -42,7 +42,7 @@ namespace Start
         {
             // hides TABLEVIEW form
             this.Hide();
-            if (member.Roles == Staff_Types.Manager)
+            if (member.Role == Staff_Types.Manager)
             {
                 new Overview(member).ShowDialog();
             }
