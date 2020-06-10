@@ -13,37 +13,66 @@ namespace DAO
      public class kichenBarDAO : Base
     {
 
-        public List<Order> Db_Get_Orders()
+        public List<Order> Db_Get_Orders()              //done
         {
-            string query = "select m.Menu_Item_ID ,o.[Time], oi.[DateTime], Quantity, Notes, m.[Name] as m, Item_Type_ID,s.[Name]as s " +
-                "from Orders as o " +
-                "join Order_Items as oi on oi.Order_ID = o.Order_ID " +
-                "join Order_States as s on s.State_ID = oi.State_ID " +
-                "join Menu_Items as m on m.Menu_Item_ID = oi.Menu_Item_ID";
+            string query = "select Order_ID, [Time]" +
+                "from Orders";
+
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return ReadOrderTables(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<Order> ReadTables(DataTable dataTable)
+        private List<Order> ReadOrderTables(DataTable dataTable)            //done
         {
             List<Order> orders = new List<Order>();
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order()
-                {
-                    //     Order_Item_Id = (int)dr["Menu_Item_ID"],
-                    //dateTime = (DateTime)dr["DateTime"],
-                    //Quantity = (int)dr["Quantity"],
-                    //Comment = (string)dr["Notes"],
-                    //Item = (Menu_Item)dr["m"],
-                    //Item_Types = (Item_Types)dr["Item_Type_ID"],
-                    //Status = (Order_Status)dr["s"]
+                Order order = new Order();
 
-                };
+                order.Order_ID = (int)dr["Order_ID"];
+                order.Time = (TimeSpan)dr["Time"];
+                order.ordersItems = Db_Get_OrderItems(order.Order_ID);
+                
                 orders.Add(order);
             }
             return orders;
         }
+        public List<OrderItem> Db_Get_OrderItems(int orderID)    ///done
+        {
+            string query = "select o.Order_ID , State_ID , Quantity ,Notes, o.[Time] , mi.[Name], Cart_ID ,oi.Order_Item_ID ,mi.Item_Type_ID " +
+                "from Orders as o" +
+                "join Order_Items  as oi on oi.Order_ID = o.Order_ID" +
+                "join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID" +
+                "join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID" +
+                "where o.Order_ID = @orderNum" ;
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@orderNum", orderID);
+            return ReadOrderItemsTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        private List<OrderItem> ReadOrderItemsTables(DataTable dataTable)              //done
+        {
+            List<OrderItem> items = new List<OrderItem>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                OrderItem item = new OrderItem();
+
+                item.Quantity = (int)dr["Quantity"];
+                item.menuItem.Name = (string)dr["Name"];
+                item.Item_Types = (Item_Types)dr["Item_Type_ID"] - 1;
+                item.order.Order_ID = (int)dr["Order_ID"];
+                item.Status = (Order_Status)dr["State_ID"] - 1;
+                item.Comment = (string)dr["Notes"];
+
+                items.Add(item);
+            }
+            return items;
+        }
+
+
+
 
 
 

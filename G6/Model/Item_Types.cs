@@ -10,6 +10,16 @@ namespace Model
     {
         Starter,
         Main,
-        Special
+        Special,
+
+        NightStarter,
+        NightMain,
+        NightDessert,
+
+        SoftDrinks,
+        HotDrinks,
+        Beers,
+        Wines
+
     }
 }

@@ -50,11 +50,13 @@ namespace Start
             foreach (Order order in orders)
             {
                 
+
+
                 ListView list = new ListView();
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 list.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
                 list.Columns.Add($"order {order.Order_ID:D3}", list.Width - (list.Width / 4));
-                list.Columns.Add(order.Time.ToString("MM:SS"), -2, System.Windows.Forms.HorizontalAlignment.Center);
+                list.Columns.Add((TimeSpan.Parse(DateTime.Now.ToString("MM:SS")) - order.Time).ToString("MM:SS"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
                 OrderItems(list,order);
                 PanelOrders.Controls.Add(list);
@@ -66,35 +68,22 @@ namespace Start
         }
         public void OrderItems(ListView list,Order order)
         {
-            int amount = 1;
-            List<OrderItem> repeated = new List<OrderItem>();
+           
 
             for (int i = 0; i < 8; i++)
             {
-                
-                
-                if (i == 7)
+
+                list.Items.Add($"   {order.ordersItems[i].Quantity}x  {order.ordersItems[i].menuItem.Name}");
+                if (order.ordersItems[i].Comment != null)
+                list.Items[i].SubItems.Add(order.ordersItems[i].Comment);
+
+                if (i == 6)
                 {
                     list.Items.Add("");
                     list.Items[i].SubItems.Add("Remove");
                     break;
                 }
-
-                //try
-                //{
-
-                //    if (repeated.Contains(order.ordersItems[i]))
-                //    {
-                //        list.Items[order.ordersItems.IndexOf()];
-                //        list.Items.Add($" {amount++}x   {order.ordersItems[1]}");
-                //    }
-                   
-
-                //}
-                //catch
-                //{
-
-                //}
+               
                 list.Items[i].Font = new Font("Arial", 14);
                 
             }

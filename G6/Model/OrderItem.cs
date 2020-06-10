@@ -10,7 +10,7 @@ namespace Model
     {
         
         public Item_Types Item_Types { get; set; }
-        public Menu_Item Item { get; set; }
+        public Menu_Item menuItem { get; set; }
         public Order order { get; set; }
         public Order_Status Status { get; set; }
         public DateTime dateTime { get; set; }

@@ -16,16 +16,16 @@ namespace Logic
 
         public List<Order> GetOrders()
         {
-            try
-            {
+            //try
+            //{
                 List<Order> orders = kitchenBar_db.Db_Get_Orders();
                 return orders;
 
-            }
-            catch
-            {
-                return null;
-            }
+            //}
+            //catch
+            //{
+            //    return null;
+            //}
 
         }
 
