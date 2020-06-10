@@ -149,7 +149,6 @@
             this.btn_signin.Text = "SIGN IN";
             this.btn_signin.UseVisualStyleBackColor = false;
             this.btn_signin.Click += new System.EventHandler(this.btn_signin_Click);
-            this.btn_signin.Enter += new System.EventHandler(this.btn_signin_Click);
             // 
             // btn_forgotpass
             // 

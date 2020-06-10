@@ -27,7 +27,7 @@ namespace Start
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.AcceptButton = btn_signin;
         }
 
         private void btn_signin_Click(object sender, EventArgs e)
