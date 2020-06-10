@@ -146,6 +146,7 @@
             this.Rdb_Lunch.TabStop = true;
             this.Rdb_Lunch.Text = "Lunch";
             this.Rdb_Lunch.UseVisualStyleBackColor = true;
+            this.Rdb_Lunch.CheckedChanged += new System.EventHandler(this.Rdb_CheckedUpdate);
             // 
             // tabPage2
             // 

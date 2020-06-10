@@ -121,9 +121,8 @@
             this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.username.Location = new System.Drawing.Point(293, 143);
-            this.username.Multiline = true;
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(284, 25);
+            this.username.Size = new System.Drawing.Size(284, 26);
             this.username.TabIndex = 6;
             // 
             // password
@@ -133,10 +132,9 @@
             this.password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.password.Location = new System.Drawing.Point(293, 199);
-            this.password.Multiline = true;
             this.password.Name = "password";
             this.password.PasswordChar = '*';
-            this.password.Size = new System.Drawing.Size(284, 25);
+            this.password.Size = new System.Drawing.Size(284, 26);
             this.password.TabIndex = 7;
             // 
             // btn_signin
@@ -151,6 +149,7 @@
             this.btn_signin.Text = "SIGN IN";
             this.btn_signin.UseVisualStyleBackColor = false;
             this.btn_signin.Click += new System.EventHandler(this.btn_signin_Click);
+            this.btn_signin.Enter += new System.EventHandler(this.btn_signin_Click);
             // 
             // btn_forgotpass
             // 
@@ -178,7 +177,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(697, 8);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 40);
             this.button1.TabIndex = 11;

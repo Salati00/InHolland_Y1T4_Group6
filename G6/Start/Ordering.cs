@@ -139,5 +139,10 @@ namespace Start
         {
             GenerateTable(ord.GetMenuItems());
         }
+
+        private void Rdb_CheckedUpdate(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
