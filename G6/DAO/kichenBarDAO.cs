@@ -31,7 +31,7 @@ namespace DAO
 
                 order.Order_ID = (int)dr["Order_ID"];
                 order.Time = (TimeSpan)dr["Time"];
-                order.ordersItems = Db_Get_OrderItems(order.Order_ID);
+                order.OrderItems = Db_Get_OrderItems(order.Order_ID);
                 
                 orders.Add(order);
             }
@@ -60,9 +60,9 @@ namespace DAO
                 OrderItem item = new OrderItem();
 
                 item.Quantity = (int)dr["Quantity"];
-                item.menuItem.Name = (string)dr["Name"];
-                item.Item_Types = (Item_Types)dr["Item_Type_ID"] - 1;
-                item.order.Order_ID = (int)dr["Order_ID"];
+                item.MenuItem.Name = (string)dr["Name"];
+                item.Type = (Item_Type)dr["Item_Type_ID"] - 1;
+                item.Order.Order_ID = (int)dr["Order_ID"];
                 item.Status = (Order_Status)dr["State_ID"] - 1;
                 item.Comment = (string)dr["Notes"];
 

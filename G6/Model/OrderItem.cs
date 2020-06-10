@@ -9,11 +9,10 @@ namespace Model
     public class OrderItem
     {
         
-        public Item_Types Item_Types { get; set; }
-        public Menu_Item menuItem { get; set; }
-        public Order order { get; set; }
+        public Item_Type Type { get; set; }
+        public Menu_Item MenuItem { get; set; }
         public Order_Status Status { get; set; }
-        public DateTime dateTime { get; set; }
+        public DateTime DateTime { get; set; }
         public int Quantity { get; set; }
         public string Comment { get; set; }
 

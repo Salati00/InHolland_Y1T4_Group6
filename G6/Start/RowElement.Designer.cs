@@ -35,7 +35,7 @@
             // Lbl_ItemName
             // 
             this.Lbl_ItemName.AutoSize = true;
-            this.Lbl_ItemName.Location = new System.Drawing.Point(3, 9);
+            this.Lbl_ItemName.Location = new System.Drawing.Point(16, 9);
             this.Lbl_ItemName.Name = "Lbl_ItemName";
             this.Lbl_ItemName.Size = new System.Drawing.Size(35, 13);
             this.Lbl_ItemName.TabIndex = 0;
@@ -43,21 +43,23 @@
             // 
             // Btn_Add
             // 
-            this.Btn_Add.Location = new System.Drawing.Point(235, 4);
+            this.Btn_Add.Location = new System.Drawing.Point(222, 5);
             this.Btn_Add.Name = "Btn_Add";
-            this.Btn_Add.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Add.Size = new System.Drawing.Size(75, 20);
             this.Btn_Add.TabIndex = 1;
             this.Btn_Add.Text = "Add";
             this.Btn_Add.UseVisualStyleBackColor = true;
+            this.Btn_Add.Click += new System.EventHandler(this.Btn_Add_Click);
             // 
             // RowElement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.Btn_Add);
             this.Controls.Add(this.Lbl_ItemName);
             this.Name = "RowElement";
-            this.Size = new System.Drawing.Size(313, 31);
+            this.Size = new System.Drawing.Size(302, 32);
             this.ResumeLayout(false);
             this.PerformLayout();
 

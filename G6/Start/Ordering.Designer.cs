@@ -60,7 +60,7 @@
             this.Dgv_OrdrMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dgv_OrdrMenu.Location = new System.Drawing.Point(12, 12);
             this.Dgv_OrdrMenu.Name = "Dgv_OrdrMenu";
-            this.Dgv_OrdrMenu.Size = new System.Drawing.Size(616, 314);
+            this.Dgv_OrdrMenu.Size = new System.Drawing.Size(616, 46);
             this.Dgv_OrdrMenu.TabIndex = 0;
             // 
             // Dgv_OrderList

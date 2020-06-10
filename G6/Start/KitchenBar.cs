@@ -73,9 +73,9 @@ namespace Start
             for (int i = 0; i < 8; i++)
             {
 
-                list.Items.Add($"   {order.ordersItems[i].Quantity}x  {order.ordersItems[i].menuItem.Name}");
-                if (order.ordersItems[i].Comment != null)
-                list.Items[i].SubItems.Add(order.ordersItems[i].Comment);
+                list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
+                if (order.OrderItems[i].Comment != null)
+                list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
 
                 if (i == 6)
                 {

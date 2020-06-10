@@ -37,7 +37,7 @@ namespace DAO
                 {
                     Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
                     Name = dr["Name"].ToString(),
-                    Types = (Item_Types)Convert.ToInt32(dr["Item_Type_ID"]),
+                    Types = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"]),
                     Descriptions = dr["Description"].ToString()
                 };
                 Items.Add(elem);

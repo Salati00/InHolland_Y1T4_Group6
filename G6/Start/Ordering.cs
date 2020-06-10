@@ -16,6 +16,8 @@ namespace Start
     {
         OrderingService ord;
         Staff member;
+        Order order;
+
         public Ordering(Table table)
         {
             InitializeComponent();
@@ -34,6 +36,7 @@ namespace Start
         {
             ord = new OrderingService();
             member = new Staff();
+            order = new Order();
         }
         private void Ordering_Load(object sender, EventArgs e)
         {
@@ -69,7 +72,7 @@ namespace Start
                     break;
                 default:break;
             }
-
+            /*
             Dgv_OrdrMenu.AutoGenerateColumns = false;
             DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
             dgvc.HeaderText = "Name";
@@ -83,7 +86,20 @@ namespace Start
             Dgv_OrdrMenu.Columns.Add(dgvc);
             Dgv_OrdrMenu.Columns.Add(dgvbt);
 
-            Dgv_OrdrMenu.DataSource = Menu;
+            Dgv_OrdrMenu.DataSource = Menu;*/
+
+            GenerateTable(Menu);
+            
+        }
+
+        private void GenerateTable(List<Menu_Item> Menu)
+        {
+            int posX = 12;
+            int posY = 12;
+            foreach (var item in Menu)
+            {
+                RowElement r = new RowElement(item,ref order);
+            }
         }
 
         void grd_CellClick(object sender, DataGridViewCellEventArgs e)
