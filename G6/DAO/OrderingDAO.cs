@@ -27,6 +27,14 @@ namespace DAO
             return ReadItems(ExecuteSelectQuery(query, sqlParameters));
         }
 
+        public List<Menu_Item> Db_Get_MenuItems()
+        {
+            string query = "SELECT * from [Menu_Items]";
+            //string query = "SELECT * from [Menu_Items]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+
         private List<Menu_Item> ReadItems(DataTable dataTable)
         {
             List<Menu_Item> Items = new List<Menu_Item>();
@@ -37,7 +45,7 @@ namespace DAO
                 {
                     Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
                     Name = dr["Name"].ToString(),
-                    Types = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"]),
+                    Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"]),
                     Descriptions = dr["Description"].ToString()
                 };
                 Items.Add(elem);

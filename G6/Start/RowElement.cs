@@ -60,7 +60,15 @@ namespace Start
             }
             if(count == 0)
             {
-                orders.OrderItems.Add(this.item);
+                orders.OrderItems.Add(new OrderItem()
+                {
+                    Quantity = 1,
+                    DateTime = DateTime.UtcNow,
+                    MenuItem = this.item,
+                    Status = 0
+                }
+                ); 
+
             }
         }
     }

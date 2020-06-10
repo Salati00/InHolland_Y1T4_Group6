@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Dgv_OrdrMenu = new System.Windows.Forms.DataGridView();
             this.Dgv_OrderList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Tab_Ordering = new System.Windows.Forms.TabControl();
@@ -47,21 +46,12 @@
             this.Btn_Send = new System.Windows.Forms.Button();
             this.Btn_SendClose = new System.Windows.Forms.Button();
             this.Btn_Quit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrdrMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrderList)).BeginInit();
             this.panel1.SuspendLayout();
             this.Tab_Ordering.SuspendLayout();
             this.TPag_Food.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Dgv_OrdrMenu
-            // 
-            this.Dgv_OrdrMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_OrdrMenu.Location = new System.Drawing.Point(12, 12);
-            this.Dgv_OrdrMenu.Name = "Dgv_OrdrMenu";
-            this.Dgv_OrdrMenu.Size = new System.Drawing.Size(616, 46);
-            this.Dgv_OrdrMenu.TabIndex = 0;
             // 
             // Dgv_OrderList
             // 
@@ -148,6 +138,7 @@
             // Rdb_Lunch
             // 
             this.Rdb_Lunch.AutoSize = true;
+            this.Rdb_Lunch.Checked = true;
             this.Rdb_Lunch.Location = new System.Drawing.Point(20, 53);
             this.Rdb_Lunch.Name = "Rdb_Lunch";
             this.Rdb_Lunch.Size = new System.Drawing.Size(55, 17);
@@ -257,12 +248,10 @@
             this.Controls.Add(this.Cmb_TableSelection);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Dgv_OrderList);
-            this.Controls.Add(this.Dgv_OrdrMenu);
             this.Name = "Ordering";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ordering";
             this.Load += new System.EventHandler(this.Ordering_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrdrMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrderList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.Tab_Ordering.ResumeLayout(false);
@@ -274,8 +263,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView Dgv_OrdrMenu;
         private System.Windows.Forms.DataGridView Dgv_OrderList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl Tab_Ordering;

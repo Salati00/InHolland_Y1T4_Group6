@@ -26,6 +26,21 @@ namespace Logic
                 throw new Exception(ex.Message);
             }
         }
+
+        public List<Menu_Item> GetMenuItems()
+        {
+            List<Menu_Item> Menu = new List<Menu_Item>();
+            try
+            {
+                Menu = DB.Db_Get_MenuItems();
+                return Menu;
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+        }
         public List<StringValueWrapper> GetMenuItemNames(string TypeName)
         {
             List<StringValueWrapper> Names = new List<StringValueWrapper>();

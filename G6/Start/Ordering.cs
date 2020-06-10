@@ -99,6 +99,11 @@ namespace Start
             foreach (var item in Menu)
             {
                 RowElement r = new RowElement(item,ref order);
+                r.Top = posY;
+                r.Left = posX;
+                this.Controls.Add(r);
+                r.Show();
+                posY += 40;
             }
         }
 
@@ -128,6 +133,11 @@ namespace Start
         private void Btn_Quit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GenerateTable(ord.GetMenuItems());
         }
     }
 }

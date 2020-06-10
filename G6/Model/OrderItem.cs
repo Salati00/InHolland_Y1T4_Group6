@@ -8,8 +8,6 @@ namespace Model
 {
     public class OrderItem
     {
-        
-        public Item_Type Type { get; set; }
         public Menu_Item MenuItem { get; set; }
         public Order_Status Status { get; set; }
         public DateTime DateTime { get; set; }
