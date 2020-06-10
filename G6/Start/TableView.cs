@@ -23,6 +23,7 @@ namespace Start
         public TableView(Staff member)
         {
             InitializeComponent();
+            ord = new OrderingService();
             //staffsv = new StaffService();
             //id.Text = staffsv.GetStaffMembers().ToString();
             date.Text = DateTime.Today.ToShortDateString();
