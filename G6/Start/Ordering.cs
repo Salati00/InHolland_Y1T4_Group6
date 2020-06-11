@@ -15,6 +15,7 @@ namespace Start
     public partial class Ordering : Form
     {
         OrderingService ord;
+        TableService tab;
         Staff member;
         Order order;
 
@@ -33,6 +34,7 @@ namespace Start
         private void Initialize()
         {
             ord = new OrderingService();
+            tab = new TableService();
             member = new Staff();
             order = new Order();
         }
@@ -45,7 +47,7 @@ namespace Start
 
         private void InitializeCombobox(int TableNumber = 0)
         {
-            List<Table> tables = ord.GetAllTables();
+            List<Table> tables = tab.GetAllTables();
             Dictionary<int, string> Wrapper = new Dictionary<int, string>();
             foreach (var item in tables)
             {
