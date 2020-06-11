@@ -110,6 +110,7 @@ namespace DAO
         private List<Order> ReadOrderTable(DataTable dt)
         {
             List<Order> orders = new List<Order>();
+
             foreach (DataRow dr in dt.Rows)
             {
                 Order order = new Order()
@@ -117,8 +118,7 @@ namespace DAO
                     Order_ID = (int)dr["Order_ID"],
                     Staff_ID = (int)dr["Staff_ID"],
                     Table_ID = (int)dr["Table_ID"],
-                    Time = (DateTime)dr["Time"],
-                    Status = (Order_Status)dr["Closed"])
+                    Time = (DateTime)dr["Time"]
                 };
                 orders.Add(order);
             }

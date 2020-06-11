@@ -46,16 +46,18 @@ namespace Start
             Lst_TableOrders.Columns.Add("Staff ID", 120);
             Lst_TableOrders.Columns.Add("Table ID", 120);
             Lst_TableOrders.Columns.Add("Time", 120);
-            Lst_TableOrders.Columns.Add("Status", 120);
+            Lst_TableOrders.Columns.Add("Closed", 120);
 
             foreach (Order o in orderList)
             {
-                ListViewItem lvi = new ListViewItem(o.Order_ID.ToString());
-                lvi.SubItems.Add(o.Staff_ID.ToString());
-                lvi.SubItems.Add(o.Table_ID.ToString());
-                lvi.SubItems.Add(o.Time.ToString());
-                lvi.SubItems.Add(o.Status.ToString());
-                Lst_TableOrders.Items.Add(lvi);
+                if (CurrentTable.Table_Number == o.Table_ID)
+                {
+                    ListViewItem lvi = new ListViewItem(o.Order_ID.ToString());
+                    lvi.SubItems.Add(o.Staff_ID.ToString());
+                    lvi.SubItems.Add(o.Table_ID.ToString());
+                    lvi.SubItems.Add(o.Time.ToString());
+                    Lst_TableOrders.Items.Add(lvi);
+                }
             }
         }
     }

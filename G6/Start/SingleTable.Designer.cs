@@ -31,13 +31,13 @@
             this.btn_AddOrder = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
             this.Lst_TableOrders = new System.Windows.Forms.ListView();
-            this.Lbl_Table = new System.Windows.Forms.Label();
-            this.Lbl_TableNum = new System.Windows.Forms.Label();
             this.order_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.staff_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.table_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.closed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Lbl_Table = new System.Windows.Forms.Label();
+            this.Lbl_TableNum = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_AddOrder
@@ -67,7 +67,7 @@
             this.staff_id,
             this.table_id,
             this.time,
-            this.status});
+            this.closed});
             this.Lst_TableOrders.FullRowSelect = true;
             this.Lst_TableOrders.GridLines = true;
             this.Lst_TableOrders.HideSelection = false;
@@ -77,24 +77,6 @@
             this.Lst_TableOrders.TabIndex = 3;
             this.Lst_TableOrders.UseCompatibleStateImageBehavior = false;
             this.Lst_TableOrders.View = System.Windows.Forms.View.Details;
-            // 
-            // Lbl_Table
-            // 
-            this.Lbl_Table.AutoSize = true;
-            this.Lbl_Table.Location = new System.Drawing.Point(12, 13);
-            this.Lbl_Table.Name = "Lbl_Table";
-            this.Lbl_Table.Size = new System.Drawing.Size(34, 13);
-            this.Lbl_Table.TabIndex = 4;
-            this.Lbl_Table.Text = "Table";
-            // 
-            // Lbl_TableNum
-            // 
-            this.Lbl_TableNum.AutoSize = true;
-            this.Lbl_TableNum.Location = new System.Drawing.Point(52, 13);
-            this.Lbl_TableNum.Name = "Lbl_TableNum";
-            this.Lbl_TableNum.Size = new System.Drawing.Size(16, 13);
-            this.Lbl_TableNum.TabIndex = 5;
-            this.Lbl_TableNum.Text = "...";
             // 
             // order_id
             // 
@@ -116,10 +98,28 @@
             this.time.Text = "Time";
             this.time.Width = 120;
             // 
-            // status
+            // closed
             // 
-            this.status.Text = "Status";
-            this.status.Width = 120;
+            this.closed.Text = "Closed";
+            this.closed.Width = 120;
+            // 
+            // Lbl_Table
+            // 
+            this.Lbl_Table.AutoSize = true;
+            this.Lbl_Table.Location = new System.Drawing.Point(12, 13);
+            this.Lbl_Table.Name = "Lbl_Table";
+            this.Lbl_Table.Size = new System.Drawing.Size(34, 13);
+            this.Lbl_Table.TabIndex = 4;
+            this.Lbl_Table.Text = "Table";
+            // 
+            // Lbl_TableNum
+            // 
+            this.Lbl_TableNum.AutoSize = true;
+            this.Lbl_TableNum.Location = new System.Drawing.Point(52, 13);
+            this.Lbl_TableNum.Name = "Lbl_TableNum";
+            this.Lbl_TableNum.Size = new System.Drawing.Size(16, 13);
+            this.Lbl_TableNum.TabIndex = 5;
+            this.Lbl_TableNum.Text = "...";
             // 
             // SingleTable
             // 
@@ -150,6 +150,6 @@
         private System.Windows.Forms.ColumnHeader staff_id;
         private System.Windows.Forms.ColumnHeader table_id;
         private System.Windows.Forms.ColumnHeader time;
-        private System.Windows.Forms.ColumnHeader status;
+        private System.Windows.Forms.ColumnHeader closed;
     }
 }

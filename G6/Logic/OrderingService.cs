@@ -105,24 +105,16 @@ namespace Logic
 
         public List<Order> GetOrders()
         {
+            List<Order> orders;
             try
             {
-                List<Order> orders = DB.Db_Get_All_Orders();
-                return orders;
+                orders = DB.Db_Get_All_Orders();
             }
             catch (Exception)
             {
-                List<Order> orders = new List<Order>();
-                Order o = new Order();
-                o.Order_ID = 1;
-                o.Staff_ID = 1;
-                o.Table_ID = 1;
-                o.Time = DateTime.Today;
-                o.Status = Order_Status.Pending;
-                orders.Add(o);
-                return orders;
                 throw new Exception("database connection lost");
             }
+            return orders;
         }
     }
 }
