@@ -38,18 +38,33 @@ namespace Start
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //this.AcceptButton = btn_signin;
+            AcceptButton = btn_signin;
+            InitializeCombobox();
+
+        }
+
+        private void InitializeCombobox()
+        {
+            List<Staff> Users = service.GetStaffMembers();
+            Dictionary<int, string> Wrapper = new Dictionary<int, string>();
+            foreach (var item in Users)
+            {
+                Wrapper.Add(item.Staff_ID, $"{item.Staff_ID} | {item.Name}");
+            }
+            Cmb_Username.ValueMember = "Key";
+            Cmb_Username.DisplayMember = "Value";
+            Cmb_Username.DataSource = new BindingSource(Wrapper, null);
         }
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            if (username.Text == null || password.Text == null)
+            if (password.Text == null)
             {
                 MessageBox.Show("Please provide username and password!");
             }
             else
             {
-                member = service.DoLogin(Convert.ToInt32(username.Text), Convert.ToInt32(password.Text));
+                member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), Convert.ToInt32(password.Text));
 
                 if(member.Staff_ID == -1)
                 {

@@ -53,9 +53,9 @@ namespace Start
             {
                  Wrapper.Add(item.Table_ID, $"Table number: {item.Table_Number}");
             }
-            Cmb_TableSelection.DataSource = new BindingSource(Wrapper, null);
-            Cmb_TableSelection.DisplayMember = "Value";
             Cmb_TableSelection.ValueMember = "Key";
+            Cmb_TableSelection.DisplayMember = "Value";
+            Cmb_TableSelection.DataSource = new BindingSource(Wrapper, null);
 
             Cmb_TableSelection.SelectedIndex = TableNumber == 0?TableNumber:TableNumber-1;
         }
@@ -135,14 +135,14 @@ namespace Start
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            GenerateTable(ord.GetMenuItems());
-        }
-
         private void Rdb_CheckedUpdate(object sender, EventArgs e)
         {
-            
+            if (Rdb_Lunch.Checked)
+                MessageBox.Show("Lunch");
+            else
+            {
+                MessageBox.Show("Dinner");
+            }
         }
     }
 }

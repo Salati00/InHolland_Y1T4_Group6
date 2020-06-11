@@ -26,11 +26,11 @@ namespace DAO
             {
                 Staff member = new Staff()
                 {
-                    Staff_ID = (int)dr["Staff_ID"],
-                    Name = (string)dr["Name"],
-                    Phone_Number = (string)dr["Phone_Number"],
-                    Role = (Staff_Type)dr["Staff_Type_ID"],
-                    Password = (int)dr["Password"]
+                    Staff_ID = Convert.ToInt32(dr["Staff_ID"]),
+                    Name = dr["Name"].ToString(),
+                    Phone_Number = dr["Phone_Number"].ToString(),
+                    Role = (Staff_Type)Convert.ToInt32(dr["Staff_Type_ID"]),
+                    Password = Convert.ToInt32(dr["Password"])
                 };
                 staff.Add(member);
             }

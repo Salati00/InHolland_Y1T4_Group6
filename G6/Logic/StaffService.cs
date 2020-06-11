@@ -14,11 +14,11 @@ namespace Logic
 
         public List<Staff> GetStaffMembers()
         {
-            try
-            {
+            /*try
+            {*/
                 List<Staff> staff = staff_db.Db_Get_All_Staff();
                 return staff;
-            }
+            /*}
             catch (Exception)
             {
                 // lost connection to database
@@ -41,7 +41,7 @@ namespace Logic
 
                 return staff;
                 throw new Exception("Error occurs when attempting to connect to database.");
-            }
+            }*/
         }
         public void EditStaff(Staff staff)
         {
