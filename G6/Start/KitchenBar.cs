@@ -14,7 +14,7 @@ using System.Windows.Documents;
 using System.Windows.Forms;
 using System.Windows.Media;
 
-namespace Start
+namespace Start                                 // 641672
 {
     public partial class KitchenBar : Form
     {
@@ -25,6 +25,7 @@ namespace Start
         List<ListView> allOrderLists;
         List<Order> orders;
         bool IsBar;
+        int totalItems;
 
         public KitchenBar(Staff_Type type) 
         {
@@ -156,7 +157,7 @@ namespace Start
             if (recallpanel.Visible&&( list.Columns[0].Text[0] != 'R'|| list.Items[list.Items.Count - 1].Selected))
             {
                 recallpanel.Hide();
-              //  service.StateOrderItem(, 2);
+                
             }
             else if (list.Items[list.Items.Count-1].Selected)
             {
@@ -166,14 +167,26 @@ namespace Start
                 if (lastServed.Columns[0].Text[0] != 'R')
                 {
                     lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
+
                 }
-               // service.StateOrderItem(, 2);
+                // OrderIsReady(, 2);
             }
 
 
         }
         
 
+        public void OrderIsReady(int orderId,int state)
+        {
+            //foreach (Order item in or )
+            //{
+
+            //}
+
+
+
+        //    service.StateOrderItem(itemId, state);
+        }
        
 
         private void recall_Click_1(object sender, EventArgs e)
@@ -275,12 +288,14 @@ namespace Start
             i = 0;
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
-            //List<Order> ForCount = service.GetOrders();
-            //if (orders.Count != ForCount.Count)
-            //{
-            //    FillInfo();
-            //}
-            
+          
+
+            int newCountItems = service.CountOrderItems();
+            if(totalItems != newCountItems)
+            {
+                totalItems = newCountItems;
+                FillInfo();
+            }
             
            
             

@@ -88,5 +88,26 @@ namespace DAO
             sqlParameters[1] = new SqlParameter("@itemid", itemid);
             ExecuteEditQuery(query, sqlParameters);
         }
+
+
+        public int Db_Count_Orders()              //done
+        {
+            string query = "select count(Order_Item_ID) as num " +
+                " from Order_Items; ";
+
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+
+
+            foreach (DataRow dr in ExecuteSelectQuery(query, sqlParameters).Rows)
+            {
+                return (int)dr["num"];
+            }
+            return 0;
+            
+        }
+       
+
+
+
     }
 }
