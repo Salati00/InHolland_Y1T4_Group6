@@ -40,8 +40,13 @@ namespace Logic
             kitchenBar_db.Db_State_Order_Items(itemId,state);
 
         }
+        
+        public int CountOrderItems()
+        {
 
+            return kitchenBar_db.Db_Count_Orders();
 
+        }
 
 
     }
