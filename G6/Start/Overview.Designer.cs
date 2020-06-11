@@ -35,7 +35,6 @@
             this.btn_signout = new System.Windows.Forms.Button();
             this.btn_orders = new System.Windows.Forms.Button();
             this.btn_kitchen = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -113,21 +112,11 @@
             this.btn_kitchen.UseVisualStyleBackColor = true;
             this.btn_kitchen.Click += new System.EventHandler(this.btn_kitchen_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 378);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(214, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "* This section is accessible only by manager";
-            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 400);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btn_kitchen);
             this.Controls.Add(this.btn_orders);
             this.Controls.Add(this.btn_signout);
@@ -138,6 +127,7 @@
             this.Name = "Overview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overview";
+            this.Load += new System.EventHandler(this.Overview_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,6 +142,5 @@
         private System.Windows.Forms.Button btn_signout;
         private System.Windows.Forms.Button btn_orders;
         private System.Windows.Forms.Button btn_kitchen;
-        private System.Windows.Forms.Label label2;
     }
 }
