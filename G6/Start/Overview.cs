@@ -66,21 +66,14 @@ namespace Start
             // display TABLEVIEW form
             TableView table = new TableView(member);
             table.ShowDialog();
-
+            
             // closes OVERVIEW form
             this.Close();
         }
 
         private void Overview_Load(object sender, EventArgs e)
         {
-            //if (member.Role == Staff_Types.Manager)
-            //{
-            //    new Overview(member).Enabled = true;
-            //}
-            //else
-            //{
-            //    new Overview(member).Enabled = false;
-            //}
+            
         }
     }
 }
