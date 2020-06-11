@@ -64,14 +64,14 @@ namespace Logic
         public Staff DoLogin(int id, int password)
         {
             Staff staff;
-            /*try
-            {*/
+            try
+            {
                 return staff = staff_db.DoLogin(id, password);
-            /*}
+            }
             catch (Exception e)
             {
                 throw e;
-            }*/
+            }
         }
     }
 }

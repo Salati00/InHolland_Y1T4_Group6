@@ -27,12 +27,15 @@ namespace Start
             {
                 case Staff_Type.Bartender:
                     ShowForm(new KitchenBar(Staff_Type.Bartender));
+                    this.Close();
                     break;
                 case Staff_Type.Chef:
                     ShowForm(new KitchenBar(Staff_Type.Chef));
+                    this.Close();
                     break;
                 case Staff_Type.Waiter:
                     ShowForm(new TableView(member));
+                    this.Close();
                     break;
                 case Staff_Type.Manager:
                 default:

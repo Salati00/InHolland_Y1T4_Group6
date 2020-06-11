@@ -20,14 +20,12 @@ namespace Start
 
         public Ordering(Table table)
         {
-            InitializeComponent();
             Initialize();
             InitializeCombobox(table.Table_Number);
         }
 
         public Ordering()
         {
-            InitializeComponent();
             Initialize();
             InitializeCombobox();
         }

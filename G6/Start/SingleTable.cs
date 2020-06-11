@@ -15,7 +15,6 @@ namespace Start
     public partial class SingleTable : Form
     {
         Table CurrentTable;
-        OrderingService service;
 
         public SingleTable(Table _CurrentTable)
         {

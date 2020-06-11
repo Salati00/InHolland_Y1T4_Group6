@@ -41,7 +41,7 @@
             this.t10 = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.Label();
+            this.Lbl_ID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -176,15 +176,15 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "You are logged in as a";
             // 
-            // id
+            // Lbl_ID
             // 
-            this.id.AutoSize = true;
-            this.id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.id.Location = new System.Drawing.Point(157, 271);
-            this.id.Name = "id";
-            this.id.Size = new System.Drawing.Size(45, 16);
-            this.id.TabIndex = 17;
-            this.id.Text = "label2";
+            this.Lbl_ID.AutoSize = true;
+            this.Lbl_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_ID.Location = new System.Drawing.Point(157, 271);
+            this.Lbl_ID.Name = "Lbl_ID";
+            this.Lbl_ID.Size = new System.Drawing.Size(45, 16);
+            this.Lbl_ID.TabIndex = 17;
+            this.Lbl_ID.Text = "label2";
             // 
             // label3
             // 
@@ -213,7 +213,7 @@
             this.ClientSize = new System.Drawing.Size(575, 296);
             this.Controls.Add(this.date);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.id);
+            this.Controls.Add(this.Lbl_ID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.t10);
@@ -230,6 +230,7 @@
             this.Name = "TableView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableView";
+            this.Load += new System.EventHandler(this.TableView_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,7 +251,7 @@
         private System.Windows.Forms.Button t10;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label id;
+        private System.Windows.Forms.Label Lbl_ID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label date;
     }

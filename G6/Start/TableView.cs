@@ -50,6 +50,7 @@ namespace Start
             //new login_form().ShowDialog();
             //}
             // closes TABLEVIEW form
+
             this.Close();
         }
 
@@ -57,6 +58,11 @@ namespace Start
         {
             SingleTable table = new SingleTable(ord.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)));
             table.ShowDialog();
+        }
+
+        private void TableView_Load(object sender, EventArgs e)
+        {
+            Lbl_ID.Text = member.Role.ToString();
         }
     }
 }

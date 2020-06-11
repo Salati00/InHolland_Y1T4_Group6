@@ -65,7 +65,6 @@ namespace Start
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
             this.Close();
         }
 
@@ -83,6 +82,11 @@ namespace Start
             {
                 e.Handled = true;
             }
+        }
+
+        private void login_form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

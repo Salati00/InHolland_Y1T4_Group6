@@ -207,6 +207,7 @@
             this.Name = "login_form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PlaceHolderMenu";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.login_form_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
