@@ -25,18 +25,18 @@ namespace Logic
                 List<Staff> staff = new List<Staff>();
                 Staff mem1 = new Staff();
                 mem1.Staff_ID = 111;
-                mem1.Password = "111";
+                mem1.Password = 111;
                 mem1.Name = "MoMo";
-                mem1.Phone_Number = 0645677812;
-                mem1.Role = Staff_Types.Bartender;
+                mem1.Phone_Number = "0645677812";
+                mem1.Role = Staff_Type.Bartender;
                 staff.Add(mem1);
 
                 Staff mem2 = new Staff();
                 mem2.Staff_ID = 110;
-                mem2.Password = "110";
+                mem2.Password = 110;
                 mem2.Name = "OmOm";
-                mem2.Phone_Number = 0625488756;
-                mem2.Role = Staff_Types.Waiter;
+                mem2.Phone_Number = "0625488756";
+                mem2.Role = Staff_Type.Waiter;
                 staff.Add(mem2);
 
                 return staff;
@@ -61,17 +61,17 @@ namespace Logic
             try { staff_db.RemoveStaffInfo(staff); }
             catch { throw new Exception("database connection failed"); }
         }
-        public Staff GetLoginDetails(int id, string password)
+        public Staff DoLogin(int id, int password)
         {
             Staff staff;
-            try
-            {
-                return staff = staff_db.GetLoginDetails(id, password);
-            }
+            /*try
+            {*/
+                return staff = staff_db.DoLogin(id, password);
+            /*}
             catch (Exception e)
             {
-                return new Staff();
-            }
+                throw e;
+            }*/
         }
     }
 }

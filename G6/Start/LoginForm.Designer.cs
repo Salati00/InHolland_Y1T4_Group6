@@ -39,7 +39,7 @@
             this.btn_signin = new System.Windows.Forms.Button();
             this.btn_forgotpass = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_Temp1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // chapeau
@@ -124,6 +124,7 @@
             this.username.Name = "username";
             this.username.Size = new System.Drawing.Size(284, 26);
             this.username.TabIndex = 6;
+            this.username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextEnterNumberOnly);
             // 
             // password
             // 
@@ -137,6 +138,7 @@
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(284, 26);
             this.password.TabIndex = 7;
+            this.password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextEnterNumberOnly);
             // 
             // btn_signin
             // 
@@ -174,23 +176,23 @@
             this.btn_exit.UseVisualStyleBackColor = true;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
-            // button1
+            // Btn_Temp1
             // 
-            this.button1.Location = new System.Drawing.Point(697, 8);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 40);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "just temporarly hehe";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Btn_Temp1.Location = new System.Drawing.Point(697, 8);
+            this.Btn_Temp1.Margin = new System.Windows.Forms.Padding(2);
+            this.Btn_Temp1.Name = "Btn_Temp1";
+            this.Btn_Temp1.Size = new System.Drawing.Size(108, 40);
+            this.Btn_Temp1.TabIndex = 11;
+            this.Btn_Temp1.Text = "just temporarly hehe";
+            this.Btn_Temp1.UseVisualStyleBackColor = true;
+            this.Btn_Temp1.Click += new System.EventHandler(this.Btn_Temp1_Click);
             // 
             // login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 439);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_Temp1);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_forgotpass);
             this.Controls.Add(this.btn_signin);
@@ -224,7 +226,7 @@
         private System.Windows.Forms.Button btn_signin;
         private System.Windows.Forms.Button btn_forgotpass;
         private System.Windows.Forms.Button btn_exit;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_Temp1;
     }
 }
 

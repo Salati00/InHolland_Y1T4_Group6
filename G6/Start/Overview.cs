@@ -18,69 +18,70 @@ namespace Start
         {
             InitializeComponent();
             this.member = member;
+            Initialize();
+        }
+
+        private void Initialize()
+        {
+            switch (member.Role)
+            {
+                case Staff_Type.Bartender:
+                    ShowForm(new KitchenBar(Staff_Type.Bartender));
+                    break;
+                case Staff_Type.Chef:
+                    ShowForm(new KitchenBar(Staff_Type.Chef));
+                    break;
+                case Staff_Type.Waiter:
+                    ShowForm(new TableView(member));
+                    break;
+                case Staff_Type.Manager:
+                default:
+                    this.Show();
+                    break;
+            }
+        }
+
+        private void ShowForm(Form frm)
+        {
+            this.Hide();
+            frm.ShowDialog();
+            this.Show();
         }
 
         private void btn_orders_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Ordering frm = new Ordering();
-            frm.ShowDialog();
-            this.Close();
+            ShowForm(new Ordering());
         }
 
         private void btn_kitchen_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Chef,this);
-            kitchenBar.ShowDialog();
-            this.Close();
-
+            ShowForm(new KitchenBar(Staff_Type.Chef));
         }
 
         private void btn_bar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Bartender,this);
-            kitchenBar.ShowDialog();
-            this.Close();
+            ShowForm(new KitchenBar(Staff_Type.Bartender));
         }
 
         public void btn_signout_Click(object sender, EventArgs e)
         {
-            // hiding OVERVIEW form
-            this.Hide();
-
-            // showing LOGIN form
-            login_form login = new login_form();
-            login.ShowDialog();
-
-            // closing OVERVIEW form
+            login_form.GetForm.Show();
             this.Close();
         }
 
         private void btn_tables_Click(object sender, EventArgs e)
         {
-            // hides OVERVIEW form
-            this.Hide();
-
-            // display TABLEVIEW form
-            TableView table = new TableView(member);
-            table.ShowDialog();
-
-            // closes OVERVIEW form
-            this.Close();
+            ShowForm(new TableView(member));
         }
+
 
         private void Overview_Load(object sender, EventArgs e)
         {
-            //if (member.Role == Staff_Types.Manager)
-            //{
-            //    new Overview(member).Enabled = true;
-            //}
-            //else
-            //{
-            //    new Overview(member).Enabled = false;
-            //}
+        }
+
+        private void Overview_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            login_form.GetForm.Show();
         }
     }
 }

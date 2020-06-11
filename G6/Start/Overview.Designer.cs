@@ -127,6 +127,7 @@
             this.Name = "Overview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overview";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Overview_FormClosing);
             this.Load += new System.EventHandler(this.Overview_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

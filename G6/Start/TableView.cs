@@ -41,10 +41,8 @@ namespace Start
         private void btn_back_Click(object sender, EventArgs e)
         {
             // hides TABLEVIEW form
-            this.Hide();
             //if (member.Role == Staff_Types.Manager)
             //{
-            new Overview(member).ShowDialog();
             //}
             //else
             //{

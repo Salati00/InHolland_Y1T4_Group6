@@ -28,9 +28,9 @@ namespace DAO
                 {
                     Staff_ID = (int)dr["Staff_ID"],
                     Name = (string)dr["Name"],
-                    Phone_Number = (int)dr["Phone_Number"],
-                    Role = (Staff_Types)dr["Staff_Type_ID"],
-                    Password = (string)dr["Password"]
+                    Phone_Number = (string)dr["Phone_Number"],
+                    Role = (Staff_Type)dr["Staff_Type_ID"],
+                    Password = (int)dr["Password"]
                 };
                 staff.Add(member);
             }
@@ -72,27 +72,36 @@ namespace DAO
             sqlParameters[0] = new SqlParameter("@staff_id", staff.Staff_ID);
             ExecuteEditQuery(query, sqlParameters);
         }
-        public Staff GetLoginDetails(int id, string password)
+        public Staff DoLogin(int id, int password)
         {
-            SqlCommand cmd = new SqlCommand("SELECT Staff_ID, Staff_Type_ID, Password FROM Staff WHERE Staff_ID = @staff_id AND [Password] = @password", conn);
-            conn.Open();
-            cmd.Parameters.AddWithValue("@staff_id", id);
-            cmd.Parameters.AddWithValue("@password", password);
-            //DataTable db = new DataTable();
-            //SqlDataAdapter sda = new SqlDataAdapter(cmd);
-            //sda.Fill(db);
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            Staff staff = new Staff
+            string query = "select Staff_ID, [Password], [Name], Phone_Number, Role_Number " +
+                           "from Staff, Staff_Types " +
+                           "where Staff.Staff_Type_ID = Staff_Types.Staff_Type_ID " +
+                           "and Staff_ID = @id and Password = @password";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@id", id);
+            sqlParameters[1] = new SqlParameter("@password", password);
+            DataTable dt = ExecuteSelectQuery(query, sqlParameters);
+
+            Staff staff;
+            if (dt.Rows.Count > 0)
             {
-                Staff_ID = (int)reader["Staff_ID"],
-                Role = (Staff_Types)reader["Staff_Type_ID"],
-                Name = (string)reader["Name"],
-                Phone_Number = (int)reader["Phone_Number"],
-                Password = (string)reader["Password"]
-            };
-            reader.Close();
-            conn.Close();
+                DataRow dr = dt.Rows[0];
+
+                staff = new Staff()
+                {
+                    Staff_ID = Convert.ToInt32(dr["Staff_ID"]),
+                    Name = dr["Name"].ToString(),
+                    Password = Convert.ToInt32(dr["Password"]),
+                    Phone_Number = dr["Phone_Number"].ToString(),
+                    Role = (Staff_Type)Convert.ToInt32(dr["Role_Number"])
+                };
+            }
+            else
+            {
+                staff = new Staff() {
+                Staff_ID = -1};
+            }
             return staff;
         }
     }

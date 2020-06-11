@@ -17,6 +17,18 @@ namespace Start
     {
         StaffService service;
         Staff member;
+        Overview ov;
+
+        private static login_form inst;
+        public static login_form GetForm
+        {
+            get
+            {
+                if (inst == null || inst.IsDisposed)
+                    inst = new login_form();
+                return inst;
+            }
+        }
 
         public login_form()
         {
@@ -31,40 +43,46 @@ namespace Start
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            bool checkID = int.TryParse(username.Text, out int id);
-            string psswrd = password.Text;
-
-            if (this.username.Text == null | this.password.Text == null)
+            if (username.Text == null || password.Text == null)
             {
                 MessageBox.Show("Please provide username and password!");
             }
-            if (checkID == true)
-            {
-                member = service.GetLoginDetails(id, psswrd);
-                this.Hide();
-                new Overview(member).ShowDialog();
-                this.Close();
-            }
             else
             {
-                MessageBox.Show("invalid username or password!");
-            }
+                member = service.DoLogin(Convert.ToInt32(username.Text), Convert.ToInt32(password.Text));
 
+                if(member.Staff_ID == -1)
+                {
+                    MessageBox.Show("invalid username or password!");
+                }
+                else
+                {
+                    this.Hide();
+                    ov = new Overview(member);
+                }
+            }
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
+            Application.Exit();
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Btn_Temp1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            
-            new KitchenBar(Staff_Types.Bartender,new Overview(member)).ShowDialog();
-            this.Close();
+            ov = new Overview(new Staff() { Role = Staff_Type.Bartender });
+
+            /*new KitchenBar(Staff_Type.Bartender).ShowDialog();*/
         }
 
-
+        private void TextEnterNumberOnly(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

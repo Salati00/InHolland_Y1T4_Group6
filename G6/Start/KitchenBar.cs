@@ -18,8 +18,7 @@ namespace Start
 {
     public partial class KitchenBar : Form
     {
-        Overview overview;
-        Staff_Types staffType;
+        Staff_Type staffType;
         KitchenBarService service;
         ListView lastServed;
         int pageNumber = 1;
@@ -27,12 +26,11 @@ namespace Start
         List<Order> orders;
         bool IsBar;
 
-        public KitchenBar(Staff_Types type, Overview overview) 
+        public KitchenBar(Staff_Type type) 
         {
             InitializeComponent();
 
             this.staffType = type;
-            this.overview = overview;
 
 
             recallpanel.Hide();
@@ -50,7 +48,7 @@ namespace Start
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
             IsBar = false;
-            if (staffType == Staff_Types.Bartender)
+            if (staffType == Staff_Type.Bartender)
             {
                 this.Text = "Bar";
                 IsBar = true;
@@ -256,17 +254,10 @@ namespace Start
 
         private void Home_Click(object sender, EventArgs e)
         {
-            this.Hide();
-             
-            overview.ShowDialog();
             this.Close();
         }
 
 
-        private void KitchenBar_Load(object sender, EventArgs e) 
-        {
-            
-        }
         private void PanelOrders_Paint(object sender, PaintEventArgs e)
         {
 

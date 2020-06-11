@@ -162,7 +162,6 @@
             this.Name = "KitchenBar";
             this.Text = "Kitchen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.KitchenBar_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
