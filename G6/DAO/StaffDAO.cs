@@ -36,7 +36,7 @@ namespace DAO
             }
             return staff;
         }
-        public Staff GetLoginDetails(int id, string password) // get login account
+        /*public Staff GetLoginDetails(int id, string password) // get login account
         {
             SqlCommand cmd = new SqlCommand("SELECT Staff_ID, Staff_Type_ID, Password FROM Staff WHERE Staff_ID = @staff_id AND [Password] = @password", conn);
             cmd.Parameters.AddWithValue("@staff_id", id);
@@ -50,7 +50,7 @@ namespace DAO
             Staff staff = new Staff
             {
                 Staff_ID = (int)reader["Staff_ID"],
-                Role = (Staff_Types)reader["Staff_Type_ID"],
+                Role = (Staff_Type)reader["Staff_Type_ID"],
                 Name = (string)reader["Name"],
                 Phone_Number = (int)reader["Phone_Number"],
                 Password = (string)reader["Password"]
@@ -59,7 +59,7 @@ namespace DAO
             conn.Close();
 
             return staff;
-        }
+        }*/
         // edit the staff information
         public void EditStaff(Staff staff)
         {
