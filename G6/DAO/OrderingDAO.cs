@@ -66,41 +66,6 @@ namespace DAO
             throw new NotImplementedException("if close then close order, otherwise send the order to order items");
         }
 
-        public Table Db_Get_TableFromInt(int number)
-        {
-            string query = "select * from tables "+
-                           "where Number = @Number";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@Number", number);
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters))[0];
-        }
-
-        public List<Table> Db_Get_AllTables()
-        {
-            string query = "select * from tables";
-
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        private List<Table> ReadTables(DataTable dataTable)
-        {
-            List<Table> Items = new List<Table>();
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Table elem = new Table()
-                {
-                    Table_ID = Convert.ToInt32(dr["Table_ID"]),
-                    Table_Number = Convert.ToInt32(dr["Number"]),
-                    Capacity = Convert.ToInt32(dr["Capacity"]),
-                    Status = (Table_Status)Convert.ToInt32(dr["Status"])
-                };
-                Items.Add(elem);
-            }
-            return Items;
-        }
-
         public List<Order> Db_Get_All_Orders()
         {
             string query = "SELECT * FROM [Orders]";

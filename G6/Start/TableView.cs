@@ -18,45 +18,26 @@ namespace Start
     public partial class TableView : Form
     {
         Staff member;
-        OrderingService ord;
+        TableService tab;
 
         public TableView(Staff member)
         {
             InitializeComponent();
-            ord = new OrderingService();
-            //staffsv = new StaffService();
-            //id.Text = staffsv.GetStaffMembers().ToString();
+            tab = new TableService();
+
             date.Text = DateTime.Today.ToShortDateString();
             this.member = member;
-            //if (member.Role == Staff_Types.Manager)
-            //{
-            //    id.Text = "manager";
-            //}
-            //else if (member.Role == Staff_Types.Waiter)
-            //{
-            //    id.Text = "waiter";
-            //}
+
         }
 
         private void btn_back_Click(object sender, EventArgs e)
         {
-            // hides TABLEVIEW form
-            //if (member.Role == Staff_Types.Manager)
-            //{
-            //}
-            //else
-            //{
-            // display OVERVIEW form
-            //new login_form().ShowDialog();
-            //}
-            // closes TABLEVIEW form
-
             this.Close();
         }
 
         private void Table_Click_Handler(object sender, EventArgs e)
         {
-            SingleTable table = new SingleTable(ord.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)));
+            SingleTable table = new SingleTable(tab.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)));
             table.ShowDialog();
         }
 
