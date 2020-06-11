@@ -61,6 +61,7 @@ namespace DAO
                 OrderItem item = new OrderItem();
                 item.MenuItem = new Menu_Item();
 
+                item.ItemID = (int)dr["Order_Item_ID"];
                 item.Quantity = (int)dr["Quantity"];
                 item.MenuItem.Name = (string)dr["Name"];               
                 item.cardID = (int)dr["Cart_ID"];
@@ -73,14 +74,19 @@ namespace DAO
         }
 
 
-
-
-
-
-        void Db_Ready_Orders(object order)
+        public void Db_State_Order_Items(int itemid, int state)
         {
 
+            string query = "SET IDENTITY_INSERT Order_Items on; " +
+                "UPDATE Order_Items " +
+                "SET State_ID = @state " +
+                "WHERE Order_Item_ID = @itemid ; " +
+                "SET IDENTITY_INSERT Order_Items off; ";
 
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@state", state);
+            sqlParameters[1] = new SqlParameter("@itemid", itemid);
+            ExecuteEditQuery(query, sqlParameters);
         }
     }
 }

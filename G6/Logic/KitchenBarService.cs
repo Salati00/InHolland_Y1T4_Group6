@@ -34,10 +34,10 @@ namespace Logic
 
         }
 
-        public void ReadyOrder( object order)
+        public void StateOrderItem(int itemId,int state)
         {
 
-            //kitchenBar_db.Db_Remove_Orders(order);
+            kitchenBar_db.Db_State_Order_Items(itemId,state);
 
         }
 

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,7 @@ namespace Start
         int pageNumber = 1;
         List<ListView> allOrderLists;
         List<Order> orders;
+        bool IsBar;
 
         public KitchenBar(Staff_Types type, Overview overview) 
         {
@@ -47,8 +49,13 @@ namespace Start
 
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
+            IsBar = false;
             if (staffType == Staff_Types.Bartender)
+            {
                 this.Text = "Bar";
+                IsBar = true;
+
+            }
 
             PanelOrders.Controls.Clear();
             foreach (Order order in orders)
@@ -67,8 +74,8 @@ namespace Start
                 {
                     PanelOrders.Controls.Add(list);
                     list.Click += new EventHandler(this.ClickOrder);
-                    allOrderLists.Add(list);
                 }
+                allOrderLists.Add(list);
                 
             }
 
@@ -79,14 +86,13 @@ namespace Start
            
             for (int i = 0; i < 8; i++)
             {
-
                 bool noMatch;
                 do
                 {
                     noMatch = false;
                     try
                     {
-                        if ((staffType == Staff_Types.Bartender && order.OrderItems[i].cardID != 3) || ((staffType == Staff_Types.Chef && order.OrderItems[i].cardID == 3))||order.OrderItems[i].Status>0)
+                        if ((IsBar && order.OrderItems[i].cardID != 3) || ((!IsBar && order.OrderItems[i].cardID == 3))||order.OrderItems[i].Status>0)
                         {
                             order.OrderItems.Remove(order.OrderItems[i]);
                             noMatch = true;
@@ -98,7 +104,7 @@ namespace Start
 
                 try
                 {
-                    CommentStyle(list, order, i);
+                    ItemsStyle(list, order, i);
                 }
                 catch
                 {
@@ -117,52 +123,55 @@ namespace Start
 
             list.View = View.Details;
             list.FullRowSelect = true;
-          //  list.GridLines = true;
+            //  list.GridLines = true;
 
-            list.Items[list.Items.Count-1].UseItemStyleForSubItems = false;
+            list.Items[list.Items.Count - 1].UseItemStyleForSubItems = false;
             list.Items[list.Items.Count - 1].SubItems[1].ForeColor = System.Drawing.Color.White;
             list.Items[list.Items.Count - 1].SubItems[1].BackColor = System.Drawing.Color.Black;
                 
         }
 
-        public void CommentStyle(ListView list, Order order, int i)
+        public void ItemsStyle(ListView list, Order order, int i)
         {
-            
-                list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
-                if (order.OrderItems[i].Comment != null)
-                {
-                    list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
-                    list.Items[i].UseItemStyleForSubItems = false;
-                    list.Items[i].SubItems[1].ForeColor = System.Drawing.Color.Red;
-                    list.Items[i].SubItems[1].BackColor = System.Drawing.Color.WhiteSmoke;
-                    list.Items[i].BackColor = System.Drawing.Color.WhiteSmoke;
-                    list.Items[i].SubItems[1].Font = new Font("Arial", 14);
 
-                }
+            list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
+         //   list.Items[i].Tag = order.OrderItems[i].ItemID;
 
-            
+            if (order.OrderItems[i].Comment != null)
+            {
+                list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
+                list.Items[i].UseItemStyleForSubItems = false;
+                list.Items[i].SubItems[1].ForeColor = System.Drawing.Color.Red;
+                list.Items[i].SubItems[1].BackColor = System.Drawing.Color.WhiteSmoke;
+                list.Items[i].BackColor = System.Drawing.Color.WhiteSmoke;
+                list.Items[i].SubItems[1].Font = new Font("Arial", 14);
+
+            }
+
+
         }
 
         public void ClickOrder(object sender, EventArgs e)
         {
-            ListView button = (ListView)sender;
+            ListView list = (ListView)sender;
 
-            if (recallpanel.Visible&&( button.Columns[0].Text[0] != 'R'|| button.Items[button.Items.Count - 1].Selected))
+            if (recallpanel.Visible&&( list.Columns[0].Text[0] != 'R'|| list.Items[list.Items.Count - 1].Selected))
             {
                 recallpanel.Hide();
-
+              //  service.StateOrderItem(, 2);
             }
-            else if (button.Items[button.Items.Count-1].Selected)
+            else if (list.Items[list.Items.Count-1].Selected)
             {
-                lastServed = button;
-                PanelOrders.Controls.Remove(button);
+                lastServed = list;
+                PanelOrders.Controls.Remove(list);
 
                 if (lastServed.Columns[0].Text[0] != 'R')
                 {
                     lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
                 }
-
+               // service.StateOrderItem(, 2);
             }
+
 
         }
         
@@ -272,12 +281,17 @@ namespace Start
 
                 i++;
             }
-
+            i = 0;
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
-            if (orders.Count != service.GetOrders().Count)
-            {
-                FillInfo();
-            }
+
+            //List<Order> ForCount = service.GetOrders();
+            //if (orders.Count != ForCount.Count)
+            //{
+            //    FillInfo();
+            //}
+            
+            
+           
             
         }
 
