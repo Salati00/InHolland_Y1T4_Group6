@@ -18,13 +18,19 @@ namespace Start                                 // 641672
 {
     public partial class KitchenBar : Form
     {
-        Staff_Type staffType;
-        KitchenBarService service;
-        ListView lastServed;
-        int pageNumber = 1;
         List<ListView> allOrderLists;
         List<Order> orders;
+        List<OrderItem> allOrderItems;
+
+        Staff_Type staffType;
         bool IsBar;
+
+        KitchenBarService service;
+        ListView lastServed;
+        int lastServedPosition;
+        
+        int pageNumber = 1;
+
         int totalItems;
 
         public KitchenBar(Staff_Type type) 
@@ -39,12 +45,13 @@ namespace Start                                 // 641672
             FillInfo();
         }
          
-                                   //               149
-                                   //               paswrd149
+                                   
         void FillInfo()
         {
             allOrderLists = new List<ListView>();
             orders = service.GetOrders();
+            allOrderItems = new List<OrderItem>();
+            totalItems = service.CountOrderItems();
 
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
@@ -74,6 +81,10 @@ namespace Start                                 // 641672
                     PanelOrders.Controls.Add(list);
                     list.Click += new EventHandler(this.ClickOrder);
                 }
+                //else
+                //{
+                //    orders.Remove(order);
+                //}
                 allOrderLists.Add(list);
                 
             }
@@ -96,10 +107,8 @@ namespace Start                                 // 641672
                             order.OrderItems.Remove(order.OrderItems[i]);
                             noMatch = true;
                         }
-                    }
-                    catch { }
-                }
-                while (noMatch);
+                    }   catch { }
+                }   while (noMatch);
 
                 try
                 {
@@ -110,7 +119,6 @@ namespace Start                                 // 641672
                     list.Items.Add("");
                     if (i >= 7)
                     {
-                        
                         list.Items[i].SubItems.Add("Remove");
                         break;
                     }
@@ -134,6 +142,7 @@ namespace Start                                 // 641672
         {
 
             list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
+            allOrderItems.Add(order.OrderItems[i]);
          //   list.Items[i].Tag = order.OrderItems[i].ItemID;
 
             if (order.OrderItems[i].Comment != null)
@@ -162,6 +171,8 @@ namespace Start                                 // 641672
             else if (list.Items[list.Items.Count-1].Selected)
             {
                 lastServed = list;
+                lastServedPosition = PanelOrders.Controls.IndexOf(list);
+                OrderIsReady(orders[PanelOrders.Controls.IndexOf(list)], 2);
                 PanelOrders.Controls.Remove(list);
 
                 if (lastServed.Columns[0].Text[0] != 'R')
@@ -169,34 +180,42 @@ namespace Start                                 // 641672
                     lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
 
                 }
-                // OrderIsReady(, 2);
             }
 
 
         }
         
 
-        public void OrderIsReady(int orderId,int state)
+        public void OrderIsReady(Order order,int state)
         {
-            //foreach (Order item in or )
-            //{
+            foreach (OrderItem item in allOrderItems)
+            {
+                if (order.OrderItems.Contains(item))
+                {
+                    service.StateOrderItem(item.ItemID, state);
+                }
+            }
 
-            //}
 
 
-
-        //    service.StateOrderItem(itemId, state);
+            //    service.StateOrderItem(itemId, state);
         }
-       
+
 
         private void recall_Click_1(object sender, EventArgs e)
         {
             if (lastServed!=null)
             {
                 if (recallpanel.Visible)
+                {
                     recallpanel.Hide();
+                    OrderIsReady(orders[int.Parse((string)lastServed.Tag)], 2);
+                }
                 else
+                {
                     recallpanel.Show();
+                    OrderIsReady(orders[lastServedPosition], 1);
+                }
 
                 recallpanel.Controls.Clear();
                 recallpanel.Controls.Add(lastServed);
@@ -290,10 +309,10 @@ namespace Start                                 // 641672
 
           
 
-            int newCountItems = service.CountOrderItems();
-            if(totalItems != newCountItems)
+            
+            if(totalItems != service.CountOrderItems())
             {
-                totalItems = newCountItems;
+                
                 FillInfo();
             }
             
