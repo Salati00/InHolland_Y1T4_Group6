@@ -50,7 +50,7 @@
             // 
             this.table.AutoSize = true;
             this.table.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.table.Location = new System.Drawing.Point(245, 54);
+            this.table.Location = new System.Drawing.Point(237, 29);
             this.table.Name = "table";
             this.table.Size = new System.Drawing.Size(77, 20);
             this.table.TabIndex = 0;

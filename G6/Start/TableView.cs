@@ -28,29 +28,29 @@ namespace Start
             //id.Text = staffsv.GetStaffMembers().ToString();
             date.Text = DateTime.Today.ToShortDateString();
             this.member = member;
-            if (member.Role == Staff_Types.Manager)
-            {
-                id.Text = "manager";
-            }
-            else if (member.Role == Staff_Types.Waiter)
-            {
-                id.Text = "waiter";
-            }
+            //if (member.Role == Staff_Types.Manager)
+            //{
+            //    id.Text = "manager";
+            //}
+            //else if (member.Role == Staff_Types.Waiter)
+            //{
+            //    id.Text = "waiter";
+            //}
         }
- 
+
         private void btn_back_Click(object sender, EventArgs e)
         {
             // hides TABLEVIEW form
             this.Hide();
-            if (member.Role == Staff_Types.Manager)
-            {
-                new Overview(member).ShowDialog();
-            }
-            else
-            {
-                // display OVERVIEW form
-                new login_form().ShowDialog();
-            }
+            //if (member.Role == Staff_Types.Manager)
+            //{
+            new Overview(member).ShowDialog();
+            //}
+            //else
+            //{
+            // display OVERVIEW form
+            //new login_form().ShowDialog();
+            //}
             // closes TABLEVIEW form
             this.Close();
         }

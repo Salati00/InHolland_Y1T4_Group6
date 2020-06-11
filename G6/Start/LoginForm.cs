@@ -16,37 +16,34 @@ namespace Start
     public partial class login_form : Form
     {
         StaffService service;
-        Staff member; 
+        Staff member;
 
         public login_form()
         {
             InitializeComponent();
-            member = new Staff();
             service = new StaffService();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.AcceptButton = btn_signin;
+            //this.AcceptButton = btn_signin;
         }
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            bool validUsername = int.TryParse(username.Text, out int id);
+            bool checkID = int.TryParse(username.Text, out int id);
             string psswrd = password.Text;
+
             if (this.username.Text == null | this.password.Text == null)
             {
                 MessageBox.Show("Please provide username and password!");
             }
-            if (validUsername)
+            if (checkID == true)
             {
                 member = service.GetLoginDetails(id, psswrd);
-                //if (member.Role == Staff_Types.Manager)
-                //{
                 this.Hide();
                 new Overview(member).ShowDialog();
                 this.Close();
-                //}
             }
             else
             {
@@ -68,6 +65,6 @@ namespace Start
             this.Close();
         }
 
-       
+
     }
 }
