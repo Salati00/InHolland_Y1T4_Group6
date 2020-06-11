@@ -102,5 +102,19 @@ namespace Logic
                 return new Tuple<bool,string>(false,ex.Message);
             }
         }
+
+        public List<Order> GetOrders()
+        {
+            List<Order> orders;
+            try
+            {
+                orders = DB.Db_Get_All_Orders();
+            }
+            catch (Exception)
+            {
+                throw new Exception("database connection lost");
+            }
+            return orders;
+        }
     }
 }

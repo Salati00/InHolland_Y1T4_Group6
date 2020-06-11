@@ -100,5 +100,29 @@ namespace DAO
             }
             return Items;
         }
+
+        public List<Order> Db_Get_All_Orders()
+        {
+            string query = "SELECT * FROM [Orders]";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadOrderTable(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<Order> ReadOrderTable(DataTable dt)
+        {
+            List<Order> orders = new List<Order>();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Order order = new Order()
+                {
+                    Order_ID = (int)dr["Order_ID"],
+                    Staff_ID = (int)dr["Staff_ID"],
+                    Table_ID = (int)dr["Table_ID"],
+                    Time = (DateTime)dr["Time"]
+                };
+                orders.Add(order);
+            }
+            return orders;
+        }
     }
 }
