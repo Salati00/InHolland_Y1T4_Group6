@@ -11,9 +11,14 @@ namespace Logic
     public class KitchenBarService
     {
 
+      
+        kichenBarDAO kitchenBar_db;
 
-        kichenBarDAO kitchenBar_db = new kichenBarDAO();
-
+        public KitchenBarService()
+        {
+            kitchenBar_db = new kichenBarDAO();
+      
+        }
         public List<Order> GetOrders()
         {
             //try

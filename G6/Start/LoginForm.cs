@@ -63,7 +63,8 @@ namespace Start
         private void button1_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new KitchenBar(Model.Staff_Types.Bartender).ShowDialog();
+            
+            new KitchenBar(Staff_Types.Bartender,new Overview(member)).ShowDialog();
             this.Close();
         }
 

@@ -31,7 +31,7 @@ namespace Start
         private void btn_kitchen_Click(object sender, EventArgs e)
         {
             this.Hide();
-            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Chef);
+            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Chef,this);
             kitchenBar.ShowDialog();
             this.Close();
 
@@ -40,7 +40,7 @@ namespace Start
         private void btn_bar_Click(object sender, EventArgs e)
         {
             this.Hide();
-            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Bartender);
+            KitchenBar kitchenBar = new KitchenBar(Staff_Types.Bartender,this);
             kitchenBar.ShowDialog();
             this.Close();
         }

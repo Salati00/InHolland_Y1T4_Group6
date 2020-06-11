@@ -30,7 +30,7 @@ namespace DAO
                 Order order = new Order();
 
                 order.Order_ID = (int)dr["Order_ID"];
-                order.Time = (TimeSpan)dr["Time"];
+                order.Time = (DateTime)dr["Time"];
                 order.OrderItems = Db_Get_OrderItems(order.Order_ID);
                 
                 orders.Add(order);
@@ -40,11 +40,12 @@ namespace DAO
         public List<OrderItem> Db_Get_OrderItems(int orderID)    ///done
         {
             string query = "select o.Order_ID , State_ID , Quantity ,Notes, o.[Time] , mi.[Name], Cart_ID ,oi.Order_Item_ID ,mi.Item_Type_ID " +
-                "from Orders as o" +
-                "join Order_Items  as oi on oi.Order_ID = o.Order_ID" +
-                "join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID" +
-                "join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID" +
-                "where o.Order_ID = @orderNum" ;
+                "from Orders as o " +
+                "join Order_Items  as oi on oi.Order_ID = o.Order_ID " +
+                "join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID " +
+                "join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID " +
+                "where o.Order_ID = @orderNum ; " ;
+            
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@orderNum", orderID);
@@ -58,13 +59,13 @@ namespace DAO
             foreach (DataRow dr in dataTable.Rows)
             {
                 OrderItem item = new OrderItem();
+                item.MenuItem = new Menu_Item();
 
                 item.Quantity = (int)dr["Quantity"];
-                item.MenuItem.Name = (string)dr["Name"];
-                /*item.Type = (Item_Type)dr["Item_Type_ID"] - 1;
-                item.Order.Order_ID = (int)dr["Order_ID"];*/
+                item.MenuItem.Name = (string)dr["Name"];               
+                item.cardID = (int)dr["Cart_ID"];
                 item.Status = (Order_Status)dr["State_ID"] - 1;
-                item.Comment = (string)dr["Notes"];
+                try { item.Comment = (string)dr["Notes"]; } catch { }
 
                 items.Add(item);
             }

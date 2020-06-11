@@ -17,18 +17,22 @@ namespace Start
 {
     public partial class KitchenBar : Form
     {
-
-        Staff_Types type;
+        Overview overview;
+        Staff_Types staffType;
         KitchenBarService service;
         ListView lastServed;
         int pageNumber = 1;
+        List<ListView> allOrderLists;
+        List<Order> orders;
 
-        public KitchenBar(Staff_Types type)
+        public KitchenBar(Staff_Types type, Overview overview) 
         {
             InitializeComponent();
 
-            this.type = type;
-            
+            this.staffType = type;
+            this.overview = overview;
+
+
             recallpanel.Hide();
             service = new KitchenBarService();
             FillInfo();
@@ -38,15 +42,15 @@ namespace Start
                                    //               paswrd149
         void FillInfo()
         {
-            
-            List<Order> orders = service.GetOrders();
+            allOrderLists = new List<ListView>();
+            orders = service.GetOrders();
 
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
-            if (type == Staff_Types.Bartender)
+            if (staffType == Staff_Types.Bartender)
                 this.Text = "Bar";
 
-            //  for (int i = 0; i < 11; i++)
+            PanelOrders.Controls.Clear();
             foreach (Order order in orders)
             {
                 
@@ -56,60 +60,99 @@ namespace Start
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 list.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
                 list.Columns.Add($"order {order.Order_ID:D3}", list.Width - (list.Width / 4));
-                list.Columns.Add((TimeSpan.Parse(DateTime.Now.ToString("MM:SS")) - order.Time).ToString("MM:SS"), -2, System.Windows.Forms.HorizontalAlignment.Center);
+                list.Columns.Add(DateTime.Now.Subtract(order.Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
                 OrderItems(list,order);
-                PanelOrders.Controls.Add(list);
-
+                if (list.Items[0].Text != "")
+                {
+                    PanelOrders.Controls.Add(list);
+                    list.Click += new EventHandler(this.ClickOrder);
+                    allOrderLists.Add(list);
+                }
                 
-                list.Click += new EventHandler(this.ClickOrder);
             }
 
         }
         public void OrderItems(ListView list,Order order)
         {
+            
            
-
             for (int i = 0; i < 8; i++)
             {
 
-                list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
-                if (order.OrderItems[i].Comment != null)
-                list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
+                bool noMatch;
+                do
+                {
+                    noMatch = false;
+                    try
+                    {
+                        if ((staffType == Staff_Types.Bartender && order.OrderItems[i].cardID != 3) || ((staffType == Staff_Types.Chef && order.OrderItems[i].cardID == 3))||order.OrderItems[i].Status>0)
+                        {
+                            order.OrderItems.Remove(order.OrderItems[i]);
+                            noMatch = true;
+                        }
+                    }
+                    catch { }
+                }
+                while (noMatch);
 
-                if (i == 6)
+                try
+                {
+                    CommentStyle(list, order, i);
+                }
+                catch
                 {
                     list.Items.Add("");
-                    list.Items[i].SubItems.Add("Remove");
-                    break;
+                    if (i >= 7)
+                    {
+                        
+                        list.Items[i].SubItems.Add("Remove");
+                        break;
+                    }
+                    continue;
                 }
-               
+                            
                 list.Items[i].Font = new Font("Arial", 14);
-                
             }
 
             list.View = View.Details;
             list.FullRowSelect = true;
-            
+          //  list.GridLines = true;
 
-            list.Items[7].UseItemStyleForSubItems = false;
-            list.Items[7].SubItems[1].ForeColor = System.Drawing.Color.White;
-            list.Items[7].SubItems[1].BackColor = System.Drawing.Color.Black;
+            list.Items[list.Items.Count-1].UseItemStyleForSubItems = false;
+            list.Items[list.Items.Count - 1].SubItems[1].ForeColor = System.Drawing.Color.White;
+            list.Items[list.Items.Count - 1].SubItems[1].BackColor = System.Drawing.Color.Black;
                 
         }
 
+        public void CommentStyle(ListView list, Order order, int i)
+        {
+            
+                list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
+                if (order.OrderItems[i].Comment != null)
+                {
+                    list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
+                    list.Items[i].UseItemStyleForSubItems = false;
+                    list.Items[i].SubItems[1].ForeColor = System.Drawing.Color.Red;
+                    list.Items[i].SubItems[1].BackColor = System.Drawing.Color.WhiteSmoke;
+                    list.Items[i].BackColor = System.Drawing.Color.WhiteSmoke;
+                    list.Items[i].SubItems[1].Font = new Font("Arial", 14);
+
+                }
+
+            
+        }
 
         public void ClickOrder(object sender, EventArgs e)
         {
             ListView button = (ListView)sender;
 
-            if (recallpanel.Visible)
+            if (recallpanel.Visible&&( button.Columns[0].Text[0] != 'R'|| button.Items[button.Items.Count - 1].Selected))
             {
                 recallpanel.Hide();
 
-                
             }
-            else if (button.Items[7].Selected)
+            else if (button.Items[button.Items.Count-1].Selected)
             {
                 lastServed = button;
                 PanelOrders.Controls.Remove(button);
@@ -122,12 +165,7 @@ namespace Start
             }
 
         }
-
-        public void NotifyWaiter()
-        {
-             
-        }
-
+        
 
        
 
@@ -155,6 +193,7 @@ namespace Start
 
         private void listViewrecall_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
              recallpanel.Hide();
 
         }
@@ -209,8 +248,9 @@ namespace Start
         private void Home_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Overview.ActiveForm.Show();
-            this.Show();
+             
+            overview.ShowDialog();
+            this.Close();
         }
 
 
@@ -222,6 +262,28 @@ namespace Start
         {
 
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            int i = 0;
+            foreach (ListView list in allOrderLists)
+            {
+                list.Columns[1].Text = DateTime.Now.Subtract(orders[i].Time).ToString(@"mm\:ss");
+
+                i++;
+            }
+
+            timee.Text = DateTime.Now.ToString("h:mm:ss tt");
+            if (orders.Count != service.GetOrders().Count)
+            {
+                FillInfo();
+            }
+            
+        }
+
+        
+
+
 
     }
 }
