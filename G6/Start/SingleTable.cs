@@ -82,8 +82,8 @@ namespace Start
 
             foreach (OrderItem o in orderList)
             {
-                //if (order.Order_ID == o.OrderID.Order_ID)
-                //{
+                if (order.Order_ID == o.OrderID.Order_ID)
+                {
                     ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
                     lvi.SubItems.Add(o.MenuItem.ToString());
                     lvi.SubItems.Add(o.OrderID.ToString());
@@ -91,7 +91,7 @@ namespace Start
                     lvi.SubItems.Add(o.Quantity.ToString());
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
-                //}
+                }
             }
         }
 

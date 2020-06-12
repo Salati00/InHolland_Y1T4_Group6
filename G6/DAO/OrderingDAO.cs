@@ -68,7 +68,7 @@ namespace DAO
 
         public List<OrderItem> Db_Get_All_Order_Items()
         {
-            string query = "SELECT * FROM [Order_Items], [Orders] WHERE Order_Items.Order_ID = Orders.Order_ID AND Order_ID = @order_id";
+            string query = "SELECT * FROM [Order_Items], [Orders] WHERE Order_Items.Order_ID = Orders.Order_ID";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrderItemTable(ExecuteSelectQuery(query, sqlParameters));
         }
