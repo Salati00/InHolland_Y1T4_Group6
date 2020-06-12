@@ -45,7 +45,7 @@ namespace DAO
                 "join Order_Items as oi on oi.Order_ID = o.Order_ID " +
                 "join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID " +
                 "join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID " +
-                "where o.Order_ID = @orderNum;";
+                "where o.Order_ID = @orderNum; ";
             
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@orderNum", orderID);

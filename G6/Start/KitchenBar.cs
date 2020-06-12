@@ -92,7 +92,7 @@ namespace Start                                 // 641672
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 list.Width = (PanelOrders.Width / 2) - (PanelOrders.Width / 50);
                 list.Columns.Add($"order {order.Order_ID:D3}", list.Width - (list.Width / 4));
-                list.Columns.Add(DateTime.Now.Subtract(order.Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
+                list.Columns.Add(DateTime.UtcNow.Subtract(order.Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
                 OrderItems(list, order);
                 if (list.Items[0].Text != "")
@@ -388,10 +388,10 @@ namespace Start                                 // 641672
             int counter = 0;
             foreach (ListView list in allOrderLists)
             {
-                //if (DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"hh\:mm\:ss").Substring(0, 2) == "00")
+                if (DateTime.UtcNow.Subtract(allOrders[counter].Time).ToString(@"hh\:mm\:ss").Substring(0, 2) == "00")
                     list.Columns[1].Text = DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"mm\:ss");
-                //else
-                //    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"hh\:mm\:ss");
+                else
+                    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"hh\:mm\:ss");
 
 
                 counter++;
