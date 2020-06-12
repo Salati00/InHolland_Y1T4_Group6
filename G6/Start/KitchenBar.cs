@@ -95,12 +95,12 @@ namespace Start                                 // 641672
             {
                 count++;
                 bool noMatch;
-                do
+                do                   
                 {
                     noMatch = false;
                     try
                     {
-                        if ((IsBar && order.OrderItems[count].cardID != 3) || ((!IsBar && order.OrderItems[count].cardID == 3))||order.OrderItems[count].Status>0)
+                        if ((IsBar && order.OrderItems[count].MenuItem.Type < Item_Type.SoftDrinks) || ((!IsBar && order.OrderItems[count].MenuItem.Type >= Item_Type.SoftDrinks))||order.OrderItems[count].Status>0)
                         {
                             order.OrderItems.Remove(order.OrderItems[count]);
                             noMatch = true;

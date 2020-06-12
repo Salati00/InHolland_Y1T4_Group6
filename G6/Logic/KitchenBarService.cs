@@ -21,31 +21,41 @@ namespace Logic
         }
         public List<Order> GetOrders()
         {
-            //try
-            //{
+            try
+            {
                 List<Order> orders = kitchenBar_db.Db_Get_Orders();
                 return orders;
 
-            //}
-            //catch
-            //{
-            //    return null;
-            //}
+            }
+            catch
+            {
+                throw new Exception("No Database conection");
+            }
 
         }
 
         public void StateOrderItem(int itemId,int state)
         {
-
-            kitchenBar_db.Db_State_Order_Items(itemId,state);
-
+            try
+            {
+                kitchenBar_db.Db_State_Order_Items(itemId, state);
+            }
+            catch
+            {
+                throw new Exception("No Database conection");
+            }
         }
         
         public int CountOrderItems()
         {
-
-            return kitchenBar_db.Db_Count_Orders();
-
+            try
+            {
+                return kitchenBar_db.Db_Count_Orders();
+            }
+            catch
+            {
+                throw new Exception("No Database conection");
+            }
         }
 
 
