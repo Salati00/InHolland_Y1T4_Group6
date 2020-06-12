@@ -1,23 +1,26 @@
 ﻿using DAO;
 using Model;
+
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+
 
 namespace Logic
 {
     public class KitchenBarService
-    {
+    {        
 
-      
         kichenBarDAO kitchenBar_db;
 
         public KitchenBarService()
         {
             kitchenBar_db = new kichenBarDAO();
-      
+           
         }
         public List<Order> GetOrders()
         {
@@ -29,7 +32,8 @@ namespace Logic
             }
             catch
             {
-                throw new Exception("No Database conection");
+                
+                throw new Exception("  No Database conection!!  ");
             }
 
         }
@@ -42,7 +46,7 @@ namespace Logic
             }
             catch
             {
-                throw new Exception("No Database conection");
+                throw new Exception("  No Database conection!!!  ");
             }
         }
         
@@ -54,7 +58,8 @@ namespace Logic
             }
             catch
             {
-                throw new Exception("No Database conection");
+                throw new Exception("  No Database conection!!!  ");
+              
             }
         }
 

@@ -43,16 +43,31 @@ namespace Start                                 // 641672
 
             recallpanel.Hide();
             service = new KitchenBarService();
-            FillInfo();
+            StartNew();
         }
          
                                    
-        void FillInfo()
+        void StartNew()
         {
             allOrderLists = new List<ListView>();
-            allOrders = service.GetOrders();
+            try
+            {
+                allOrders = service.GetOrders();
+            }
+            catch (Exception dbEx)
+            {
+                timer1.Enabled = false;
+                System.Windows.MessageBox.Show(dbEx.Message);
+            }
             allOrderItems = new List<OrderItem>();
-            totalItems = service.CountOrderItems();
+            try
+            {
+                totalItems = service.CountOrderItems();
+            }
+            catch (Exception dbEx)
+            {
+                System.Windows.MessageBox.Show(dbEx.Message);
+            }
             AppearingOrders = new List<Order>();
 
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
@@ -63,27 +78,32 @@ namespace Start                                 // 641672
                 this.Text = "Chapeau Bar";
                 IsBar = true;
             }
+            FillOrders();
+           
+        }
 
+        public void FillOrders()
+        {
             PanelOrders.Controls.Clear();
             foreach (Order order in allOrders)
             {
-                
+
                 ListView list = new ListView();
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
-                list.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
+                list.Width = (PanelOrders.Width / 2) - (PanelOrders.Width / 30);
                 list.Columns.Add($"order {order.Order_ID:D3}", list.Width - (list.Width / 4));
                 list.Columns.Add(DateTime.Now.Subtract(order.Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
-                OrderItems(list,order);
+                OrderItems(list, order);
                 if (list.Items[0].Text != "")
                 {
                     PanelOrders.Controls.Add(list);
                     list.Click += new EventHandler(this.ClickOrder);
                     AppearingOrders.Add(order);
                 }
- 
+
                 allOrderLists.Add(list);
-                
+
             }
             PageProperties();
         }
@@ -212,7 +232,14 @@ namespace Start                                 // 641672
             {
                 if (order.OrderItems.Contains(item))
                 {
-                    service.StateOrderItem(item.ItemID, state);
+                    try
+                    {
+                        service.StateOrderItem(item.ItemID, state);
+                    }
+                    catch (Exception dbEx)
+                    {
+                        System.Windows.MessageBox.Show(dbEx.Message);
+                    }
                 }
             }
         }
@@ -371,16 +398,26 @@ namespace Start                                 // 641672
             }
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
             int samePage = pageNumber - 1;
-            if(totalItems != service.CountOrderItems())
+
+            try
             {
-                
-                FillInfo();
-                for (int page = 0; page < samePage; page++)
+
+
+                if (totalItems != service.CountOrderItems())
                 {
-                    right_Click(new object(),new EventArgs());
+
+                    StartNew();
+                    for (int page = 0; page < samePage; page++)
+                    {
+                        right_Click(new object(), new EventArgs());
+                    }
                 }
             }
-            
+            catch(Exception dbEx)
+            {
+                timer1.Enabled = false;
+                System.Windows.MessageBox.Show("Error!",dbEx.Message);
+            }
 
         }
 
