@@ -52,6 +52,16 @@
             this.lbl_avai = new System.Windows.Forms.Label();
             this.color_avai = new System.Windows.Forms.Label();
             this.Tmr_Refresh = new System.Windows.Forms.Timer(this.components);
+            this.Lbl_T1 = new System.Windows.Forms.Label();
+            this.Lbl_T2 = new System.Windows.Forms.Label();
+            this.Lbl_T3 = new System.Windows.Forms.Label();
+            this.Lbl_T4 = new System.Windows.Forms.Label();
+            this.Lbl_T5 = new System.Windows.Forms.Label();
+            this.Lbl_T6 = new System.Windows.Forms.Label();
+            this.Lbl_T7 = new System.Windows.Forms.Label();
+            this.Lbl_T8 = new System.Windows.Forms.Label();
+            this.Lbl_T9 = new System.Windows.Forms.Label();
+            this.Lbl_T10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // table
@@ -317,12 +327,122 @@
             this.Tmr_Refresh.Interval = 2000;
             this.Tmr_Refresh.Tick += new System.EventHandler(this.Tmr_Refresh_Tick);
             // 
+            // Lbl_T1
+            // 
+            this.Lbl_T1.AutoSize = true;
+            this.Lbl_T1.Location = new System.Drawing.Point(40, 146);
+            this.Lbl_T1.Name = "Lbl_T1";
+            this.Lbl_T1.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T1.TabIndex = 39;
+            this.Lbl_T1.Text = "Items Ready!";
+            this.Lbl_T1.Visible = false;
+            // 
+            // Lbl_T2
+            // 
+            this.Lbl_T2.AutoSize = true;
+            this.Lbl_T2.Location = new System.Drawing.Point(40, 223);
+            this.Lbl_T2.Name = "Lbl_T2";
+            this.Lbl_T2.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T2.TabIndex = 40;
+            this.Lbl_T2.Text = "Items Ready!";
+            this.Lbl_T2.Visible = false;
+            // 
+            // Lbl_T3
+            // 
+            this.Lbl_T3.AutoSize = true;
+            this.Lbl_T3.Location = new System.Drawing.Point(149, 146);
+            this.Lbl_T3.Name = "Lbl_T3";
+            this.Lbl_T3.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T3.TabIndex = 41;
+            this.Lbl_T3.Text = "Items Ready!";
+            this.Lbl_T3.Visible = false;
+            // 
+            // Lbl_T4
+            // 
+            this.Lbl_T4.AutoSize = true;
+            this.Lbl_T4.Location = new System.Drawing.Point(149, 223);
+            this.Lbl_T4.Name = "Lbl_T4";
+            this.Lbl_T4.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T4.TabIndex = 42;
+            this.Lbl_T4.Text = "Items Ready!";
+            this.Lbl_T4.Visible = false;
+            // 
+            // Lbl_T5
+            // 
+            this.Lbl_T5.AutoSize = true;
+            this.Lbl_T5.Location = new System.Drawing.Point(255, 146);
+            this.Lbl_T5.Name = "Lbl_T5";
+            this.Lbl_T5.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T5.TabIndex = 43;
+            this.Lbl_T5.Text = "Items Ready!";
+            this.Lbl_T5.Visible = false;
+            // 
+            // Lbl_T6
+            // 
+            this.Lbl_T6.AutoSize = true;
+            this.Lbl_T6.Location = new System.Drawing.Point(255, 223);
+            this.Lbl_T6.Name = "Lbl_T6";
+            this.Lbl_T6.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T6.TabIndex = 44;
+            this.Lbl_T6.Text = "Items Ready!";
+            this.Lbl_T6.Visible = false;
+            // 
+            // Lbl_T7
+            // 
+            this.Lbl_T7.AutoSize = true;
+            this.Lbl_T7.Location = new System.Drawing.Point(361, 146);
+            this.Lbl_T7.Name = "Lbl_T7";
+            this.Lbl_T7.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T7.TabIndex = 45;
+            this.Lbl_T7.Text = "Items Ready!";
+            this.Lbl_T7.Visible = false;
+            // 
+            // Lbl_T8
+            // 
+            this.Lbl_T8.AutoSize = true;
+            this.Lbl_T8.Location = new System.Drawing.Point(361, 223);
+            this.Lbl_T8.Name = "Lbl_T8";
+            this.Lbl_T8.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T8.TabIndex = 46;
+            this.Lbl_T8.Text = "Items Ready!";
+            this.Lbl_T8.Visible = false;
+            // 
+            // Lbl_T9
+            // 
+            this.Lbl_T9.AutoSize = true;
+            this.Lbl_T9.Location = new System.Drawing.Point(463, 146);
+            this.Lbl_T9.Name = "Lbl_T9";
+            this.Lbl_T9.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T9.TabIndex = 47;
+            this.Lbl_T9.Text = "Items Ready!";
+            this.Lbl_T9.Visible = false;
+            // 
+            // Lbl_T10
+            // 
+            this.Lbl_T10.AutoSize = true;
+            this.Lbl_T10.Location = new System.Drawing.Point(463, 223);
+            this.Lbl_T10.Name = "Lbl_T10";
+            this.Lbl_T10.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_T10.TabIndex = 48;
+            this.Lbl_T10.Text = "Items Ready!";
+            this.Lbl_T10.Visible = false;
+            // 
             // TableView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(575, 296);
+            this.Controls.Add(this.Lbl_T10);
+            this.Controls.Add(this.Lbl_T9);
+            this.Controls.Add(this.Lbl_T8);
+            this.Controls.Add(this.Lbl_T7);
+            this.Controls.Add(this.Lbl_T6);
+            this.Controls.Add(this.Lbl_T5);
+            this.Controls.Add(this.Lbl_T4);
+            this.Controls.Add(this.Lbl_T3);
+            this.Controls.Add(this.Lbl_T2);
+            this.Controls.Add(this.Lbl_T1);
             this.Controls.Add(this.color_avai);
             this.Controls.Add(this.lbl_avai);
             this.Controls.Add(this.lbl_reserved);
@@ -379,5 +499,15 @@
         private System.Windows.Forms.Label color_avai;
         private System.Windows.Forms.Label lbl_reserved;
         private System.Windows.Forms.Timer Tmr_Refresh;
+        private System.Windows.Forms.Label Lbl_T1;
+        private System.Windows.Forms.Label Lbl_T2;
+        private System.Windows.Forms.Label Lbl_T3;
+        private System.Windows.Forms.Label Lbl_T4;
+        private System.Windows.Forms.Label Lbl_T5;
+        private System.Windows.Forms.Label Lbl_T6;
+        private System.Windows.Forms.Label Lbl_T7;
+        private System.Windows.Forms.Label Lbl_T8;
+        private System.Windows.Forms.Label Lbl_T9;
+        private System.Windows.Forms.Label Lbl_T10;
     }
 }

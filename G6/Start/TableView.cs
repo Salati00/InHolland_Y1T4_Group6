@@ -71,6 +71,7 @@ namespace Start
                 if (tab[i].Status == Table_Status.Available)
                 {
                     buttons[i].BackColor = Color.White;
+                    buttons[i].ForeColor = Color.Black;
                 }
                 else if (tab[i].Status == Table_Status.Occupied)
                 {
@@ -87,6 +88,7 @@ namespace Start
 
         private void Tmr_Refresh_Tick(object sender, EventArgs e)
         {
+            tabList = tab.GetAllTables();
             InitializeTableStatus(tabList);
         }
     }

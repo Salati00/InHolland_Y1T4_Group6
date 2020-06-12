@@ -33,16 +33,17 @@ namespace Start
         {
             Initialize();
             InitializeCombobox();
+            member = new Staff();
+            table = tab.GetTableFromInt(1);
         }
 
         private void Initialize()
         {
-            InitializeComponent();
             ord = new OrderingService();
             tab = new TableService();
             member = new Staff();
             order = new Order();
-            
+            InitializeComponent();
         }
         private void Ordering_Load(object sender, EventArgs e)
         {
@@ -125,6 +126,7 @@ namespace Start
 
         private void Btn_Send_Click(object sender, EventArgs e)
         {
+            table.Table_ID = Convert.ToInt32(Cmb_TableSelection.SelectedValue);
             order = OrderList.GetOrder();
             order.Staff_ID = member.Staff_ID;
             order.Table_ID = table.Table_ID;
@@ -133,5 +135,6 @@ namespace Start
             if (((Button)sender).Name != "Btn_Send")
                 this.Close();
         }
+
     }
 }
