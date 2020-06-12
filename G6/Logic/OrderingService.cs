@@ -75,12 +75,12 @@ namespace Logic
             }
         }
 
-        public List<Order> GetOrders()
+        public List<OrderItem> GetOrderItem()
         {
-            List<Order> orders;
+            List<OrderItem> orders;
             try
             {
-                orders = DB.Db_Get_All_Orders();
+                orders = DB.Db_Get_All_Order_Items();
             }
             catch (Exception)
             {

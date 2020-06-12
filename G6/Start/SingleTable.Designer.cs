@@ -31,101 +31,205 @@
             this.btn_AddOrder = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
             this.Lst_TableOrders = new System.Windows.Forms.ListView();
-            this.order_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.staff_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.table_id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.closed = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Lbl_Table = new System.Windows.Forms.Label();
             this.Lbl_TableNum = new System.Windows.Forms.Label();
+            this.btn_ready = new System.Windows.Forms.Button();
+            this.btn_reserve = new System.Windows.Forms.Button();
+            this.btn_cancel = new System.Windows.Forms.Button();
+            this.status = new System.Windows.Forms.Label();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.btn_occupied = new System.Windows.Forms.Button();
+            this.orItemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.orderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.datetime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.notes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btn_AddOrder
             // 
-            this.btn_AddOrder.Location = new System.Drawing.Point(616, 52);
+            this.btn_AddOrder.BackColor = System.Drawing.Color.Salmon;
+            this.btn_AddOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddOrder.ForeColor = System.Drawing.Color.White;
+            this.btn_AddOrder.Location = new System.Drawing.Point(628, 52);
             this.btn_AddOrder.Name = "btn_AddOrder";
-            this.btn_AddOrder.Size = new System.Drawing.Size(172, 85);
+            this.btn_AddOrder.Size = new System.Drawing.Size(160, 60);
             this.btn_AddOrder.TabIndex = 0;
-            this.btn_AddOrder.Text = "Add Order";
-            this.btn_AddOrder.UseVisualStyleBackColor = true;
+            this.btn_AddOrder.Text = "Take Order";
+            this.btn_AddOrder.UseVisualStyleBackColor = false;
             this.btn_AddOrder.Click += new System.EventHandler(this.Btn_AddOrder_Click);
             // 
             // btn_back
             // 
-            this.btn_back.Location = new System.Drawing.Point(616, 353);
+            this.btn_back.BackColor = System.Drawing.Color.Salmon;
+            this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_back.ForeColor = System.Drawing.Color.White;
+            this.btn_back.Location = new System.Drawing.Point(628, 382);
             this.btn_back.Name = "btn_back";
-            this.btn_back.Size = new System.Drawing.Size(172, 85);
+            this.btn_back.Size = new System.Drawing.Size(160, 56);
             this.btn_back.TabIndex = 2;
             this.btn_back.Text = "Back";
-            this.btn_back.UseVisualStyleBackColor = true;
+            this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.Btn_Back_Click);
             // 
             // Lst_TableOrders
             // 
             this.Lst_TableOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.order_id,
-            this.staff_id,
-            this.table_id,
-            this.time,
-            this.closed});
+            this.orItemID,
+            this.menuItem,
+            this.orderID,
+            this.itemStatus,
+            this.datetime,
+            this.quantity,
+            this.notes});
             this.Lst_TableOrders.FullRowSelect = true;
             this.Lst_TableOrders.GridLines = true;
             this.Lst_TableOrders.HideSelection = false;
-            this.Lst_TableOrders.Location = new System.Drawing.Point(12, 52);
+            this.Lst_TableOrders.Location = new System.Drawing.Point(6, 52);
             this.Lst_TableOrders.Name = "Lst_TableOrders";
-            this.Lst_TableOrders.Size = new System.Drawing.Size(598, 386);
+            this.Lst_TableOrders.Size = new System.Drawing.Size(616, 386);
             this.Lst_TableOrders.TabIndex = 3;
             this.Lst_TableOrders.UseCompatibleStateImageBehavior = false;
             this.Lst_TableOrders.View = System.Windows.Forms.View.Details;
             // 
-            // order_id
-            // 
-            this.order_id.Text = "Order ID";
-            this.order_id.Width = 110;
-            // 
-            // staff_id
-            // 
-            this.staff_id.Text = "Staff ID";
-            this.staff_id.Width = 120;
-            // 
-            // table_id
-            // 
-            this.table_id.Text = "Table ID";
-            this.table_id.Width = 120;
-            // 
-            // time
-            // 
-            this.time.Text = "Time";
-            this.time.Width = 120;
-            // 
-            // closed
-            // 
-            this.closed.Text = "Closed";
-            this.closed.Width = 120;
-            // 
             // Lbl_Table
             // 
             this.Lbl_Table.AutoSize = true;
+            this.Lbl_Table.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Lbl_Table.Location = new System.Drawing.Point(12, 13);
             this.Lbl_Table.Name = "Lbl_Table";
-            this.Lbl_Table.Size = new System.Drawing.Size(34, 13);
+            this.Lbl_Table.Size = new System.Drawing.Size(44, 16);
             this.Lbl_Table.TabIndex = 4;
             this.Lbl_Table.Text = "Table";
             // 
             // Lbl_TableNum
             // 
             this.Lbl_TableNum.AutoSize = true;
-            this.Lbl_TableNum.Location = new System.Drawing.Point(52, 13);
+            this.Lbl_TableNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_TableNum.Location = new System.Drawing.Point(62, 13);
             this.Lbl_TableNum.Name = "Lbl_TableNum";
-            this.Lbl_TableNum.Size = new System.Drawing.Size(16, 13);
+            this.Lbl_TableNum.Size = new System.Drawing.Size(17, 16);
             this.Lbl_TableNum.TabIndex = 5;
             this.Lbl_TableNum.Text = "...";
+            // 
+            // btn_ready
+            // 
+            this.btn_ready.BackColor = System.Drawing.Color.Salmon;
+            this.btn_ready.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_ready.ForeColor = System.Drawing.Color.White;
+            this.btn_ready.Location = new System.Drawing.Point(628, 118);
+            this.btn_ready.Name = "btn_ready";
+            this.btn_ready.Size = new System.Drawing.Size(160, 60);
+            this.btn_ready.TabIndex = 6;
+            this.btn_ready.Text = "Ready";
+            this.btn_ready.UseVisualStyleBackColor = false;
+            this.btn_ready.Click += new System.EventHandler(this.btn_ready_Click);
+            // 
+            // btn_reserve
+            // 
+            this.btn_reserve.BackColor = System.Drawing.Color.Salmon;
+            this.btn_reserve.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reserve.ForeColor = System.Drawing.Color.White;
+            this.btn_reserve.Location = new System.Drawing.Point(628, 250);
+            this.btn_reserve.Name = "btn_reserve";
+            this.btn_reserve.Size = new System.Drawing.Size(160, 60);
+            this.btn_reserve.TabIndex = 7;
+            this.btn_reserve.Text = "Reserve";
+            this.btn_reserve.UseVisualStyleBackColor = false;
+            this.btn_reserve.Click += new System.EventHandler(this.btn_reserve_Click);
+            // 
+            // btn_cancel
+            // 
+            this.btn_cancel.BackColor = System.Drawing.Color.Salmon;
+            this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_cancel.ForeColor = System.Drawing.Color.White;
+            this.btn_cancel.Location = new System.Drawing.Point(628, 316);
+            this.btn_cancel.Name = "btn_cancel";
+            this.btn_cancel.Size = new System.Drawing.Size(160, 60);
+            this.btn_cancel.TabIndex = 8;
+            this.btn_cancel.Text = "Cancel";
+            this.btn_cancel.UseVisualStyleBackColor = false;
+            this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
+            // 
+            // status
+            // 
+            this.status.AutoSize = true;
+            this.status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.status.Location = new System.Drawing.Point(124, 13);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(48, 16);
+            this.status.TabIndex = 9;
+            this.status.Text = "Status:";
+            // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_status.Location = new System.Drawing.Point(169, 13);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(17, 16);
+            this.lbl_status.TabIndex = 10;
+            this.lbl_status.Text = "...";
+            // 
+            // btn_occupied
+            // 
+            this.btn_occupied.BackColor = System.Drawing.Color.Salmon;
+            this.btn_occupied.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_occupied.ForeColor = System.Drawing.Color.White;
+            this.btn_occupied.Location = new System.Drawing.Point(628, 184);
+            this.btn_occupied.Name = "btn_occupied";
+            this.btn_occupied.Size = new System.Drawing.Size(160, 60);
+            this.btn_occupied.TabIndex = 11;
+            this.btn_occupied.Text = "Occupy";
+            this.btn_occupied.UseVisualStyleBackColor = false;
+            this.btn_occupied.Click += new System.EventHandler(this.btn_occupied_Click);
+            // 
+            // orItemID
+            // 
+            this.orItemID.Text = "Order Item ID";
+            this.orItemID.Width = 80;
+            // 
+            // menuItem
+            // 
+            this.menuItem.Text = "Menu Item";
+            this.menuItem.Width = 120;
+            // 
+            // orderID
+            // 
+            this.orderID.Text = "Order ID";
+            // 
+            // itemStatus
+            // 
+            this.itemStatus.Text = "Status";
+            this.itemStatus.Width = 80;
+            // 
+            // datetime
+            // 
+            this.datetime.Text = "DateTime";
+            this.datetime.Width = 120;
+            // 
+            // quantity
+            // 
+            this.quantity.Text = "Quantity";
+            // 
+            // notes
+            // 
+            this.notes.Text = "Notes";
+            this.notes.Width = 150;
             // 
             // SingleTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btn_occupied);
+            this.Controls.Add(this.lbl_status);
+            this.Controls.Add(this.status);
+            this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.btn_reserve);
+            this.Controls.Add(this.btn_ready);
             this.Controls.Add(this.Lbl_TableNum);
             this.Controls.Add(this.Lbl_Table);
             this.Controls.Add(this.Lst_TableOrders);
@@ -146,10 +250,18 @@
         private System.Windows.Forms.ListView Lst_TableOrders;
         private System.Windows.Forms.Label Lbl_Table;
         private System.Windows.Forms.Label Lbl_TableNum;
-        private System.Windows.Forms.ColumnHeader order_id;
-        private System.Windows.Forms.ColumnHeader staff_id;
-        private System.Windows.Forms.ColumnHeader table_id;
-        private System.Windows.Forms.ColumnHeader time;
-        private System.Windows.Forms.ColumnHeader closed;
+        private System.Windows.Forms.Button btn_ready;
+        private System.Windows.Forms.Button btn_reserve;
+        private System.Windows.Forms.Button btn_cancel;
+        private System.Windows.Forms.Label status;
+        private System.Windows.Forms.Label lbl_status;
+        private System.Windows.Forms.Button btn_occupied;
+        private System.Windows.Forms.ColumnHeader orItemID;
+        private System.Windows.Forms.ColumnHeader menuItem;
+        private System.Windows.Forms.ColumnHeader orderID;
+        private System.Windows.Forms.ColumnHeader itemStatus;
+        private System.Windows.Forms.ColumnHeader datetime;
+        private System.Windows.Forms.ColumnHeader quantity;
+        private System.Windows.Forms.ColumnHeader notes;
     }
 }

@@ -19,13 +19,11 @@ namespace Start
     {
         Staff member;
         TableService tab;
-
+        List<Table> tabList;
         public TableView(Staff member)
         {
             InitializeComponent();
             tab = new TableService();
-
-            date.Text = DateTime.Today.ToShortDateString();
             this.member = member;
 
         }
@@ -44,6 +42,47 @@ namespace Start
         private void TableView_Load(object sender, EventArgs e)
         {
             Lbl_ID.Text = member.Role.ToString();
+            date.Text = DateTime.Today.ToShortDateString();
+            tabList = tab.GetAllTables();
+            InitializeTableStatus(tabList);
+        }
+
+        private List<Button> ButtonList()
+        {
+            List<Button> buttons = new List<Button>();
+            buttons.Add(t1);
+            buttons.Add(t2);
+            buttons.Add(t3);
+            buttons.Add(t4);
+            buttons.Add(t5);
+            buttons.Add(t6);
+            buttons.Add(t7);
+            buttons.Add(t8);
+            buttons.Add(t9);
+            buttons.Add(t10);
+            return buttons;
+        }
+
+        private void InitializeTableStatus(List<Table> tab)
+        {
+            List<Button> buttons = ButtonList();
+            for (int i = 0; i < tab.Count; i++)
+            {
+                if (tab[i].Status == Table_Status.Available)
+                {
+                    buttons[i].BackColor = Color.White;
+                }
+                else if (tab[i].Status == Table_Status.Occupied)
+                {
+                    buttons[i].BackColor = Color.Blue;
+                    buttons[i].ForeColor = Color.White;
+                }
+                else
+                {
+                    buttons[i].BackColor = Color.Red;
+                    buttons[i].ForeColor = Color.White;
+                }
+            }
         }
     }
 }

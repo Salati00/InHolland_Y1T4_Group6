@@ -66,28 +66,31 @@ namespace DAO
             throw new NotImplementedException("if close then close order, otherwise send the order to order items");
         }
 
-        public List<Order> Db_Get_All_Orders()
+        public List<OrderItem> Db_Get_All_Order_Items()
         {
-            string query = "SELECT * FROM [Orders]";
+            string query = "SELECT * FROM [Order_Items], [Orders] WHERE Order_Items.Order_ID = Orders.Order_ID AND Order_ID = @order_id";
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadOrderTable(ExecuteSelectQuery(query, sqlParameters));
+            return ReadOrderItemTable(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<Order> ReadOrderTable(DataTable dt)
+        private List<OrderItem> ReadOrderItemTable(DataTable dataTable)
         {
-            List<Order> orders = new List<Order>();
+            List<OrderItem> items = new List<OrderItem>();
 
-            foreach (DataRow dr in dt.Rows)
+            foreach (DataRow dr in dataTable.Rows)
             {
-                Order order = new Order()
+                OrderItem item = new OrderItem()
                 {
-                    Order_ID = (int)dr["Order_ID"],
-                    Staff_ID = (int)dr["Staff_ID"],
-                    Table_ID = (int)dr["Table_ID"],
-                    Time = (DateTime)dr["Time"]
+                    ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
+                    MenuItem = (Menu_Item)dr["Menu_Item_ID"],
+                    OrderID = (Order)dr["Order_ID"],
+                    Status = (Order_Status)dr["State_ID"],
+                    DateTime = (DateTime)dr["DateTime"],
+                    Quantity = Convert.ToInt32(dr["Quantity"]),
+                    Comment = dr["Notes"].ToString()
                 };
-                orders.Add(order);
+                items.Add(item);
             }
-            return orders;
+            return items;
         }
     }
 }
