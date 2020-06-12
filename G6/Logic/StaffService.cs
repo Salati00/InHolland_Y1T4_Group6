@@ -21,6 +21,7 @@ namespace Logic
             }
             catch (Exception)
             {
+                /*
                 // lost connection to database
                 List<Staff> staff = new List<Staff>();
                 Staff mem1 = new Staff();
@@ -40,6 +41,7 @@ namespace Logic
                 staff.Add(mem2);
 
                 return staff;
+                */
                 throw new Exception("Error occurs when attempting to connect to database.");
             }
         }

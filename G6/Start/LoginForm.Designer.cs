@@ -34,12 +34,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_chapeau = new System.Windows.Forms.Label();
-            this.username = new System.Windows.Forms.TextBox();
             this.password = new System.Windows.Forms.TextBox();
             this.btn_signin = new System.Windows.Forms.Button();
             this.btn_forgotpass = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
             this.Btn_Temp1 = new System.Windows.Forms.Button();
+            this.Cmb_Username = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // chapeau
@@ -114,18 +114,6 @@
             this.lbl_chapeau.Text = "C\r\nH\r\nA\r\nP\r\nE\r\nA\r\nU";
             this.lbl_chapeau.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // username
-            // 
-            this.username.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.username.BackColor = System.Drawing.SystemColors.Window;
-            this.username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.username.Location = new System.Drawing.Point(293, 143);
-            this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(284, 26);
-            this.username.TabIndex = 6;
-            this.username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextEnterNumberOnly);
-            // 
             // password
             // 
             this.password.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -187,17 +175,25 @@
             this.Btn_Temp1.UseVisualStyleBackColor = true;
             this.Btn_Temp1.Click += new System.EventHandler(this.Btn_Temp1_Click);
             // 
+            // Cmb_Username
+            // 
+            this.Cmb_Username.FormattingEnabled = true;
+            this.Cmb_Username.Location = new System.Drawing.Point(292, 142);
+            this.Cmb_Username.Name = "Cmb_Username";
+            this.Cmb_Username.Size = new System.Drawing.Size(285, 21);
+            this.Cmb_Username.TabIndex = 12;
+            // 
             // login_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 439);
+            this.Controls.Add(this.Cmb_Username);
             this.Controls.Add(this.Btn_Temp1);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_forgotpass);
             this.Controls.Add(this.btn_signin);
             this.Controls.Add(this.password);
-            this.Controls.Add(this.username);
             this.Controls.Add(this.lbl_chapeau);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -222,12 +218,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_chapeau;
-        private System.Windows.Forms.TextBox username;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Button btn_signin;
         private System.Windows.Forms.Button btn_forgotpass;
         private System.Windows.Forms.Button btn_exit;
         private System.Windows.Forms.Button Btn_Temp1;
+        private System.Windows.Forms.ComboBox Cmb_Username;
     }
 }
 
