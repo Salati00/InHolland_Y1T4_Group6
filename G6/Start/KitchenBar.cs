@@ -18,20 +18,21 @@ namespace Start                                 // 641672
 {
     public partial class KitchenBar : Form
     {
-        List<ListView> allOrderLists;
-        List<Order> orders;
-        List<OrderItem> allOrderItems;
+        private List<ListView> allOrderLists;
+        private List<Order> allOrders;
+        private List<Order> AppearingOrders;
+        private List<OrderItem> allOrderItems;
 
-        Staff_Type staffType;
-        bool IsBar;
+        private Staff_Type staffType;
+        private bool IsBar;
 
-        KitchenBarService service;
-        ListView lastServed;
-        int lastServedPosition;
+        private KitchenBarService service;
+        private ListView lastServedList;
+        private Order lastServedOrder;
+        private int lastServedPosition;
         
-        int pageNumber = 1;
-
-        int totalItems;
+        private int pageNumber = 1;
+        private int totalItems;
 
         public KitchenBar(Staff_Type type) 
         {
@@ -49,9 +50,10 @@ namespace Start                                 // 641672
         void FillInfo()
         {
             allOrderLists = new List<ListView>();
-            orders = service.GetOrders();
+            allOrders = service.GetOrders();
             allOrderItems = new List<OrderItem>();
             totalItems = service.CountOrderItems();
+            AppearingOrders = new List<Order>();
 
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
@@ -60,15 +62,12 @@ namespace Start                                 // 641672
             {
                 this.Text = "Bar";
                 IsBar = true;
-
             }
 
             PanelOrders.Controls.Clear();
-            foreach (Order order in orders)
+            foreach (Order order in allOrders)
             {
                 
-
-
                 ListView list = new ListView();
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 list.Width  = (PanelOrders.Width / 2) - (PanelOrders.Width / 30); 
@@ -80,31 +79,30 @@ namespace Start                                 // 641672
                 {
                     PanelOrders.Controls.Add(list);
                     list.Click += new EventHandler(this.ClickOrder);
+                    AppearingOrders.Add(order);
                 }
-                //else
-                //{
-                //    orders.Remove(order);
-                //}
+ 
                 allOrderLists.Add(list);
                 
             }
-
+            
         }
         public void OrderItems(ListView list,Order order)
         {
-            
-           
-            for (int i = 0; i < 8; i++)
+
+            int count = -1;
+            while (true) 
             {
+                count++;
                 bool noMatch;
                 do
                 {
                     noMatch = false;
                     try
                     {
-                        if ((IsBar && order.OrderItems[i].cardID != 3) || ((!IsBar && order.OrderItems[i].cardID == 3))||order.OrderItems[i].Status>0)
+                        if ((IsBar && order.OrderItems[count].cardID != 3) || ((!IsBar && order.OrderItems[count].cardID == 3))||order.OrderItems[count].Status>0)
                         {
-                            order.OrderItems.Remove(order.OrderItems[i]);
+                            order.OrderItems.Remove(order.OrderItems[count]);
                             noMatch = true;
                         }
                     }   catch { }
@@ -112,30 +110,46 @@ namespace Start                                 // 641672
 
                 try
                 {
-                    ItemsStyle(list, order, i);
+                    ItemsStyle(list, order, count);
                 }
                 catch
                 {
-                    list.Items.Add("");
-                    if (i >= 7)
+                    
+                    if (count >= 7)
                     {
-                        list.Items[i].SubItems.Add("Remove");
+                        list.Items.Add($"  Table: {order.Table_ID:D2}");
+                        list.Items[count].SubItems.Add("Ready");
                         break;
+                    }
+                    else
+                    {
+                        list.Items.Add("");
                     }
                     continue;
                 }
                             
-                list.Items[i].Font = new Font("Arial", 14);
+                list.Items[count].Font = new Font("Arial", 14);
             }
-
             list.View = View.Details;
-            list.FullRowSelect = true;
-            //  list.GridLines = true;
-
+            list.FullRowSelect = true;     
             list.Items[list.Items.Count - 1].UseItemStyleForSubItems = false;
+            try
+            {
+                ReadyColors(list);
+            }
+            catch
+            { 
+                list.Items[list.Items.Count - 1].SubItems.Add("Ready");
+                ReadyColors(list);
+            }
+                
+        }
+
+        public void ReadyColors(ListView list)
+        {
+            list.Items[list.Items.Count - 1].SubItems[0].ForeColor = System.Drawing.Color.DimGray;
             list.Items[list.Items.Count - 1].SubItems[1].ForeColor = System.Drawing.Color.White;
             list.Items[list.Items.Count - 1].SubItems[1].BackColor = System.Drawing.Color.Black;
-                
         }
 
         public void ItemsStyle(ListView list, Order order, int i)
@@ -143,7 +157,6 @@ namespace Start                                 // 641672
 
             list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
             allOrderItems.Add(order.OrderItems[i]);
-         //   list.Items[i].Tag = order.OrderItems[i].ItemID;
 
             if (order.OrderItems[i].Comment != null)
             {
@@ -166,23 +179,28 @@ namespace Start                                 // 641672
             if (recallpanel.Visible&&( list.Columns[0].Text[0] != 'R'|| list.Items[list.Items.Count - 1].Selected))
             {
                 recallpanel.Hide();
-                
+                OrderIsReady(lastServedOrder, 2);
             }
             else if (list.Items[list.Items.Count-1].Selected)
             {
-                lastServed = list;
+                lastServedList = list;
                 lastServedPosition = PanelOrders.Controls.IndexOf(list);
-                OrderIsReady(orders[PanelOrders.Controls.IndexOf(list)], 2);
+                try
+                {
+                    lastServedOrder = AppearingOrders[PanelOrders.Controls.IndexOf(list)];
+                }
+                catch { }
+               
+                OrderIsReady(lastServedOrder, 2);
+
+                AppearingOrders.Remove(lastServedOrder);
                 PanelOrders.Controls.Remove(list);
 
-                if (lastServed.Columns[0].Text[0] != 'R')
-                {
-                    lastServed.Columns[0].Text = "Recalled " + lastServed.Columns[0].Text;
-
+                if (lastServedList.Columns[0].Text[0] != 'R')
+                {    
+                    lastServedList.Columns[0].Text = "Recalled " + lastServedList.Columns[0].Text;
                 }
             }
-
-
         }
         
 
@@ -195,35 +213,31 @@ namespace Start                                 // 641672
                     service.StateOrderItem(item.ItemID, state);
                 }
             }
-
-
-
-            //    service.StateOrderItem(itemId, state);
         }
 
 
         private void recall_Click_1(object sender, EventArgs e)
         {
-            if (lastServed!=null)
+            if (lastServedList!=null)
             {
                 if (recallpanel.Visible)
                 {
                     recallpanel.Hide();
-                    OrderIsReady(orders[int.Parse((string)lastServed.Tag)], 2);
+                    OrderIsReady(lastServedOrder, 2);
                 }
                 else
                 {
                     recallpanel.Show();
-                    OrderIsReady(orders[lastServedPosition], 1);
+                    OrderIsReady(lastServedOrder, 1);
                 }
 
                 recallpanel.Controls.Clear();
-                recallpanel.Controls.Add(lastServed);
-                lastServed.Location = new System.Drawing.Point(1,1);
+                recallpanel.Controls.Add(lastServedList);
+                lastServedList.Location = new System.Drawing.Point(1,1);
 
     
 
-                lastServed.Click += new EventHandler(this.ClickOrder);
+                lastServedList.Click += new EventHandler(this.ClickOrder);
 
             }
 
@@ -262,24 +276,29 @@ namespace Start                                 // 641672
         {
             int counter = 4;
 
-            if (!PanelOrders.Controls[PanelOrders.Controls.Count - 1].Visible)
-                counter = PanelOrders.Controls.Count % 4;
-            
-            for (int order = PanelOrders.Controls.Count-1; order >= 0; order--)
+            try
             {
+                if (!PanelOrders.Controls[PanelOrders.Controls.Count - 1].Visible)
+                    counter = PanelOrders.Controls.Count % 4;
 
-                if (!PanelOrders.Controls[order].Visible)
+                for (int order = PanelOrders.Controls.Count - 1; order >= 0; order--)
                 {
-                    counter--;
-                    PanelOrders.Controls[order].Show();
-                }
 
-                if (counter == 0)
-                {
-                    pageNumber--;
-                    break;
+                    if (!PanelOrders.Controls[order].Visible)
+                    {
+                        counter--;
+                        PanelOrders.Controls[order].Show();
+                    }
+
+                    if (counter == 0)
+                    {
+                        pageNumber--;
+                        break;
+                    }
                 }
             }
+            catch { }
+
         }
 
 
@@ -290,39 +309,46 @@ namespace Start                                 // 641672
         }
 
 
-        private void PanelOrders_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             int i = 0;
             foreach (ListView list in allOrderLists)
             {
-                list.Columns[1].Text = DateTime.Now.Subtract(orders[i].Time).ToString(@"mm\:ss");
+                if (DateTime.Now.Subtract(allOrders[i].Time).ToString(@"hh\:mm\:ss").Substring(0, 2) == "00")
+                    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[i].Time).ToString(@"mm\:ss");
+                else
+                    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[i].Time).ToString(@"hh\:mm\:ss");
+
 
                 i++;
             }
             i = 0;
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
-          
 
-            
+
+            int samePage = pageNumber - 1;
             if(totalItems != service.CountOrderItems())
             {
                 
                 FillInfo();
+                for (int page = 0; page < samePage; page++)
+                {
+                    right_Click(new object(),new EventArgs());
+                }
             }
             
-           
-            
+
         }
 
         
 
 
+        private void PanelOrders_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
 
     }
 }

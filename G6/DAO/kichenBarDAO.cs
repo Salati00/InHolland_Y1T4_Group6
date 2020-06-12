@@ -15,8 +15,8 @@ namespace DAO
 
         public List<Order> Db_Get_Orders()              //done
         {
-            string query = "select Order_ID, [Time]" +
-                "from Orders";
+            string query = "select Order_ID, [Time] ,Table_ID " +
+                "from Orders;";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrderTables(ExecuteSelectQuery(query, sqlParameters));
@@ -31,6 +31,7 @@ namespace DAO
 
                 order.Order_ID = (int)dr["Order_ID"];
                 order.Time = (DateTime)dr["Time"];
+                order.Table_ID = (int)dr["Table_ID"];
                 order.OrderItems = Db_Get_OrderItems(order.Order_ID);
                 
                 orders.Add(order);
