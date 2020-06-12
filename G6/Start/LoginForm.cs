@@ -58,7 +58,7 @@ namespace Start
 
         private void btn_signin_Click(object sender, EventArgs e)
         {
-            if (password.Text == null)
+            if (password.Text == "")
             {
                 MessageBox.Show("Please provide username and password!");
             }

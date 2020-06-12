@@ -68,7 +68,7 @@
             // Lbl_Name
             // 
             this.Lbl_Name.AutoSize = true;
-            this.Lbl_Name.Location = new System.Drawing.Point(21, 13);
+            this.Lbl_Name.Location = new System.Drawing.Point(24, 13);
             this.Lbl_Name.Name = "Lbl_Name";
             this.Lbl_Name.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Name.TabIndex = 3;
@@ -77,7 +77,7 @@
             // Lbl_Amount
             // 
             this.Lbl_Amount.AutoSize = true;
-            this.Lbl_Amount.Location = new System.Drawing.Point(246, 14);
+            this.Lbl_Amount.Location = new System.Drawing.Point(246, 13);
             this.Lbl_Amount.Name = "Lbl_Amount";
             this.Lbl_Amount.Size = new System.Drawing.Size(13, 13);
             this.Lbl_Amount.TabIndex = 4;
@@ -94,7 +94,7 @@
             this.Controls.Add(this.Btn_Add);
             this.Controls.Add(this.Btn_Reduce);
             this.Name = "OrderListRow";
-            this.Size = new System.Drawing.Size(348, 38);
+            this.Size = new System.Drawing.Size(350, 40);
             this.ResumeLayout(false);
             this.PerformLayout();
 

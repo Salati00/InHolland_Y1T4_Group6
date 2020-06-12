@@ -13,13 +13,14 @@ namespace Start
 {
     public partial class RowElement : UserControl
     {
-        private Order orders;
+        //private Order orders;
+        private OrderList ol;
         private Menu_Item item;
 
-        public RowElement(Menu_Item _item, ref Order order)
+        public RowElement(Menu_Item _item, OrderList _ol)
         {
             InitializeComponent();
-            orders = order;
+            ol = _ol;
             SetMenuItem(_item);
         }
 
@@ -39,37 +40,20 @@ namespace Start
             return item;
         }
 
-        public Order Orders
+        /*public Order Orders
         {
             get
             {
                 return orders;
             }
-        }
+        }*/
 
         private void Btn_Add_Click(object sender, EventArgs e)
         {
-            int count = 0;
-            foreach (var item in orders.OrderItems)
-            {
-                if(item.MenuItem.Menu_Item_ID == this.item.Menu_Item_ID)
-                {
-                    item.Quantity++;
-                    count++;
-                }
-            }
-            if(count == 0)
-            {
-                orders.OrderItems.Add(new OrderItem()
-                {
-                    Quantity = 1,
-                    DateTime = DateTime.UtcNow,
-                    MenuItem = this.item,
-                    Status = 0
-                }
-                ); 
-
-            }
+            if (item.Stock >= 1)
+                ol.AddItem(this.item);
+            else
+                MessageBox.Show("This Item is out of stock");
         }
     }
 }
