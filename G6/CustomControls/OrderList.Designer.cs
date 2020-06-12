@@ -35,8 +35,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Name = "OrderList";
-            this.Size = new System.Drawing.Size(400, 310);
+            this.Size = new System.Drawing.Size(398, 308);
             this.ResumeLayout(false);
 
         }

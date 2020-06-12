@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Dgv_OrderList = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Tab_Ordering = new System.Windows.Forms.TabControl();
             this.TPag_Food = new System.Windows.Forms.TabPage();
@@ -47,20 +46,12 @@
             this.Btn_SendClose = new System.Windows.Forms.Button();
             this.Btn_Quit = new System.Windows.Forms.Button();
             this.Lbl_CurrentCategory = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrderList)).BeginInit();
+            this.OrderList = new Start.OrderList();
             this.panel1.SuspendLayout();
             this.Tab_Ordering.SuspendLayout();
             this.TPag_Food.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Dgv_OrderList
-            // 
-            this.Dgv_OrderList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.Dgv_OrderList.Location = new System.Drawing.Point(596, 12);
-            this.Dgv_OrderList.Name = "Dgv_OrderList";
-            this.Dgv_OrderList.Size = new System.Drawing.Size(400, 310);
-            this.Dgv_OrderList.TabIndex = 1;
             // 
             // panel1
             // 
@@ -256,21 +247,29 @@
             this.Lbl_CurrentCategory.Size = new System.Drawing.Size(0, 13);
             this.Lbl_CurrentCategory.TabIndex = 9;
             // 
+            // OrderList
+            // 
+            this.OrderList.AutoScroll = true;
+            this.OrderList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.OrderList.Location = new System.Drawing.Point(598, 12);
+            this.OrderList.Name = "OrderList";
+            this.OrderList.Size = new System.Drawing.Size(398, 308);
+            this.OrderList.TabIndex = 10;
+            // 
             // Ordering
             // 
             this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.OrderList);
             this.Controls.Add(this.Lbl_CurrentCategory);
             this.Controls.Add(this.Btn_Quit);
             this.Controls.Add(this.Btn_SendClose);
             this.Controls.Add(this.Btn_Send);
             this.Controls.Add(this.Cmb_TableSelection);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.Dgv_OrderList);
             this.Name = "Ordering";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ordering";
             this.Load += new System.EventHandler(this.Ordering_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.Dgv_OrderList)).EndInit();
             this.panel1.ResumeLayout(false);
             this.Tab_Ordering.ResumeLayout(false);
             this.TPag_Food.ResumeLayout(false);
@@ -282,7 +281,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView Dgv_OrderList;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl Tab_Ordering;
         private System.Windows.Forms.TabPage TPag_Food;
@@ -301,5 +299,6 @@
         private System.Windows.Forms.Button Btn_SendClose;
         private System.Windows.Forms.Button Btn_Quit;
         private System.Windows.Forms.Label Lbl_CurrentCategory;
+        private OrderList OrderList;
     }
 }
