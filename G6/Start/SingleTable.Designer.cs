@@ -108,7 +108,7 @@
             this.btn_ready.Name = "btn_ready";
             this.btn_ready.Size = new System.Drawing.Size(160, 60);
             this.btn_ready.TabIndex = 6;
-            this.btn_ready.Text = "Ready";
+            this.btn_ready.Text = "Serve";
             this.btn_ready.UseVisualStyleBackColor = false;
             this.btn_ready.Click += new System.EventHandler(this.btn_ready_Click);
             // 

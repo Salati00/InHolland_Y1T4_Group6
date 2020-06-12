@@ -68,5 +68,17 @@ namespace Logic
             }
             return r;
         }
+
+        public void MarkItemsServed(Table tab)
+        {
+            try
+            {
+                DB.MarkItemsServed(tab);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

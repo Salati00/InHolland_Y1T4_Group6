@@ -41,5 +41,20 @@ namespace Logic
             }
             return tables;
         }
+
+        public List<Table> GetTablesWithOrders()
+        {
+            List<Table> tables;
+            try
+            {
+                tables = DB.GetTablesWithOrders();
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return tables;
+        }
     }
 }

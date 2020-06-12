@@ -334,6 +334,7 @@
             this.Lbl_T1.Name = "Lbl_T1";
             this.Lbl_T1.Size = new System.Drawing.Size(69, 13);
             this.Lbl_T1.TabIndex = 39;
+            this.Lbl_T1.Tag = "";
             this.Lbl_T1.Text = "Items Ready!";
             this.Lbl_T1.Visible = false;
             // 

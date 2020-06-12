@@ -12,6 +12,7 @@ using DAO;
 using Logic;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Drawing.Text;
 
 namespace Start
 {
@@ -90,6 +91,29 @@ namespace Start
         {
             tabList = tab.GetAllTables();
             InitializeTableStatus(tabList);
+            CheckReadyServe();
+        }
+
+        private void CheckReadyServe()
+        {
+            List<Table> tabls = tab.GetTablesWithOrders();
+
+            List<Label> listlab = Controls.OfType<Label>().ToList();
+            foreach (var item in listlab)
+            {
+                if (Regex.IsMatch(item.Name, "T[0-9]+"))
+                {
+                    item.Visible = false;
+                    int num = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].Value);
+                    foreach (var o in tabls)
+                    {
+                        if(num == o.Table_Number)
+                        {
+                            item.Visible = true;
+                        }
+                    }
+                }
+            }
         }
     }
 }

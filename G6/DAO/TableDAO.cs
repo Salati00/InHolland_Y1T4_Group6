@@ -46,5 +46,15 @@ namespace DAO
             }
             return Items;
         }
+
+        public List<Table> GetTablesWithOrders()
+        {
+            string query = "select * from tables " +
+                "where Table_ID in " +
+                "(select Table_ID from Orders where Order_ID in " +
+                "(select Order_ID from Order_Items where State_ID = 2))";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
     }
 }

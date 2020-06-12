@@ -117,8 +117,11 @@ namespace Start
             }
             else
             {
-                MessageBox.Show("The order is ready to be served.");
-                this.DialogResult = DialogResult.OK;
+                OrderingService service = new OrderingService();
+                service.MarkItemsServed(CurrentTable);
+                this.Close();
+                /*MessageBox.Show("The order is ready to be served.");
+                this.DialogResult = DialogResult.OK;*/
             }
         }
 

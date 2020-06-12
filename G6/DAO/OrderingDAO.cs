@@ -55,6 +55,14 @@ namespace DAO
             return Items;
         }
 
+        public void MarkItemsServed(Table tab)
+        {
+            string query = "update Order_Items set State_ID = 3 OUTPUT inserted.* where Order_ID in (select Order_ID from Orders where Table_ID = @tId) and State_ID = 2";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@tId", tab.Table_ID);
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
         public void Db_Send_Order(Order Order, bool Close = false)
         {
             string query;
