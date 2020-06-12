@@ -123,7 +123,6 @@ namespace Start
         {
             this.Hide();
             ord.SendOrder(OrderList.GetOrder(), (((Button)sender).Name == "Btn_Send") ? false : true);
-
             this.Close();
         }
     }
