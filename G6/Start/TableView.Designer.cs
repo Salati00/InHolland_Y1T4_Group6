@@ -324,7 +324,7 @@
             // 
             // Tmr_Refresh
             // 
-            this.Tmr_Refresh.Interval = 2000;
+            this.Tmr_Refresh.Interval = 4000;
             this.Tmr_Refresh.Tick += new System.EventHandler(this.Tmr_Refresh_Tick);
             // 
             // Lbl_T1
