@@ -114,6 +114,12 @@ namespace DAO
                 sqlParameters[4] = new SqlParameter("@qNt", item.Quantity);
                 sqlParameters[5] = new SqlParameter("@nTs", item.Comment == null? "": item.Comment.ToString());
                 ExecuteEditQuery(query, sqlParameters);
+
+                query = "Update Menu_Items set stock = stock - 1 " +
+                "WHERE Menu_Item_ID = @mId";
+                sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@mId", item.MenuItem.Menu_Item_ID);
+                ExecuteEditQuery(query, sqlParameters);
             }
         }
 
