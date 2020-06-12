@@ -10,11 +10,11 @@ namespace Model
     {
         public int ItemID { get; set; }
         public Menu_Item MenuItem { get; set; }
-        public Order OrderID { get; set; }
+        public int OrderID { get; set; }
         public Order_Status Status { get; set; }
         public DateTime DateTime { get; set; }
         public int Quantity { get; set; }
         public string Comment { get; set; }
-        
+
     }
 }

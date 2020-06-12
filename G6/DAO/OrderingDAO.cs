@@ -57,7 +57,9 @@ namespace DAO
         {
             if (Close)
             {
-
+                string query = "SELECT * from [Menu_Items] WHERE Item_Type_ID in (Select Item_Type_ID FROM Item_Types where Name like @nome)";
+                //string query = "SELECT * from [Menu_Items]";
+                SqlParameter[] sqlParameters = new SqlParameter[0];
             }
             else
             {
@@ -66,31 +68,47 @@ namespace DAO
             throw new NotImplementedException("if close then close order, otherwise send the order to order items");
         }
 
-        public List<OrderItem> Db_Get_All_Order_Items()
+        public Order Db_Get_OrderForTable(Table tab)
         {
-            string query = "SELECT * FROM [Order_Items], [Orders] WHERE Order_Items.Order_ID = Orders.Order_ID";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadOrderItemTable(ExecuteSelectQuery(query, sqlParameters));
+            string query = "SELECT * FROM [Order_Items], [Orders], [Menu_Items] " +
+                "WHERE Order_Items.Order_ID = Orders.Order_ID " +
+                "AND Menu_Items.Menu_Item_ID = Order_Items.Menu_Item_ID AND Table_ID = @tabId";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@tabId", tab.Table_ID);
+            return ReadOrderTable(ExecuteSelectQuery(query, sqlParameters));
         }
-        private List<OrderItem> ReadOrderItemTable(DataTable dataTable)
+        private Order ReadOrderTable(DataTable dataTable)
         {
-            List<OrderItem> items = new List<OrderItem>();
+            Order r = new Order
+            {
+                Order_ID = Convert.ToInt32(dataTable.Rows[0]["Order_ID"]),
+                Staff_ID = Convert.ToInt32(dataTable.Rows[0]["Staff_ID"]),
+                Table_ID = Convert.ToInt32(dataTable.Rows[0]["Table_ID"]),
+                Time = Convert.ToDateTime(dataTable.Rows[0]["Time"]),
+                OrderItems = new List<OrderItem>()
+            };
 
             foreach (DataRow dr in dataTable.Rows)
-            {
-                OrderItem item = new OrderItem()
+            {/*
+                r.OrderItems.Add(new OrderItem()
                 {
                     ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
-                    MenuItem = (Menu_Item)dr["Menu_Item_ID"],
-                    OrderID = (Order)dr["Order_ID"],
+                    MenuItem = new Menu_Item() {
+                        Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
+                        Descriptions = dr["Description"].ToString(),
+                        Name = dr["Name"].ToString(),
+                        Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"])
+                    },
+                    OrderID = new Order()
+                    {
+                    },
                     Status = (Order_Status)dr["State_ID"],
                     DateTime = (DateTime)dr["DateTime"],
                     Quantity = Convert.ToInt32(dr["Quantity"]),
                     Comment = dr["Notes"].ToString()
-                };
-                items.Add(item);
+                });*/
             }
-            return items;
+            return r;
         }
     }
 }
