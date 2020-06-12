@@ -16,5 +16,10 @@ namespace Model
         public int Table_ID { get; set; }
         public DateTime Time { get; set; }
         public List<OrderItem> OrderItems { get; set; }
+
+        public Order()
+        {
+            OrderItems = new List<OrderItem>();
+        }
     }
 }

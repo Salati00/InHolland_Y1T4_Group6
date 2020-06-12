@@ -38,6 +38,7 @@ namespace Start
             tab = new TableService();
             member = new Staff();
             order = new Order();
+            
         }
         private void Ordering_Load(object sender, EventArgs e)
         {
@@ -80,7 +81,7 @@ namespace Start
             int posY = 12;
             foreach (var item in Menu)
             {
-                RowElement r = new RowElement(item,ref order);
+                RowElement r = new RowElement(item, this.OrderList);
                 r.Top = posY;
                 r.Left = posX;
                 this.Controls.Add(r);
@@ -121,9 +122,8 @@ namespace Start
         private void Btn_Send_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ord.SendOrder(new Order(), new List<Menu_Item>(), (((Button)sender).Name == "Btn_Send") ? false : true);
-            //Overview ov = new Overview();
-            //ov.ShowDialog();
+            ord.SendOrder(OrderList.GetOrder(), (((Button)sender).Name == "Btn_Send") ? false : true);
+
             this.Close();
         }
     }

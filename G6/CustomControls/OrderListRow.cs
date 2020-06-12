@@ -8,12 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
+using System.Windows.Forms.VisualStyles;
 
 namespace CustomControls
 {
     public partial class OrderListRow : UserControl
     {
         private OrderItem item;
+
+        public OrderItem Item
+        {
+            get
+            {
+                return item;
+            }
+            set
+            {
+                item = value;
+                Lbl_Name.Text = value.MenuItem.Name;
+            }
+        }
 
         public int Amount
         {
@@ -23,29 +37,38 @@ namespace CustomControls
             }
             set
             {
-                Lbl_Amount.Text = value.ToString();
-                item.Quantity = Amount;
+                if (value > 0)
+                {
+                    if (value <= item.MenuItem.Stock)
+                    {
+                        Lbl_Amount.Text = value.ToString();
+                        item.Quantity = Amount;
+                    }
+                    else
+                        MessageBox.Show("The selected item is out of stock");
+                }
             }
         }
 
         public OrderItem GetItem()
         {
-            return item;
+            return Item;
         }
 
         public OrderListRow(OrderItem _item)
         {
             InitializeComponent();
-            item = _item;
+            Item = _item;
         }
         public OrderListRow()
         {
             InitializeComponent();
-            item = new OrderItem();
+            Item = new OrderItem();
         }
 
         private void Btn_Remove_Click(object sender, EventArgs e)
         {
+            item.Quantity = 0;
             this.Parent.Controls.Remove(this);
         }
 

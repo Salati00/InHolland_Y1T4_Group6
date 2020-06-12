@@ -63,8 +63,8 @@ namespace DAO
 
                 item.ItemID = (int)dr["Order_Item_ID"];
                 item.Quantity = (int)dr["Quantity"];
-                item.MenuItem.Name = (string)dr["Name"];               
-                item.cardID = (int)dr["Cart_ID"];
+                item.MenuItem.Name = (string)dr["Name"];                    
+                item.MenuItem.Type = (Item_Type)dr["Item_Type_ID"];
                 item.Status = (Order_Status)dr["State_ID"] - 1;
                 try { item.Comment = (string)dr["Notes"]; } catch { }
 

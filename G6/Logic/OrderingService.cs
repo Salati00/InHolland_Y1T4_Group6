@@ -62,11 +62,11 @@ namespace Logic
             }
         }*/
 
-        public Tuple<bool,string> SendOrder(Order Order, List<Menu_Item> Items, bool Close = false)
+        public Tuple<bool,string> SendOrder(Order Order, bool Close)
         {
             try
             {
-                DB.Db_Send_Order(Order, Items, Close);
+                DB.Db_Send_Order(Order, Close);
                 return new Tuple<bool, string>(true, "");
             }
             catch(Exception ex)

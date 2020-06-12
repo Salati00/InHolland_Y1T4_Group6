@@ -46,14 +46,15 @@ namespace DAO
                     Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
                     Name = dr["Name"].ToString(),
                     Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"]),
-                    Descriptions = dr["Description"].ToString()
+                    Descriptions = dr["Description"].ToString(),
+                    Stock = Convert.ToInt32(dr["Stock"])
                 };
                 Items.Add(elem);
             }
             return Items;
         }
 
-        public void Db_Send_Order(Order Order, List<Menu_Item> Items, bool Close = false)
+        public void Db_Send_Order(Order Order, bool Close = false)
         {
             if (Close)
             {
@@ -72,9 +73,9 @@ namespace DAO
         {
             string query = "SELECT * FROM [Order_Items], [Orders], [Menu_Items] " +
                 "WHERE Order_Items.Order_ID = Orders.Order_ID " +
-                "AND Menu_Items.Menu_Item_ID = Order_Items.Menu_Item_ID AND Table_ID = @tabId";
+                "AND Menu_Items.Menu_Item_ID = Order_Items.Menu_Item_ID AND Table_ID = @tabId AND Closed <> 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@tabId", tab.Table_ID);
+            sqlParameters[0] = new SqlParameter("@tabId", tab.Table_Number);
             return ReadOrderTable(ExecuteSelectQuery(query, sqlParameters));
         }
         private Order ReadOrderTable(DataTable dataTable)
@@ -89,7 +90,7 @@ namespace DAO
             };
 
             foreach (DataRow dr in dataTable.Rows)
-            {/*
+            {
                 r.OrderItems.Add(new OrderItem()
                 {
                     ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
@@ -99,14 +100,12 @@ namespace DAO
                         Name = dr["Name"].ToString(),
                         Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"])
                     },
-                    OrderID = new Order()
-                    {
-                    },
+                    OrderID = Convert.ToInt32(dr["Order_ID"]),
                     Status = (Order_Status)dr["State_ID"],
-                    DateTime = (DateTime)dr["DateTime"],
+                    DateTime = (dr["DateTime"] is DBNull)? DateTime.UtcNow : Convert.ToDateTime(dr["DateTime"]),
                     Quantity = Convert.ToInt32(dr["Quantity"]),
                     Comment = dr["Notes"].ToString()
-                });*/
+                });
             }
             return r;
         }
