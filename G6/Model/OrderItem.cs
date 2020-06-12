@@ -16,6 +16,5 @@ namespace Model
         public int Quantity { get; set; }
         public string Comment { get; set; }
 
-        public int cardID { get; set; } // mo added
     }
 }

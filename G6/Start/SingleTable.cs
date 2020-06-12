@@ -133,6 +133,7 @@ namespace Start
 
         private void btn_occupied_Click(object sender, EventArgs e)
         {
+            lbl_status.Text = Table_Status.Occupied.ToString();
             btn_AddOrder.Enabled = true;
             btn_AddOrder.BackColor = Color.Salmon;
             btn_cancel.Enabled = false;
@@ -144,5 +145,7 @@ namespace Start
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
         }
+
+        
     }
 }

@@ -63,7 +63,7 @@ namespace Start
             return buttons;
         }
 
-        private void InitializeTableStatus(List<Table> tab)
+        public void InitializeTableStatus(List<Table> tab)
         {
             List<Button> buttons = ButtonList();
             for (int i = 0; i < tab.Count; i++)
