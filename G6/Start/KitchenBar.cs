@@ -60,7 +60,7 @@ namespace Start                                 // 641672
             IsBar = false;
             if (staffType == Staff_Type.Bartender)
             {
-                this.Text = "Bar";
+                this.Text = "Chapeau Bar";
                 IsBar = true;
             }
 
@@ -85,7 +85,7 @@ namespace Start                                 // 641672
                 allOrderLists.Add(list);
                 
             }
-            
+            PageProperties();
         }
         public void OrderItems(ListView list,Order order)
         {
@@ -135,21 +135,22 @@ namespace Start                                 // 641672
             list.Items[list.Items.Count - 1].UseItemStyleForSubItems = false;
             try
             {
-                ReadyColors(list);
+                ReadyColors(list,order);
             }
             catch
             { 
                 list.Items[list.Items.Count - 1].SubItems.Add("Ready");
-                ReadyColors(list);
+                ReadyColors(list,order);
             }
                 
         }
 
-        public void ReadyColors(ListView list)
+        public void ReadyColors(ListView list,Order order)
         {
             list.Items[list.Items.Count - 1].SubItems[0].ForeColor = System.Drawing.Color.DimGray;
             list.Items[list.Items.Count - 1].SubItems[1].ForeColor = System.Drawing.Color.White;
             list.Items[list.Items.Count - 1].SubItems[1].BackColor = System.Drawing.Color.Black;
+            
         }
 
         public void ItemsStyle(ListView list, Order order, int i)
@@ -195,6 +196,7 @@ namespace Start                                 // 641672
 
                 AppearingOrders.Remove(lastServedOrder);
                 PanelOrders.Controls.Remove(list);
+                PageProperties();
 
                 if (lastServedList.Columns[0].Text[0] != 'R')
                 {    
@@ -227,6 +229,7 @@ namespace Start                                 // 641672
                 }
                 else
                 {
+                    lastServedList.Items[lastServedList.Items.Count - 1].SubItems[1].BackColor = System.Drawing.Color.Maroon;
                     recallpanel.Show();
                     OrderIsReady(lastServedOrder, 1);
                 }
@@ -257,19 +260,29 @@ namespace Start                                 // 641672
         private void right_Click(object sender, EventArgs e)
         {
             int counter = 0;
-            foreach (Control order in PanelOrders.Controls)
+            try
             {
-                if (order.Visible)
+                if (PanelOrders.Controls[PanelOrders.Controls.Count - 5].Visible)
                 {
-                    counter++;
-                    order.Hide();
-                }
-                if (counter == 4)
-                {
-                    pageNumber++;
-                    break;
+                    foreach (Control order in PanelOrders.Controls)
+                    {
+                        if (order.Visible)
+                        {
+                            counter++;
+                            order.Hide();
+                        }
+                        if (counter == 4)
+                        {
+                            pageNumber++;
+                            break;
+                        }
+                    }
+                    PageProperties();
                 }
             }
+            catch { }
+
+           
         }
 
         private void left_Click(object sender, EventArgs e)
@@ -278,8 +291,9 @@ namespace Start                                 // 641672
 
             try
             {
-                if (!PanelOrders.Controls[PanelOrders.Controls.Count - 1].Visible)
+                if (!PanelOrders.Controls[PanelOrders.Controls.Count - 1].Visible)                
                     counter = PanelOrders.Controls.Count % 4;
+                
 
                 for (int order = PanelOrders.Controls.Count - 1; order >= 0; order--)
                 {
@@ -291,17 +305,49 @@ namespace Start                                 // 641672
                     }
 
                     if (counter == 0)
-                    {
+                    {                        
                         pageNumber--;
                         break;
                     }
                 }
             }
             catch { }
+            PageProperties();
+            
+        }
+
+        public void PageProperties()
+        {
+            int pages;
+            if (PanelOrders.Controls.Count % 4 == 0)
+                pages = allOrderLists.Count / 4;
+            else if (PanelOrders.Controls.Count > 4)
+                pages = (allOrderLists.Count / 4) + 1;
+            else
+                pages = 1;
+
+            pagelbl.Text = $"{this.Text} Page: {pageNumber}/{pages}";
+
+            if (pageNumber > 1) 
+            {
+                left.ForeColor = System.Drawing.Color.Maroon;
+            }
+            else
+            {
+                left.ForeColor = System.Drawing.Color.Black;
+            }
+            if(pageNumber >= pages)
+            {
+                right.ForeColor = System.Drawing.Color.Black;
+            }
+            else
+            {
+                right.ForeColor = System.Drawing.Color.Maroon;
+            }
 
         }
 
-
+        
 
         private void Home_Click(object sender, EventArgs e)
         {
@@ -312,22 +358,18 @@ namespace Start                                 // 641672
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int i = 0;
+            int counter = 0;
             foreach (ListView list in allOrderLists)
             {
-                if (DateTime.Now.Subtract(allOrders[i].Time).ToString(@"hh\:mm\:ss").Substring(0, 2) == "00")
-                    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[i].Time).ToString(@"mm\:ss");
-                else
-                    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[i].Time).ToString(@"hh\:mm\:ss");
+                //if (DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"hh\:mm\:ss").Substring(0, 2) == "00")
+                    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"mm\:ss");
+                //else
+                //    list.Columns[1].Text = DateTime.Now.Subtract(allOrders[counter].Time).ToString(@"hh\:mm\:ss");
 
 
-                i++;
+                counter++;
             }
-            i = 0;
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
-
-
-
             int samePage = pageNumber - 1;
             if(totalItems != service.CountOrderItems())
             {

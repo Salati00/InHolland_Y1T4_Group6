@@ -38,13 +38,15 @@
             this.right = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pagelbl = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelOrders
             // 
             this.PanelOrders.BackColor = System.Drawing.Color.Transparent;
             this.PanelOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelOrders.Location = new System.Drawing.Point(32, 12);
+            this.PanelOrders.Location = new System.Drawing.Point(32, 44);
             this.PanelOrders.Name = "PanelOrders";
             this.PanelOrders.Size = new System.Drawing.Size(1958, 935);
             this.PanelOrders.TabIndex = 0;
@@ -65,7 +67,7 @@
             // 
             this.timee.AutoSize = true;
             this.timee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timee.Location = new System.Drawing.Point(1684, 942);
+            this.timee.Location = new System.Drawing.Point(1667, 13);
             this.timee.Name = "timee";
             this.timee.Size = new System.Drawing.Size(81, 37);
             this.timee.TabIndex = 7;
@@ -77,9 +79,9 @@
             this.Home.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Home.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Home.Location = new System.Drawing.Point(32, 926);
+            this.Home.Location = new System.Drawing.Point(25, 3);
             this.Home.Name = "Home";
-            this.Home.Size = new System.Drawing.Size(186, 69);
+            this.Home.Size = new System.Drawing.Size(186, 57);
             this.Home.TabIndex = 6;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = false;
@@ -93,9 +95,9 @@
             this.recall.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.recall.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recall.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.recall.Location = new System.Drawing.Point(860, 926);
+            this.recall.Location = new System.Drawing.Point(846, 3);
             this.recall.Name = "recall";
-            this.recall.Size = new System.Drawing.Size(186, 69);
+            this.recall.Size = new System.Drawing.Size(186, 57);
             this.recall.TabIndex = 5;
             this.recall.Text = "Recall";
             this.recall.UseVisualStyleBackColor = false;
@@ -103,28 +105,29 @@
             // 
             // left
             // 
+            this.left.BackColor = System.Drawing.Color.Transparent;
             this.left.FlatAppearance.BorderSize = 0;
-            this.left.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.left.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.left.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.left.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.left.Font = new System.Drawing.Font("Microsoft Sans Serif", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.left.Location = new System.Drawing.Point(758, 915);
+            this.left.Location = new System.Drawing.Point(765, -16);
             this.left.Name = "left";
             this.left.Size = new System.Drawing.Size(75, 69);
             this.left.TabIndex = 8;
             this.left.Text = "<";
-            this.left.UseVisualStyleBackColor = true;
+            this.left.UseVisualStyleBackColor = false;
             this.left.Click += new System.EventHandler(this.left_Click);
             // 
             // right
             // 
-            this.right.BackColor = System.Drawing.Color.White;
+            this.right.BackColor = System.Drawing.Color.Transparent;
             this.right.FlatAppearance.BorderSize = 0;
-            this.right.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.right.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.right.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.right.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.right.Font = new System.Drawing.Font("Microsoft Tai Le", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.right.Location = new System.Drawing.Point(1080, 913);
+            this.right.Location = new System.Drawing.Point(1038, -18);
             this.right.Name = "right";
             this.right.Size = new System.Drawing.Size(75, 82);
             this.right.TabIndex = 9;
@@ -134,9 +137,14 @@
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(12, 907);
+            this.panel1.Controls.Add(this.right);
+            this.panel1.Controls.Add(this.left);
+            this.panel1.Controls.Add(this.Home);
+            this.panel1.Controls.Add(this.timee);
+            this.panel1.Controls.Add(this.recall);
+            this.panel1.Location = new System.Drawing.Point(12, 937);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1888, 106);
+            this.panel1.Size = new System.Drawing.Size(1888, 91);
             this.panel1.TabIndex = 10;
             // 
             // timer1
@@ -145,23 +153,31 @@
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // pagelbl
+            // 
+            this.pagelbl.AutoSize = true;
+            this.pagelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pagelbl.Location = new System.Drawing.Point(1566, 9);
+            this.pagelbl.Name = "pagelbl";
+            this.pagelbl.Size = new System.Drawing.Size(70, 25);
+            this.pagelbl.TabIndex = 0;
+            this.pagelbl.Text = "label1";
+            // 
             // KitchenBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.Gainsboro;
             this.ClientSize = new System.Drawing.Size(1912, 1025);
-            this.Controls.Add(this.left);
-            this.Controls.Add(this.timee);
-            this.Controls.Add(this.right);
-            this.Controls.Add(this.recall);
-            this.Controls.Add(this.Home);
+            this.Controls.Add(this.pagelbl);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recallpanel);
             this.Controls.Add(this.PanelOrders);
             this.Name = "KitchenBar";
-            this.Text = "Kitchen";
+            this.Text = "Chapeau Kitchen";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +194,6 @@
         private System.Windows.Forms.Button right;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label pagelbl;
     }
 }
