@@ -16,12 +16,14 @@ namespace Start
     {
         Table CurrentTable;
         Order order;
+        OrderingService service;
 
         public SingleTable(Table _CurrentTable)
         {
             CurrentTable = _CurrentTable;
             InitializeComponent();
             order = new Order();
+            service = new OrderingService();
         }
 
         private void Btn_AddOrder_Click(object sender, EventArgs e)
@@ -70,11 +72,10 @@ namespace Start
             Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
             lbl_status.Text = CurrentTable.Status.ToString();
 
-            OrderingService service = new OrderingService();
-            Order order = service.GetOrderFromTable(CurrentTable);
+            order = service.GetOrderFromTable(CurrentTable);
 
             //ListViewItem li = new ListViewItem();
-            
+
             Lst_TableOrders.Clear();
             Lst_TableOrders.Columns.Add("Order Item ID", 80);
             Lst_TableOrders.Columns.Add("Menu Item", 120);
@@ -86,7 +87,7 @@ namespace Start
 
             foreach (OrderItem o in order.OrderItems)
             {
-                if (o.Status != Order_Status.Served && CurrentTable.Status != Table_Status.Available)
+                if (o.Status != Order_Status.Served)
                 {
                     ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
                     lvi.SubItems.Add(o.MenuItem.Name);
@@ -96,17 +97,26 @@ namespace Start
                     lvi.SubItems.Add(o.Quantity.ToString());
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
-                    Lst_TableOrders.Update(); 
+                    Lst_TableOrders.Update();
                 }
             }
         }
 
         private void btn_ready_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The order is ready to be served.");
-            this.DialogResult = DialogResult.OK;
+            if (Lst_TableOrders.Items.Count == 0)
+            {
+                MessageBox.Show("There are no orders");
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("The order is ready to be served.");
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
+        // buttons RESERVE, CANCEL, OCCUPIED only makes changes in the single table form
         private void btn_reserve_Click(object sender, EventArgs e)
         {
             lbl_status.Text = Table_Status.Reserved.ToString();
@@ -151,7 +161,5 @@ namespace Start
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
         }
-
-        
     }
 }

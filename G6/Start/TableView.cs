@@ -47,7 +47,7 @@ namespace Start
             InitializeTableStatus(tabList);
         }
 
-        private List<Button> ButtonList()
+        public List<Button> ButtonList()
         {
             List<Button> buttons = new List<Button>();
             buttons.Add(t1);
