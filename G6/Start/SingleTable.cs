@@ -96,7 +96,6 @@ namespace Start
                 if (o.Status != Order_Status.Served)
                 {
                     ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
-                    //lvi.SubItems.Add(o.ItemID.ToString());
                     lvi.SubItems.Add(o.MenuItem.Name);
                     lvi.SubItems.Add(o.OrderID.ToString());
                     lvi.SubItems.Add(o.Status.ToString());
@@ -105,16 +104,25 @@ namespace Start
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
                     Lst_TableOrders.Update();
-
                 }
             }
         }
 
         private void btn_ready_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("The order is ready to be served.");
+            if (Lst_TableOrders.Items.Count == 0)
+            {
+                MessageBox.Show("There are no orders");
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("The order is ready to be served.");
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
+        // buttons RESERVE, CANCEL, OCCUPIED only makes changes in the single table form
         private void btn_reserve_Click(object sender, EventArgs e)
         {
             lbl_status.Text = Table_Status.Reserved.ToString();
@@ -159,7 +167,5 @@ namespace Start
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
         }
-
-        
     }
 }
