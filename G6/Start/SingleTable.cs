@@ -16,6 +16,7 @@ namespace Start
     {
         Table CurrentTable;
         Order order;
+
         public SingleTable(Table _CurrentTable)
         {
             CurrentTable = _CurrentTable;
@@ -68,31 +69,31 @@ namespace Start
             Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
             lbl_status.Text = CurrentTable.Status.ToString();
 
-            OrderingService service = new OrderingService();
-            List<OrderItem> orderList = service.GetOrderItem();
+            //OrderingService service = new OrderingService();
+            //List<OrderItem> orderList = service.GetOrderItem();
 
-            Lst_TableOrders.Clear();
-            Lst_TableOrders.Columns.Add("Order Item ID", 80);
-            Lst_TableOrders.Columns.Add("Menu Item", 120);
-            Lst_TableOrders.Columns.Add("Order ID", 60);
-            Lst_TableOrders.Columns.Add("Status", 80);
-            Lst_TableOrders.Columns.Add("DateTime", 120);
-            Lst_TableOrders.Columns.Add("Quantity", 60);
-            Lst_TableOrders.Columns.Add("Notes", 150);
+            //Lst_TableOrders.Clear();
+            //Lst_TableOrders.Columns.Add("Order Item ID", 80);
+            //Lst_TableOrders.Columns.Add("Menu Item", 120);
+            //Lst_TableOrders.Columns.Add("Order ID", 60);
+            //Lst_TableOrders.Columns.Add("Status", 80);
+            //Lst_TableOrders.Columns.Add("DateTime", 120);
+            //Lst_TableOrders.Columns.Add("Quantity", 60);
+            //Lst_TableOrders.Columns.Add("Notes", 150);
 
-            foreach (OrderItem o in orderList)
-            {
-                if (order.Order_ID == o.OrderID.Order_ID)
-                {
-                    ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
-                    lvi.SubItems.Add(o.MenuItem.ToString());
-                    lvi.SubItems.Add(o.OrderID.ToString());
-                    lvi.SubItems.Add(o.DateTime.ToString());
-                    lvi.SubItems.Add(o.Quantity.ToString());
-                    lvi.SubItems.Add(o.Comment.ToString());
-                    Lst_TableOrders.Items.Add(lvi);
-                }
-            }
+            //foreach (OrderItem o in orderList)
+            //{
+            //    if (order.Order_ID == o.OrderID.Order_ID)
+            //    {
+            //        ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
+            //        lvi.SubItems.Add(o.MenuItem.ToString());
+            //        lvi.SubItems.Add(o.OrderID.ToString());
+            //        lvi.SubItems.Add(o.DateTime.ToString());
+            //        lvi.SubItems.Add(o.Quantity.ToString());
+            //        lvi.SubItems.Add(o.Comment.ToString());
+            //        Lst_TableOrders.Items.Add(lvi);
+            //    }
+            //}
         }
 
         private void btn_ready_Click(object sender, EventArgs e)

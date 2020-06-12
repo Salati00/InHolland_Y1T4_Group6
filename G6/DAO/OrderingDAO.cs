@@ -68,7 +68,7 @@ namespace DAO
 
         public List<OrderItem> Db_Get_All_Order_Items()
         {
-            string query = "SELECT * FROM [Order_Items], [Orders] WHERE Order_Items.Order_ID = Orders.Order_ID";
+            string query = "SELECT * FROM [Order_Items]";
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrderItemTable(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -82,7 +82,7 @@ namespace DAO
                 {
                     ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
                     MenuItem = (Menu_Item)dr["Menu_Item_ID"],
-                    OrderID = (Order)dr["Order_ID"],
+                    OrderID = (int)dr["Order_ID"],
                     Status = (Order_Status)dr["State_ID"],
                     DateTime = (DateTime)dr["DateTime"],
                     Quantity = Convert.ToInt32(dr["Quantity"]),
