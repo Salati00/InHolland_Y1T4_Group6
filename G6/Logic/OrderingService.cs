@@ -42,26 +42,6 @@ namespace Logic
             }
         }
 
-        /*public List<StringValueWrapper> GetMenuItemNames(string TypeName)
-        {
-            List<StringValueWrapper> Names = new List<StringValueWrapper>();
-            List<Menu_Item> Menu = new List<Menu_Item>();
-            try
-            {
-                Menu = DB.Db_Get_MenuItems(TypeName);
-                foreach (var item in Menu)
-                {
-                    Names.Add(new StringValueWrapper(item.Name));
-                }
-                return Names;
-            }
-            catch (Exception ex)
-            {
-                // lost connection to database
-                throw new Exception(ex.Message);
-            }
-        }*/
-
         public Tuple<bool,string> SendOrder(Order Order, bool Close)
         {
             try
@@ -78,14 +58,14 @@ namespace Logic
         public Order GetOrderFromTable(Table tab)
         {
             Order r;
-            /*try
-            {*/
+            try
+            {
                 r = DB.Db_Get_OrderForTable(tab);
-            /*}
+            }
             catch (Exception ex)
             {
                 throw ex;
-            }*/
+            }
             return r;
         }
     }

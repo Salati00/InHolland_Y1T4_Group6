@@ -35,7 +35,7 @@ namespace Start
 
         private void Table_Click_Handler(object sender, EventArgs e)
         {
-            SingleTable table = new SingleTable(tab.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)));
+            SingleTable table = new SingleTable(tab.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)),member);
             table.ShowDialog();
         }
 

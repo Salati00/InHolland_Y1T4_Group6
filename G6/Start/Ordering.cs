@@ -18,11 +18,15 @@ namespace Start
         TableService tab;
         Staff member;
         Order order;
+        Table table;
 
-        public Ordering(Table table)
+        public Ordering(Table _table, Staff _member)
         {
             Initialize();
-            InitializeCombobox(table.Table_Number);
+            InitializeCombobox(_table.Table_Number);
+            member = _member;
+            table = _table;
+            
         }
 
         public Ordering()
@@ -121,9 +125,13 @@ namespace Start
 
         private void Btn_Send_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            ord.SendOrder(OrderList.GetOrder(), (((Button)sender).Name == "Btn_Send") ? false : true);
-            this.Close();
+            order = OrderList.GetOrder();
+            order.Staff_ID = member.Staff_ID;
+            order.Table_ID = table.Table_ID;
+            ord.SendOrder(order, (((Button)sender).Name == "Btn_Send") ? false : true);
+            OrderList.Clear();
+            if (((Button)sender).Name != "Btn_Send")
+                this.Close();
         }
     }
 }

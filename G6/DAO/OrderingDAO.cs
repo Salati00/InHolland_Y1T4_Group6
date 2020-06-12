@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
@@ -58,15 +59,62 @@ namespace DAO
         {
             if (Close)
             {
-                string query = "SELECT * from [Menu_Items] WHERE Item_Type_ID in (Select Item_Type_ID FROM Item_Types where Name like @nome)";
-                //string query = "SELECT * from [Menu_Items]";
-                SqlParameter[] sqlParameters = new SqlParameter[0];
+                string query = "update Orders set Closed = 1 where Orders.Table_ID = @TableID";
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@TableID", Order.Table_ID);
+                ExecuteEditQuery(query, sqlParameters);
             }
             else
             {
+                string query = "select * from orders where Table_ID = @tabId and Closed <> 1";
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@tabId", Order.Table_ID);
+                DataTable OrderExists = ExecuteSelectQuery(query, sqlParameters);
+                if (OrderExists.Rows.Count != 0)
+                {
+                    Order.Order_ID = Convert.ToInt32(OrderExists.Rows[0]["Order_ID"]);
+                    query = "select Order_ID from orders where Table_ID = @tabId and Closed <> 1";
+                    sqlParameters = new SqlParameter[1];
+                    sqlParameters[0] = new SqlParameter("@tabId", Order.Table_ID);
+                    Order.Order_ID = Convert.ToInt32(ExecuteScalarQuery(query, sqlParameters));
 
+                    InsertOrdersFromOrderID(Order.Order_ID, Order.OrderItems);
+                }
+                else
+                {
+                    query = "insert into Orders(Staff_ID,Table_ID,Time,Closed) " +
+                        "values(@sId,@tId,@tIm,0)";
+                    sqlParameters = new SqlParameter[3];
+                    sqlParameters[0] = new SqlParameter("@sId", Order.Staff_ID);
+                    sqlParameters[1] = new SqlParameter("@tId", Order.Table_ID);
+                    sqlParameters[2] = new SqlParameter("@tIm", DateTime.UtcNow);
+                    ExecuteEditQuery(query, sqlParameters);
+
+                    query = "select Order_ID from orders where Table_ID = @tabId and Closed <> 1";
+                    sqlParameters = new SqlParameter[1];
+                    sqlParameters[0] = new SqlParameter("@tabId", Order.Table_ID);
+                    Order.Order_ID = Convert.ToInt32(ExecuteScalarQuery(query, sqlParameters));
+
+                    InsertOrdersFromOrderID(Order.Order_ID, Order.OrderItems);
+                }
             }
-            throw new NotImplementedException("if close then close order, otherwise send the order to order items");
+        }
+
+        private void InsertOrdersFromOrderID(int OrderID, List<OrderItem> Items)
+        {
+            foreach (var item in Items)
+            {
+                string query = "insert into Order_Items(Menu_Item_ID,Order_ID,State_ID,DateTime,Quantity,Notes) " +
+                "values(@mId,@oId,@sId,@tIm,@qNt,@nTs)";
+                SqlParameter[] sqlParameters = new SqlParameter[6];
+                sqlParameters[0] = new SqlParameter("@mId", item.MenuItem.Menu_Item_ID);
+                sqlParameters[1] = new SqlParameter("@oId", OrderID);
+                sqlParameters[2] = new SqlParameter("@sId", Convert.ToInt32(Order_Status.Pending));
+                sqlParameters[3] = new SqlParameter("@tIm", DateTime.UtcNow);
+                sqlParameters[4] = new SqlParameter("@qNt", item.Quantity);
+                sqlParameters[5] = new SqlParameter("@nTs", item.Comment == null? "": item.Comment.ToString());
+                ExecuteEditQuery(query, sqlParameters);
+            }
         }
 
         public Order Db_Get_OrderForTable(Table tab)

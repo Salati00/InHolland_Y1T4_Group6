@@ -81,5 +81,10 @@ namespace CustomControls
         {
             Amount--;
         }
+
+        private void Txt_Notes_TextChanged(object sender, EventArgs e)
+        {
+            item.Comment = Txt_Notes.Text;
+        }
     }
 }

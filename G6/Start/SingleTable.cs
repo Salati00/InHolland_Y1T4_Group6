@@ -16,18 +16,21 @@ namespace Start
     {
         Table CurrentTable;
         Order order;
+        Staff member;
 
-        public SingleTable(Table _CurrentTable)
+        public SingleTable(Table _CurrentTable, Staff _member)
         {
             CurrentTable = _CurrentTable;
             InitializeComponent();
             order = new Order();
+            member = _member;
         }
 
         private void Btn_AddOrder_Click(object sender, EventArgs e)
         {
-            Ordering OrderForm = new Ordering(CurrentTable);
+            Ordering OrderForm = new Ordering(CurrentTable, member);
             OrderForm.ShowDialog();
+            this.LoadListView();
         }
 
         private void Btn_Back_Click(object sender, EventArgs e)
@@ -69,12 +72,16 @@ namespace Start
             SingleTable_Status();
             Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
             lbl_status.Text = CurrentTable.Status.ToString();
+            LoadListView();
+        }
 
+        private void LoadListView()
+        {
             OrderingService service = new OrderingService();
             Order order = service.GetOrderFromTable(CurrentTable);
 
             //ListViewItem li = new ListViewItem();
-            
+
             Lst_TableOrders.Clear();
             Lst_TableOrders.Columns.Add("Order Item ID", 80);
             Lst_TableOrders.Columns.Add("Menu Item", 120);
@@ -98,7 +105,7 @@ namespace Start
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
                     Lst_TableOrders.Update();
-                    
+
                 }
             }
         }

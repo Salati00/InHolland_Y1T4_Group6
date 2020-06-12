@@ -15,8 +15,8 @@ namespace Start
     public partial class OrderList : UserControl
     {
         private Order orders;
-        private int posX = 25;
-        private int posY = 25;
+        private int posX = 15;
+        private int posY = 15;
 
         public Order GetOrder()
         {
@@ -27,7 +27,6 @@ namespace Start
         {
             InitializeComponent();
             orders = new Order();
-            orders.OrderItems = new List<OrderItem>();
         }
 
         public void AddItem(Menu_Item i)
@@ -59,8 +58,16 @@ namespace Start
                 listRow.Left = posX;
                 this.Controls.Add(listRow);
                 listRow.Show();
-                posY += 50;
+                posY += 75;
             }
+        }
+
+        public void Clear()
+        {
+            posX = 15;
+            posY = 15;
+            orders = new Order();
+            Controls.OfType<OrderListRow>().ToList().ForEach(x => this.Controls.Remove(x));
         }
     }
 }

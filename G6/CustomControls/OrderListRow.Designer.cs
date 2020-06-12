@@ -33,6 +33,8 @@
             this.Btn_Remove = new System.Windows.Forms.Button();
             this.Lbl_Name = new System.Windows.Forms.Label();
             this.Lbl_Amount = new System.Windows.Forms.Label();
+            this.Txt_Notes = new System.Windows.Forms.TextBox();
+            this.Lbl_Notes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Btn_Reduce
@@ -83,18 +85,37 @@
             this.Lbl_Amount.TabIndex = 4;
             this.Lbl_Amount.Text = "1";
             // 
+            // Txt_Notes
+            // 
+            this.Txt_Notes.Location = new System.Drawing.Point(111, 39);
+            this.Txt_Notes.Name = "Txt_Notes";
+            this.Txt_Notes.Size = new System.Drawing.Size(236, 20);
+            this.Txt_Notes.TabIndex = 5;
+            this.Txt_Notes.TextChanged += new System.EventHandler(this.Txt_Notes_TextChanged);
+            // 
+            // Lbl_Notes
+            // 
+            this.Lbl_Notes.AutoSize = true;
+            this.Lbl_Notes.Location = new System.Drawing.Point(24, 42);
+            this.Lbl_Notes.Name = "Lbl_Notes";
+            this.Lbl_Notes.Size = new System.Drawing.Size(35, 13);
+            this.Lbl_Notes.TabIndex = 6;
+            this.Lbl_Notes.Text = "Notes";
+            // 
             // OrderListRow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.Lbl_Notes);
+            this.Controls.Add(this.Txt_Notes);
             this.Controls.Add(this.Lbl_Amount);
             this.Controls.Add(this.Lbl_Name);
             this.Controls.Add(this.Btn_Remove);
             this.Controls.Add(this.Btn_Add);
             this.Controls.Add(this.Btn_Reduce);
             this.Name = "OrderListRow";
-            this.Size = new System.Drawing.Size(350, 40);
+            this.Size = new System.Drawing.Size(350, 65);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,5 +128,7 @@
         private System.Windows.Forms.Button Btn_Remove;
         private System.Windows.Forms.Label Lbl_Name;
         private System.Windows.Forms.Label Lbl_Amount;
+        private System.Windows.Forms.TextBox Txt_Notes;
+        private System.Windows.Forms.Label Lbl_Notes;
     }
 }

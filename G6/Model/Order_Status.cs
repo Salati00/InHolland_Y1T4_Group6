@@ -8,8 +8,8 @@ namespace Model
 {
     public enum Order_Status
     {
-        Pending = 0,
-        Ready = 1,
-        Served = 2
+        Pending = 1,
+        Ready = 2,
+        Served = 3
     }
 }

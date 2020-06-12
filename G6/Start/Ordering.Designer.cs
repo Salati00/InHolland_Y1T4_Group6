@@ -225,7 +225,7 @@
             this.Btn_SendClose.Name = "Btn_SendClose";
             this.Btn_SendClose.Size = new System.Drawing.Size(312, 27);
             this.Btn_SendClose.TabIndex = 7;
-            this.Btn_SendClose.Text = "Send and close Order";
+            this.Btn_SendClose.Text = "Mark order as Closed for payment";
             this.Btn_SendClose.UseVisualStyleBackColor = true;
             this.Btn_SendClose.Click += new System.EventHandler(this.Btn_Send_Click);
             // 
