@@ -43,6 +43,7 @@
             this.Btn_Reduce.TabIndex = 0;
             this.Btn_Reduce.Text = "-";
             this.Btn_Reduce.UseVisualStyleBackColor = true;
+            this.Btn_Reduce.Click += new System.EventHandler(this.Btn_Reduce_Click);
             // 
             // Btn_Add
             // 
@@ -52,6 +53,7 @@
             this.Btn_Add.TabIndex = 1;
             this.Btn_Add.Text = "+";
             this.Btn_Add.UseVisualStyleBackColor = true;
+            this.Btn_Add.Click += new System.EventHandler(this.Btn_Add_Click);
             // 
             // Btn_Remove
             // 
@@ -61,6 +63,7 @@
             this.Btn_Remove.TabIndex = 2;
             this.Btn_Remove.Text = "x";
             this.Btn_Remove.UseVisualStyleBackColor = true;
+            this.Btn_Remove.Click += new System.EventHandler(this.Btn_Remove_Click);
             // 
             // Lbl_Name
             // 
@@ -84,13 +87,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.Lbl_Amount);
             this.Controls.Add(this.Lbl_Name);
             this.Controls.Add(this.Btn_Remove);
             this.Controls.Add(this.Btn_Add);
             this.Controls.Add(this.Btn_Reduce);
             this.Name = "OrderListRow";
-            this.Size = new System.Drawing.Size(350, 40);
+            this.Size = new System.Drawing.Size(348, 38);
             this.ResumeLayout(false);
             this.PerformLayout();
 
