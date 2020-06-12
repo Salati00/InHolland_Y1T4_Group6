@@ -69,8 +69,8 @@ namespace Start
             lbl_status.Text = CurrentTable.Status.ToString();
 
             OrderingService service = new OrderingService();
-            List<OrderItem> orderList = service.GetOrderItem();
-
+            Order orderList = service.GetOrderFromTable(CurrentTable);
+            /*
             Lst_TableOrders.Clear();
             Lst_TableOrders.Columns.Add("Order Item ID", 80);
             Lst_TableOrders.Columns.Add("Menu Item", 120);
@@ -92,7 +92,7 @@ namespace Start
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
                 //}
-            }
+            }*/
         }
 
         private void btn_ready_Click(object sender, EventArgs e)

@@ -75,18 +75,18 @@ namespace Logic
             }
         }
 
-        public List<OrderItem> GetOrderItem()
+        public Order GetOrderFromTable(Table tab)
         {
-            List<OrderItem> orders;
-            try
+            Order r;
+            /*try
+            {*/
+                r = DB.Db_Get_OrderForTable(tab);
+            /*}
+            catch (Exception ex)
             {
-                orders = DB.Db_Get_All_Order_Items();
-            }
-            catch (Exception)
-            {
-                throw new Exception("database connection lost");
-            }
-            return orders;
+                throw ex;
+            }*/
+            return r;
         }
     }
 }
