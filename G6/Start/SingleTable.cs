@@ -16,6 +16,7 @@ namespace Start
     {
         Table CurrentTable;
         Order order;
+
         public SingleTable(Table _CurrentTable)
         {
             CurrentTable = _CurrentTable;
