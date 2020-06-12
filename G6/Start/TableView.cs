@@ -20,6 +20,7 @@ namespace Start
         Staff member;
         TableService tab;
         List<Table> tabList;
+
         public TableView(Staff member)
         {
             InitializeComponent();

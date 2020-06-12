@@ -89,7 +89,7 @@ namespace DAO
             };
 
             foreach (DataRow dr in dataTable.Rows)
-            {/*
+            {
                 r.OrderItems.Add(new OrderItem()
                 {
                     ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
@@ -99,16 +99,71 @@ namespace DAO
                         Name = dr["Name"].ToString(),
                         Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"])
                     },
-                    OrderID = new Order()
-                    {
-                    },
+                    OrderID = Convert.ToInt32(dr["Order_ID"]),
                     Status = (Order_Status)dr["State_ID"],
                     DateTime = (DateTime)dr["DateTime"],
                     Quantity = Convert.ToInt32(dr["Quantity"]),
                     Comment = dr["Notes"].ToString()
-                });*/
+                });
             }
             return r;
         }
+
+        /*
+        public List<Order> Db_Get_Orders()
+        {
+            string query = "SELECT Orders.Order_ID, Orders.Staff_ID, Orders.Time, Tables.Table_ID FROM Orders JOIN Tables ON Orders.Table_ID = Tables.Table_ID";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            return Read_Orders(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<Order> Read_Orders(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Order o = new Order()
+                {
+                    Order_ID = (int)dr["Order_ID"],
+                    Staff_ID = (int)dr["Staff_ID"],
+                    Time = (DateTime)dr["Time"]
+                };
+                Table t = new Table()
+                {
+                    Table_ID = (int)dr["Table_ID"]
+                };
+                o.Table_ID = t.Table_ID;
+                orders.Add(o);
+            }
+
+            return orders;
+        }
+
+        public List<OrderItem> Db_Get_Order_Items(int orderID)
+        {
+            string query = "SELECT O.Order_Item_ID, O.Menu_Item_ID, O.Order_ID, O.Quantity, O.Notes FROM Order_Items AS O JOIN Menu_Items AS M ON M.Menu_Item_ID = O.Menu_Item_ID WHERE O.Order_ID = @order_id";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@order_id", orderID);
+            return ReadOrderItems(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<OrderItem> ReadOrderItems(DataTable dataTable)
+        {
+            List<OrderItem> orderItems = new List<OrderItem>();
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Menu_Item menuItem = new Menu_Item()
+                {
+                    Name = (string)dr["Name"]
+                };
+                OrderItem orderItem = new OrderItem()
+                {
+                    Quantity = (int)dr["Quantity"],
+                    Status = (Order_Status)dr["State_ID"],
+                    Comment = (string)dr["Notes"]
+                };
+                orderItems.Add(orderItem);
+            }
+            return orderItems;
+        }
+        */
     }
 }
