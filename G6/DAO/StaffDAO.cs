@@ -36,44 +36,43 @@ namespace DAO
             }
             return staff;
         }
+        
+        // edit the staff information
+        //public void EditStaff(Staff staff)
+        //{
+        //    string query = "UPDATE Staff SET Name = @name, Phone_Number = @phone, " +
+        //        "Staff_Type_ID = @role, [Password] = @password WHERE Staff_ID = @staff_id";
+        //    SqlParameter[] sqlParameters = new SqlParameter[5];
+        //    sqlParameters[0] = new SqlParameter("@name", staff.Name);
+        //    sqlParameters[1] = new SqlParameter("@phone", staff.Phone_Number);
+        //    sqlParameters[2] = new SqlParameter("@role", staff.Role);
+        //    sqlParameters[3] = new SqlParameter("@password", staff.Password);
+        //    sqlParameters[4] = new SqlParameter("@staff_id", staff.Staff_ID);
 
-        /*edit the staff information
-        public void EditStaff(Staff staff)
-        {
-            string query = "UPDATE Staff SET Name = @name, Phone_Number = @phone, " +
-                "Staff_Type_ID = @role, [Password] = @password WHERE Staff_ID = @staff_id";
-            SqlParameter[] sqlParameters = new SqlParameter[5];
-            sqlParameters[0] = new SqlParameter("@name", staff.Name);
-            sqlParameters[1] = new SqlParameter("@phone", staff.Phone_Number);
-            sqlParameters[2] = new SqlParameter("@role", staff.Role);
-            sqlParameters[3] = new SqlParameter("@password", staff.Password);
-            sqlParameters[4] = new SqlParameter("@staff_id", staff.Staff_ID);
+        //    ExecuteEditQuery(query, sqlParameters);
 
-            ExecuteEditQuery(query, sqlParameters);
+        //}
 
-        }
+        //public void AddStaffInfo(Staff staff) // add staff information
+        //{
+        //    string query = "INSERT INTO Staff(Staff_ID, Staff_Type_ID, Name, Phone_Number, [Password])" +
+        //        $"VALUES (@staff_id, @role, @name, @phone, @password)";
+        //    SqlParameter[] sqlParameters = new SqlParameter[5];
+        //    sqlParameters[0] = new SqlParameter("@staff_id", staff.Staff_ID);
+        //    sqlParameters[1] = new SqlParameter("@role", staff.Role);
+        //    sqlParameters[2] = new SqlParameter("@name", staff.Name);
+        //    sqlParameters[3] = new SqlParameter("@phone", staff.Phone_Number);
+        //    sqlParameters[4] = new SqlParameter("@password", staff.Password);
 
-        public void AddStaffInfo(Staff staff) // add staff information
-        {
-            string query = "INSERT INTO Staff(Staff_ID, Staff_Type_ID, Name, Phone_Number, [Password])" +
-                $"VALUES (@staff_id, @role, @name, @phone, @password)";
-            SqlParameter[] sqlParameters = new SqlParameter[5];
-            sqlParameters[0] = new SqlParameter("@staff_id", staff.Staff_ID);
-            sqlParameters[1] = new SqlParameter("@role", staff.Role);
-            sqlParameters[2] = new SqlParameter("@name", staff.Name);
-            sqlParameters[3] = new SqlParameter("@phone", staff.Phone_Number);
-            sqlParameters[4] = new SqlParameter("@password", staff.Password);
-
-            ExecuteEditQuery(query, sqlParameters);
-        }
-        public void RemoveStaffInfo(Staff staff) // remove staff information
-        {
-            string query = "DELET FROM Staff WHERE Staff_ID = @staff_id";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@staff_id", staff.Staff_ID);
-            ExecuteEditQuery(query, sqlParameters);
-        }*/
-
+        //    ExecuteEditQuery(query, sqlParameters);
+        //}
+        //public void RemoveStaffInfo(Staff staff) // remove staff information
+        //{
+        //    string query = "DELET FROM Staff WHERE Staff_ID = @staff_id";
+        //    SqlParameter[] sqlParameters = new SqlParameter[1];
+        //    sqlParameters[0] = new SqlParameter("@staff_id", staff.Staff_ID);
+        //    ExecuteEditQuery(query, sqlParameters);
+        //}
         public Staff DoLogin(int id, int password)
         {
             string query = "select Staff_ID, [Password], [Name], Phone_Number, Role_Number " +

@@ -39,6 +39,13 @@
             this.status = new System.Windows.Forms.Label();
             this.lbl_status = new System.Windows.Forms.Label();
             this.btn_occupied = new System.Windows.Forms.Button();
+            this.orItemID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.menuItem = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.orderID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.itemStatus = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.datetime = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.quantity = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.notes = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // btn_AddOrder
@@ -69,6 +76,14 @@
             // 
             // Lst_TableOrders
             // 
+            this.Lst_TableOrders.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.orItemID,
+            this.menuItem,
+            this.orderID,
+            this.itemStatus,
+            this.datetime,
+            this.quantity,
+            this.notes});
             this.Lst_TableOrders.FullRowSelect = true;
             this.Lst_TableOrders.GridLines = true;
             this.Lst_TableOrders.HideSelection = false;
@@ -171,6 +186,39 @@
             this.btn_occupied.UseVisualStyleBackColor = false;
             this.btn_occupied.Click += new System.EventHandler(this.btn_occupied_Click);
             // 
+            // orItemID
+            // 
+            this.orItemID.Text = "Order Item ID";
+            this.orItemID.Width = 80;
+            // 
+            // menuItem
+            // 
+            this.menuItem.Text = "Menu Item";
+            this.menuItem.Width = 120;
+            // 
+            // orderID
+            // 
+            this.orderID.Text = "Order ID";
+            // 
+            // itemStatus
+            // 
+            this.itemStatus.Text = "Status";
+            this.itemStatus.Width = 80;
+            // 
+            // datetime
+            // 
+            this.datetime.Text = "DateTime";
+            this.datetime.Width = 120;
+            // 
+            // quantity
+            // 
+            this.quantity.Text = "Quantity";
+            // 
+            // notes
+            // 
+            this.notes.Text = "Notes";
+            this.notes.Width = 150;
+            // 
             // SingleTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,5 +256,12 @@
         private System.Windows.Forms.Label status;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.Button btn_occupied;
+        private System.Windows.Forms.ColumnHeader orItemID;
+        private System.Windows.Forms.ColumnHeader menuItem;
+        private System.Windows.Forms.ColumnHeader orderID;
+        private System.Windows.Forms.ColumnHeader itemStatus;
+        private System.Windows.Forms.ColumnHeader datetime;
+        private System.Windows.Forms.ColumnHeader quantity;
+        private System.Windows.Forms.ColumnHeader notes;
     }
 }

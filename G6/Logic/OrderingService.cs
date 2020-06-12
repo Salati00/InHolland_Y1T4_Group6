@@ -74,7 +74,7 @@ namespace Logic
                 return new Tuple<bool,string>(false,ex.Message);
             }
         }
-        
+
         public Order GetOrderFromTable(Table tab)
         {
             Order r;
@@ -88,25 +88,5 @@ namespace Logic
             }*/
             return r;
         }
-
-        /*
-        public List<Order> GetOrders()
-        {
-            try
-            {
-                List<Order> orders = DB.Db_Get_Orders();
-                foreach (Order o in orders)
-                {
-                    List<OrderItem> orderItems = DB.Db_Get_Order_Items(o.Order_ID);
-                    o.OrderItems = orderItems;
-                }
-                return orders;
-            }
-            catch (Exception)
-            {
-                return new List<Order>();
-            }
-        }
-        */
     }
 }
