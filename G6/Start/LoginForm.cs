@@ -83,13 +83,7 @@ namespace Start
             this.Close();
         }
 
-        private void Btn_Temp1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ov = new Overview(new Staff() { Role = Staff_Type.Bartender });
-
-            /*new KitchenBar(Staff_Type.Bartender).ShowDialog();*/
-        }
+       
 
         private void TextEnterNumberOnly(object sender, KeyPressEventArgs e)
         {

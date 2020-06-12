@@ -39,7 +39,7 @@ namespace Start                                 // 641672
             InitializeComponent();
 
             this.staffType = type;
-
+          
 
             recallpanel.Hide();
             service = new KitchenBarService();
@@ -90,7 +90,7 @@ namespace Start                                 // 641672
 
                 ListView list = new ListView();
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
-                list.Width = (PanelOrders.Width / 2) - (PanelOrders.Width / 30);
+                list.Width = (PanelOrders.Width / 2) - (PanelOrders.Width / 50);
                 list.Columns.Add($"order {order.Order_ID:D3}", list.Width - (list.Width / 4));
                 list.Columns.Add(DateTime.Now.Subtract(order.Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
@@ -345,13 +345,13 @@ namespace Start                                 // 641672
 
         public void PageProperties()
         {
-            int pages;
-            if (PanelOrders.Controls.Count % 4 == 0)
-                pages = allOrderLists.Count / 4;
-            else if (PanelOrders.Controls.Count > 4)
-                pages = (allOrderLists.Count / 4) + 1;
+            int pages = 1;
+            if (PanelOrders.Controls.Count % 4 == 0 && PanelOrders.Controls.Count > 4)
+                pages = PanelOrders.Controls.Count / 4;
             else
-                pages = 1;
+                pages = (PanelOrders.Controls.Count / 4) + 1;
+
+
 
             pagelbl.Text = $"{this.Text} Page: {pageNumber}/{pages}";
 
