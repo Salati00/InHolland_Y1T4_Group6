@@ -21,6 +21,7 @@ namespace Start
         {
             CurrentTable = _CurrentTable;
             InitializeComponent();
+            order = new Order();
         }
 
         private void Btn_AddOrder_Click(object sender, EventArgs e)
@@ -70,8 +71,10 @@ namespace Start
             lbl_status.Text = CurrentTable.Status.ToString();
 
             OrderingService service = new OrderingService();
-            Order orderList = service.GetOrderFromTable(CurrentTable);
-            /*
+            Order order = service.GetOrderFromTable(CurrentTable);
+
+            //ListViewItem li = new ListViewItem();
+            
             Lst_TableOrders.Clear();
             Lst_TableOrders.Columns.Add("Order Item ID", 80);
             Lst_TableOrders.Columns.Add("Menu Item", 120);
@@ -81,19 +84,23 @@ namespace Start
             Lst_TableOrders.Columns.Add("Quantity", 60);
             Lst_TableOrders.Columns.Add("Notes", 150);
 
-            foreach (OrderItem o in orderList)
+            foreach (OrderItem o in order.OrderItems)
             {
-                if (order.Order_ID == o.OrderID.Order_ID)
+                if (o.Status != Order_Status.Served)
                 {
                     ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
-                    lvi.SubItems.Add(o.MenuItem.ToString());
+                    //lvi.SubItems.Add(o.ItemID.ToString());
+                    lvi.SubItems.Add(o.MenuItem.Name);
                     lvi.SubItems.Add(o.OrderID.ToString());
+                    lvi.SubItems.Add(o.Status.ToString());
                     lvi.SubItems.Add(o.DateTime.ToString());
                     lvi.SubItems.Add(o.Quantity.ToString());
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
-                //}
-            }*/
+                    Lst_TableOrders.Update();
+                    
+                }
+            }
         }
 
         private void btn_ready_Click(object sender, EventArgs e)

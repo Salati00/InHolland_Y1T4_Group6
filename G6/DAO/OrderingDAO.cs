@@ -75,7 +75,7 @@ namespace DAO
                 "WHERE Order_Items.Order_ID = Orders.Order_ID " +
                 "AND Menu_Items.Menu_Item_ID = Order_Items.Menu_Item_ID AND Table_ID = @tabId AND Closed <> 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@tabId", tab.Table_ID);
+            sqlParameters[0] = new SqlParameter("@tabId", tab.Table_Number);
             return ReadOrderTable(ExecuteSelectQuery(query, sqlParameters));
         }
         private Order ReadOrderTable(DataTable dataTable)
@@ -91,7 +91,7 @@ namespace DAO
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                /*r.OrderItems.Add(new OrderItem()
+                r.OrderItems.Add(new OrderItem()
                 {
                     ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
                     MenuItem = new Menu_Item() {
@@ -102,10 +102,10 @@ namespace DAO
                     },
                     OrderID = Convert.ToInt32(dr["Order_ID"]),
                     Status = (Order_Status)dr["State_ID"],
-                    DateTime = (DateTime)dr["DateTime"],
+                    DateTime = (dr["DateTime"] is DBNull)? DateTime.UtcNow : Convert.ToDateTime(dr["DateTime"]),
                     Quantity = Convert.ToInt32(dr["Quantity"]),
                     Comment = dr["Notes"].ToString()
-                });*/
+                });
             }
             return r;
         }
