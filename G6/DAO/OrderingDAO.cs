@@ -80,32 +80,41 @@ namespace DAO
         }
         private Order ReadOrderTable(DataTable dataTable)
         {
-            Order r = new Order
+            Order r;
+            if (dataTable.Rows.Count > 0)
             {
-                Order_ID = Convert.ToInt32(dataTable.Rows[0]["Order_ID"]),
-                Staff_ID = Convert.ToInt32(dataTable.Rows[0]["Staff_ID"]),
-                Table_ID = Convert.ToInt32(dataTable.Rows[0]["Table_ID"]),
-                Time = Convert.ToDateTime(dataTable.Rows[0]["Time"]),
-                OrderItems = new List<OrderItem>()
-            };
-
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                r.OrderItems.Add(new OrderItem()
+                r = new Order
                 {
-                    ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
-                    MenuItem = new Menu_Item() {
-                        Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
-                        Descriptions = dr["Description"].ToString(),
-                        Name = dr["Name"].ToString(),
-                        Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"])
-                    },
-                    OrderID = Convert.ToInt32(dr["Order_ID"]),
-                    Status = (Order_Status)dr["State_ID"],
-                    DateTime = (dr["DateTime"] is DBNull)? DateTime.UtcNow : Convert.ToDateTime(dr["DateTime"]),
-                    Quantity = Convert.ToInt32(dr["Quantity"]),
-                    Comment = dr["Notes"].ToString()
-                });
+                    Order_ID = Convert.ToInt32(dataTable.Rows[0]["Order_ID"]),
+                    Staff_ID = Convert.ToInt32(dataTable.Rows[0]["Staff_ID"]),
+                    Table_ID = Convert.ToInt32(dataTable.Rows[0]["Table_ID"]),
+                    Time = Convert.ToDateTime(dataTable.Rows[0]["Time"]),
+                    OrderItems = new List<OrderItem>()
+                };
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    r.OrderItems.Add(new OrderItem()
+                    {
+                        ItemID = Convert.ToInt32(dr["Order_Item_ID"]),
+                        MenuItem = new Menu_Item()
+                        {
+                            Menu_Item_ID = Convert.ToInt32(dr["Menu_Item_ID"]),
+                            Descriptions = dr["Description"].ToString(),
+                            Name = dr["Name"].ToString(),
+                            Type = (Item_Type)Convert.ToInt32(dr["Item_Type_ID"])
+                        },
+                        OrderID = Convert.ToInt32(dr["Order_ID"]),
+                        Status = (Order_Status)dr["State_ID"],
+                        DateTime = (dr["DateTime"] is DBNull) ? DateTime.UtcNow : Convert.ToDateTime(dr["DateTime"]),
+                        Quantity = Convert.ToInt32(dr["Quantity"]),
+                        Comment = dr["Notes"].ToString()
+                    });
+                }
+            }
+            else
+            {
+                r = new Order();
             }
             return r;
         }
