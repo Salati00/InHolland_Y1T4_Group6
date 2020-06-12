@@ -33,6 +33,7 @@ namespace Start
 
         private void Initialize()
         {
+            InitializeComponent();
             ord = new OrderingService();
             tab = new TableService();
             member = new Staff();
@@ -40,7 +41,6 @@ namespace Start
         }
         private void Ordering_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
         }
 
         //Methods
@@ -62,38 +62,20 @@ namespace Start
 
         private void Btn_FoodCategory_Click(object sender, EventArgs e)
         {
-            string Category = ((Button)sender).Text;
-            List<Menu_Item> Menu = new List<Menu_Item>();
+            Controls.OfType<RowElement>().ToList().ForEach(x => this.Controls.Remove(x));
+            string Category = ((Button)sender).Tag.ToString();
+            List<Menu_Item> Menu;
 
-            switch (Category)
-            {
-                case "Main":
-                    Menu = ord.GetMenuItems("Main");
-                    break;
-                default:break;
-            }
-            /*
-            Dgv_OrdrMenu.AutoGenerateColumns = false;
-            DataGridViewTextBoxColumn dgvc = new DataGridViewTextBoxColumn();
-            dgvc.HeaderText = "Name";
-            dgvc.DataPropertyName = "Value";
-            DataGridViewButtonColumn dgvbt = new DataGridViewButtonColumn();
-            dgvbt.Text = "ADD";// works also when bound
-            dgvbt.UseColumnTextForButtonValue = true;
-
-            Dgv_OrdrMenu.CellClick += new DataGridViewCellEventHandler(grd_CellClick);
-
-            Dgv_OrdrMenu.Columns.Add(dgvc);
-            Dgv_OrdrMenu.Columns.Add(dgvbt);
-
-            Dgv_OrdrMenu.DataSource = Menu;*/
+            Menu = ord.GetMenuItems(Category);
 
             GenerateTable(Menu);
-            
+            Lbl_CurrentCategory.Text = Category;
         }
 
         private void GenerateTable(List<Menu_Item> Menu)
         {
+            Controls.OfType<RowElement>().ToList().ForEach(x => this.Controls.Remove(x));
+
             int posX = 12;
             int posY = 12;
             foreach (var item in Menu)
@@ -107,19 +89,34 @@ namespace Start
             }
         }
 
-        void grd_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void Rdb_CheckedUpdate(object sender, EventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == 1)
+            if (Rdb_Lunch.Checked)
             {
-                throw new NotImplementedException();
+                Btn_Food1.Tag = "Main";
+                Btn_Food2.Tag = "Specials";
+                Btn_Food3.Tag = "Bites";
+
+                Btn_Food1.Text = "Main";
+                Btn_Food2.Text = "Specials";
+                Btn_Food3.Text = "Bites";
+            }
+            else
+            {
+                Btn_Food1.Tag = "Night Starters";
+                Btn_Food2.Tag = "Night Mains";
+                Btn_Food3.Tag = "Night Dessert";
+
+                Btn_Food1.Text = "Starters";
+                Btn_Food2.Text = "Mains";
+                Btn_Food3.Text = "Dessert";
             }
         }
 
-        private void Btn_DrinkCategory_Click(object sender, EventArgs e)
+        private void Btn_Quit_Click(object sender, EventArgs e)
         {
-            string Category = ((Button)sender).Text;
+            this.Close();
         }
-
 
         private void Btn_Send_Click(object sender, EventArgs e)
         {
@@ -128,21 +125,6 @@ namespace Start
             //Overview ov = new Overview();
             //ov.ShowDialog();
             this.Close();
-        }
-
-        private void Btn_Quit_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Rdb_CheckedUpdate(object sender, EventArgs e)
-        {
-            if (Rdb_Lunch.Checked)
-                MessageBox.Show("Lunch");
-            else
-            {
-                MessageBox.Show("Dinner");
-            }
         }
     }
 }

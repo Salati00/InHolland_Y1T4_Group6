@@ -15,8 +15,8 @@ namespace DAO
 
         public List<Order> Db_Get_Orders()              //done
         {
-            string query = "select Order_ID, [Time]" +
-                "from Orders";
+            string query = "select Order_ID, [Time] ,Table_ID " +
+                "from Orders;";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrderTables(ExecuteSelectQuery(query, sqlParameters));
@@ -31,22 +31,22 @@ namespace DAO
 
                 order.Order_ID = (int)dr["Order_ID"];
                 order.Time = (DateTime)dr["Time"];
+                order.Table_ID = (int)dr["Table_ID"];
                 order.OrderItems = Db_Get_OrderItems(order.Order_ID);
                 
                 orders.Add(order);
             }
             return orders;
         }
-        public List<OrderItem> Db_Get_OrderItems(int orderID)    ///done
+        public List<OrderItem> Db_Get_OrderItems(int orderID)    //done
         {
-            string query = "select o.Order_ID , State_ID , Quantity ,Notes, o.[Time] , mi.[Name], Cart_ID ,oi.Order_Item_ID ,mi.Item_Type_ID " +
+            string query = "select o.Order_ID, State_ID, Quantity, Notes, o.[Time], mi.[Name], Cart_ID, oi.Order_Item_ID, mi.Item_Type_ID " +
                 "from Orders as o " +
-                "join Order_Items  as oi on oi.Order_ID = o.Order_ID " +
+                "join Order_Items as oi on oi.Order_ID = o.Order_ID " +
                 "join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID " +
                 "join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID " +
-                "where o.Order_ID = @orderNum ; " ;
+                "where o.Order_ID = @orderNum;";
             
-
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@orderNum", orderID);
             return ReadOrderItemsTables(ExecuteSelectQuery(query, sqlParameters));

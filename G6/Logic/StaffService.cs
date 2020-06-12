@@ -14,13 +14,14 @@ namespace Logic
 
         public List<Staff> GetStaffMembers()
         {
-            /*try
-            {*/
+            try
+            {
                 List<Staff> staff = staff_db.Db_Get_All_Staff();
                 return staff;
-            /*}
+            }
             catch (Exception)
             {
+                /*
                 // lost connection to database
                 List<Staff> staff = new List<Staff>();
                 Staff mem1 = new Staff();
@@ -40,8 +41,9 @@ namespace Logic
                 staff.Add(mem2);
 
                 return staff;
+                */
                 throw new Exception("Error occurs when attempting to connect to database.");
-            }*/
+            }
         }
         public void EditStaff(Staff staff)
         {
