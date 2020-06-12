@@ -25,7 +25,7 @@ namespace Start
             InitializeComponent();
             tab = new TableService();
             this.member = member;
-
+            Tmr_Refresh.Enabled = true;
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -83,6 +83,11 @@ namespace Start
                     buttons[i].ForeColor = Color.White;
                 }
             }
+        }
+
+        private void Tmr_Refresh_Tick(object sender, EventArgs e)
+        {
+            InitializeTableStatus(tabList);
         }
     }
 }

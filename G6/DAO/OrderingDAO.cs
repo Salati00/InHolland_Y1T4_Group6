@@ -57,17 +57,19 @@ namespace DAO
 
         public void Db_Send_Order(Order Order, bool Close = false)
         {
+            string query;
+            SqlParameter[] sqlParameters;
             if (Close)
             {
-                string query = "update Orders set Closed = 1 where Orders.Table_ID = @TableID";
-                SqlParameter[] sqlParameters = new SqlParameter[1];
+                query = "update Orders set Closed = 1 where Orders.Table_ID = @TableID";
+                sqlParameters = new SqlParameter[1];
                 sqlParameters[0] = new SqlParameter("@TableID", Order.Table_ID);
                 ExecuteEditQuery(query, sqlParameters);
             }
             else
             {
-                string query = "select * from orders where Table_ID = @tabId and Closed <> 1";
-                SqlParameter[] sqlParameters = new SqlParameter[1];
+                query = "select * from orders where Table_ID = @tabId and Closed <> 1";
+                sqlParameters = new SqlParameter[1];
                 sqlParameters[0] = new SqlParameter("@tabId", Order.Table_ID);
                 DataTable OrderExists = ExecuteSelectQuery(query, sqlParameters);
                 if (OrderExists.Rows.Count != 0)
@@ -98,6 +100,12 @@ namespace DAO
                     InsertOrdersFromOrderID(Order.Order_ID, Order.OrderItems);
                 }
             }
+
+            query = "update Tables set status = @status WHERE Table_ID = @tId";
+            sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("@tId", Order.Table_ID);
+            sqlParameters[1] = new SqlParameter("@status", Close?0:2);
+            ExecuteEditQuery(query, sqlParameters);
         }
 
         private void InsertOrdersFromOrderID(int OrderID, List<OrderItem> Items)

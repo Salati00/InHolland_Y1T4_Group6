@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.table = new System.Windows.Forms.Label();
             this.t1 = new System.Windows.Forms.Button();
             this.t8 = new System.Windows.Forms.Button();
@@ -50,15 +51,16 @@
             this.lbl_reserved = new System.Windows.Forms.Label();
             this.lbl_avai = new System.Windows.Forms.Label();
             this.color_avai = new System.Windows.Forms.Label();
+            this.Tmr_Refresh = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // table
             // 
             this.table.AutoSize = true;
-            this.table.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.table.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.table.Location = new System.Drawing.Point(191, 9);
             this.table.Name = "table";
-            this.table.Size = new System.Drawing.Size(196, 20);
+            this.table.Size = new System.Drawing.Size(194, 20);
             this.table.TabIndex = 0;
             this.table.Text = "TABLE MANAGEMENT";
             // 
@@ -310,6 +312,11 @@
             this.color_avai.Text = "    ";
             this.color_avai.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Tmr_Refresh
+            // 
+            this.Tmr_Refresh.Interval = 2000;
+            this.Tmr_Refresh.Tick += new System.EventHandler(this.Tmr_Refresh_Tick);
+            // 
             // TableView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -371,5 +378,6 @@
         private System.Windows.Forms.Label lbl_avai;
         private System.Windows.Forms.Label color_avai;
         private System.Windows.Forms.Label lbl_reserved;
+        private System.Windows.Forms.Timer Tmr_Refresh;
     }
 }
