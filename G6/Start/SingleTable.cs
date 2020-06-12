@@ -86,10 +86,9 @@ namespace Start
 
             foreach (OrderItem o in order.OrderItems)
             {
-                if (o.Status != Order_Status.Served)
+                if (o.Status != Order_Status.Served && CurrentTable.Status != Table_Status.Available)
                 {
                     ListViewItem lvi = new ListViewItem(o.ItemID.ToString());
-                    //lvi.SubItems.Add(o.ItemID.ToString());
                     lvi.SubItems.Add(o.MenuItem.Name);
                     lvi.SubItems.Add(o.OrderID.ToString());
                     lvi.SubItems.Add(o.Status.ToString());
@@ -97,8 +96,7 @@ namespace Start
                     lvi.SubItems.Add(o.Quantity.ToString());
                     lvi.SubItems.Add(o.Comment.ToString());
                     Lst_TableOrders.Items.Add(lvi);
-                    Lst_TableOrders.Update();
-                    
+                    Lst_TableOrders.Update(); 
                 }
             }
         }
@@ -106,6 +104,7 @@ namespace Start
         private void btn_ready_Click(object sender, EventArgs e)
         {
             MessageBox.Show("The order is ready to be served.");
+            this.DialogResult = DialogResult.OK;
         }
 
         private void btn_reserve_Click(object sender, EventArgs e)
