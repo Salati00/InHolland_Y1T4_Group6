@@ -13,6 +13,7 @@ namespace DAO
      public class kichenBarDAO : Base
     {
 
+        Cart cart;
         public List<Order> Db_Get_Orders()              //done
         {
             string query = "select Order_ID, [Time] ,Table_ID " +
@@ -40,13 +41,19 @@ namespace DAO
         }
         public List<OrderItem> Db_Get_OrderItems(int orderID)    //done
         {
-            string query = "select o.Order_ID, State_ID, Quantity, Notes, o.[Time], mi.[Name], Cart_ID, oi.Order_Item_ID, mi.Item_Type_ID " +
-                "from Orders as o " +
-                "join Order_Items as oi on oi.Order_ID = o.Order_ID " +
-                "join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID " +
-                "join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID " +
-                "where o.Order_ID = @orderNum; ";
-            
+            string query = $"select o.Order_ID, State_ID, Quantity, Notes, o.[Time], mi.[Name], c.Cart_ID, oi.Order_Item_ID, mi.Item_Type_ID " +
+                $"                 from Orders as o " +
+                $"                 join Order_Items as oi on oi.Order_ID = o.Order_ID " +
+                $"                 join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID " +
+                $"                 join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID " +
+                $"                 join Carts as c on c.Cart_ID = it.Cart_ID " +
+                $"                 where o.Order_ID = 17 " +
+                $"                 and oi.State_ID = 1  ";
+            string extraCondition = " and c.[Name] = 'Drinks' ;";
+            if (cart != Cart.Drinks)
+                extraCondition =  " and not c.[Name] = 'Drinks' ;";
+            query += extraCondition;
+
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@orderNum", orderID);
             return ReadOrderItemsTables(ExecuteSelectQuery(query, sqlParameters));
