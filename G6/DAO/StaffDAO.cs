@@ -100,6 +100,7 @@ namespace DAO
             }
             else
             {
+                // return null
                 staff = new Staff() {
                 Staff_ID = -1};
             }

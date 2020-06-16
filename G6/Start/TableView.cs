@@ -99,6 +99,7 @@ namespace Start
             List<Table> tabls = tab.GetTablesWithOrders();
 
             List<Label> listlab = Controls.OfType<Label>().ToList();
+
             foreach (var item in listlab)
             {
                 if (Regex.IsMatch(item.Name, "T[0-9]+"))
