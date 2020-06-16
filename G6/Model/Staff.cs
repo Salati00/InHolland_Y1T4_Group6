@@ -9,7 +9,7 @@ namespace Model
     public class Staff
     {
         public int Staff_ID { get; set; }
-        public int Password { get; set; }
+        public string Password { get; set; }
         public string Name { get; set; }
         public string Phone_Number { get; set; }
         public Staff_Type Role { get; set; }

@@ -60,13 +60,13 @@ namespace Start
         {
             if (password.Text == "")
             {
-                MessageBox.Show("Please provide username and password!");
+                MessageBox.Show("Please provide password!");
             }
             else
             {
-                member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), Convert.ToInt32(password.Text));
+                member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), password.Text);
 
-                if(member.Staff_ID == -1)
+                if(member.Staff_ID == -1 && password.Text != member.Password)
                 {
                     MessageBox.Show("invalid username or password!");
                 }

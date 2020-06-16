@@ -42,7 +42,7 @@ namespace Logic
         //    try { staff_db.RemoveStaffInfo(staff); }
         //    catch { throw new Exception("database connection failed"); }
         //}
-        public Staff DoLogin(int id, int password)
+        public Staff DoLogin(int id, string password)
         {
             Staff staff;
             try

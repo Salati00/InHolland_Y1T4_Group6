@@ -30,7 +30,7 @@ namespace DAO
                     Name = dr["Name"].ToString(),
                     Phone_Number = dr["Phone_Number"].ToString(),
                     Role = (Staff_Type)Convert.ToInt32(dr["Staff_Type_ID"]),
-                    Password = Convert.ToInt32(dr["Password"])
+                    Password = (string)(dr["Password"])
                 };
                 staff.Add(member);
             }
@@ -73,7 +73,7 @@ namespace DAO
         //    sqlParameters[0] = new SqlParameter("@staff_id", staff.Staff_ID);
         //    ExecuteEditQuery(query, sqlParameters);
         //}
-        public Staff DoLogin(int id, int password)
+        public Staff DoLogin(int id, string password)
         {
             string query = "select Staff_ID, [Password], [Name], Phone_Number, Role_Number " +
                            "from Staff, Staff_Types " +
@@ -93,7 +93,7 @@ namespace DAO
                 {
                     Staff_ID = Convert.ToInt32(dr["Staff_ID"]),
                     Name = dr["Name"].ToString(),
-                    Password = Convert.ToInt32(dr["Password"]),
+                    Password = (string)(dr["Password"]),
                     Phone_Number = dr["Phone_Number"].ToString(),
                     Role = (Staff_Type)Convert.ToInt32(dr["Role_Number"])
                 };
