@@ -19,12 +19,12 @@ namespace Start
     public partial class TableView : Form
     {
         Staff member;
-        TableService tab;
-        List<Table> tabList;
+        TableService tableService;
+
         public TableView(Staff member)
         {
             InitializeComponent();
-            tab = new TableService();
+            tableService = new TableService();
             this.member = member;
             Tmr_Refresh.Enabled = true;
         }
@@ -36,7 +36,7 @@ namespace Start
 
         private void Table_Click_Handler(object sender, EventArgs e)
         {
-            SingleTable table = new SingleTable(tab.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)),member);
+            SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)),member);
             table.ShowDialog();
         }
 
@@ -44,11 +44,11 @@ namespace Start
         {
             Lbl_ID.Text = member.Role.ToString();
             date.Text = DateTime.Today.ToShortDateString();
-            tabList = tab.GetAllTables();
+            List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
         }
 
-        public List<Button> ButtonList()
+        private List<Button> ButtonList()
         {
             List<Button> buttons = new List<Button>();
             buttons.Add(t1);
@@ -64,7 +64,7 @@ namespace Start
             return buttons;
         }
 
-        public void InitializeTableStatus(List<Table> tab)
+        private void InitializeTableStatus(List<Table> tab)
         {
             List<Button> buttons = ButtonList();
             for (int i = 0; i < tab.Count; i++)
@@ -89,14 +89,14 @@ namespace Start
 
         private void Tmr_Refresh_Tick(object sender, EventArgs e)
         {
-            tabList = tab.GetAllTables();
+            List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
             CheckReadyServe();
         }
 
         private void CheckReadyServe()
         {
-            List<Table> tabls = tab.GetTablesWithOrders();
+            List<Table> tabls = tableService.GetTablesWithOrders();
 
             List<Label> listlab = Controls.OfType<Label>().ToList();
 

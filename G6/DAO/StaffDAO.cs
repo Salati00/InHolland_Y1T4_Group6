@@ -84,7 +84,7 @@ namespace DAO
             sqlParameters[1] = new SqlParameter("@password", password);
             DataTable dt = ExecuteSelectQuery(query, sqlParameters);
 
-            Staff staff;
+            Staff staff = null;
             if (dt.Rows.Count > 0)
             {
                 DataRow dr = dt.Rows[0];
@@ -97,12 +97,6 @@ namespace DAO
                     Phone_Number = dr["Phone_Number"].ToString(),
                     Role = (Staff_Type)Convert.ToInt32(dr["Role_Number"])
                 };
-            }
-            else
-            {
-                // return null
-                staff = new Staff() {
-                Staff_ID = -1};
             }
             return staff;
         }

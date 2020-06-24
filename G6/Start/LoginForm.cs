@@ -16,7 +16,6 @@ namespace Start
     public partial class login_form : Form
     {
         StaffService service;
-        Staff member;
         Overview ov;
 
         private static login_form inst;
@@ -49,7 +48,7 @@ namespace Start
             Dictionary<int, string> Wrapper = new Dictionary<int, string>();
             foreach (var item in Users)
             {
-                Wrapper.Add(item.Staff_ID, $"{item.Staff_ID} | {item.Name}");
+                Wrapper.Add(item.Staff_ID, $"{item.Staff_ID} | {item.Name} | {item.Role}");
             }
             Cmb_Username.ValueMember = "Key";
             Cmb_Username.DisplayMember = "Value";
@@ -64,7 +63,7 @@ namespace Start
             }
             else
             {
-                member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), password.Text);
+                Staff member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), password.Text);
 
                 if(member.Staff_ID == -1 && password.Text != member.Password)
                 {
@@ -75,7 +74,28 @@ namespace Start
                     this.Hide();
                     ov = new Overview(member);
                 }
+                switch (member.Role)
+                {
+                    case Staff_Type.Bartender:
+                        new KitchenBar(Staff_Type.Bartender).ShowDialog();
+                        this.Close();
+                        break;
+                    case Staff_Type.Chef:
+                        new KitchenBar(Staff_Type.Chef).ShowDialog();
+                        this.Close();
+                        break;
+                    case Staff_Type.Waiter:
+                        new TableView(member).ShowDialog();
+                        this.Close();
+                        break;
+                    case Staff_Type.Manager:
+                    default:
+                        new Overview(member).ShowDialog();
+                        this.Close();
+                        break;
+                }
             }
+           
         }
 
         private void btn_exit_Click(object sender, EventArgs e)

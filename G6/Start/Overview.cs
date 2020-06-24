@@ -23,25 +23,8 @@ namespace Start
 
         private void Initialize()
         {
-            switch (member.Role)
-            {
-                case Staff_Type.Bartender:
-                    ShowForm(new KitchenBar(Staff_Type.Bartender));
-                    this.Close();
-                    break;
-                case Staff_Type.Chef:
-                    ShowForm(new KitchenBar(Staff_Type.Chef));
-                    this.Close();
-                    break;
-                case Staff_Type.Waiter:
-                    ShowForm(new TableView(member));
-                    this.Close();
-                    break;
-                case Staff_Type.Manager:
-                default:
-                    this.Show();
-                    break;
-            }
+            lbl_name.Text = member.Name.ToString();
+            lbl_role.Text = member.Role.ToString();
         }
 
         private void ShowForm(Form frm)
@@ -68,7 +51,7 @@ namespace Start
 
         public void btn_signout_Click(object sender, EventArgs e)
         {
-            login_form.GetForm.Show();
+            //login_form.GetForm.Show();
             this.Close();
         }
 
@@ -76,7 +59,6 @@ namespace Start
         {
             ShowForm(new TableView(member));
         }
-
 
         private void Overview_Load(object sender, EventArgs e)
         {
