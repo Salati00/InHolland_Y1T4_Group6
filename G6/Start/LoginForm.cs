@@ -65,37 +65,38 @@ namespace Start
             {
                 Staff member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), password.Text);
 
-                if(member.Staff_ID == -1 && password.Text != member.Password)
+                if (member.Staff_ID == -1 && password.Text != member.Password)
                 {
                     MessageBox.Show("invalid username or password!");
                 }
                 else
                 {
                     this.Hide();
-                    ov = new Overview(member);
+                    switch (member.Role)
+                    {
+                        case Staff_Type.Bartender:
+                            new KitchenBar(Staff_Type.Bartender).ShowDialog();
+                            this.Close();
+                            break;
+                        case Staff_Type.Chef:
+                            new KitchenBar(Staff_Type.Chef).ShowDialog();
+                            this.Close();
+                            break;
+                        case Staff_Type.Waiter:
+                            new TableView(member).ShowDialog();
+                            this.Close();
+                            break;
+                        case Staff_Type.Manager:
+                        default:
+                            new Overview(member).ShowDialog();
+                            this.Close();
+                            break;
+                    }
+                    //    ov = new Overview(member);
                 }
-                switch (member.Role)
-                {
-                    case Staff_Type.Bartender:
-                        new KitchenBar(Staff_Type.Bartender).ShowDialog();
-                        this.Close();
-                        break;
-                    case Staff_Type.Chef:
-                        new KitchenBar(Staff_Type.Chef).ShowDialog();
-                        this.Close();
-                        break;
-                    case Staff_Type.Waiter:
-                        new TableView(member).ShowDialog();
-                        this.Close();
-                        break;
-                    case Staff_Type.Manager:
-                    default:
-                        new Overview(member).ShowDialog();
-                        this.Close();
-                        break;
-                }
+
             }
-           
+
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -103,7 +104,7 @@ namespace Start
             this.Close();
         }
 
-       
+
 
         private void TextEnterNumberOnly(object sender, KeyPressEventArgs e)
         {

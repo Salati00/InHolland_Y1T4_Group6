@@ -31,12 +31,21 @@ namespace Start
 
         private void btn_back_Click(object sender, EventArgs e)
         {
+            this.Hide();
+            if (member.Role == Staff_Type.Manager)
+            {
+                new Overview(member).ShowDialog();
+            }
+            else
+            {
+                new login_form().ShowDialog();
+            }
             this.Close();
         }
 
         private void Table_Click_Handler(object sender, EventArgs e)
         {
-            SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)),member);
+            SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)), member);
             table.ShowDialog();
         }
 
@@ -108,7 +117,7 @@ namespace Start
                     int num = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].Value);
                     foreach (var o in tabls)
                     {
-                        if(num == o.Table_Number)
+                        if (num == o.Table_Number)
                         {
                             item.Visible = true;
                         }
