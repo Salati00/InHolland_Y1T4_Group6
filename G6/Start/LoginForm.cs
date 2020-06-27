@@ -29,7 +29,7 @@ namespace Start
             }
         }
 
-        public login_form()
+        private login_form()
         {
             InitializeComponent();
             service = new StaffService();
