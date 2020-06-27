@@ -40,7 +40,7 @@ namespace Start
         {
             foreach (var item in Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, pattern)).ToList())
             {
-                int number = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].ToString());
+                int number = Convert.ToInt32(item.Tag);
                 Dic.Add(number, item);
             }
         }

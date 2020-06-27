@@ -333,7 +333,7 @@
             this.Lbl_RT1.Name = "Lbl_RT1";
             this.Lbl_RT1.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT1.TabIndex = 39;
-            this.Lbl_RT1.Tag = "";
+            this.Lbl_RT1.Tag = "1";
             this.Lbl_RT1.Text = "Items Ready!";
             this.Lbl_RT1.Visible = false;
             // 
@@ -344,6 +344,7 @@
             this.Lbl_RT2.Name = "Lbl_RT2";
             this.Lbl_RT2.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT2.TabIndex = 40;
+            this.Lbl_RT2.Tag = "2";
             this.Lbl_RT2.Text = "Items Ready!";
             this.Lbl_RT2.Visible = false;
             // 
@@ -354,6 +355,7 @@
             this.Lbl_RT3.Name = "Lbl_RT3";
             this.Lbl_RT3.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT3.TabIndex = 41;
+            this.Lbl_RT3.Tag = "3";
             this.Lbl_RT3.Text = "Items Ready!";
             this.Lbl_RT3.Visible = false;
             // 
@@ -364,6 +366,7 @@
             this.Lbl_RT4.Name = "Lbl_RT4";
             this.Lbl_RT4.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT4.TabIndex = 42;
+            this.Lbl_RT4.Tag = "4";
             this.Lbl_RT4.Text = "Items Ready!";
             this.Lbl_RT4.Visible = false;
             // 
@@ -374,6 +377,7 @@
             this.Lbl_RT5.Name = "Lbl_RT5";
             this.Lbl_RT5.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT5.TabIndex = 43;
+            this.Lbl_RT5.Tag = "5";
             this.Lbl_RT5.Text = "Items Ready!";
             this.Lbl_RT5.Visible = false;
             // 
@@ -384,6 +388,7 @@
             this.Lbl_RT6.Name = "Lbl_RT6";
             this.Lbl_RT6.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT6.TabIndex = 44;
+            this.Lbl_RT6.Tag = "6";
             this.Lbl_RT6.Text = "Items Ready!";
             this.Lbl_RT6.Visible = false;
             // 
@@ -394,6 +399,7 @@
             this.Lbl_RT7.Name = "Lbl_RT7";
             this.Lbl_RT7.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT7.TabIndex = 45;
+            this.Lbl_RT7.Tag = "7";
             this.Lbl_RT7.Text = "Items Ready!";
             this.Lbl_RT7.Visible = false;
             // 
@@ -404,6 +410,7 @@
             this.Lbl_RT8.Name = "Lbl_RT8";
             this.Lbl_RT8.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT8.TabIndex = 46;
+            this.Lbl_RT8.Tag = "8";
             this.Lbl_RT8.Text = "Items Ready!";
             this.Lbl_RT8.Visible = false;
             // 
@@ -414,6 +421,7 @@
             this.Lbl_RT9.Name = "Lbl_RT9";
             this.Lbl_RT9.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT9.TabIndex = 47;
+            this.Lbl_RT9.Tag = "9";
             this.Lbl_RT9.Text = "Items Ready!";
             this.Lbl_RT9.Visible = false;
             // 
@@ -424,6 +432,7 @@
             this.Lbl_RT10.Name = "Lbl_RT10";
             this.Lbl_RT10.Size = new System.Drawing.Size(69, 13);
             this.Lbl_RT10.TabIndex = 48;
+            this.Lbl_RT10.Tag = "10";
             this.Lbl_RT10.Text = "Items Ready!";
             this.Lbl_RT10.Visible = false;
             // 
@@ -434,6 +443,7 @@
             this.Lbl_PT10.Name = "Lbl_PT10";
             this.Lbl_PT10.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT10.TabIndex = 58;
+            this.Lbl_PT10.Tag = "10";
             this.Lbl_PT10.Text = "Order pending";
             this.Lbl_PT10.Visible = false;
             // 
@@ -444,6 +454,7 @@
             this.Lbl_PT9.Name = "Lbl_PT9";
             this.Lbl_PT9.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT9.TabIndex = 57;
+            this.Lbl_PT9.Tag = "9";
             this.Lbl_PT9.Text = "Order pending";
             this.Lbl_PT9.Visible = false;
             // 
@@ -454,6 +465,7 @@
             this.Lbl_PT8.Name = "Lbl_PT8";
             this.Lbl_PT8.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT8.TabIndex = 56;
+            this.Lbl_PT8.Tag = "8";
             this.Lbl_PT8.Text = "Order pending";
             this.Lbl_PT8.Visible = false;
             // 
@@ -464,6 +476,7 @@
             this.Lbl_PT7.Name = "Lbl_PT7";
             this.Lbl_PT7.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT7.TabIndex = 55;
+            this.Lbl_PT7.Tag = "7";
             this.Lbl_PT7.Text = "Order pending";
             this.Lbl_PT7.Visible = false;
             // 
@@ -474,6 +487,7 @@
             this.Lbl_PT6.Name = "Lbl_PT6";
             this.Lbl_PT6.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT6.TabIndex = 54;
+            this.Lbl_PT6.Tag = "6";
             this.Lbl_PT6.Text = "Order pending";
             this.Lbl_PT6.Visible = false;
             // 
@@ -484,6 +498,7 @@
             this.Lbl_PT5.Name = "Lbl_PT5";
             this.Lbl_PT5.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT5.TabIndex = 53;
+            this.Lbl_PT5.Tag = "5";
             this.Lbl_PT5.Text = "Order pending";
             this.Lbl_PT5.Visible = false;
             // 
@@ -494,6 +509,7 @@
             this.Lbl_PT4.Name = "Lbl_PT4";
             this.Lbl_PT4.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT4.TabIndex = 52;
+            this.Lbl_PT4.Tag = "4";
             this.Lbl_PT4.Text = "Order pending";
             this.Lbl_PT4.Visible = false;
             // 
@@ -504,6 +520,7 @@
             this.Lbl_PT3.Name = "Lbl_PT3";
             this.Lbl_PT3.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT3.TabIndex = 51;
+            this.Lbl_PT3.Tag = "3";
             this.Lbl_PT3.Text = "Order pending";
             this.Lbl_PT3.Visible = false;
             // 
@@ -514,6 +531,7 @@
             this.Lbl_PT2.Name = "Lbl_PT2";
             this.Lbl_PT2.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT2.TabIndex = 50;
+            this.Lbl_PT2.Tag = "2";
             this.Lbl_PT2.Text = "Order pending";
             this.Lbl_PT2.Visible = false;
             // 
@@ -524,7 +542,7 @@
             this.Lbl_PT1.Name = "Lbl_PT1";
             this.Lbl_PT1.Size = new System.Drawing.Size(74, 13);
             this.Lbl_PT1.TabIndex = 49;
-            this.Lbl_PT1.Tag = "";
+            this.Lbl_PT1.Tag = "1";
             this.Lbl_PT1.Text = "Order pending";
             this.Lbl_PT1.Visible = false;
             // 
