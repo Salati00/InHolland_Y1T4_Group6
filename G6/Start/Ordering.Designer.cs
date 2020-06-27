@@ -28,15 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.Tab_Ordering = new System.Windows.Forms.TabControl();
-            this.TPag_Food = new System.Windows.Forms.TabPage();
             this.Btn_Food3 = new System.Windows.Forms.Button();
             this.Btn_Food2 = new System.Windows.Forms.Button();
             this.Btn_Food1 = new System.Windows.Forms.Button();
             this.Rdb_Dinner = new System.Windows.Forms.RadioButton();
             this.Rdb_Lunch = new System.Windows.Forms.RadioButton();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.Btn_DinksWines = new System.Windows.Forms.Button();
             this.Btn_DrinksBeers = new System.Windows.Forms.Button();
             this.Btn_DrinksHot = new System.Windows.Forms.Button();
@@ -47,50 +43,15 @@
             this.Btn_Quit = new System.Windows.Forms.Button();
             this.Lbl_CurrentCategory = new System.Windows.Forms.Label();
             this.OrderList = new Start.OrderList();
-            this.panel1.SuspendLayout();
-            this.Tab_Ordering.SuspendLayout();
-            this.TPag_Food.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.Gpb_Drinks = new System.Windows.Forms.GroupBox();
+            this.Gpb_Drinks.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.Tab_Ordering);
-            this.panel1.Location = new System.Drawing.Point(12, 332);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(616, 193);
-            this.panel1.TabIndex = 4;
-            // 
-            // Tab_Ordering
-            // 
-            this.Tab_Ordering.Controls.Add(this.TPag_Food);
-            this.Tab_Ordering.Controls.Add(this.tabPage2);
-            this.Tab_Ordering.Location = new System.Drawing.Point(4, 4);
-            this.Tab_Ordering.Name = "Tab_Ordering";
-            this.Tab_Ordering.SelectedIndex = 0;
-            this.Tab_Ordering.Size = new System.Drawing.Size(609, 186);
-            this.Tab_Ordering.TabIndex = 0;
-            // 
-            // TPag_Food
-            // 
-            this.TPag_Food.Controls.Add(this.Btn_Food3);
-            this.TPag_Food.Controls.Add(this.Btn_Food2);
-            this.TPag_Food.Controls.Add(this.Btn_Food1);
-            this.TPag_Food.Controls.Add(this.Rdb_Dinner);
-            this.TPag_Food.Controls.Add(this.Rdb_Lunch);
-            this.TPag_Food.Location = new System.Drawing.Point(4, 22);
-            this.TPag_Food.Name = "TPag_Food";
-            this.TPag_Food.Padding = new System.Windows.Forms.Padding(3);
-            this.TPag_Food.Size = new System.Drawing.Size(601, 160);
-            this.TPag_Food.TabIndex = 0;
-            this.TPag_Food.Text = "Food";
-            this.TPag_Food.UseVisualStyleBackColor = true;
             // 
             // Btn_Food3
             // 
-            this.Btn_Food3.Location = new System.Drawing.Point(475, 36);
+            this.Btn_Food3.Location = new System.Drawing.Point(428, 293);
             this.Btn_Food3.Name = "Btn_Food3";
-            this.Btn_Food3.Size = new System.Drawing.Size(84, 84);
+            this.Btn_Food3.Size = new System.Drawing.Size(100, 60);
             this.Btn_Food3.TabIndex = 4;
             this.Btn_Food3.Tag = "Bites";
             this.Btn_Food3.Text = "Bites";
@@ -99,9 +60,9 @@
             // 
             // Btn_Food2
             // 
-            this.Btn_Food2.Location = new System.Drawing.Point(314, 36);
+            this.Btn_Food2.Location = new System.Drawing.Point(293, 293);
             this.Btn_Food2.Name = "Btn_Food2";
-            this.Btn_Food2.Size = new System.Drawing.Size(84, 84);
+            this.Btn_Food2.Size = new System.Drawing.Size(100, 60);
             this.Btn_Food2.TabIndex = 3;
             this.Btn_Food2.Tag = "Specials";
             this.Btn_Food2.Text = "Specials";
@@ -110,9 +71,9 @@
             // 
             // Btn_Food1
             // 
-            this.Btn_Food1.Location = new System.Drawing.Point(144, 36);
+            this.Btn_Food1.Location = new System.Drawing.Point(162, 293);
             this.Btn_Food1.Name = "Btn_Food1";
-            this.Btn_Food1.Size = new System.Drawing.Size(84, 84);
+            this.Btn_Food1.Size = new System.Drawing.Size(100, 60);
             this.Btn_Food1.TabIndex = 2;
             this.Btn_Food1.Tag = "Main";
             this.Btn_Food1.Text = "Main";
@@ -122,7 +83,7 @@
             // Rdb_Dinner
             // 
             this.Rdb_Dinner.AutoSize = true;
-            this.Rdb_Dinner.Location = new System.Drawing.Point(20, 90);
+            this.Rdb_Dinner.Location = new System.Drawing.Point(81, 315);
             this.Rdb_Dinner.Name = "Rdb_Dinner";
             this.Rdb_Dinner.Size = new System.Drawing.Size(56, 17);
             this.Rdb_Dinner.TabIndex = 1;
@@ -134,7 +95,7 @@
             // 
             this.Rdb_Lunch.AutoSize = true;
             this.Rdb_Lunch.Checked = true;
-            this.Rdb_Lunch.Location = new System.Drawing.Point(20, 53);
+            this.Rdb_Lunch.Location = new System.Drawing.Point(20, 315);
             this.Rdb_Lunch.Name = "Rdb_Lunch";
             this.Rdb_Lunch.Size = new System.Drawing.Size(55, 17);
             this.Rdb_Lunch.TabIndex = 0;
@@ -143,23 +104,9 @@
             this.Rdb_Lunch.UseVisualStyleBackColor = true;
             this.Rdb_Lunch.CheckedChanged += new System.EventHandler(this.Rdb_CheckedUpdate);
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.Btn_DinksWines);
-            this.tabPage2.Controls.Add(this.Btn_DrinksBeers);
-            this.tabPage2.Controls.Add(this.Btn_DrinksHot);
-            this.tabPage2.Controls.Add(this.Btn_DrinksMain);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(601, 160);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Drinks";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // Btn_DinksWines
             // 
-            this.Btn_DinksWines.Location = new System.Drawing.Point(473, 37);
+            this.Btn_DinksWines.Location = new System.Drawing.Point(432, 41);
             this.Btn_DinksWines.Name = "Btn_DinksWines";
             this.Btn_DinksWines.Size = new System.Drawing.Size(84, 84);
             this.Btn_DinksWines.TabIndex = 8;
@@ -170,7 +117,7 @@
             // 
             // Btn_DrinksBeers
             // 
-            this.Btn_DrinksBeers.Location = new System.Drawing.Point(333, 37);
+            this.Btn_DrinksBeers.Location = new System.Drawing.Point(297, 41);
             this.Btn_DrinksBeers.Name = "Btn_DrinksBeers";
             this.Btn_DrinksBeers.Size = new System.Drawing.Size(84, 84);
             this.Btn_DrinksBeers.TabIndex = 7;
@@ -181,7 +128,7 @@
             // 
             // Btn_DrinksHot
             // 
-            this.Btn_DrinksHot.Location = new System.Drawing.Point(191, 37);
+            this.Btn_DrinksHot.Location = new System.Drawing.Point(166, 41);
             this.Btn_DrinksHot.Name = "Btn_DrinksHot";
             this.Btn_DrinksHot.Size = new System.Drawing.Size(84, 84);
             this.Btn_DrinksHot.TabIndex = 6;
@@ -192,7 +139,7 @@
             // 
             // Btn_DrinksMain
             // 
-            this.Btn_DrinksMain.Location = new System.Drawing.Point(54, 37);
+            this.Btn_DrinksMain.Location = new System.Drawing.Point(41, 41);
             this.Btn_DrinksMain.Name = "Btn_DrinksMain";
             this.Btn_DrinksMain.Size = new System.Drawing.Size(84, 84);
             this.Btn_DrinksMain.TabIndex = 5;
@@ -256,40 +203,50 @@
             this.OrderList.Size = new System.Drawing.Size(398, 308);
             this.OrderList.TabIndex = 10;
             // 
+            // Gpb_Drinks
+            // 
+            this.Gpb_Drinks.Controls.Add(this.Btn_DrinksBeers);
+            this.Gpb_Drinks.Controls.Add(this.Btn_DinksWines);
+            this.Gpb_Drinks.Controls.Add(this.Btn_DrinksMain);
+            this.Gpb_Drinks.Controls.Add(this.Btn_DrinksHot);
+            this.Gpb_Drinks.Location = new System.Drawing.Point(12, 364);
+            this.Gpb_Drinks.Name = "Gpb_Drinks";
+            this.Gpb_Drinks.Size = new System.Drawing.Size(570, 161);
+            this.Gpb_Drinks.TabIndex = 11;
+            this.Gpb_Drinks.TabStop = false;
+            this.Gpb_Drinks.Text = "Drinks";
+            // 
             // Ordering
             // 
             this.ClientSize = new System.Drawing.Size(1008, 537);
+            this.Controls.Add(this.Gpb_Drinks);
+            this.Controls.Add(this.Btn_Food3);
             this.Controls.Add(this.OrderList);
+            this.Controls.Add(this.Btn_Food2);
             this.Controls.Add(this.Lbl_CurrentCategory);
+            this.Controls.Add(this.Btn_Food1);
             this.Controls.Add(this.Btn_Quit);
+            this.Controls.Add(this.Rdb_Dinner);
             this.Controls.Add(this.Btn_SendClose);
+            this.Controls.Add(this.Rdb_Lunch);
             this.Controls.Add(this.Btn_Send);
             this.Controls.Add(this.Cmb_TableSelection);
-            this.Controls.Add(this.panel1);
             this.Name = "Ordering";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ordering";
             this.Load += new System.EventHandler(this.Ordering_Load);
-            this.panel1.ResumeLayout(false);
-            this.Tab_Ordering.ResumeLayout(false);
-            this.TPag_Food.ResumeLayout(false);
-            this.TPag_Food.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
+            this.Gpb_Drinks.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TabControl Tab_Ordering;
-        private System.Windows.Forms.TabPage TPag_Food;
         private System.Windows.Forms.Button Btn_Food3;
         private System.Windows.Forms.Button Btn_Food2;
         private System.Windows.Forms.Button Btn_Food1;
         private System.Windows.Forms.RadioButton Rdb_Dinner;
         private System.Windows.Forms.RadioButton Rdb_Lunch;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button Btn_DinksWines;
         private System.Windows.Forms.Button Btn_DrinksBeers;
         private System.Windows.Forms.Button Btn_DrinksHot;
@@ -300,5 +257,6 @@
         private System.Windows.Forms.Button Btn_Quit;
         private System.Windows.Forms.Label Lbl_CurrentCategory;
         private OrderList OrderList;
+        private System.Windows.Forms.GroupBox Gpb_Drinks;
     }
 }

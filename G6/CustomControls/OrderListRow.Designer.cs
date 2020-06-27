@@ -39,7 +39,7 @@
             // 
             // Btn_Reduce
             // 
-            this.Btn_Reduce.Location = new System.Drawing.Point(210, 9);
+            this.Btn_Reduce.Location = new System.Drawing.Point(201, 9);
             this.Btn_Reduce.Name = "Btn_Reduce";
             this.Btn_Reduce.Size = new System.Drawing.Size(30, 20);
             this.Btn_Reduce.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // Btn_Add
             // 
-            this.Btn_Add.Location = new System.Drawing.Point(265, 9);
+            this.Btn_Add.Location = new System.Drawing.Point(256, 9);
             this.Btn_Add.Name = "Btn_Add";
             this.Btn_Add.Size = new System.Drawing.Size(30, 20);
             this.Btn_Add.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             // Btn_Remove
             // 
-            this.Btn_Remove.Location = new System.Drawing.Point(317, 4);
+            this.Btn_Remove.Location = new System.Drawing.Point(308, 4);
             this.Btn_Remove.Name = "Btn_Remove";
             this.Btn_Remove.Size = new System.Drawing.Size(30, 30);
             this.Btn_Remove.TabIndex = 2;
@@ -70,7 +70,7 @@
             // Lbl_Name
             // 
             this.Lbl_Name.AutoSize = true;
-            this.Lbl_Name.Location = new System.Drawing.Point(24, 13);
+            this.Lbl_Name.Location = new System.Drawing.Point(15, 13);
             this.Lbl_Name.Name = "Lbl_Name";
             this.Lbl_Name.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Name.TabIndex = 3;
@@ -79,7 +79,7 @@
             // Lbl_Amount
             // 
             this.Lbl_Amount.AutoSize = true;
-            this.Lbl_Amount.Location = new System.Drawing.Point(246, 13);
+            this.Lbl_Amount.Location = new System.Drawing.Point(237, 13);
             this.Lbl_Amount.Name = "Lbl_Amount";
             this.Lbl_Amount.Size = new System.Drawing.Size(13, 13);
             this.Lbl_Amount.TabIndex = 4;
@@ -87,7 +87,7 @@
             // 
             // Txt_Notes
             // 
-            this.Txt_Notes.Location = new System.Drawing.Point(111, 39);
+            this.Txt_Notes.Location = new System.Drawing.Point(102, 39);
             this.Txt_Notes.Name = "Txt_Notes";
             this.Txt_Notes.Size = new System.Drawing.Size(236, 20);
             this.Txt_Notes.TabIndex = 5;
@@ -96,7 +96,7 @@
             // Lbl_Notes
             // 
             this.Lbl_Notes.AutoSize = true;
-            this.Lbl_Notes.Location = new System.Drawing.Point(24, 42);
+            this.Lbl_Notes.Location = new System.Drawing.Point(15, 42);
             this.Lbl_Notes.Name = "Lbl_Notes";
             this.Lbl_Notes.Size = new System.Drawing.Size(35, 13);
             this.Lbl_Notes.TabIndex = 6;

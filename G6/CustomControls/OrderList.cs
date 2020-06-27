@@ -69,5 +69,10 @@ namespace Start
             orders = new Order();
             Controls.OfType<OrderListRow>().ToList().ForEach(x => this.Controls.Remove(x));
         }
+
+        public void RemoveSpace()
+        {
+            posY -= 75;
+        }
     }
 }

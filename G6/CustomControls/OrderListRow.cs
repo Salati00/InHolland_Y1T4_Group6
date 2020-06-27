@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Model;
 using System.Windows.Forms.VisualStyles;
+using Start;
 
 namespace CustomControls
 {
@@ -68,6 +69,15 @@ namespace CustomControls
 
         private void Btn_Remove_Click(object sender, EventArgs e)
         {
+            Parent.Controls.OfType<OrderListRow>().ToList().ForEach(x => 
+            {
+                if (x.Top > this.Top)
+                {
+                    x.Top -= 75;
+                }
+            });
+            ((OrderList)this.Parent).RemoveSpace();
+
             item.Quantity = 0;
             this.Parent.Controls.Remove(this);
         }
