@@ -18,12 +18,20 @@ namespace Start
         Order order;
         Staff member;
 
+        public string ReturnDialogResult { get; private set; }
+
         public SingleTable(Table _CurrentTable, Staff _member)
         {
             CurrentTable = _CurrentTable;
             InitializeComponent();
             order = new Order();
             member = _member;
+        }
+
+        public SingleTable(Table table)
+        {
+            InitializeComponent();
+            CurrentTable = table;
         }
 
         private void Btn_AddOrder_Click(object sender, EventArgs e)
@@ -40,6 +48,7 @@ namespace Start
 
         private void SingleTable_Status()
         {
+
             if (CurrentTable.Status == Table_Status.Available)
             {
                 btn_cancel.Enabled = false;
@@ -69,9 +78,9 @@ namespace Start
 
         private void SingleTable_Load(object sender, EventArgs e)
         {
-            SingleTable_Status();
             Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
             lbl_status.Text = CurrentTable.Status.ToString();
+            SingleTable_Status();
             LoadListView();
         }
 
@@ -128,6 +137,9 @@ namespace Start
         // buttons RESERVE, CANCEL, OCCUPIED only makes changes in the single table form
         private void btn_reserve_Click(object sender, EventArgs e)
         {
+            ReturnDialogResult = "Reserve";
+            this.DialogResult = DialogResult.Yes;
+
             lbl_status.Text = Table_Status.Reserved.ToString();
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
@@ -139,10 +151,16 @@ namespace Start
             btn_occupied.BackColor = Color.Silver;
             btn_ready.Enabled = true;
             btn_ready.BackColor = Color.Salmon;
+
+            
+            this.Close();
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
+            ReturnDialogResult = "Cancel";
+            this.DialogResult = DialogResult.No;
+
             lbl_status.Text = Table_Status.Available.ToString();
             btn_AddOrder.Enabled = false;
             btn_AddOrder.BackColor = Color.Silver;
@@ -154,10 +172,15 @@ namespace Start
             btn_occupied.BackColor = Color.Salmon;
             btn_reserve.Enabled = true;
             btn_reserve.BackColor = Color.Salmon;
+
+            this.Close();
         }
 
         private void btn_occupied_Click(object sender, EventArgs e)
         {
+            ReturnDialogResult = "Occupy";
+            this.DialogResult = DialogResult.OK;
+
             lbl_status.Text = Table_Status.Occupied.ToString();
             btn_AddOrder.Enabled = true;
             btn_AddOrder.BackColor = Color.Salmon;
@@ -169,6 +192,9 @@ namespace Start
             btn_ready.BackColor = Color.Salmon;
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
+
+            
+            this.Close();
         }
     }
 }

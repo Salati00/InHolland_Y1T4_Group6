@@ -56,5 +56,16 @@ namespace DAO
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
+
+        public int ChangeTableStatus(Table table, Table_Status status)
+        {
+            SqlCommand command = new SqlCommand("UPDATE tables SET [Status] = @status WHERE Table_ID = @id", conn);
+            command.Parameters.AddWithValue("@status", status);
+            command.Parameters.AddWithValue("@id", table.Table_ID);
+            conn.Open();
+            int row = command.ExecuteNonQuery();
+            conn.Close();
+            return row;
+        }
     }
 }

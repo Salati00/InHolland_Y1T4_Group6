@@ -56,5 +56,17 @@ namespace Logic
             }
             return tables;
         }
+
+        public int ChangeTableStatus(Table table, Table_Status status)
+        {
+            try
+            {
+                return DB.ChangeTableStatus(table, status);
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
     }
 }

@@ -18,18 +18,18 @@ namespace Start
         StaffService service;
         Overview ov;
 
-        private static login_form inst;
-        public static login_form GetForm
-        {
-            get
-            {
-                if (inst == null || inst.IsDisposed)
-                    inst = new login_form();
-                return inst;
-            }
-        }
+        //private static login_form inst;
+        //public static login_form GetForm
+        //{
+        //    get
+        //    {
+        //        if (inst == null || inst.IsDisposed)
+        //            inst = new login_form();
+        //        return inst;
+        //    }
+        //}
 
-        private login_form()
+        public login_form()
         {
             InitializeComponent();
             service = new StaffService();
@@ -76,23 +76,23 @@ namespace Start
                     {
                         case Staff_Type.Bartender:
                             new KitchenBar(Staff_Type.Bartender).ShowDialog();
-                            this.Close();
+                            //this.Close();
                             break;
                         case Staff_Type.Chef:
                             new KitchenBar(Staff_Type.Chef).ShowDialog();
-                            this.Close();
+                            //this.Close();
                             break;
                         case Staff_Type.Waiter:
                             new TableView(member).ShowDialog();
-                            this.Close();
+                            //this.Close();
                             break;
                         case Staff_Type.Manager:
                         default:
                             new Overview(member).ShowDialog();
-                            this.Close();
+                            //this.Close();
                             break;
                     }
-                    //    ov = new Overview(member);
+                    this.Close();
                 }
 
             }
@@ -101,7 +101,7 @@ namespace Start
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
 

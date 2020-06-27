@@ -32,13 +32,14 @@ namespace Start
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();
+           
             if (member.Role == Staff_Type.Manager)
             {
                 new Overview(member).ShowDialog();
             }
             else
             {
-                login_form.GetForm.ShowDialog();
+                new login_form().ShowDialog();
             }
             this.Close();
         }
@@ -97,6 +98,63 @@ namespace Start
             }
         }
 
+        private void ChangeTableStatus(Table table)
+        {
+            SingleTable sTable = new SingleTable(table);
+            DialogResult result = sTable.ShowDialog();
+
+            if (result == DialogResult.Yes) // reserved
+            {
+                int row = tableService.ChangeTableStatus(table, Table_Status.Reserved);
+                if (row > 0)
+                {
+                    MessageBox.Show("This table has been reserved");
+                }
+                else if (row == -1)
+                {
+                    MessageBox.Show("database connection lost");
+                }
+                else
+                {
+                    MessageBox.Show("Failed");
+                }
+            }
+            else if (result == DialogResult.No) // cancel
+            {
+                int row = tableService.ChangeTableStatus(table, Table_Status.Available);
+                if (row > 0)
+                {
+                    MessageBox.Show("This table is available");
+                }
+                else if (row == -1)
+                {
+                    MessageBox.Show("database connection lost");
+                }
+                else
+                {
+                    MessageBox.Show("Failed");
+                }
+            }
+            else if (result == DialogResult.OK) // occupied
+            {
+                int row = tableService.ChangeTableStatus(table, Table_Status.Occupied);
+                if (row > 0)
+                {
+                    MessageBox.Show("This table is occupied");
+                }
+                else if (row == -1)
+                {
+                    MessageBox.Show("database connection lost");
+                }
+                else
+                {
+                    MessageBox.Show("Failed");
+                }
+            }
+            List<Table> tabList = tableService.GetAllTables();
+            InitializeTableStatus(tabList);
+        }
+
         private void Tmr_Refresh_Tick(object sender, EventArgs e)
         {
             UpdateReadyLabels();
@@ -121,7 +179,7 @@ namespace Start
                 {
                     item.Visible = false;
                     int num = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].Value);
-                    foreach (var o in tabls)
+                    foreach (Table o in tabls)
                     {
                         if (num == o.Table_Number && o.Status == Table_Status.Occupied)
                         {

@@ -51,7 +51,7 @@ namespace Start
 
         public void btn_signout_Click(object sender, EventArgs e)
         {
-            ShowForm(login_form.GetForm);
+            ShowForm(new login_form());
         }
 
         private void btn_tables_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace Start
 
         private void Overview_FormClosing(object sender, FormClosingEventArgs e)
         {
-            login_form.GetForm.Show();
+            new login_form().ShowDialog();
         }
     }
 }
