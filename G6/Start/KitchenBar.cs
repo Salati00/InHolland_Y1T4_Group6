@@ -20,50 +20,34 @@ namespace Start                                 // 641672
     {
       
         private List<Order> Orders;
-      //  private List<Order> AppearingOrders;
-     //   private List<OrderItem> allOrderItems;
+        private KitchenBarService service;            
 
-       // private Staff_Type staffType;
-      //  private bool IsBar;
-
-        private KitchenBarService service;
-
-        private ListView lastServedList;
-        private Order lastServedOrder;
-      //  private int lastServedPosition;
-        
+        private ListView lastServedList;              //    the recalled order 
+        private Order lastServedOrder;                //    
 
         private int pageNumber = 1;
         private int ItemsAmount;
         private int pages;
-   //     private List<Order> orders;
-
-
 
 
         public KitchenBar(Staff_Type type) 
         {
             InitializeComponent();
 
-        //    this.staffType = type; //...............
-
-
+                                          
             recallpanel.Hide();
             service = new KitchenBarService(type);
 
-            if (type == Staff_Type.Bartender)
-            {
+            if (type == Staff_Type.Bartender)            
                 this.Text = "Chapeau Bar";
-              
-            }
 
             StartNew();
         }
          
                                    
-        void StartNew()
+        void StartNew()    
         {
-            //allOrderLists = new List<ListView>();//........
+                                       // getting orders from db
             try
             {
                 Orders = service.GetOrders();
@@ -74,25 +58,10 @@ namespace Start                                 // 641672
                 System.Windows.MessageBox.Show(dbEx.Message);
             }
 
+            timeLable.Text = DateTime.Now.ToString("h:mm:ss tt");
 
-            //allOrderItems = new List<OrderItem>();
-            //try
-            //{
-            //    totalItems = service.CountOrderItems();
-            //}
-            //catch (Exception dbEx)
-            //{
-            //    System.Windows.MessageBox.Show(dbEx.Message);
-            //}
-
-            ////////////AppearingOrders = new List<Order>();
-
-            timee.Text = DateTime.Now.ToString("h:mm:ss tt");
-
-            //  IsBar = false;
-          //  PanelOrders.Controls.Clear();
             FillOrders();
-            ItemsAmount = service.CountOrderItems();
+            ItemsAmount = service.CountOrderItems();            // counting items to compare it and know if there is new items added to db
         }
 
         public void FillOrders()
@@ -100,31 +69,27 @@ namespace Start                                 // 641672
             
             
 
-            for (int counter = PanelOrders.Controls.Count; counter < Orders.Count; counter++)
+            for (int counter = PanelOrders.Controls.Count; counter < Orders.Count; counter++)     // printing the order's listviews 
             {
 
                 ListView list = new ListView(); 
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 list.Width = (PanelOrders.Width / 2) - (PanelOrders.Width / 50);
-                list.Columns.Add($"order {Orders[counter].Order_ID:D3}", list.Width - (list.Width / 4));
+                list.Columns.Add($"order {(Orders[counter].Order_ID % 1000):D3}", list.Width - (list.Width / 4));
                 list.Columns.Add(DateTime.UtcNow.Subtract(Orders[counter].Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
                 OrderItems(list, Orders[counter]);
-                if (list.Items[0].Text != "")
-                {
-                    PanelOrders.Controls.Add(list);
-                    list.Click += new EventHandler(this.ClickOrder);
-               ///     AppearingOrders.Add(order);
-                }
+                //if (list.Items[0].Text != "")
+                //{
+                PanelOrders.Controls.Add(list);
+                list.Click += new EventHandler(this.ClickOrder);
+                //}
                 
-                   
-
-              ////  allOrderLists.Add(list);                             iiiiiiiiiiiiiii
 
             }
             PageProperties(pageNumber,false);
         }
-        public void OrderItems(ListView list,Order order)
+        public void OrderItems(ListView list,Order order)              //filling the lists with order items
         {
 
             int count = -1;
@@ -133,19 +98,20 @@ namespace Start                                 // 641672
                 count++;
                 try
                 {
-                    ItemsPrintStyle(list, order, count);
+                    ItemsPrintStyle(list, order, count);               //printing the items with style
                 }
                 catch
                 {                    
                     if (count >= 7)
                     {
-                        list.Items.Add($"  Table: {order.Table_ID:D2}");
+                                                         // puting the table number and ready button in the last field of the list(usualy field 7)
+                        list.Items.Add($"  Table: {order.Table_ID:D2}");          
                         list.Items[count].SubItems.Add("Ready");
                         break;
                     }
                     else
                     {
-                        list.Items.Add("");
+                        list.Items.Add("");                // filling empty fields with blank
                     }
                     continue;
                 }
@@ -155,19 +121,12 @@ namespace Start                                 // 641672
             list.View = View.Details;
             list.FullRowSelect = true;     
             list.Items[list.Items.Count - 1].UseItemStyleForSubItems = false;
-            //try
-            //{
-                ReadyButtonStyle(list/*,order*/);
-            //}
-            //catch
-            //{ 
-            //    list.Items[list.Items.Count - 1].SubItems.Add("Ready");
-            //    ReadyButtonStyle(list/*,order*/);
-            //}
-                
+        
+            ReadyButtonStyle(list);         
+            
         }
 
-        public void ReadyButtonStyle(ListView list/*,Order order*/)
+        public void ReadyButtonStyle(ListView list)           // giving colors to the ready button
         {
             list.Items[list.Items.Count - 1].SubItems[0].ForeColor = System.Drawing.Color.DimGray;
             list.Items[list.Items.Count - 1].SubItems[1].ForeColor = System.Drawing.Color.White;
@@ -175,11 +134,11 @@ namespace Start                                 // 641672
             
         }
 
-        public void ItemsPrintStyle(ListView list, Order order, int i)           // fine
+        public void ItemsPrintStyle(ListView list, Order order, int i)            //printing the orderitem with style
         {
             
             list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
-            //    allOrderItems.Add(order.OrderItems[i]);
+      
 
             if (order.OrderItems[i].Comment != null && (order.OrderItems[i].Comment != "")) 
             {
@@ -199,36 +158,36 @@ namespace Start                                 // 641672
         {
             ListView list = (ListView)sender;
 
-            if (recallpanel.Visible&&( list.Columns[0].Text[0] != 'R'|| list.Items[list.Items.Count - 1].Selected))
+                                                      // recalled order is clicked or another order while recalled order is visible
+            if (recallpanel.Visible && (list.Columns[0].Text[0] != 'R' || list.Items[list.Items.Count - 1].Selected))
             {
                 recallpanel.Hide();
                 OrderIsReady(lastServedOrder, Order_Status.Ready);
             }
-            else if (list.Items[list.Items.Count-1].Selected)
+            else if (list.Items[list.Items.Count-1].Selected)                 // Ready button clicked
             {
                 lastServedList = list;
-          //      lastServedPosition = PanelOrders.Controls.IndexOf(list);
+  
                 try
                 {
                     lastServedOrder = Orders[PanelOrders.Controls.IndexOf(list)];
                 }
                 catch { }
                
-                OrderIsReady(lastServedOrder, Order_Status.Ready);
+                OrderIsReady(lastServedOrder, Order_Status.Ready);              //marking order as ready 
 
-                Orders.Remove(lastServedOrder);
+                Orders.Remove(lastServedOrder);                                 
                 PanelOrders.Controls.Remove(list);
                 PageProperties(pageNumber,false);
 
-                if (lastServedList.Columns[0].Text[0] != 'R')
-                {    
+                if (lastServedList.Columns[0].Text[0] != 'R')                  // adding the word "Recalled" next to the recalled order id
                     lastServedList.Columns[0].Text = "Recalled " + lastServedList.Columns[0].Text;
-                }
+                
             }
         }
         
 
-        public void OrderIsReady(Order order,Order_Status state)
+        public void OrderIsReady(Order order,Order_Status state)               //marking order as ready or pending
         {
             foreach (OrderItem item in order.OrderItems)
             {
@@ -247,7 +206,7 @@ namespace Start                                 // 641672
         }
 
 
-        private void recall_Click_1(object sender, EventArgs e)
+        private void recall_Click_1(object sender, EventArgs e)         // clicking recall button
         {
             if (lastServedList!=null)
             {
@@ -262,12 +221,12 @@ namespace Start                                 // 641672
                     recallpanel.Show();
                     OrderIsReady(lastServedOrder, Order_Status.Pending);
                 }
-
+                                                // refreshing the recalled order pannel/lisview
                 recallpanel.Controls.Clear();
                 recallpanel.Controls.Add(lastServedList);
                 lastServedList.Location = new System.Drawing.Point(1,1);
 
-                lastServedList.Click += new EventHandler(this.ClickOrder);
+                lastServedList.Click += new EventHandler(this.ClickOrder); 
 
             }
 
@@ -284,13 +243,13 @@ namespace Start                                 // 641672
 
         
 
-        private void right_Click(object sender, EventArgs e)
+        private void right_Click(object sender, EventArgs e)           //click the (next page(>)) button
         {
             if (pageNumber < pages)
                 PageProperties(++pageNumber, true);
         }
 
-        private void left_Click(object sender, EventArgs e)
+        private void left_Click(object sender, EventArgs e)            //click the (previous page(<)) button
         {
             if (pageNumber > 1)
                 PageProperties(--pageNumber, true);
@@ -299,14 +258,14 @@ namespace Start                                 // 641672
 
         public void PageProperties(int page,bool changingPage)
         {
-            int pages ;
+            int pages ;                                        // setting current page
             if (PanelOrders.Controls.Count % 4 == 0)
                 pages = PanelOrders.Controls.Count / 4;
             else
                 pages = (PanelOrders.Controls.Count / 4) + 1;
 
 
-            if (changingPage )
+            if (changingPage )                                   // go to another page
             {
                 for (int controlNum = 0; controlNum < PanelOrders.Controls.Count; controlNum++)
                 {
@@ -320,8 +279,8 @@ namespace Start                                 // 641672
             }
             pagelbl.Text = $"{this.Text} Page: {pageNumber}/{pages}";
 
-
-            if (pageNumber > 1)
+                                                               // if there is a previous page left button will be red  
+            if (pageNumber > 1)                                // if there is a next page right button will be red
                 left.ForeColor = System.Drawing.Color.Maroon;
             else
                 left.ForeColor = System.Drawing.Color.Black;
@@ -335,8 +294,8 @@ namespace Start                                 // 641672
 
 
 
-        private void Home_Click(object sender, EventArgs e)
-        {
+        private void Home_Click(object sender, EventArgs e)          // going to the home page
+        { 
             timer1.Enabled= false;
             this.Close();
         }
@@ -346,7 +305,7 @@ namespace Start                                 // 641672
         private void timer1_Tick(object sender, EventArgs e)
         {
             int counter = 0;
-            foreach (ListView list in PanelOrders.Controls)
+            foreach (ListView list in PanelOrders.Controls)                     // refreshin the time of each orderlist
             {
                 if (DateTime.UtcNow.Subtract(Orders[counter].Time).ToString(@"hh\:mm\:ss").Substring(0, 2) == "00")
                     list.Columns[1].Text = DateTime.Now.Subtract(Orders[counter].Time).ToString(@"mm\:ss");
@@ -354,11 +313,11 @@ namespace Start                                 // 641672
                     list.Columns[1].Text = DateTime.Now.Subtract(Orders[counter].Time).ToString(@"hh\:mm\:ss");
                 counter++;
             }
-            timee.Text = DateTime.Now.ToString("h:mm:ss tt");
+            timeLable.Text = DateTime.Now.ToString("h:mm:ss tt");             // refreshing time
 
 
             try
-            {
+            {                                 // checking if there is new order items in the db and add them with the other orders
                 if (ItemsAmount != service.CountOrderItems() && recallpanel.Visible == false)
                 {
                     StartNew();
