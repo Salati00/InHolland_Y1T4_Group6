@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.PanelOrders = new System.Windows.Forms.FlowLayoutPanel();
             this.recallpanel = new System.Windows.Forms.Panel();
-            this.timee = new System.Windows.Forms.Label();
+            this.timeLable = new System.Windows.Forms.Label();
             this.Home = new System.Windows.Forms.Button();
             this.recall = new System.Windows.Forms.Button();
             this.left = new System.Windows.Forms.Button();
             this.right = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pagelbl = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,15 +64,15 @@
             this.recallpanel.Size = new System.Drawing.Size(940, 441);
             this.recallpanel.TabIndex = 1;
             // 
-            // timee
+            // timeLable
             // 
-            this.timee.AutoSize = true;
-            this.timee.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timee.Location = new System.Drawing.Point(1704, 13);
-            this.timee.Name = "timee";
-            this.timee.Size = new System.Drawing.Size(81, 37);
-            this.timee.TabIndex = 7;
-            this.timee.Text = "time";
+            this.timeLable.AutoSize = true;
+            this.timeLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.timeLable.Location = new System.Drawing.Point(1704, 13);
+            this.timeLable.Name = "timeLable";
+            this.timeLable.Size = new System.Drawing.Size(81, 37);
+            this.timeLable.TabIndex = 7;
+            this.timeLable.Text = "time";
             // 
             // Home
             // 
@@ -145,7 +145,7 @@
             this.panel1.Controls.Add(this.right);
             this.panel1.Controls.Add(this.left);
             this.panel1.Controls.Add(this.Home);
-            this.panel1.Controls.Add(this.timee);
+            this.panel1.Controls.Add(this.timeLable);
             this.panel1.Controls.Add(this.recall);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(12, 937);
@@ -153,10 +153,17 @@
             this.panel1.Size = new System.Drawing.Size(1925, 91);
             this.panel1.TabIndex = 10;
             // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(0, -928);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1895, 1028);
+            this.panel2.TabIndex = 10;
+            // 
             // timer1
             // 
             this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
+            this.timer1.Interval = 15;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // pagelbl
@@ -169,13 +176,6 @@
             this.pagelbl.TabIndex = 0;
             this.pagelbl.Text = "label1";
             this.pagelbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // panel2
-            // 
-            this.panel2.Location = new System.Drawing.Point(0, -928);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1895, 1028);
-            this.panel2.TabIndex = 10;
             // 
             // KitchenBar
             // 
@@ -202,7 +202,7 @@
 
         private System.Windows.Forms.FlowLayoutPanel PanelOrders;
         private System.Windows.Forms.Panel recallpanel;
-        private System.Windows.Forms.Label timee;
+        private System.Windows.Forms.Label timeLable;
         private System.Windows.Forms.Button Home;
         private System.Windows.Forms.Button recall;
         private System.Windows.Forms.Button left;
