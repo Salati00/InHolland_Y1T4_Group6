@@ -13,7 +13,14 @@ namespace DAO
      public class kichenBarDAO : Base
     {
 
-        Cart cart;
+        
+        Staff_Type staffType;
+        public kichenBarDAO(Staff_Type type)
+        {
+            staffType = type;
+        }
+
+
         public List<Order> Db_Get_Orders()              //done
         {
             string query = "select Order_ID, [Time] ,Table_ID " +
@@ -50,7 +57,7 @@ namespace DAO
                 $"                 where o.Order_ID = 17 " +
                 $"                 and oi.State_ID = 1  ";
             string extraCondition = " and c.[Name] = 'Drinks' ;";
-            if (cart != Cart.Drinks)
+            if (staffType != Staff_Type.Bartender)
                 extraCondition =  " and not c.[Name] = 'Drinks' ;";
             query += extraCondition;
 
@@ -81,7 +88,7 @@ namespace DAO
         }
 
 
-        public void Db_State_Order_Items(int itemid, int state)
+        public void Db_State_Order_Items(int itemid, Order_Status state)
         {
 
             string query = "SET IDENTITY_INSERT Order_Items on; " +
@@ -91,7 +98,7 @@ namespace DAO
                 "SET IDENTITY_INSERT Order_Items off; ";
 
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("@state", state);
+            sqlParameters[0] = new SqlParameter("@state", (int)state);
             sqlParameters[1] = new SqlParameter("@itemid", itemid);
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -100,7 +107,16 @@ namespace DAO
         public int Db_Count_Orders()              //done
         {
             string query = "select count(Order_Item_ID) as num " +
-                " from Order_Items; ";
+                "           from Order_Items as oi " +
+                "           join Menu_Items as mi on mi.Menu_Item_ID = oi.Menu_Item_ID " +
+                "           where oi.State_ID = 1  ";
+
+            string extraCondition = " and mi.Item_Type_ID >= 7; ";
+            if (staffType != Staff_Type.Bartender)
+                extraCondition = " and not mi.Item_Type_ID >= 7; ";
+            query += extraCondition;
+
+
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
 
