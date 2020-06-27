@@ -65,7 +65,7 @@ namespace Start
             {
                 Staff member = service.DoLogin(Convert.ToInt32(Cmb_Username.SelectedValue), password.Text);
 
-                if (member.Staff_ID == -1 && password.Text != member.Password)
+                if (member is null)
                 {
                     MessageBox.Show("invalid username or password!");
                 }

@@ -55,6 +55,7 @@ namespace Start
             date.Text = DateTime.Today.ToShortDateString();
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
+            UpdateReadyLabels();
         }
 
         private List<Button> ButtonList()
@@ -98,6 +99,11 @@ namespace Start
 
         private void Tmr_Refresh_Tick(object sender, EventArgs e)
         {
+            UpdateReadyLabels();
+        }
+
+        private void UpdateReadyLabels()
+        {
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
             CheckReadyServe();
@@ -117,7 +123,7 @@ namespace Start
                     int num = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].Value);
                     foreach (var o in tabls)
                     {
-                        if (num == o.Table_Number)
+                        if (num == o.Table_Number && o.Status == Table_Status.Occupied)
                         {
                             item.Visible = true;
                         }
