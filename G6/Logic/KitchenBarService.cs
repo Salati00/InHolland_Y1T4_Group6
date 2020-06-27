@@ -17,9 +17,9 @@ namespace Logic
 
         kichenBarDAO kitchenBar_db;
 
-        public KitchenBarService()
+        public KitchenBarService(Staff_Type staff_Type )
         {
-            kitchenBar_db = new kichenBarDAO();
+            kitchenBar_db = new kichenBarDAO(staff_Type);
            
         }
         public List<Order> GetOrders()
@@ -38,7 +38,7 @@ namespace Logic
 
         }
 
-        public void StateOrderItem(int itemId,int state)
+        public void StateOrderItem(int itemId,Order_Status state)
         {
             try
             {
