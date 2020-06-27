@@ -23,9 +23,20 @@ namespace DAO
 
         public List<Order> Db_Get_Orders()              //done
         {
-            string query = "select Order_ID, [Time] ,Table_ID " +
-                "from Orders;";
+            string extraCondition = " m.Item_Type_ID > 6 ";
+            if (staffType != Staff_Type.Bartender)
+                extraCondition = " m.Item_Type_ID <= 6  ";
 
+            string query = $"select o.Order_ID ,max(Table_ID) as tableID, max([Time]) as [time] " +
+                $"               from Orders as o" +
+                $"                join Order_Items as oi on oi.Order_ID = o.Order_ID " +
+                $"                group by o.Order_ID having  1 in (select State_ID " +
+                $"                                                 from Order_Items as oii " +
+                $"                                                  join Menu_Items as m on oii.Menu_Item_ID = m.Menu_Item_ID " +
+                $"                                                  where o.Order_ID = oii.Order_ID and {extraCondition} ) " +
+                $"			    order by max(oi.DateTime) ";
+
+           
             SqlParameter[] sqlParameters = new SqlParameter[0];
             return ReadOrderTables(ExecuteSelectQuery(query, sqlParameters));
         }
@@ -38,8 +49,8 @@ namespace DAO
                 Order order = new Order();
 
                 order.Order_ID = (int)dr["Order_ID"];
-                order.Time = (DateTime)dr["Time"];
-                order.Table_ID = (int)dr["Table_ID"];
+                order.Time = (DateTime)dr["time"];
+                order.Table_ID = (int)dr["tableID"];
                 order.OrderItems = Db_Get_OrderItems(order.Order_ID);
                 
                 orders.Add(order);
@@ -54,7 +65,7 @@ namespace DAO
                 $"                 join Menu_Items as mi on oi.Menu_Item_ID = mi.Menu_Item_ID " +
                 $"                 join Item_Types as it on it.Item_Type_ID = mi.Item_Type_ID " +
                 $"                 join Carts as c on c.Cart_ID = it.Cart_ID " +
-                $"                 where o.Order_ID = 17 " +
+                $"                 where o.Order_ID = @orderNum " +
                 $"                 and oi.State_ID = 1  ";
             string extraCondition = " and c.[Name] = 'Drinks' ;";
             if (staffType != Staff_Type.Bartender)

@@ -21,7 +21,7 @@ namespace Start                                 // 641672
       
         private List<Order> Orders;
       //  private List<Order> AppearingOrders;
-        private List<OrderItem> allOrderItems;
+     //   private List<OrderItem> allOrderItems;
 
        // private Staff_Type staffType;
       //  private bool IsBar;
@@ -35,6 +35,7 @@ namespace Start                                 // 641672
 
         private int pageNumber = 1;
         private int ItemsAmount;
+        private int pages;
    //     private List<Order> orders;
 
 
@@ -88,15 +89,15 @@ namespace Start                                 // 641672
 
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
 
-          //  IsBar = false;
-            
+            //  IsBar = false;
+          //  PanelOrders.Controls.Clear();
             FillOrders();
-           
+            ItemsAmount = service.CountOrderItems();
         }
 
         public void FillOrders()
         {
-            /// PanelOrders.Controls.Clear();
+            
             
 
             for (int counter = PanelOrders.Controls.Count; counter < Orders.Count; counter++)
@@ -115,6 +116,8 @@ namespace Start                                 // 641672
                     list.Click += new EventHandler(this.ClickOrder);
                ///     AppearingOrders.Add(order);
                 }
+                
+                   
 
               ////  allOrderLists.Add(list);                             iiiiiiiiiiiiiii
 
@@ -176,9 +179,9 @@ namespace Start                                 // 641672
         {
             
             list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
-            allOrderItems.Add(order.OrderItems[i]);
+            //    allOrderItems.Add(order.OrderItems[i]);
 
-            if (order.OrderItems[i].Comment != null || (order.OrderItems[i].Comment != " "))
+            if (order.OrderItems[i].Comment != null && (order.OrderItems[i].Comment != "")) 
             {
                 list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
                 list.Items[i].UseItemStyleForSubItems = false;
@@ -283,32 +286,32 @@ namespace Start                                 // 641672
 
         private void right_Click(object sender, EventArgs e)
         {
-
-            PageProperties(++pageNumber,true);
+            if (pageNumber < pages)
+                PageProperties(++pageNumber, true);
         }
 
         private void left_Click(object sender, EventArgs e)
         {
-                      
-            PageProperties(--pageNumber,true);
+            if (pageNumber > 1)
+                PageProperties(--pageNumber, true);
             
         }
 
         public void PageProperties(int page,bool changingPage)
         {
             int pages ;
-            if (PanelOrders.Controls.Count % 4 == 0 && PanelOrders.Controls.Count > 4)
+            if (PanelOrders.Controls.Count % 4 == 0)
                 pages = PanelOrders.Controls.Count / 4;
             else
                 pages = (PanelOrders.Controls.Count / 4) + 1;
 
 
-            if (changingPage)
+            if (changingPage )
             {
                 for (int controlNum = 0; controlNum < PanelOrders.Controls.Count; controlNum++)
                 {
 
-                    if (controlNum <= (page - 1) * 4)
+                    if (controlNum+1 <= (page - 1) * 4)
                         PanelOrders.Controls[controlNum].Visible = false;
                     else
                         PanelOrders.Controls[controlNum].Visible = true;
@@ -352,19 +355,20 @@ namespace Start                                 // 641672
                 counter++;
             }
             timee.Text = DateTime.Now.ToString("h:mm:ss tt");
-          
+
 
             try
             {
-                if (ItemsAmount != service.CountOrderItems())
+                if (ItemsAmount != service.CountOrderItems() && recallpanel.Visible == false)
                 {
                     StartNew();
+                    
                 }
             }
-            catch(Exception dbEx)
+            catch (Exception dbEx)
             {
                 timer1.Enabled = false;
-                System.Windows.MessageBox.Show("Error!",dbEx.Message);
+                System.Windows.MessageBox.Show("Error!", dbEx.Message);
             }
 
         }
