@@ -41,7 +41,6 @@
             this.t5 = new System.Windows.Forms.Button();
             this.t10 = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.Lbl_ID = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.date = new System.Windows.Forms.Label();
@@ -52,16 +51,26 @@
             this.lbl_avai = new System.Windows.Forms.Label();
             this.color_avai = new System.Windows.Forms.Label();
             this.Tmr_Refresh = new System.Windows.Forms.Timer(this.components);
-            this.Lbl_T1 = new System.Windows.Forms.Label();
-            this.Lbl_T2 = new System.Windows.Forms.Label();
-            this.Lbl_T3 = new System.Windows.Forms.Label();
-            this.Lbl_T4 = new System.Windows.Forms.Label();
-            this.Lbl_T5 = new System.Windows.Forms.Label();
-            this.Lbl_T6 = new System.Windows.Forms.Label();
-            this.Lbl_T7 = new System.Windows.Forms.Label();
-            this.Lbl_T8 = new System.Windows.Forms.Label();
-            this.Lbl_T9 = new System.Windows.Forms.Label();
-            this.Lbl_T10 = new System.Windows.Forms.Label();
+            this.Lbl_RT1 = new System.Windows.Forms.Label();
+            this.Lbl_RT2 = new System.Windows.Forms.Label();
+            this.Lbl_RT3 = new System.Windows.Forms.Label();
+            this.Lbl_RT4 = new System.Windows.Forms.Label();
+            this.Lbl_RT5 = new System.Windows.Forms.Label();
+            this.Lbl_RT6 = new System.Windows.Forms.Label();
+            this.Lbl_RT7 = new System.Windows.Forms.Label();
+            this.Lbl_RT8 = new System.Windows.Forms.Label();
+            this.Lbl_RT9 = new System.Windows.Forms.Label();
+            this.Lbl_RT10 = new System.Windows.Forms.Label();
+            this.Lbl_PT10 = new System.Windows.Forms.Label();
+            this.Lbl_PT9 = new System.Windows.Forms.Label();
+            this.Lbl_PT8 = new System.Windows.Forms.Label();
+            this.Lbl_PT7 = new System.Windows.Forms.Label();
+            this.Lbl_PT6 = new System.Windows.Forms.Label();
+            this.Lbl_PT5 = new System.Windows.Forms.Label();
+            this.Lbl_PT4 = new System.Windows.Forms.Label();
+            this.Lbl_PT3 = new System.Windows.Forms.Label();
+            this.Lbl_PT2 = new System.Windows.Forms.Label();
+            this.Lbl_PT1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // table
@@ -214,21 +223,11 @@
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(192, 271);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(143, 16);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "You are logged in as a";
-            // 
             // Lbl_ID
             // 
             this.Lbl_ID.AutoSize = true;
             this.Lbl_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_ID.Location = new System.Drawing.Point(331, 271);
+            this.Lbl_ID.Location = new System.Drawing.Point(149, 271);
             this.Lbl_ID.Name = "Lbl_ID";
             this.Lbl_ID.Size = new System.Drawing.Size(17, 16);
             this.Lbl_ID.TabIndex = 17;
@@ -327,106 +326,207 @@
             this.Tmr_Refresh.Interval = 4000;
             this.Tmr_Refresh.Tick += new System.EventHandler(this.Tmr_Refresh_Tick);
             // 
-            // Lbl_T1
+            // Lbl_RT1
             // 
-            this.Lbl_T1.AutoSize = true;
-            this.Lbl_T1.Location = new System.Drawing.Point(40, 146);
-            this.Lbl_T1.Name = "Lbl_T1";
-            this.Lbl_T1.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T1.TabIndex = 39;
-            this.Lbl_T1.Tag = "";
-            this.Lbl_T1.Text = "Items Ready!";
-            this.Lbl_T1.Visible = false;
+            this.Lbl_RT1.AutoSize = true;
+            this.Lbl_RT1.Location = new System.Drawing.Point(40, 146);
+            this.Lbl_RT1.Name = "Lbl_RT1";
+            this.Lbl_RT1.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT1.TabIndex = 39;
+            this.Lbl_RT1.Tag = "";
+            this.Lbl_RT1.Text = "Items Ready!";
+            this.Lbl_RT1.Visible = false;
             // 
-            // Lbl_T2
+            // Lbl_RT2
             // 
-            this.Lbl_T2.AutoSize = true;
-            this.Lbl_T2.Location = new System.Drawing.Point(40, 223);
-            this.Lbl_T2.Name = "Lbl_T2";
-            this.Lbl_T2.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T2.TabIndex = 40;
-            this.Lbl_T2.Text = "Items Ready!";
-            this.Lbl_T2.Visible = false;
+            this.Lbl_RT2.AutoSize = true;
+            this.Lbl_RT2.Location = new System.Drawing.Point(40, 223);
+            this.Lbl_RT2.Name = "Lbl_RT2";
+            this.Lbl_RT2.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT2.TabIndex = 40;
+            this.Lbl_RT2.Text = "Items Ready!";
+            this.Lbl_RT2.Visible = false;
             // 
-            // Lbl_T3
+            // Lbl_RT3
             // 
-            this.Lbl_T3.AutoSize = true;
-            this.Lbl_T3.Location = new System.Drawing.Point(149, 146);
-            this.Lbl_T3.Name = "Lbl_T3";
-            this.Lbl_T3.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T3.TabIndex = 41;
-            this.Lbl_T3.Text = "Items Ready!";
-            this.Lbl_T3.Visible = false;
+            this.Lbl_RT3.AutoSize = true;
+            this.Lbl_RT3.Location = new System.Drawing.Point(149, 146);
+            this.Lbl_RT3.Name = "Lbl_RT3";
+            this.Lbl_RT3.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT3.TabIndex = 41;
+            this.Lbl_RT3.Text = "Items Ready!";
+            this.Lbl_RT3.Visible = false;
             // 
-            // Lbl_T4
+            // Lbl_RT4
             // 
-            this.Lbl_T4.AutoSize = true;
-            this.Lbl_T4.Location = new System.Drawing.Point(149, 223);
-            this.Lbl_T4.Name = "Lbl_T4";
-            this.Lbl_T4.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T4.TabIndex = 42;
-            this.Lbl_T4.Text = "Items Ready!";
-            this.Lbl_T4.Visible = false;
+            this.Lbl_RT4.AutoSize = true;
+            this.Lbl_RT4.Location = new System.Drawing.Point(149, 223);
+            this.Lbl_RT4.Name = "Lbl_RT4";
+            this.Lbl_RT4.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT4.TabIndex = 42;
+            this.Lbl_RT4.Text = "Items Ready!";
+            this.Lbl_RT4.Visible = false;
             // 
-            // Lbl_T5
+            // Lbl_RT5
             // 
-            this.Lbl_T5.AutoSize = true;
-            this.Lbl_T5.Location = new System.Drawing.Point(255, 146);
-            this.Lbl_T5.Name = "Lbl_T5";
-            this.Lbl_T5.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T5.TabIndex = 43;
-            this.Lbl_T5.Text = "Items Ready!";
-            this.Lbl_T5.Visible = false;
+            this.Lbl_RT5.AutoSize = true;
+            this.Lbl_RT5.Location = new System.Drawing.Point(255, 146);
+            this.Lbl_RT5.Name = "Lbl_RT5";
+            this.Lbl_RT5.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT5.TabIndex = 43;
+            this.Lbl_RT5.Text = "Items Ready!";
+            this.Lbl_RT5.Visible = false;
             // 
-            // Lbl_T6
+            // Lbl_RT6
             // 
-            this.Lbl_T6.AutoSize = true;
-            this.Lbl_T6.Location = new System.Drawing.Point(255, 223);
-            this.Lbl_T6.Name = "Lbl_T6";
-            this.Lbl_T6.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T6.TabIndex = 44;
-            this.Lbl_T6.Text = "Items Ready!";
-            this.Lbl_T6.Visible = false;
+            this.Lbl_RT6.AutoSize = true;
+            this.Lbl_RT6.Location = new System.Drawing.Point(255, 223);
+            this.Lbl_RT6.Name = "Lbl_RT6";
+            this.Lbl_RT6.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT6.TabIndex = 44;
+            this.Lbl_RT6.Text = "Items Ready!";
+            this.Lbl_RT6.Visible = false;
             // 
-            // Lbl_T7
+            // Lbl_RT7
             // 
-            this.Lbl_T7.AutoSize = true;
-            this.Lbl_T7.Location = new System.Drawing.Point(361, 146);
-            this.Lbl_T7.Name = "Lbl_T7";
-            this.Lbl_T7.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T7.TabIndex = 45;
-            this.Lbl_T7.Text = "Items Ready!";
-            this.Lbl_T7.Visible = false;
+            this.Lbl_RT7.AutoSize = true;
+            this.Lbl_RT7.Location = new System.Drawing.Point(361, 146);
+            this.Lbl_RT7.Name = "Lbl_RT7";
+            this.Lbl_RT7.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT7.TabIndex = 45;
+            this.Lbl_RT7.Text = "Items Ready!";
+            this.Lbl_RT7.Visible = false;
             // 
-            // Lbl_T8
+            // Lbl_RT8
             // 
-            this.Lbl_T8.AutoSize = true;
-            this.Lbl_T8.Location = new System.Drawing.Point(361, 223);
-            this.Lbl_T8.Name = "Lbl_T8";
-            this.Lbl_T8.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T8.TabIndex = 46;
-            this.Lbl_T8.Text = "Items Ready!";
-            this.Lbl_T8.Visible = false;
+            this.Lbl_RT8.AutoSize = true;
+            this.Lbl_RT8.Location = new System.Drawing.Point(361, 223);
+            this.Lbl_RT8.Name = "Lbl_RT8";
+            this.Lbl_RT8.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT8.TabIndex = 46;
+            this.Lbl_RT8.Text = "Items Ready!";
+            this.Lbl_RT8.Visible = false;
             // 
-            // Lbl_T9
+            // Lbl_RT9
             // 
-            this.Lbl_T9.AutoSize = true;
-            this.Lbl_T9.Location = new System.Drawing.Point(463, 146);
-            this.Lbl_T9.Name = "Lbl_T9";
-            this.Lbl_T9.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T9.TabIndex = 47;
-            this.Lbl_T9.Text = "Items Ready!";
-            this.Lbl_T9.Visible = false;
+            this.Lbl_RT9.AutoSize = true;
+            this.Lbl_RT9.Location = new System.Drawing.Point(463, 146);
+            this.Lbl_RT9.Name = "Lbl_RT9";
+            this.Lbl_RT9.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT9.TabIndex = 47;
+            this.Lbl_RT9.Text = "Items Ready!";
+            this.Lbl_RT9.Visible = false;
             // 
-            // Lbl_T10
+            // Lbl_RT10
             // 
-            this.Lbl_T10.AutoSize = true;
-            this.Lbl_T10.Location = new System.Drawing.Point(463, 223);
-            this.Lbl_T10.Name = "Lbl_T10";
-            this.Lbl_T10.Size = new System.Drawing.Size(69, 13);
-            this.Lbl_T10.TabIndex = 48;
-            this.Lbl_T10.Text = "Items Ready!";
-            this.Lbl_T10.Visible = false;
+            this.Lbl_RT10.AutoSize = true;
+            this.Lbl_RT10.Location = new System.Drawing.Point(463, 223);
+            this.Lbl_RT10.Name = "Lbl_RT10";
+            this.Lbl_RT10.Size = new System.Drawing.Size(69, 13);
+            this.Lbl_RT10.TabIndex = 48;
+            this.Lbl_RT10.Text = "Items Ready!";
+            this.Lbl_RT10.Visible = false;
+            // 
+            // Lbl_PT10
+            // 
+            this.Lbl_PT10.AutoSize = true;
+            this.Lbl_PT10.Location = new System.Drawing.Point(463, 186);
+            this.Lbl_PT10.Name = "Lbl_PT10";
+            this.Lbl_PT10.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT10.TabIndex = 58;
+            this.Lbl_PT10.Text = "Order pending";
+            this.Lbl_PT10.Visible = false;
+            // 
+            // Lbl_PT9
+            // 
+            this.Lbl_PT9.AutoSize = true;
+            this.Lbl_PT9.Location = new System.Drawing.Point(463, 109);
+            this.Lbl_PT9.Name = "Lbl_PT9";
+            this.Lbl_PT9.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT9.TabIndex = 57;
+            this.Lbl_PT9.Text = "Order pending";
+            this.Lbl_PT9.Visible = false;
+            // 
+            // Lbl_PT8
+            // 
+            this.Lbl_PT8.AutoSize = true;
+            this.Lbl_PT8.Location = new System.Drawing.Point(361, 186);
+            this.Lbl_PT8.Name = "Lbl_PT8";
+            this.Lbl_PT8.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT8.TabIndex = 56;
+            this.Lbl_PT8.Text = "Order pending";
+            this.Lbl_PT8.Visible = false;
+            // 
+            // Lbl_PT7
+            // 
+            this.Lbl_PT7.AutoSize = true;
+            this.Lbl_PT7.Location = new System.Drawing.Point(361, 109);
+            this.Lbl_PT7.Name = "Lbl_PT7";
+            this.Lbl_PT7.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT7.TabIndex = 55;
+            this.Lbl_PT7.Text = "Order pending";
+            this.Lbl_PT7.Visible = false;
+            // 
+            // Lbl_PT6
+            // 
+            this.Lbl_PT6.AutoSize = true;
+            this.Lbl_PT6.Location = new System.Drawing.Point(255, 186);
+            this.Lbl_PT6.Name = "Lbl_PT6";
+            this.Lbl_PT6.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT6.TabIndex = 54;
+            this.Lbl_PT6.Text = "Order pending";
+            this.Lbl_PT6.Visible = false;
+            // 
+            // Lbl_PT5
+            // 
+            this.Lbl_PT5.AutoSize = true;
+            this.Lbl_PT5.Location = new System.Drawing.Point(255, 109);
+            this.Lbl_PT5.Name = "Lbl_PT5";
+            this.Lbl_PT5.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT5.TabIndex = 53;
+            this.Lbl_PT5.Text = "Order pending";
+            this.Lbl_PT5.Visible = false;
+            // 
+            // Lbl_PT4
+            // 
+            this.Lbl_PT4.AutoSize = true;
+            this.Lbl_PT4.Location = new System.Drawing.Point(149, 186);
+            this.Lbl_PT4.Name = "Lbl_PT4";
+            this.Lbl_PT4.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT4.TabIndex = 52;
+            this.Lbl_PT4.Text = "Order pending";
+            this.Lbl_PT4.Visible = false;
+            // 
+            // Lbl_PT3
+            // 
+            this.Lbl_PT3.AutoSize = true;
+            this.Lbl_PT3.Location = new System.Drawing.Point(149, 109);
+            this.Lbl_PT3.Name = "Lbl_PT3";
+            this.Lbl_PT3.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT3.TabIndex = 51;
+            this.Lbl_PT3.Text = "Order pending";
+            this.Lbl_PT3.Visible = false;
+            // 
+            // Lbl_PT2
+            // 
+            this.Lbl_PT2.AutoSize = true;
+            this.Lbl_PT2.Location = new System.Drawing.Point(40, 186);
+            this.Lbl_PT2.Name = "Lbl_PT2";
+            this.Lbl_PT2.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT2.TabIndex = 50;
+            this.Lbl_PT2.Text = "Order pending";
+            this.Lbl_PT2.Visible = false;
+            // 
+            // Lbl_PT1
+            // 
+            this.Lbl_PT1.AutoSize = true;
+            this.Lbl_PT1.Location = new System.Drawing.Point(40, 109);
+            this.Lbl_PT1.Name = "Lbl_PT1";
+            this.Lbl_PT1.Size = new System.Drawing.Size(74, 13);
+            this.Lbl_PT1.TabIndex = 49;
+            this.Lbl_PT1.Tag = "";
+            this.Lbl_PT1.Text = "Order pending";
+            this.Lbl_PT1.Visible = false;
             // 
             // TableView
             // 
@@ -434,16 +534,26 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(575, 296);
-            this.Controls.Add(this.Lbl_T10);
-            this.Controls.Add(this.Lbl_T9);
-            this.Controls.Add(this.Lbl_T8);
-            this.Controls.Add(this.Lbl_T7);
-            this.Controls.Add(this.Lbl_T6);
-            this.Controls.Add(this.Lbl_T5);
-            this.Controls.Add(this.Lbl_T4);
-            this.Controls.Add(this.Lbl_T3);
-            this.Controls.Add(this.Lbl_T2);
-            this.Controls.Add(this.Lbl_T1);
+            this.Controls.Add(this.Lbl_PT10);
+            this.Controls.Add(this.Lbl_PT9);
+            this.Controls.Add(this.Lbl_PT8);
+            this.Controls.Add(this.Lbl_PT7);
+            this.Controls.Add(this.Lbl_PT6);
+            this.Controls.Add(this.Lbl_PT5);
+            this.Controls.Add(this.Lbl_PT4);
+            this.Controls.Add(this.Lbl_PT3);
+            this.Controls.Add(this.Lbl_PT2);
+            this.Controls.Add(this.Lbl_PT1);
+            this.Controls.Add(this.Lbl_RT10);
+            this.Controls.Add(this.Lbl_RT9);
+            this.Controls.Add(this.Lbl_RT8);
+            this.Controls.Add(this.Lbl_RT7);
+            this.Controls.Add(this.Lbl_RT6);
+            this.Controls.Add(this.Lbl_RT5);
+            this.Controls.Add(this.Lbl_RT4);
+            this.Controls.Add(this.Lbl_RT3);
+            this.Controls.Add(this.Lbl_RT2);
+            this.Controls.Add(this.Lbl_RT1);
             this.Controls.Add(this.color_avai);
             this.Controls.Add(this.lbl_avai);
             this.Controls.Add(this.lbl_reserved);
@@ -453,7 +563,6 @@
             this.Controls.Add(this.date);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Lbl_ID);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.t10);
             this.Controls.Add(this.t5);
@@ -489,7 +598,6 @@
         private System.Windows.Forms.Button t5;
         private System.Windows.Forms.Button t10;
         private System.Windows.Forms.Button btn_back;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Lbl_ID;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label date;
@@ -500,15 +608,25 @@
         private System.Windows.Forms.Label color_avai;
         private System.Windows.Forms.Label lbl_reserved;
         private System.Windows.Forms.Timer Tmr_Refresh;
-        private System.Windows.Forms.Label Lbl_T1;
-        private System.Windows.Forms.Label Lbl_T2;
-        private System.Windows.Forms.Label Lbl_T3;
-        private System.Windows.Forms.Label Lbl_T4;
-        private System.Windows.Forms.Label Lbl_T5;
-        private System.Windows.Forms.Label Lbl_T6;
-        private System.Windows.Forms.Label Lbl_T7;
-        private System.Windows.Forms.Label Lbl_T8;
-        private System.Windows.Forms.Label Lbl_T9;
-        private System.Windows.Forms.Label Lbl_T10;
+        private System.Windows.Forms.Label Lbl_RT1;
+        private System.Windows.Forms.Label Lbl_RT2;
+        private System.Windows.Forms.Label Lbl_RT3;
+        private System.Windows.Forms.Label Lbl_RT4;
+        private System.Windows.Forms.Label Lbl_RT5;
+        private System.Windows.Forms.Label Lbl_RT6;
+        private System.Windows.Forms.Label Lbl_RT7;
+        private System.Windows.Forms.Label Lbl_RT8;
+        private System.Windows.Forms.Label Lbl_RT9;
+        private System.Windows.Forms.Label Lbl_RT10;
+        private System.Windows.Forms.Label Lbl_PT10;
+        private System.Windows.Forms.Label Lbl_PT9;
+        private System.Windows.Forms.Label Lbl_PT8;
+        private System.Windows.Forms.Label Lbl_PT7;
+        private System.Windows.Forms.Label Lbl_PT6;
+        private System.Windows.Forms.Label Lbl_PT5;
+        private System.Windows.Forms.Label Lbl_PT4;
+        private System.Windows.Forms.Label Lbl_PT3;
+        private System.Windows.Forms.Label Lbl_PT2;
+        private System.Windows.Forms.Label Lbl_PT1;
     }
 }

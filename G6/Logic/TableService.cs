@@ -42,12 +42,46 @@ namespace Logic
             return tables;
         }
 
-        public List<Table> GetTablesWithOrders()
+        /*
+            Retired in favor of GetTablesWithState()
+
+        public List<Table> GetTablesWithReadyOrders()
         {
             List<Table> tables;
             try
             {
-                tables = DB.GetTablesWithOrders();
+                tables = DB.GetTablesWithState();
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return tables;
+        }
+
+        public List<Table> GetTablesPending()
+        {
+            List<Table> tables;
+            try
+            {
+                tables = DB.GetTablesPending();
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return tables;
+        }
+        */
+
+        public List<Table> GetTablesWithState(Order_Status state)
+        {
+            List<Table> tables;
+            try
+            {
+                tables = DB.GetTablesWithState(state);
             }
             catch (Exception ex)
             {

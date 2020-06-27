@@ -20,13 +20,29 @@ namespace Start
     {
         Staff member;
         TableService tableService;
+        Dictionary<int, Label> PendingLabels;
+        Dictionary<int, Label> ReadyLabels;
 
         public TableView(Staff member)
         {
+            PendingLabels = new Dictionary<int, Label>();
+            ReadyLabels = new Dictionary<int, Label>();
             InitializeComponent();
             tableService = new TableService();
             this.member = member;
             Tmr_Refresh.Enabled = true;
+            LoadLabels("RT[0-9]+", ReadyLabels);
+            LoadLabels("PT[0-9]+", PendingLabels);
+            CheckReadyServe();
+        }
+
+        private void LoadLabels(string pattern, Dictionary<int,Label> Dic)
+        {
+            foreach (var item in Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, pattern)).ToList())
+            {
+                int number = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].ToString());
+                Dic.Add(number, item);
+            }
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -52,7 +68,7 @@ namespace Start
 
         private void TableView_Load(object sender, EventArgs e)
         {
-            Lbl_ID.Text = member.Role.ToString();
+            Lbl_ID.Text = $"{member.Name}, you are signed in as a {member.Role}";
             date.Text = DateTime.Today.ToShortDateString();
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
@@ -164,29 +180,33 @@ namespace Start
         {
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
+            ResetLabels();
             CheckReadyServe();
+            CheckPending();
+        }
+
+        private void ResetLabels()
+        {
+            this.Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, "T[0-9]+")).ToList().ForEach(x => x.Visible = false);
         }
 
         private void CheckReadyServe()
         {
-            List<Table> tabls = tableService.GetTablesWithOrders();
+            List<Table> tabls = tableService.GetTablesWithState(Order_Status.Ready);
 
-            List<Label> listlab = Controls.OfType<Label>().ToList();
-
-            foreach (var item in listlab)
+            foreach (var item in tabls)
             {
-                if (Regex.IsMatch(item.Name, "T[0-9]+"))
-                {
-                    item.Visible = false;
-                    int num = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].Value);
-                    foreach (Table o in tabls)
-                    {
-                        if (num == o.Table_Number && o.Status == Table_Status.Occupied)
-                        {
-                            item.Visible = true;
-                        }
-                    }
-                }
+                (ReadyLabels[item.Table_Number]).Visible = true;
+            }
+        }
+
+        private void CheckPending()
+        {
+            List<Table> tabls = tableService.GetTablesWithState(Order_Status.Pending);
+
+            foreach (var item in tabls)
+            {
+                (PendingLabels[item.Table_Number]).Visible = true;
             }
         }
     }
