@@ -38,7 +38,7 @@ namespace Start
             }
             else
             {
-                new login_form().ShowDialog();
+                login_form.GetForm.ShowDialog();
             }
             this.Close();
         }
