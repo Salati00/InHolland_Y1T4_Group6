@@ -99,7 +99,7 @@ namespace Logic
             }
             catch (Exception ex)
             {
-                
+                throw ex;
             }
         }
     }

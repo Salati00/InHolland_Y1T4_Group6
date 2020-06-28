@@ -132,50 +132,31 @@ namespace Start
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("Failed");
-                }
-                if (row > 0)
-                {
-                    
-                }
-                else if (row == -1)
-                {
-                    MessageBox.Show("database connection lost");
-                }
-                else
-                {
+                    MessageBox.Show("Failed - " + ex.Message);
                 }
             }
             else if (result == DialogResult.No) // cancel
             {
-                int row = tableService.ChangeTableStatus(table, Table_Status.Available);
-                if (row > 0)
+                try
                 {
+                    tableService.ChangeTableStatus(table, Table_Status.Available);
                     MessageBox.Show("This table has been canceled");
                 }
-                else if (row == -1)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("database connection lost");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
+                    MessageBox.Show("Failed - " + ex.Message);
                 }
             }
             else if (result == DialogResult.Yes) // occupied
             {
-                int row = tableService.ChangeTableStatus(table, Table_Status.Occupied);
-                if (row > 0)
+                try
                 {
+                    tableService.ChangeTableStatus(table, Table_Status.Occupied);
                     MessageBox.Show("This table is occupied");
                 }
-                else if (row == -1)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("database connection lost");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
+                    MessageBox.Show("Failed - " + ex.Message);
                 }
             }
             List<Table> tabList = tableService.GetAllTables();
