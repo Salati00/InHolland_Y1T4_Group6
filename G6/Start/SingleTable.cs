@@ -17,6 +17,8 @@ namespace Start
         Table CurrentTable;
         Order order;
         Staff member;
+        TableService tableService;
+        OrderingService orderService;
 
         public string ReturnDialogResult { get; private set; }
 
@@ -24,14 +26,10 @@ namespace Start
         {
             CurrentTable = _CurrentTable;
             InitializeComponent();
-            order = new Order();
             member = _member;
-        }
-
-        public SingleTable(Table table)
-        {
-            CurrentTable = table;
-            InitializeComponent();
+            order = new Order();
+            tableService = new TableService();
+            orderService = new OrderingService();
         }
 
         private void Btn_AddOrder_Click(object sender, EventArgs e)
@@ -87,8 +85,8 @@ namespace Start
 
         private void LoadListView()
         {
-            OrderingService service = new OrderingService();
-            Order order = service.GetOrderFromTable(CurrentTable);
+            
+            Order order = orderService.GetOrderFromTable(CurrentTable);
 
             //ListViewItem li = new ListViewItem();
 
@@ -138,9 +136,6 @@ namespace Start
         // buttons RESERVE, CANCEL, OCCUPIED only makes changes in the single table form
         private void btn_reserve_Click(object sender, EventArgs e)
         {
-            ReturnDialogResult = "Reserve";
-            this.DialogResult = DialogResult.OK;
-
             lbl_status.Text = Table_Status.Reserved.ToString();
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
@@ -153,15 +148,11 @@ namespace Start
             btn_ready.Enabled = true;
             btn_ready.BackColor = Color.Salmon;
 
-            
-            this.Close();
+            ChangeTableStatus(Table_Status.Reserved, "The table has been reserved");
         }
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            ReturnDialogResult = "Cancel";
-            this.DialogResult = DialogResult.No;
-
             lbl_status.Text = Table_Status.Available.ToString();
             btn_AddOrder.Enabled = false;
             btn_AddOrder.BackColor = Color.Silver;
@@ -174,14 +165,11 @@ namespace Start
             btn_reserve.Enabled = true;
             btn_reserve.BackColor = Color.Salmon;
 
-            this.Close();
+            ChangeTableStatus(Table_Status.Available, "The reservation has been cancelled");
         }
 
         private void btn_occupied_Click(object sender, EventArgs e)
         {
-            ReturnDialogResult = "Occupy";
-            this.DialogResult = DialogResult.Yes;
-
             lbl_status.Text = Table_Status.Occupied.ToString();
             btn_AddOrder.Enabled = true;
             btn_AddOrder.BackColor = Color.Salmon;
@@ -194,8 +182,20 @@ namespace Start
             btn_reserve.Enabled = false;
             btn_reserve.BackColor = Color.Silver;
 
-            
-            this.Close();
+            ChangeTableStatus(Table_Status.Occupied, "The table has been occupied");
+        }
+
+        private void ChangeTableStatus(Table_Status status, string successMessage)
+        {
+            try
+            {
+                tableService.ChangeTableStatus(this.CurrentTable, status);
+                MessageBox.Show(successMessage);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed - " + ex.Message);
+            }
         }
     }
 }

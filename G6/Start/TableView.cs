@@ -48,7 +48,7 @@ namespace Start
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();
-
+            Tmr_Refresh.Stop();
             if (member.Role == Staff_Type.Manager)
             {
                 new Overview(member).ShowDialog();
@@ -63,11 +63,9 @@ namespace Start
         private void Table_Click_Handler(object sender, EventArgs e)
         {
             SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)), member);
+            Tmr_Refresh.Stop();
             table.ShowDialog();
-            /*
-            List<Table> tabs = tableService.GetAllTables();
-            ChangeTableStatus(tabs[1]);
-            */
+            Tmr_Refresh.Start();
         }
 
         private void TableView_Load(object sender, EventArgs e)
@@ -76,7 +74,7 @@ namespace Start
             date.Text = DateTime.Today.ToShortDateString();
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
-            UpdateReadyLabels();
+            UpdateLabels();
         }
 
         private List<Button> ButtonList()
@@ -118,57 +116,12 @@ namespace Start
             }
         }
 
-        private void ChangeTableStatus(Table table)
-        {
-            SingleTable sTable = new SingleTable(table);
-            DialogResult result = sTable.ShowDialog();
-
-            if (result == DialogResult.OK) // reserved
-            {
-                try
-                {
-                    tableService.ChangeTableStatus(table, Table_Status.Reserved);
-                    MessageBox.Show("This table has been reserved");
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show("Failed - " + ex.Message);
-                }
-            }
-            else if (result == DialogResult.No) // cancel
-            {
-                try
-                {
-                    tableService.ChangeTableStatus(table, Table_Status.Available);
-                    MessageBox.Show("This table has been canceled");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed - " + ex.Message);
-                }
-            }
-            else if (result == DialogResult.Yes) // occupied
-            {
-                try
-                {
-                    tableService.ChangeTableStatus(table, Table_Status.Occupied);
-                    MessageBox.Show("This table is occupied");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Failed - " + ex.Message);
-                }
-            }
-            List<Table> tabList = tableService.GetAllTables();
-            InitializeTableStatus(tabList);
-        }
-
         private void Tmr_Refresh_Tick(object sender, EventArgs e)
         {
-            UpdateReadyLabels();
+            UpdateLabels();
         }
 
-        private void UpdateReadyLabels()
+        private void UpdateLabels()
         {
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
