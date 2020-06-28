@@ -63,9 +63,11 @@ namespace Start
         private void Table_Click_Handler(object sender, EventArgs e)
         {
             SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)), member);
-            //table.ShowDialog();
+            table.ShowDialog();
+            /*
             List<Table> tabs = tableService.GetAllTables();
             ChangeTableStatus(tabs[1]);
+            */
         }
 
         private void TableView_Load(object sender, EventArgs e)
@@ -123,10 +125,18 @@ namespace Start
 
             if (result == DialogResult.OK) // reserved
             {
-                int row = tableService.ChangeTableStatus(table, Table_Status.Reserved);
+                try
+                {
+                    tableService.ChangeTableStatus(table, Table_Status.Reserved);
+                    MessageBox.Show("This table has been reserved");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Failed");
+                }
                 if (row > 0)
                 {
-                    MessageBox.Show("This table has been reserved");
+                    
                 }
                 else if (row == -1)
                 {
@@ -134,7 +144,6 @@ namespace Start
                 }
                 else
                 {
-                    MessageBox.Show("Failed");
                 }
             }
             else if (result == DialogResult.No) // cancel
