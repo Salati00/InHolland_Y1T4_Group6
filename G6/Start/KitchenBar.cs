@@ -258,7 +258,7 @@ namespace Start                                 // 641672
 
         public void PageProperties(int page,bool changingPage)
         {
-            int pages ;                                        // setting current page
+                                                        // setting current page
             if (PanelOrders.Controls.Count % 4 == 0)
                 pages = PanelOrders.Controls.Count / 4;
             else
