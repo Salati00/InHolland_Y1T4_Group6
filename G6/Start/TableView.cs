@@ -20,19 +20,35 @@ namespace Start
     {
         Staff member;
         TableService tableService;
+        Dictionary<int, Label> PendingLabels;
+        Dictionary<int, Label> ReadyLabels;
 
         public TableView(Staff member)
         {
+            PendingLabels = new Dictionary<int, Label>();
+            ReadyLabels = new Dictionary<int, Label>();
             InitializeComponent();
             tableService = new TableService();
             this.member = member;
             Tmr_Refresh.Enabled = true;
+            LoadLabels("RT[0-9]+", ReadyLabels);
+            LoadLabels("PT[0-9]+", PendingLabels);
+            CheckReadyServe();
+        }
+
+        private void LoadLabels(string pattern, Dictionary<int, Label> Dic)
+        {
+            foreach (var item in Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, pattern)).ToList())
+            {
+                int number = Convert.ToInt32(item.Tag);
+                Dic.Add(number, item);
+            }
         }
 
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();
-           
+            Tmr_Refresh.Stop();
             if (member.Role == Staff_Type.Manager)
             {
                 new Overview(member).ShowDialog();
@@ -47,16 +63,19 @@ namespace Start
         private void Table_Click_Handler(object sender, EventArgs e)
         {
             SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)), member);
+            Tmr_Refresh.Stop();
             table.ShowDialog();
+            UpdateLabels();
+            Tmr_Refresh.Start();
         }
 
         private void TableView_Load(object sender, EventArgs e)
         {
-            Lbl_ID.Text = member.Role.ToString();
+            Lbl_ID.Text = $"{member.Name}, you are signed in as a {member.Role}";
             date.Text = DateTime.Today.ToShortDateString();
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
-            UpdateReadyLabels();
+            UpdateLabels();
         }
 
         private List<Button> ButtonList()
@@ -98,95 +117,42 @@ namespace Start
             }
         }
 
-        private void ChangeTableStatus(Table table)
-        {
-            SingleTable sTable = new SingleTable(table);
-            DialogResult result = sTable.ShowDialog();
-
-            if (result == DialogResult.Yes) // reserved
-            {
-                int row = tableService.ChangeTableStatus(table, Table_Status.Reserved);
-                if (row > 0)
-                {
-                    MessageBox.Show("This table has been reserved");
-                }
-                else if (row == -1)
-                {
-                    MessageBox.Show("database connection lost");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
-                }
-            }
-            else if (result == DialogResult.No) // cancel
-            {
-                int row = tableService.ChangeTableStatus(table, Table_Status.Available);
-                if (row > 0)
-                {
-                    MessageBox.Show("This table is available");
-                }
-                else if (row == -1)
-                {
-                    MessageBox.Show("database connection lost");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
-                }
-            }
-            else if (result == DialogResult.OK) // occupied
-            {
-                int row = tableService.ChangeTableStatus(table, Table_Status.Occupied);
-                if (row > 0)
-                {
-                    MessageBox.Show("This table is occupied");
-                }
-                else if (row == -1)
-                {
-                    MessageBox.Show("database connection lost");
-                }
-                else
-                {
-                    MessageBox.Show("Failed");
-                }
-            }
-            List<Table> tabList = tableService.GetAllTables();
-            InitializeTableStatus(tabList);
-        }
-
         private void Tmr_Refresh_Tick(object sender, EventArgs e)
         {
-            UpdateReadyLabels();
+            UpdateLabels();
         }
 
-        private void UpdateReadyLabels()
+        private void UpdateLabels()
         {
             List<Table> tabList = tableService.GetAllTables();
             InitializeTableStatus(tabList);
+            ResetLabels();
             CheckReadyServe();
+            CheckPending();
+        }
+
+        private void ResetLabels()
+        {
+            this.Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, "T[0-9]+")).ToList().ForEach(x => x.Visible = false);
         }
 
         private void CheckReadyServe()
         {
-            List<Table> tabls = tableService.GetTablesWithOrders();
+            List<Table> tabls = tableService.GetTablesWithState(Order_Status.Ready);
 
-            List<Label> listlab = Controls.OfType<Label>().ToList();
-
-            foreach (var item in listlab)
+            foreach (var item in tabls)
             {
-                if (Regex.IsMatch(item.Name, "T[0-9]+"))
-                {
-                    item.Visible = false;
-                    int num = Convert.ToInt32(Regex.Match(item.Name, "[0-9]+").Groups[0].Value);
-                    foreach (Table o in tabls)
-                    {
-                        if (num == o.Table_Number && o.Status == Table_Status.Occupied)
-                        {
-                            item.Visible = true;
-                        }
-                    }
-                }
+                (ReadyLabels[item.Table_Number]).Visible = true;
+            }
+        }
+
+        private void CheckPending()
+        {
+            List<Table> tabls = tableService.GetTablesWithState(Order_Status.Pending);
+
+            foreach (var item in tabls)
+            {
+                (PendingLabels[item.Table_Number]).Visible = true;
             }
         }
     }

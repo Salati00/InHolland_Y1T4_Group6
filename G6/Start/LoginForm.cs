@@ -16,7 +16,6 @@ namespace Start
     public partial class login_form : Form
     {
         StaffService service;
-        Overview ov;
 
         //private static login_form inst;
         //public static login_form GetForm

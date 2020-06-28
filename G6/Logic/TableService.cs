@@ -42,12 +42,15 @@ namespace Logic
             return tables;
         }
 
-        public List<Table> GetTablesWithOrders()
+        /*
+            Retired in favor of GetTablesWithState()
+
+        public List<Table> GetTablesWithReadyOrders()
         {
             List<Table> tables;
             try
             {
-                tables = DB.GetTablesWithOrders();
+                tables = DB.GetTablesWithState();
             }
             catch (Exception ex)
             {
@@ -57,15 +60,46 @@ namespace Logic
             return tables;
         }
 
-        public int ChangeTableStatus(Table table, Table_Status status)
+        public List<Table> GetTablesPending()
         {
+            List<Table> tables;
             try
             {
-                return DB.ChangeTableStatus(table, status);
+                tables = DB.GetTablesPending();
             }
             catch (Exception ex)
             {
-                return -1;
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return tables;
+        }
+        */
+
+        public List<Table> GetTablesWithState(Order_Status state)
+        {
+            List<Table> tables;
+            try
+            {
+                tables = DB.GetTablesWithState(state);
+            }
+            catch (Exception ex)
+            {
+                // lost connection to database
+                throw new Exception(ex.Message);
+            }
+            return tables;
+        }
+
+        public void ChangeTableStatus(Table table, Table_Status status)
+        {
+            try
+            {
+                DB.ChangeTableStatus(table, status);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }
