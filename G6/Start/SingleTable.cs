@@ -30,8 +30,8 @@ namespace Start
 
         public SingleTable(Table table)
         {
-            InitializeComponent();
             CurrentTable = table;
+            InitializeComponent();
         }
 
         private void Btn_AddOrder_Click(object sender, EventArgs e)
@@ -48,7 +48,8 @@ namespace Start
 
         private void SingleTable_Status()
         {
-
+            Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
+            lbl_status.Text = CurrentTable.Status.ToString();
             if (CurrentTable.Status == Table_Status.Available)
             {
                 btn_cancel.Enabled = false;
@@ -78,8 +79,8 @@ namespace Start
 
         private void SingleTable_Load(object sender, EventArgs e)
         {
-            Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
-            lbl_status.Text = CurrentTable.Status.ToString();
+            //Lbl_TableNum.Text = CurrentTable.Table_Number.ToString();
+            //lbl_status.Text = CurrentTable.Status.ToString();
             SingleTable_Status();
             LoadListView();
         }
@@ -122,7 +123,7 @@ namespace Start
             if (Lst_TableOrders.Items.Count == 0)
             {
                 MessageBox.Show("There are no orders");
-                this.DialogResult = DialogResult.OK;
+                //this.DialogResult = DialogResult.OK;
             }
             else
             {
@@ -138,7 +139,7 @@ namespace Start
         private void btn_reserve_Click(object sender, EventArgs e)
         {
             ReturnDialogResult = "Reserve";
-            this.DialogResult = DialogResult.Yes;
+            this.DialogResult = DialogResult.OK;
 
             lbl_status.Text = Table_Status.Reserved.ToString();
             btn_reserve.Enabled = false;
@@ -179,7 +180,7 @@ namespace Start
         private void btn_occupied_Click(object sender, EventArgs e)
         {
             ReturnDialogResult = "Occupy";
-            this.DialogResult = DialogResult.OK;
+            this.DialogResult = DialogResult.Yes;
 
             lbl_status.Text = Table_Status.Occupied.ToString();
             btn_AddOrder.Enabled = true;

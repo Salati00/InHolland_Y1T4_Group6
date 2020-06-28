@@ -36,7 +36,7 @@ namespace Start
             CheckReadyServe();
         }
 
-        private void LoadLabels(string pattern, Dictionary<int,Label> Dic)
+        private void LoadLabels(string pattern, Dictionary<int, Label> Dic)
         {
             foreach (var item in Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, pattern)).ToList())
             {
@@ -48,7 +48,7 @@ namespace Start
         private void btn_back_Click(object sender, EventArgs e)
         {
             this.Hide();
-           
+
             if (member.Role == Staff_Type.Manager)
             {
                 new Overview(member).ShowDialog();
@@ -63,7 +63,9 @@ namespace Start
         private void Table_Click_Handler(object sender, EventArgs e)
         {
             SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)), member);
-            table.ShowDialog();
+            //table.ShowDialog();
+            List<Table> tabs = tableService.GetAllTables();
+            ChangeTableStatus(tabs[1]);
         }
 
         private void TableView_Load(object sender, EventArgs e)
@@ -119,7 +121,7 @@ namespace Start
             SingleTable sTable = new SingleTable(table);
             DialogResult result = sTable.ShowDialog();
 
-            if (result == DialogResult.Yes) // reserved
+            if (result == DialogResult.OK) // reserved
             {
                 int row = tableService.ChangeTableStatus(table, Table_Status.Reserved);
                 if (row > 0)
@@ -140,7 +142,7 @@ namespace Start
                 int row = tableService.ChangeTableStatus(table, Table_Status.Available);
                 if (row > 0)
                 {
-                    MessageBox.Show("This table is available");
+                    MessageBox.Show("This table has been canceled");
                 }
                 else if (row == -1)
                 {
@@ -151,7 +153,7 @@ namespace Start
                     MessageBox.Show("Failed");
                 }
             }
-            else if (result == DialogResult.OK) // occupied
+            else if (result == DialogResult.Yes) // occupied
             {
                 int row = tableService.ChangeTableStatus(table, Table_Status.Occupied);
                 if (row > 0)

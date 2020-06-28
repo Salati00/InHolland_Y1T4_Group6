@@ -82,13 +82,13 @@ namespace DAO
             return ReadTables(ExecuteSelectQuery(query, sqlParameters));
         }
 
-        public int ChangeTableStatus(Table table, Table_Status status)
+        public int ChangeTableStatus(Table tab, Table_Status status)
         {
-            SqlCommand command = new SqlCommand("UPDATE tables SET [Status] = @status WHERE Table_ID = @id", conn);
-            command.Parameters.AddWithValue("@status", status);
-            command.Parameters.AddWithValue("@id", table.Table_ID);
+            SqlCommand cmd = new SqlCommand("UPDATE tables SET [Status] = @status WHERE Table_ID = @id", conn);
+            cmd.Parameters.AddWithValue("@status", status);
+            cmd.Parameters.AddWithValue("@id", tab.Table_ID);
             conn.Open();
-            int row = command.ExecuteNonQuery();
+            int row = cmd.ExecuteNonQuery();
             conn.Close();
             return row;
         }
