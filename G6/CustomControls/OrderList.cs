@@ -20,6 +20,10 @@ namespace Start
 
         public Order GetOrder()
         {
+            List<OrderItem> itemsToRemove = orders.OrderItems.Where(x => x.Quantity < 1).ToList();
+            
+            foreach (var itemToRemove in itemsToRemove)
+                orders.OrderItems.Remove(itemToRemove);
             return orders;
         }
         

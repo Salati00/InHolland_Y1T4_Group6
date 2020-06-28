@@ -593,6 +593,7 @@
             this.Controls.Add(this.t8);
             this.Controls.Add(this.t1);
             this.Controls.Add(this.table);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TableView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TableView";

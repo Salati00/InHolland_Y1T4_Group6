@@ -187,6 +187,7 @@
             this.Controls.Add(this.Lst_TableOrders);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_AddOrder);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "SingleTable";
             this.Text = "SingleTable";
             this.Load += new System.EventHandler(this.SingleTable_Load);

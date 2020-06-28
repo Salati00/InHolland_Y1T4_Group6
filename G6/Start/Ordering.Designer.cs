@@ -231,6 +231,7 @@
             this.Controls.Add(this.Rdb_Lunch);
             this.Controls.Add(this.Btn_Send);
             this.Controls.Add(this.Cmb_TableSelection);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Ordering";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ordering";

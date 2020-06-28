@@ -31,7 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_tables = new System.Windows.Forms.Button();
             this.btn_bar = new System.Windows.Forms.Button();
-            this.btn_settings = new System.Windows.Forms.Button();
             this.btn_signout = new System.Windows.Forms.Button();
             this.btn_orders = new System.Windows.Forms.Button();
             this.btn_kitchen = new System.Windows.Forms.Button();
@@ -72,20 +71,10 @@
             this.btn_bar.UseVisualStyleBackColor = true;
             this.btn_bar.Click += new System.EventHandler(this.btn_bar_Click);
             // 
-            // btn_settings
-            // 
-            this.btn_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_settings.Location = new System.Drawing.Point(298, 240);
-            this.btn_settings.Name = "btn_settings";
-            this.btn_settings.Size = new System.Drawing.Size(188, 95);
-            this.btn_settings.TabIndex = 5;
-            this.btn_settings.Text = "SETTINGS";
-            this.btn_settings.UseVisualStyleBackColor = true;
-            // 
             // btn_signout
             // 
             this.btn_signout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_signout.Location = new System.Drawing.Point(558, 240);
+            this.btn_signout.Location = new System.Drawing.Point(554, 168);
             this.btn_signout.Name = "btn_signout";
             this.btn_signout.Size = new System.Drawing.Size(188, 95);
             this.btn_signout.TabIndex = 6;
@@ -107,7 +96,7 @@
             // btn_kitchen
             // 
             this.btn_kitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_kitchen.Location = new System.Drawing.Point(558, 97);
+            this.btn_kitchen.Location = new System.Drawing.Point(298, 240);
             this.btn_kitchen.Name = "btn_kitchen";
             this.btn_kitchen.Size = new System.Drawing.Size(188, 95);
             this.btn_kitchen.TabIndex = 8;
@@ -152,10 +141,10 @@
             this.Controls.Add(this.btn_kitchen);
             this.Controls.Add(this.btn_orders);
             this.Controls.Add(this.btn_signout);
-            this.Controls.Add(this.btn_settings);
             this.Controls.Add(this.btn_bar);
             this.Controls.Add(this.btn_tables);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Overview";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Overview";
@@ -171,7 +160,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_tables;
         private System.Windows.Forms.Button btn_bar;
-        private System.Windows.Forms.Button btn_settings;
         private System.Windows.Forms.Button btn_signout;
         private System.Windows.Forms.Button btn_orders;
         private System.Windows.Forms.Button btn_kitchen;

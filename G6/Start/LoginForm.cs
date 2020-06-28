@@ -100,7 +100,7 @@ namespace Start
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Environment.Exit(0); //0 code means no error
         }
 
 
@@ -115,7 +115,7 @@ namespace Start
 
         private void login_form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            //Application.Exit();
         }
     }
 }
