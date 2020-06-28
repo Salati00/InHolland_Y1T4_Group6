@@ -265,7 +265,7 @@ namespace Start                                 // 641672
                 pages = (PanelOrders.Controls.Count / 4) + 1;
 
 
-            if (changingPage )                                   // go to another page
+            if (changingPage)                                   // go to another page
             {
                 for (int controlNum = 0; controlNum < PanelOrders.Controls.Count; controlNum++)
                 {
@@ -296,7 +296,7 @@ namespace Start                                 // 641672
 
         private void Home_Click(object sender, EventArgs e)          // going to the home page
         { 
-            timer1.Enabled= false;
+            timer1.Enabled = false;
             this.Close();
         }
 

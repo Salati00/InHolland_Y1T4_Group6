@@ -64,8 +64,10 @@ namespace Start
         {
             SingleTable table = new SingleTable(tableService.GetTableFromInt(Convert.ToInt32(Regex.Match(((Button)sender).Name, @"[0-9]+").Value)), member);
             Tmr_Refresh.Stop();
+            this.Hide();
             table.ShowDialog();
             UpdateLabels();
+            this.Show();
             Tmr_Refresh.Start();
         }
 

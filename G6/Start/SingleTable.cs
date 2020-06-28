@@ -35,7 +35,9 @@ namespace Start
         private void Btn_AddOrder_Click(object sender, EventArgs e)
         {
             Ordering OrderForm = new Ordering(CurrentTable, member);
+            this.Hide();
             OrderForm.ShowDialog();
+            this.Show();
             this.LoadListView();
         }
 

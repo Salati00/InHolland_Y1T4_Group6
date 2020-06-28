@@ -29,11 +29,11 @@ namespace Start
             
         }
 
-        public Ordering()
+        public Ordering(Staff _member)
         {
             Initialize();
             InitializeCombobox();
-            member = new Staff();
+            member = _member;
             table = tab.GetTableFromInt(1);
         }
 

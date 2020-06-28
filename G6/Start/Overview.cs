@@ -31,12 +31,12 @@ namespace Start
         {
             this.Hide();
             frm.ShowDialog();
-            this.Close();
+            this.Show();
         }
 
         private void btn_orders_Click(object sender, EventArgs e)
         {
-            ShowForm(new Ordering());
+            ShowForm(new Ordering(member));
         }
 
         private void btn_kitchen_Click(object sender, EventArgs e)
@@ -51,7 +51,8 @@ namespace Start
 
         public void btn_signout_Click(object sender, EventArgs e)
         {
-            ShowForm(new login_form());
+            //ShowForm(new login_form());
+            this.Close();
         }
 
         private void btn_tables_Click(object sender, EventArgs e)
