@@ -47,10 +47,9 @@
             // 
             this.PanelOrders.BackColor = System.Drawing.Color.Transparent;
             this.PanelOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PanelOrders.Location = new System.Drawing.Point(21, 29);
-            this.PanelOrders.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.PanelOrders.Location = new System.Drawing.Point(32, 45);
             this.PanelOrders.Name = "PanelOrders";
-            this.PanelOrders.Size = new System.Drawing.Size(1300, 608);
+            this.PanelOrders.Size = new System.Drawing.Size(1950, 935);
             this.PanelOrders.TabIndex = 0;
             this.PanelOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelOrders_Paint);
             // 
@@ -60,20 +59,18 @@
             this.recallpanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.recallpanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recallpanel.ForeColor = System.Drawing.Color.White;
-            this.recallpanel.Location = new System.Drawing.Point(323, 149);
-            this.recallpanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.recallpanel.Location = new System.Drawing.Point(484, 229);
             this.recallpanel.Name = "recallpanel";
-            this.recallpanel.Size = new System.Drawing.Size(627, 287);
+            this.recallpanel.Size = new System.Drawing.Size(940, 442);
             this.recallpanel.TabIndex = 1;
             // 
             // timeLable
             // 
             this.timeLable.AutoSize = true;
             this.timeLable.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.timeLable.Location = new System.Drawing.Point(1136, 8);
-            this.timeLable.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.timeLable.Location = new System.Drawing.Point(1704, 12);
             this.timeLable.Name = "timeLable";
-            this.timeLable.Size = new System.Drawing.Size(58, 26);
+            this.timeLable.Size = new System.Drawing.Size(81, 37);
             this.timeLable.TabIndex = 7;
             this.timeLable.Text = "time";
             // 
@@ -83,10 +80,9 @@
             this.Home.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.Home.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Home.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.Home.Location = new System.Drawing.Point(17, 2);
-            this.Home.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Home.Location = new System.Drawing.Point(26, 3);
             this.Home.Name = "Home";
-            this.Home.Size = new System.Drawing.Size(124, 37);
+            this.Home.Size = new System.Drawing.Size(186, 57);
             this.Home.TabIndex = 6;
             this.Home.Text = "Home";
             this.Home.UseVisualStyleBackColor = false;
@@ -100,10 +96,9 @@
             this.recall.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.recall.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.recall.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.recall.Location = new System.Drawing.Point(581, 2);
-            this.recall.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.recall.Location = new System.Drawing.Point(872, 3);
             this.recall.Name = "recall";
-            this.recall.Size = new System.Drawing.Size(124, 37);
+            this.recall.Size = new System.Drawing.Size(186, 57);
             this.recall.TabIndex = 5;
             this.recall.Text = "Recall";
             this.recall.UseVisualStyleBackColor = false;
@@ -118,10 +113,9 @@
             this.left.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.left.Font = new System.Drawing.Font("Microsoft Sans Serif", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.left.Location = new System.Drawing.Point(522, 2);
-            this.left.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.left.Location = new System.Drawing.Point(783, 3);
             this.left.Name = "left";
-            this.left.Size = new System.Drawing.Size(55, 48);
+            this.left.Size = new System.Drawing.Size(82, 74);
             this.left.TabIndex = 8;
             this.left.Text = "<";
             this.left.UseCompatibleTextRendering = true;
@@ -137,10 +131,9 @@
             this.right.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.right.Font = new System.Drawing.Font("Microsoft Tai Le", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.right.Location = new System.Drawing.Point(709, 2);
-            this.right.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.right.Location = new System.Drawing.Point(1064, 3);
             this.right.Name = "right";
-            this.right.Size = new System.Drawing.Size(61, 48);
+            this.right.Size = new System.Drawing.Size(92, 74);
             this.right.TabIndex = 9;
             this.right.Text = ">";
             this.right.UseCompatibleTextRendering = true;
@@ -155,18 +148,16 @@
             this.panel1.Controls.Add(this.timeLable);
             this.panel1.Controls.Add(this.recall);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(8, 609);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Location = new System.Drawing.Point(12, 937);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1283, 59);
+            this.panel1.Size = new System.Drawing.Size(1924, 91);
             this.panel1.TabIndex = 10;
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(0, -603);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(0, -928);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1263, 668);
+            this.panel2.Size = new System.Drawing.Size(1894, 1028);
             this.panel2.TabIndex = 10;
             // 
             // timer1
@@ -179,27 +170,25 @@
             // 
             this.pagelbl.AutoSize = true;
             this.pagelbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pagelbl.Location = new System.Drawing.Point(21, 6);
-            this.pagelbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.pagelbl.Location = new System.Drawing.Point(32, 9);
             this.pagelbl.Name = "pagelbl";
-            this.pagelbl.Size = new System.Drawing.Size(52, 17);
+            this.pagelbl.Size = new System.Drawing.Size(70, 25);
             this.pagelbl.TabIndex = 0;
             this.pagelbl.Text = "label1";
             this.pagelbl.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // KitchenBar
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1275, 667);
+            this.ClientSize = new System.Drawing.Size(1912, 1026);
             this.Controls.Add(this.pagelbl);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.recallpanel);
             this.Controls.Add(this.PanelOrders);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "KitchenBar";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Chapeau Kitchen";

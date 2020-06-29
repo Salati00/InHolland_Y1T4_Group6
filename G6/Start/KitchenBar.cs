@@ -25,7 +25,7 @@ namespace Start                                 // 641672
         private ListView lastServedList;              //    the recalled order 
         private Order lastServedOrder;                //    
 
-        private int pageNumber = 1;
+        private int pageNumber;
         private int ItemsAmount;
         private int pages;
 
@@ -34,6 +34,7 @@ namespace Start                                 // 641672
         {
             InitializeComponent();
 
+
                                           
             recallpanel.Hide();
             service = new KitchenBarService(type);
@@ -41,6 +42,7 @@ namespace Start                                 // 641672
             if (type == Staff_Type.Bartender)            
                 this.Text = "Chapeau Bar";
 
+            pageNumber = 1;
             StartNew();
         }
         
@@ -66,12 +68,12 @@ namespace Start                                 // 641672
 
         public void FillOrders()
         {
-            
-            
 
-            for (int counter = PanelOrders.Controls.Count; counter < Orders.Count; counter++)     // printing the order's listviews 
+            PanelOrders.Controls.Clear();
+
+            for (int counter = 0; counter < Orders.Count; counter++)     // printing the order's listviews 
             {
-
+              
                 ListView list = new ListView(); 
                 list.Height = (PanelOrders.Height / 2) - (PanelOrders.Height / 30);
                 list.Width = (PanelOrders.Width / 2) - (PanelOrders.Width / 50);
@@ -79,15 +81,14 @@ namespace Start                                 // 641672
                 list.Columns.Add(DateTime.UtcNow.Subtract(Orders[counter].Time).ToString(@"mm\:ss"), -2, System.Windows.Forms.HorizontalAlignment.Center);
 
                 OrderItems(list, Orders[counter]);
-                //if (list.Items[0].Text != "")
-                //{
+        
                 PanelOrders.Controls.Add(list);
                 list.Click += new EventHandler(this.ClickOrder);
-                //}
+                
                 
 
             }
-            PageProperties(pageNumber,false);
+            PageProperties(pageNumber,true);
         }
         public void OrderItems(ListView list,Order order)              //filling the lists with order items
         {
@@ -98,6 +99,7 @@ namespace Start                                 // 641672
                 count++;
                 try
                 {
+
                     ItemsPrintStyle(list, order, count);               //printing the items with style
                 }
                 catch
@@ -134,20 +136,20 @@ namespace Start                                 // 641672
             
         }
 
-        public void ItemsPrintStyle(ListView list, Order order, int i)            //printing the orderitem with style
+        public void ItemsPrintStyle(ListView list, Order order, int numOfOrderItem)            //printing the orderitem with style
         {
             
-            list.Items.Add($"   {order.OrderItems[i].Quantity}x  {order.OrderItems[i].MenuItem.Name}");
-      
-
-            if (order.OrderItems[i].Comment != null && (order.OrderItems[i].Comment != "")) 
+            list.Items.Add($"   {order.OrderItems[numOfOrderItem].Quantity}x  {order.OrderItems[numOfOrderItem].MenuItem.Name}");
+    
+            
+            if (order.OrderItems[numOfOrderItem].Comment != null && (order.OrderItems[numOfOrderItem].Comment != "")) 
             {
-                list.Items[i].SubItems.Add(order.OrderItems[i].Comment);
-                list.Items[i].UseItemStyleForSubItems = false;
-                list.Items[i].SubItems[1].ForeColor = System.Drawing.Color.Red;
-                list.Items[i].SubItems[1].BackColor = System.Drawing.Color.WhiteSmoke;
-                list.Items[i].BackColor = System.Drawing.Color.WhiteSmoke;
-                list.Items[i].SubItems[1].Font = new Font("Arial", 14);
+                list.Items[numOfOrderItem].SubItems.Add(order.OrderItems[numOfOrderItem].Comment);
+                list.Items[numOfOrderItem].UseItemStyleForSubItems = false;
+                list.Items[numOfOrderItem].SubItems[1].ForeColor = System.Drawing.Color.Red;
+                list.Items[numOfOrderItem].SubItems[1].BackColor = System.Drawing.Color.WhiteSmoke;
+                list.Items[numOfOrderItem].BackColor = System.Drawing.Color.WhiteSmoke;
+                list.Items[numOfOrderItem].SubItems[1].Font = new Font("Arial", 14);
 
             }
 
@@ -317,7 +319,7 @@ namespace Start                                 // 641672
 
 
             try
-            {                                 // checking if there is new order items in the db and add them with the other orders
+            {                                 // checking if there is new order items in the db and, add them with the other orders
                 if (ItemsAmount != service.CountOrderItems() && recallpanel.Visible == false)
                 {
                     StartNew();
