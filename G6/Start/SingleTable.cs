@@ -20,8 +20,6 @@ namespace Start
         TableService tableService;
         OrderingService orderService;
 
-        public string ReturnDialogResult { get; private set; }
-
         public SingleTable(Table _CurrentTable, Staff _member)
         {
             CurrentTable = _CurrentTable;

@@ -138,6 +138,7 @@ namespace Start
             this.Controls.OfType<Label>().ToList().Where(x => Regex.IsMatch(x.Name, "T[0-9]+")).ToList().ForEach(x => x.Visible = false);
         }
 
+        // loop through all the labels and check their number that they have in their name -> dictionary -> right label, right status 
         private void CheckReadyServe()
         {
             List<Table> tabls = tableService.GetTablesWithState(Order_Status.Ready);
