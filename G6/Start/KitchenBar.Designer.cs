@@ -84,7 +84,7 @@
             this.Home.Name = "Home";
             this.Home.Size = new System.Drawing.Size(186, 57);
             this.Home.TabIndex = 6;
-            this.Home.Text = "Home";
+            this.Home.Text = "Back";
             this.Home.UseVisualStyleBackColor = false;
             this.Home.Click += new System.EventHandler(this.Home_Click);
             // 
